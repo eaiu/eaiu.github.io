@@ -331,9 +331,11 @@
 &lt;li>使用SFTP功能传输到新机器&lt;/li>
 &lt;li>在新机器上解压&lt;/li>
 &lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-BASH" data-lang="BASH">&lt;span style="display:flex;">&lt;span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-BASH" data-lang="BASH">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">######## 解压OpenWebUI和NewAPI的持久化数据&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">######## 解压newapi MySQL数据卷 ###########&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 手动创建目录&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mkdir -p /var/lib/docker/volumes/[项目名]_mysql_data/_data
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
