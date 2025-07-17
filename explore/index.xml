@@ -1599,7 +1599,7 @@
 &lt;figure class="">
 
  &lt;div class="img-container" >
- &lt;img loading="lazy" alt="Pasted%20image%2020250113173115" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113173115.png" >
+ &lt;img loading="lazy" alt="20250717203617645" src="https://webp.050612.xyz/2025/07/20250717203617645.png" >
  &lt;/div>
 
  
@@ -1878,6 +1878,8 @@
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install fail2ban
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装完成后 Fail2ban会自动运行，可以检查一下服务状态&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status fail2ban
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果为dead，注意开启fail2ban服务&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl start fail2ban
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>官方推荐的做法是利用 jail.local 来进行自定义设置：
 这样做的好处是，在升级 Fail2ban 时，你的自定义配置不会丢失。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/fail2ban/jail.local
@@ -1913,7 +1915,7 @@
 &lt;/h3>
 &lt;blockquote>
 &lt;p>如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p>&lt;/blockquote>
-&lt;p>在 powershell 中运行：&lt;/p>
+&lt;p>在本地 powershell 中运行：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t ed25519
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t rsa -b 4096
@@ -1940,8 +1942,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建&lt;code>authorized_keys&lt;/code>文件并赋予相应权限&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>touch ~/.ssh/authorized_keys
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chmod 600 ~/.ssh/authorized_keys
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
-&lt;p>之后打开 &lt;code>C:\\\Users&amp;lt;user\&amp;gt;/.ssh/id\_ed25519.pub&lt;/code>，复制其内容并粘贴过去。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>之后打开 &lt;code>C:\\\Users&amp;lt;user\&amp;gt;/.ssh/id\_ed25519.pub&lt;/code>，复制其内容并粘贴过去。&lt;/p>
+&lt;hr>
 &lt;p>执行以下命令编辑 SSH 配置文件：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/ssh/sshd_config
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进行如下设置：&lt;/p>
