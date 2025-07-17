@@ -1,1 +1,1185 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>服务器 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><description>Recent content in 服务器 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 08 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>记录域名管理一些操作，涵盖了使用Cloudflare进行DNS解析与托管，对比并介绍了通过Cloudflare服务与acme.sh脚本两种方式申请和自动化管理SSL/TLS证书的完整步骤。</description></item><item><title>服务器配置实战指南：从安全加固到Nginx反代部署</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/</link><pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid><description>服务器配置流程记录，涵盖了从安全设置、Docker安装、Nginx反向代理及SSL证书配置，到Swap空间管理的完整步骤。</description></item><item><title>VPS基础安全配置实践指南</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/vps%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E6%8E%AA%E6%96%BD/</link><pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/vps%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E6%8E%AA%E6%96%BD/</guid><description>记录了新购VPS后必须进行的一系列基础安全设置，旨在提升服务器的防御能力，防止常见攻击。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>服务器 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><description>Recent content in 服务器 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 08 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+ 域名相关
+ &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
+&lt;/h1>
+&lt;p>本篇记录一下域名相关的操作吧，包括到cf托管，申请与安装SSL证书等。&lt;/p>
+&lt;h2 class="heading" id="dns解析和将域名托管到cloudflare">
+ DNS解析和将域名托管到cloudflare
+ &lt;a class="anchor" href="#dns%e8%a7%a3%e6%9e%90%e5%92%8c%e5%b0%86%e5%9f%9f%e5%90%8d%e6%89%98%e7%ae%a1%e5%88%b0cloudflare">#&lt;/a>
+&lt;/h2>
+&lt;p>感谢&lt;a href="https://sarakale.top/blog/posts/3a730d01/#%E5%9F%9F%E5%90%8D%E6%B3%A8%E5%86%8C">Namesilo/Cloudflare域名注册和解析设置教程 | SaraKale&amp;rsquo;s blog&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>到 &lt;a href="https://www.cloudflare.com/">Cloudflare&lt;/a> 添加你的站点，选择 Free 免费计划。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153620" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153620.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在下一页上，您需要选择首选的 CDN 计划。选择 Free 计划。单击其图标和&lt;strong>确认计划&lt;/strong>按钮继续：
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153644" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153644.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>如果之前已经做过解析就可以看到现有的DNS记录。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153828" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153828.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>这里先不用管，继续下一步。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153859" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153859.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>可以看到给了两个NS服务器，回到域名提供商后台更改NS服务器。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153945" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153945.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>NameCheap更改ns服务器参考官方教程&lt;a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9607/2210/how-to-set-up-dns-records-for-your-domain-in-a-cloudflare-account/">Title Unavailable | Site Unreachable&lt;/a>，其他域名服务商大同小异。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="申请tlsssl证书">
+ 申请TLS\SSL证书
+ &lt;a class="anchor" href="#%e7%94%b3%e8%af%b7tlsssl%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h2>
+&lt;p>有两种方式，目前选择cloudflare开启代理的模式&lt;/p>
+&lt;ul>
+&lt;li>自动续签：&lt;/li>
+&lt;li>使用cloudflare的服务，开启小黄云，就可以使用一种泛域名证书，只能当做源站和cloudflare握手的凭证，其他的不认。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="cloudflare的服务">
+ cloudflare的服务
+ &lt;a class="anchor" href="#cloudflare%e7%9a%84%e6%9c%8d%e5%8a%a1">#&lt;/a>
+&lt;/h3>
+&lt;p>下面采用cloudflare的服务，也是一份cloudflare的初步探索的记录&lt;/p>
+&lt;h4 class="heading" id="dns管理">
+ DNS管理
+ &lt;a class="anchor" href="#dns%e7%ae%a1%e7%90%86">#&lt;/a>
+&lt;/h4>
+&lt;p>可以在DNS界面管理DNS解析，以及管理是否开启小黄云代理
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="e%2020250113163808" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113163808.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="ssltls证书">
+ SSL\TLS证书
+ &lt;a class="anchor" href="#ssltls%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h4>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113164004" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113164004.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;ul>
+&lt;li>灵活：web浏览器和cloudflare之间采用443HTTPS，cloudflare和cloudflare之间采用80HTTP&lt;/li>
+&lt;li>完全：使用其他未公开认证的SSL证书时采用，源服务器必须配置 SSL 证书，但 Cloudflare &lt;strong>不验证证书的有效性&lt;/strong>（例如，可以是自签名证书或过期证书）。&lt;/li>
+&lt;li>完全（严格）：客户端到 Cloudflare：HTTPS（使用 Cloudflare Universal SSL 证书）。 Cloudflare 到源服务器：&lt;strong>HTTPS（加密）&lt;/strong>。源服务器必须配置有效的 SSL 证书，该证书必须由&lt;strong>受信任的 CA 机构签发&lt;/strong>或为 &lt;strong>Cloudflare Origin CA 证书&lt;/strong>，并且证书中的域名必须与请求的域名匹配。Cloudflare 会验证证书的有效性，包括有效期、颁发机构和域名。&lt;/li>
+&lt;/ul>
+&lt;p>可以在源服务器页面申请 &lt;strong>Cloudflare Origin CA 证书&lt;/strong>，并将该证书放到服务器上。源证书仅对Cloudflare与源服务器之间的加密有效。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113164800" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113164800.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="under-attack">
+ Under Attack
+ &lt;a class="anchor" href="#under-attack">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>可以在安全性-设置里打开Under Attack模式，强制开启验证。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113165205" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113165205.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 class="heading" id="使用-acmesh-dns-验证的方式签发-letsencrypt-证书">
+ 使用 acme.sh DNS 验证的方式签发 Let&amp;rsquo;sEncrypt 证书
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-acmesh-dns-%e9%aa%8c%e8%af%81%e7%9a%84%e6%96%b9%e5%bc%8f%e7%ad%be%e5%8f%91-letsencrypt-%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h3>
+&lt;p>参考：&lt;a href="https://blog.uuphy.com/posts/%E9%85%8D%E7%BD%AE-acme.sh-%E5%85%8D%E8%B4%B9%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%8F%91%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/">使用 acme.sh DNS 验证的方式签发 Let&amp;rsquo;sEncrypt 证书&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://acme.sh/">acme.sh&lt;/a> 是一个用来自动获取和管理 SSL/TLS 证书的开源脚本，可以从 Let’s Encrypt 等多个 CA 获取免费的证书。结合使用 Cloudflare DNS 验证的模式申请泛域名证书，并自动续签。&lt;/p>
+&lt;h4 class="heading" id="cloudflare-api">
+ Cloudflare API
+ &lt;a class="anchor" href="#cloudflare-api">#&lt;/a>
+&lt;/h4>
+&lt;p>使用 Cloudflare DNS 模式需要准备:&lt;/p>
+&lt;ul>
+&lt;li>Zone ID&lt;/li>
+&lt;li>Account ID&lt;/li>
+&lt;li>API Token&lt;/li>
+&lt;/ul>
+&lt;h5 class="heading" id="获取-zone-id-account-id">
+ 获取 Zone ID, Account ID
+ &lt;a class="anchor" href="#%e8%8e%b7%e5%8f%96-zone-id-account-id">#&lt;/a>
+&lt;/h5>
+&lt;p>这两种 ID 直接在 Overview 页就能找到。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/2edb816d28456e59ad4da2b02c3ff69450847554_2_690x370.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h5 class="heading" id="获取-api-token">
+ 获取 API Token
+ &lt;a class="anchor" href="#%e8%8e%b7%e5%8f%96-api-token">#&lt;/a>
+&lt;/h5>
+&lt;p>Overview 页点击 &lt;code>获取您的 API 令牌&lt;/code> 进入 API Tokens 页。&lt;/p>
+&lt;p>点击 API Tokens 项旁边 &lt;code>创建令牌&lt;/code> 按钮，接着选择 &lt;code>编辑区域 DNS&lt;/code> 的模板，点击 &lt;code>使用模板&lt;/code>。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/e15d8a0a1de821faab5355e610b581016975b974_2_690x265.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/42f87595d27a6fb3ed1fe329934517f5416920c6_2_690x210.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>&lt;code>区域资源&lt;/code> 里选择需要签发的域名，&lt;/p>
+&lt;p>在 &lt;code>客户端 IP 地址筛选&lt;/code> 里建议写下 acme.sh 所在的主机做为白名单，需要注意，如果服务器有 ipv6 地址，则也需要添加，因为有可能会 ipv6 优先访问。&lt;/p>
+&lt;p>击 &lt;code>继续以显示摘要&lt;/code> , 确认没问题后最后点击 &lt;code>创建令牌&lt;/code>。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/e88966d6049c27c31c632f9471ec1b79be287b59_2_510x499.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>此时就会出现一个 Token,，即 CF_Token，拷贝备用。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/ca6093ea6bf83325809ea6179d4239ae2c9818cc_2_690x404.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h5 class="heading" id="注意">
+ 注意
+ &lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f">#&lt;/a>
+&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>注意新增域名时，需要更改API Token所包含的域名&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>注意有多台机器时，需要新增机器的IP到白名单&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="update_cf_api_token" src="https://webp.050612.xyz/2025/02/update_cf_api_token.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="cf-api-token-ip" src="https://webp.050612.xyz/2025/02/cf-api-token-ip.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="一个完整的演示">
+ 一个完整的演示
+ &lt;a class="anchor" href="#%e4%b8%80%e4%b8%aa%e5%ae%8c%e6%95%b4%e7%9a%84%e6%bc%94%e7%a4%ba">#&lt;/a>
+&lt;/h4>
+&lt;p>感谢：&lt;a href="https://atpx.com/blog/auto-update-ssl-with-acme/">使用 acme.sh 自动签发和更新证书 - atpX&lt;/a>&lt;/p>
+&lt;p>为了使整个流程更加清晰（&lt;del>方便自己操作&lt;/del>），这里贴一个自己平时使用 acme.sh 申请证书的完整流程。&lt;/p>
+&lt;ul>
+&lt;li>申请方式：DNS 认证（使用 Cloudflare API）&lt;/li>
+&lt;li>申请证书 CA：Let’s Encrypt&lt;/li>
+&lt;li>申请证书类型：RSA + ECC 两个通配符证书&lt;/li>
+&lt;li>**同一台主机多个域名的情况&lt;/li>
+&lt;/ul>
+&lt;p>后续申请证书的命令，都是在 root 用户下执行的，请先使用 &lt;code>su&lt;/code> 切换到 root 用户。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 进入root用户&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>su
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 acme.sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl https://get.acme.sh | sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 刷新 shell 变量配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">source&lt;/span> ~/.bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 导入 Cloudflare API Token&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Token&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Account_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Zone_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 设置默认 CA 为 Let&amp;#39;s Encrypt&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --set-default-ca --server letsencrypt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 RSA 证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 目前采用手动移动证书和密钥，或许可以采用以下自动安装的命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 RSA 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --install-cert -d domain.tld &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 ECC 证书，若不需要，跳过即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 ECC 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/ecc_domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">###############################第二个域名#####################################################################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 取消环境变量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Token
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Account_ID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Zone_ID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 至此证书安装完毕&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 下面是同一台主机申请第二个域名证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 导入另一个 Cloudflare API Token&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Token&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Account_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Zone_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 新建一个文件夹作为 config home，默认会把所有文件存在这里&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir /root/.acme2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 设置默认 CA 为 Let&amp;#39;s Encrypt&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --set-default-ca --server letsencrypt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 RSA 证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength 2048
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 RSA 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--install-cert -d domain.tld &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 第一次尝试自动安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme_yzyy &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --install-cert -d yzyy.de &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --key-file /etc/ssl/private/yzyy.de.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --fullchain-file /etc/ssl/certs/yzyy.de.fullchain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --capath /etc/ssl/certs/yzyy.de.ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;nginx -s reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 ECC 证书，若不需要，跳过即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 ECC 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/ecc_domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 手动添加另一个 cron 任务&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># crontab -e&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>50 0 * * * &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme.sh&amp;#34;&lt;/span>/acme.sh --cron --home &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme.sh&amp;#34;&lt;/span> --config-home &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme2&amp;#34;&lt;/span> &amp;gt; /dev/null
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="两个服务的比较">
+ 两个服务的比较
+ &lt;a class="anchor" href="#%e4%b8%a4%e4%b8%aa%e6%9c%8d%e5%8a%a1%e7%9a%84%e6%af%94%e8%be%83">#&lt;/a>
+&lt;/h3>
+&lt;h4 class="heading" id="优点">
+ 优点
+ &lt;a class="anchor" href="#%e4%bc%98%e7%82%b9">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>acme.sh` + Let&amp;rsquo;s Encrypt + Cloudflare DNS
+&lt;ol>
+&lt;li>&lt;strong>自动化&lt;/strong>：&lt;code>acme.sh&lt;/code> 脚本可以自动完成证书的申请、验证和续期过程。&lt;/li>
+&lt;li>&lt;strong>无需开放 80/443 端口&lt;/strong>：使用 DNS 验证方式，无需在服务器上开放 80 或 443 端口，提高了安全性。&lt;/li>
+&lt;li>&lt;strong>不依赖 Cloudflare 代理&lt;/strong>：这种方式只使用 Cloudflare 的 DNS 服务，不依赖 Cloudflare 的代理服务&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cloudflare
+&lt;ol>
+&lt;li>&lt;strong>Universal SSL&lt;/strong>：Cloudflare 免费提供 Universal SSL 证书，可以快速启用 HTTPS。&lt;/li>
+&lt;li>&lt;strong>Origin CA 证书&lt;/strong>：Cloudflare 提供 Origin CA 证书，可以实现 Cloudflare 到源服务器的加密连接（严格模式）。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="缺点">
+ 缺点
+ &lt;a class="anchor" href="#%e7%bc%ba%e7%82%b9">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>acme.sh` + Let&amp;rsquo;s Encrypt + Cloudflare DNS
+&lt;ol>
+&lt;li>&lt;strong>配置相对复杂&lt;/strong>：相比于使用 Cloudflare 的一键 SSL 功能，这种方式需要手动配置 &lt;code>acme.sh&lt;/code> 脚本和服务器。&lt;/li>
+&lt;li>&lt;strong>不提供 DDoS 防护和其他 Cloudflare 功能&lt;/strong>：这种方式只使用了 Cloudflare 的 DNS 服务，不提供 DDoS 防护、CDN 加速、WAF 等其他 Cloudflare 功能。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cloudflare
+&lt;ol>
+&lt;li>&lt;strong>Origin CA 证书浏览器不信任&lt;/strong>：Cloudflare 的 Origin CA 证书不被浏览器信任，需要配合 Cloudflare 的代理服务使用。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="应用场景比较">
+ 应用场景比较
+ &lt;a class="anchor" href="#%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af%e6%af%94%e8%be%83">#&lt;/a>
+&lt;/h4>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>特性&lt;/th>
+ &lt;th>&lt;code>acme.sh&lt;/code> + Let&amp;rsquo;s Encrypt + Cloudflare DNS&lt;/th>
+ &lt;th>Cloudflare 服务&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>适用场景&lt;/strong>&lt;/td>
+ &lt;td>不需要 Cloudflare 代理 &lt;!-- raw HTML omitted -->需要在其他服务上使用证书 &lt;!-- raw HTML omitted -->希望完全控制证书&lt;/td>
+ &lt;td>需要 DDoS 防护&lt;!-- raw HTML omitted -->需要 CDN 加速&lt;!-- raw HTML omitted -->需要 WAF&lt;!-- raw HTML omitted -->希望隐藏服务器 IP &lt;!-- raw HTML omitted -->需要简单易用的 SSL 配置&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>SSL 证书&lt;/strong>&lt;/td>
+ &lt;td>Let&amp;rsquo;s Encrypt 免费证书&lt;/td>
+ &lt;td>Cloudflare Universal SSL 或 Origin CA 证书&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>泛域名证书&lt;/strong>&lt;/td>
+ &lt;td>支持&lt;/td>
+ &lt;td>支持（Origin CA 证书需配合代理使用）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>服务器 IP&lt;/strong>&lt;/td>
+ &lt;td>暴露&lt;/td>
+ &lt;td>隐藏&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>DDoS 防护&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>CDN 加速&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>WAF&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>配置难度&lt;/strong>&lt;/td>
+ &lt;td>相对复杂&lt;/td>
+ &lt;td>简单&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>控制权&lt;/strong>&lt;/td>
+ &lt;td>完全控制&lt;/td>
+ &lt;td>部分控制&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>依赖性&lt;/strong>&lt;/td>
+ &lt;td>仅依赖 Cloudflare DNS 和 Let&amp;rsquo;s Encrypt&lt;/td>
+ &lt;td>依赖 Cloudflare 的所有服务&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>服务器配置实战指南：从安全加固到Nginx反代部署</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/</link><pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid><description>&lt;h2 class="heading" id="安全性">
+ 安全性
+ &lt;a class="anchor" href="#%e5%ae%89%e5%85%a8%e6%80%a7">#&lt;/a>
+&lt;/h2>
+&lt;p>参考&lt;a href="https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/vps%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E6%8E%AA%E6%96%BD/">VPS基础安全配置实践指南&lt;/a>进行配置&lt;/p>
+&lt;hr>
+&lt;h2 class="heading" id="安装docker和dockercompose">
+ 安装docker和dockercompose
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85docker%e5%92%8cdockercompose">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="安装-docker">
+ 安装 Docker
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-docker">#&lt;/a>
+&lt;/h3>
+&lt;h4 class="heading" id="更新软件包列表">
+ 更新软件包列表
+ &lt;a class="anchor" href="#%e6%9b%b4%e6%96%b0%e8%bd%af%e4%bb%b6%e5%8c%85%e5%88%97%e8%a1%a8">#&lt;/a>
+&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt update
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="安装必要的软件包">
+ 安装必要的软件包
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e5%bf%85%e8%a6%81%e7%9a%84%e8%bd%af%e4%bb%b6%e5%8c%85">#&lt;/a>
+&lt;/h4>
+&lt;p>安装一些必要的软件包，这些软件包允许 &lt;code>apt&lt;/code> 通过 HTTPS 使用仓库。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install apt-transport-https ca-certificates curl software-properties-common
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="添加-docker-的官方-gpg-密钥">
+ 添加 Docker 的官方 GPG 密钥
+ &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0-docker-%e7%9a%84%e5%ae%98%e6%96%b9-gpg-%e5%af%86%e9%92%a5">#&lt;/a>
+&lt;/h4>
+&lt;p>添加 Docker 的官方 GPG 密钥，以便验证下载的软件包。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="添加-docker-仓库">
+ 添加 Docker 仓库
+ &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0-docker-%e4%bb%93%e5%ba%93">#&lt;/a>
+&lt;/h4>
+&lt;p>将 Docker 的官方仓库添加到你的 &lt;code>apt&lt;/code> 软件源列表中。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;deb [arch=&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">$(&lt;/span>dpkg --print-architecture&lt;span style="font-weight:bold;text-decoration:underline">)&lt;/span>&lt;span style="color:#666;font-style:italic"> signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu &lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">$(&lt;/span>lsb_release -cs&lt;span style="font-weight:bold;text-decoration:underline">)&lt;/span>&lt;span style="color:#666;font-style:italic"> stable&amp;#34;&lt;/span> | sudo tee /etc/apt/sources.list.d/docker.list &amp;gt; /dev/null
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>再次更新软件包列表，以包含新添加的 Docker 仓库。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt update
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="安装-docker-engine">
+ 安装 Docker Engine
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-docker-engine">#&lt;/a>
+&lt;/h4>
+&lt;p>安装&lt;code>Docker Engine、Docker CLI&lt;/code>和&lt;code> Containerd&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install docker-ce docker-ce-cli containerd.io
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="验证-docker-安装">
+ 验证 Docker 安装
+ &lt;a class="anchor" href="#%e9%aa%8c%e8%af%81-docker-%e5%ae%89%e8%a3%85">#&lt;/a>
+&lt;/h4>
+&lt;p>验证 Docker 是否成功安装，并检查 Docker 服务是否正在运行。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status docker
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果 Docker 服务正在运行，应该看到类似 &lt;code>active (running)&lt;/code> 的输出。&lt;/p>
+&lt;p>也可以运行一个简单的 Docker 镜像来验证 Docker 是否可以正常工作。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo docker run hello-world
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>应该看到一条欢迎消息，表明 Docker 安装成功。&lt;/p>
+&lt;h3 class="heading" id="安装-docker-composev2-可跳过">
+ 安装 Docker Compose&lt;strong>V2&lt;/strong> (可跳过)
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-docker-composev2-%e5%8f%af%e8%b7%b3%e8%bf%87">#&lt;/a>
+&lt;/h3>
+&lt;p>Docker 官方为了简化开发者的安装和使用流程，已经将 Docker Compose V2 作为一个核心插件，并将其包含在标准的 Docker Engine (&lt;code>docker-ce&lt;/code>) 安装包的&lt;strong>依赖&lt;/strong>或&lt;strong>推荐&lt;/strong>列表中。&lt;/p>
+&lt;p>这意味着，当上面步骤中使用 &lt;code>apt&lt;/code> 安装 &lt;code>docker-ce&lt;/code> 时，&lt;code>apt&lt;/code> 会自动解析这些依赖关系，并将 &lt;code>docker-compose-plugin&lt;/code> 一并安装。&lt;/p>
+&lt;p>到这一步直接使用&lt;code>docker compose version&lt;/code>验证是否安装成功。&lt;/p>
+&lt;h4 class="heading" id="下载-docker-compose-插件">
+ 下载 Docker Compose 插件
+ &lt;a class="anchor" href="#%e4%b8%8b%e8%bd%bd-docker-compose-%e6%8f%92%e4%bb%b6">#&lt;/a>
+&lt;/h4>
+&lt;p>从 GitHub Releases 下载 Docker Compose 插件。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install docker-compose-plugin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="验证-docker-compose-安装">
+ 验证 Docker Compose 安装
+ &lt;a class="anchor" href="#%e9%aa%8c%e8%af%81-docker-compose-%e5%ae%89%e8%a3%85">#&lt;/a>
+&lt;/h4>
+&lt;p>验证 Docker Compose 是否成功安装。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker compose version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果 Docker Compose 成功安装，应该看到 Docker Compose 的版本信息。&lt;/p>
+&lt;h3 class="heading" id="添加用户到-docker-用户组">
+ 添加用户到 Docker 用户组
+ &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0%e7%94%a8%e6%88%b7%e5%88%b0-docker-%e7%94%a8%e6%88%b7%e7%bb%84">#&lt;/a>
+&lt;/h3>
+&lt;p>默认情况下，只有 &lt;code>root&lt;/code> 用户或具有 &lt;code>sudo&lt;/code> 权限的用户才能运行 Docker 命令。为了让普通用户也能运行 Docker 命令，你需要将用户添加到 &lt;code>docker&lt;/code> 用户组。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo usermod -aG docker &lt;span style="color:#666;font-weight:bold;font-style:italic">$USER&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行以下命令来应用用户组更改。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>newgrp docker
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这样就可以在不使用 &lt;code>sudo&lt;/code> 的情况下运行 Docker 命令了。&lt;/p>
+&lt;hr>
+&lt;h2 class="heading" id="配置证书和反代">
+ 配置证书和反代
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%ae%e8%af%81%e4%b9%a6%e5%92%8c%e5%8f%8d%e4%bb%a3">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="下载证书和私钥">
+ 下载证书和私钥
+ &lt;a class="anchor" href="#%e4%b8%8b%e8%bd%bd%e8%af%81%e4%b9%a6%e5%92%8c%e7%a7%81%e9%92%a5">#&lt;/a>
+&lt;/h3>
+&lt;p>将在cf中生成的源证书的cert和key复制到.pem和.key文件中&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113173115" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113173115.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h3 class="heading" id="安装-nginx">
+ 安装 nginx
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-nginx">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="上传证书和私钥到服务器">
+ 上传证书和私钥到服务器
+ &lt;a class="anchor" href="#%e4%b8%8a%e4%bc%a0%e8%af%81%e4%b9%a6%e5%92%8c%e7%a7%81%e9%92%a5%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8">#&lt;/a>
+&lt;/h3>
+&lt;p>以下操作建议提权为root进行操作和检查&lt;/p>
+&lt;ol>
+&lt;li>使用su，输入root密码提权&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>su
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>检查 &lt;code>/etc/ssl/certs&lt;/code>和&lt;code>/etc/ssl/private&lt;/code>目录是否存在，并将.pem和.key文件分别传到这两个目录里&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mv xxx.com.pem /etc/ssl/certs/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mv xxx.com.key /etc/ssl/private/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>设置权限&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> sudo chmod 600 /etc/ssl/private/api.xxx.com.key
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 class="heading" id="配置nginx">
+ 配置nginx
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx">#&lt;/a>
+&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>创建 Nginx 配置文件&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/nginx/sites-available/api.xxx.com
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>&lt;strong>添加以下配置&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>server {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen 80;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_name api.xxx.com;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> return 301 https://$host$request_uri;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>server {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen 443 ssl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_name api.xxx.com;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_certificate /etc/ssl/certs/api.xxx.com.pem;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_certificate_key /etc/ssl/private/api.xxx.com.key;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_protocols TLSv1.2 TLSv1.3; # 根据需要调整
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_ciphers HIGH:!aNULL:!MD5; # 根据需要调整
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client_max_body_size 100m;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> location / {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_pass http://127.0.0.1:5005; # 替换为你的 chat2api 服务监听的地址和端口
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header Host $host;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Real-IP $remote_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-Proto $scheme;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>注意：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>server_name&lt;/code>：设置为 &lt;code>api.xxx.com&lt;/code>。&lt;/li>
+&lt;li>&lt;code>ssl_certificate&lt;/code>：指向&lt;code>.pem&lt;/code>证书文件的路径。&lt;/li>
+&lt;li>&lt;code>ssl_certificate_key&lt;/code>：指向&lt;code>.key&lt;/code>私钥文件的路径。&lt;/li>
+&lt;li>&lt;code>proxy_pass&lt;/code>：设置为`服务监听的地址和端口&lt;/li>
+&lt;li>第一个 &lt;code>server&lt;/code> 块用于将 HTTP 请求重定向到 HTTPS&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>&lt;strong>启用 Nginx 配置&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>创建软链接到 &lt;code>sites-enabled&lt;/code> 目录：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>
+&lt;p>移除默认的 Nginx 配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;p>sudo rm /etc/nginx/sites-enabled/default
+```&lt;/p>
+&lt;ul>
+&lt;li>测试 Nginx 配置：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nginx -t
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>重启 Nginx 服务：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl restart nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 class="heading" id="swap-空间配置">
+ Swap 空间配置
+ &lt;a class="anchor" href="#swap-%e7%a9%ba%e9%97%b4%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="创建swap空间">
+ 创建swap空间
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%baswap%e7%a9%ba%e9%97%b4">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>检查 Swap 空间：
+首先，检查系统当前是否已经配置了 Swap 空间：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>free -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>创建 Swap 文件：
+使用 &lt;code>fallocate&lt;/code> 命令创建一个 Swap 文件。例如，创建一个 2GB 的 Swap 文件：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo fallocate -l 2G /swapfile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者，你也可以使用 &lt;code>dd&lt;/code> 命令创建 Swap 文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo dd &lt;span style="font-weight:bold;text-decoration:underline">if&lt;/span>=/dev/zero &lt;span style="color:#666;font-weight:bold;font-style:italic">of&lt;/span>=/swapfile &lt;span style="color:#666;font-weight:bold;font-style:italic">bs&lt;/span>=1M &lt;span style="color:#666;font-weight:bold;font-style:italic">count&lt;/span>=2048
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这将创建一个名为 &lt;code>/swapfile&lt;/code>，大小为 2GB 的文件。可以根据需要调整 &lt;code>count&lt;/code> 的值来改变 Swap 文件的大小。
+3. 设置 Swap 文件权限：&lt;/p>
+&lt;p>为了安全起见，设置 Swap 文件的权限，只允许 root 用户读写：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo chmod 600 /swapfile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>格式化为 Swap 空间：
+使用 &lt;code>mkswap&lt;/code> 命令将文件格式化为 Swap 空间：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkswap /swapfile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>启用 Swap 空间：
+使用 &lt;code>swapon&lt;/code> 命令启用 Swap 空间：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo swapon /swapfile
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="6">
+&lt;li>验证 Swap 空间：
+再次使用 &lt;code>free -h&lt;/code> 命令验证 Swap 空间是否已启用：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>free -h
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>应该能看到 &lt;code>Swap&lt;/code> 那一行显示了你刚刚配置的 Swap 空间大小。&lt;/p>
+&lt;ol start="7">
+&lt;li>设置开机自动挂载 Swap 空间：&lt;/li>
+&lt;/ol>
+&lt;p>为了使 Swap 空间在系统重启后仍然有效，需要将其添加到 &lt;code>/etc/fstab&lt;/code> 文件中。使用文本编辑器打开该文件：&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo vim /etc/fstab
+&lt;/code>&lt;/pre>&lt;p>在文件末尾添加以下一行：&lt;/p>
+&lt;pre tabindex="0">&lt;code>/swapfile swap swap defaults 0 0
+&lt;/code>&lt;/pre>&lt;ol start="8">
+&lt;li>调整 Swappiness 值（可选）：
+&lt;code>swappiness&lt;/code> 参数控制内核使用 Swap 空间的积极程度。默认值通常是 60。对于服务器，你可能希望降低这个值，以便系统更倾向于使用物理内存，只有在必要时才使用 Swap 空间。&lt;/li>
+&lt;/ol>
+&lt;p>查看当前的 &lt;code>swappiness&lt;/code> 值：&lt;/p>
+&lt;pre tabindex="0">&lt;code>cat /proc/sys/vm/swappiness
+&lt;/code>&lt;/pre>&lt;p>临时修改 &lt;code>swappiness&lt;/code> 值（例如设置为 10）：&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo sysctl vm.swappiness=10
+&lt;/code>&lt;/pre>&lt;p>永久修改 &lt;code>swappiness&lt;/code> 值，编辑 &lt;code>/etc/sysctl.conf&lt;/code> 文件：&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo nano /etc/sysctl.conf
+&lt;/code>&lt;/pre>&lt;p>在文件末尾添加或修改以下行：&lt;/p>
+&lt;pre tabindex="0">&lt;code>vm.swappiness=10
+&lt;/code>&lt;/pre>&lt;h3 class="heading" id="停用swap空间">
+ 停用swap空间
+ &lt;a class="anchor" href="#%e5%81%9c%e7%94%a8swap%e7%a9%ba%e9%97%b4">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>关闭 Swap 空间：
+使用 &lt;code>swapoff&lt;/code> 命令关闭指定的 Swap 空间。如果你的 Swap 空间是基于文件的（如前面示例中的 &lt;code>/swapfile&lt;/code>），可以使用以下命令：&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>sudo swapoff /swapfile
+&lt;/code>&lt;/pre>&lt;p>不确定 Swap 分区的路径，可以使用 &lt;code>swapon --show&lt;/code> 或 &lt;code>free -h&lt;/code> 命令查看。&lt;/p>
+&lt;ol start="2">
+&lt;li>删除 Swap 文件（可选）：&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>sudo rm /swapfile
+&lt;/code>&lt;/pre>&lt;ol start="3">
+&lt;li>编辑 &lt;code>/etc/fstab&lt;/code> 文件：&lt;/li>
+&lt;/ol>
+&lt;p>为了防止系统在重启后自动挂载 Swap 空间，需要从 &lt;code>/etc/fstab&lt;/code> 文件中删除或注释掉相关的条目。&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo vim /etc/fstab
+&lt;/code>&lt;/pre>&lt;p>找到包含 &lt;code>/swapfile&lt;/code> 的那一行：&lt;/p>
+&lt;pre tabindex="0">&lt;code>/swapfile swap swap defaults 0 0
+&lt;/code>&lt;/pre>&lt;p>删除这一行，或者在行首添加 &lt;code>#&lt;/code> 将其注释掉：&lt;/p>
+&lt;pre tabindex="0">&lt;code>#/swapfile swap swap defaults 0 0
+&lt;/code>&lt;/pre>&lt;ol start="4">
+&lt;li>验证 Swap 空间是否已停用：&lt;/li>
+&lt;/ol>
+&lt;p>使用 &lt;code>free -h&lt;/code> 命令验证 Swap 空间是否已停用：&lt;/p>
+&lt;pre tabindex="0">&lt;code>free -h
+&lt;/code>&lt;/pre></description></item><item><title>VPS基础安全配置实践指南</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/vps%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E6%8E%AA%E6%96%BD/</link><pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/vps%E5%9F%BA%E6%9C%AC%E5%AE%89%E5%85%A8%E6%8E%AA%E6%96%BD/</guid><description>&lt;p>本文基于 &lt;code>@Raven95676&lt;/code> 的原帖，并结合我的个人使用习惯进行了定制化整理，作为自己的操作备忘录。&lt;/p>
+&lt;p>原帖地址：&lt;a href="https://linux.do/t/topic/267502">VPS基本安全措施&lt;/a>&lt;/p>
+&lt;h1 class="heading" id="前言">
+ 前言
+ &lt;a class="anchor" href="#%e5%89%8d%e8%a8%80">#&lt;/a>
+&lt;/h1>
+&lt;p>随着逐渐看到一些「Self Host」的服务，拥有一台属于自己的服务器的想法越来越强烈。终于，在24年的一次促销中，买到了第一台具有公网IP的小机器，1c1g。&lt;/p>
+&lt;p>拿到了机器，开机之后意味着暴露在了互联网中。在互联网中，每时每刻都有无数的恶意流量发出。我们需要做什么呢？&lt;/p>
+&lt;p>如果选择将网站 / 服务放在知名厂商虚拟主机上，虚拟主机的厂商会负责基本的服务器安全措施。但如果放在 VPS 上，那么你就是服务器的安全负责人了。更多的权限代表着更多的义务，VPS 在具有更高的自由度的情况下自然有更高的风险。&lt;strong>而我们要做到的不是绝对安全，而是比大多数人安全。&lt;/strong> 只要做到没那么容易被攻破那就是胜利。&lt;/p>
+&lt;h2 class="heading" id="安全管理系统">
+ 安全管理系统
+ &lt;a class="anchor" href="#%e5%ae%89%e5%85%a8%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f">#&lt;/a>
+&lt;/h2>
+&lt;p>有些 VPS 厂商默认提供的是 root 账户。众所周知，root 账户拥有整个系统最高的权限，这么高的权限自然是不安全的。正确的做法是创建一个非 root 账户，在必须使用 root 权限时使用 sudo 提权。&lt;/p>
+&lt;h3 class="heading" id="创建非-root-账户">
+ 创建非 root 账户
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e9%9d%9e-root-%e8%b4%a6%e6%88%b7">#&lt;/a>
+&lt;/h3>
+&lt;p>使用以下命令创建一个具有提权能力的账户：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>useradd -m -G sudo -s /bin/bash 用户名
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>&lt;code>useradd&lt;/code>:&lt;/strong> 这是一个用于创建新用户的命令。&lt;/li>
+&lt;li>&lt;strong>&lt;code>-m&lt;/code>:&lt;/strong> 此选项会在 &lt;code>/home&lt;/code> 目录下为新用户创建主目录。&lt;/li>
+&lt;li>&lt;strong>&lt;code>-G sudo&lt;/code>:&lt;/strong> 此选项将新用户添加到 &lt;code>sudo&lt;/code> 组，允许其使用 &lt;code>sudo&lt;/code> 命令执行管理员操作。&lt;/li>
+&lt;li>&lt;strong>&lt;code>-s /bin/bash&lt;/code>:&lt;/strong> 此选项指定新用户的默认 shell 为 &lt;code>/bin/bash&lt;/code>（常用 shell）。&lt;/li>
+&lt;li>&lt;strong>&lt;code>用户名&lt;/code>:&lt;/strong> 这是你要创建的新用户的用户名。&lt;/li>
+&lt;/ul>
+&lt;p>然后我们给这个用户设置一个至少为 16 位的随机大小写字母 + 数字的密码：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-undefined" data-lang="undefined">passwd 用户名
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>建议把 root 用户的密码也改掉，云服务器的默认密码强度还是差点，而且有些服务商会通过邮件来发送默认密码，不太安全。&lt;/p>&lt;/blockquote>
+&lt;h3 class="heading" id="禁用-root-ssh-密码登陆">
+ 禁用 root SSH 密码登陆
+ &lt;a class="anchor" href="#%e7%a6%81%e7%94%a8-root-ssh-%e5%af%86%e7%a0%81%e7%99%bb%e9%99%86">#&lt;/a>
+&lt;/h3>
+&lt;p>先不提 root 登录本身就是危险的行为，root 账户的用户名固定为”root”，如果允许其通过密码登录，攻击者只需进行密码穷举即可尝试攻破系统。之前我们已经创建了非 root 账户，在这里我们只需要禁用非 root 账户的 SSH 登录即可。&lt;/p>
+&lt;p>执行以下命令编辑 SSH 配置文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进行如下设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 禁止 Root 用户通过密码远程登录 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PermitRootLogin prohibit-password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看&lt;code>/etc/ssh/sshd_config.d/&lt;/code>目录下有无其他配置文件，防止不生效。有些厂商的初始镜像内已经有了一些配置会覆盖掉我们编写的。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls /etc/ssh/sshd_config.d/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>之后重启 SSH 服务生效：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl restart ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>为什么不设置成 no：&lt;/p>
+&lt;p>庄 sir:&lt;/p>
+&lt;blockquote>
+&lt;p>另，直接禁掉 root 登录 &lt;code>PermitRootLogin no&lt;/code> 我也不常用，更习惯和其他 sudoer 一样配密钥然后禁止密码登录仅允许密钥登录。我是一般能操做线下集群的机子才会这么配，不然出个故障没 root 用不了了，比如存储满了远程 ssh session 都建立不了。&lt;/p>&lt;/blockquote>
+&lt;p>Oganneson:&lt;/p>
+&lt;blockquote>
+&lt;p>理论上 PermitRootLogin 是好的，但在服务器寄掉需要救援时就会变麻烦，我其实更推荐只关闭远程密码登录，保留本地密码登录，出问题时可以通过 vnc 或者 ipmi 本地登录 root 进行救援。&lt;/p>&lt;/blockquote>
+&lt;h3 class="heading" id="修改-ssh-端口号">
+ 修改 SSH 端口号
+ &lt;a class="anchor" href="#%e4%bf%ae%e6%94%b9-ssh-%e7%ab%af%e5%8f%a3%e5%8f%b7">#&lt;/a>
+&lt;/h3>
+&lt;blockquote>
+&lt;p>登上去第一件事就是改 SSHD 的 端口并修改防火墙，22 全是猜密码的请求。&lt;br>
+有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p>&lt;/blockquote>
+&lt;p>正常情况下，直接通过 &lt;code>sudo vim /etc/ssh/sshd_config&lt;/code> 修改 SSH 端口，然后再使用 &lt;code>sudo systemctl restart ssh.service&lt;/code> 重启 SSH 服务应用更改是可行的：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 设置 SSH端口 Port 自拟&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Port 20251
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>但是在 &lt;strong>Ubuntu 22.10 或更高版本&lt;/strong>中各位可能发现这是&lt;strong>无效&lt;/strong>的，各位会发现 SSH 服务在重启后依然监听原端口。&lt;/p>
+&lt;p>因为在 Ubuntu 22.10 或更高版本中，ssh 默认通过套接字激活。&lt;/p>
+&lt;p>在 Ubuntu 22.10、Ubuntu 23.04 和 Ubuntu 23.10 中进行修改的方法是：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo mkdir -p /etc/systemd/system/ssh.socket.d
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim /etc/systemd/system/ssh.socket.d/listen.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl restart ssh.socket
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl restart ssh.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>listen.conf 的参考配置为：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ini" data-lang="ini">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;text-decoration:underline">[Socket]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ListenStream=
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ListenStream=&lt;span style="color:#666;font-style:italic">2233&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在 Ubuntu 24.04 中进行修改的方法是：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl restart ssh.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果不在乎通过套接字激活节省的内存，可以通过以下命令恢复到非套接字激活：&lt;/p>
+&lt;p>&lt;strong>警告：&lt;/strong> 务必确认配置文件正常。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl disable --now ssh.socket
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl &lt;span style="font-weight:bold;font-style:italic">enable&lt;/span> --now ssh.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如有配置迁移（Ubuntu 22.10 及以上，Ubuntu 24.04 以下）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl disable --now ssh.socket
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -f /etc/systemd/system/ssh.service.d/00-socket.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -f /etc/systemd/system/ssh.socket.d/addresses.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl daemon-reload
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl &lt;span style="font-weight:bold;font-style:italic">enable&lt;/span> --now ssh.service
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="fail2ban-防暴力破解-ssh-配置ssh-ip白名单">
+ Fail2ban 防暴力破解 SSH 配置SSH ip白名单
+ &lt;a class="anchor" href="#fail2ban-%e9%98%b2%e6%9a%b4%e5%8a%9b%e7%a0%b4%e8%a7%a3-ssh-%e9%85%8d%e7%bd%aessh-ip%e7%99%bd%e5%90%8d%e5%8d%95">#&lt;/a>
+&lt;/h3>
+&lt;p>执行以下命令安装 Fail2ban：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt install fail2ban
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装完成后 Fail2ban会自动运行，可以检查一下服务状态&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl status fail2ban
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>官方推荐的做法是利用 jail.local 来进行自定义设置：
+这样做的好处是，在升级 Fail2ban 时，你的自定义配置不会丢失。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/fail2ban/jail.local
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以参照以下配置文件来进行自己的配置（记得删注释）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-ini" data-lang="ini">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;text-decoration:underline">[sshd]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ignoreip = &lt;span style="color:#666;font-style:italic">127.0.0.1/8 # 白名单，知道自己的固定公网ip网段可以配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>enabled = &lt;span style="color:#666;font-style:italic">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>filter = &lt;span style="color:#666;font-style:italic">sshd&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>port = &lt;span style="color:#666;font-style:italic">22 # 端口，改了的话这里也要改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>maxretry = &lt;span style="color:#666;font-style:italic">5 # 最大尝试次数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>findtime = &lt;span style="color:#666;font-style:italic">300 # 多少秒以内最大尝试次数规则生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bantime = &lt;span style="color:#666;font-style:italic">600 # 封禁多少秒，-1是永久封禁（不建议永久封禁）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>action = &lt;span style="color:#666;font-style:italic">%(action_)s[port=&amp;#34;%(port)s&amp;#34;, protocol=&amp;#34;%(protocol)s&amp;#34;, logpath=&amp;#34;%(logpath)s&amp;#34;, chain=&amp;#34;%(chain)s&amp;#34;] # 不需要发邮件通知就这样设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>banaction = &lt;span style="color:#666;font-style:italic">iptables-multiport # 禁用方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logpath = &lt;span style="color:#666;font-style:italic">/var/log/auth.log # SSH 登陆日志位置&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>直接复制版本：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>[sshd]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">ignoreip&lt;/span> = 127.0.0.1/8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">enabled&lt;/span> = &lt;span style="font-weight:bold;font-style:italic">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">filter&lt;/span> = sshd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">port&lt;/span> = 20253
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">maxretry&lt;/span> = 5 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">findtime&lt;/span> = 300 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">bantime&lt;/span> = 600
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">action&lt;/span> = %(action_)s[&lt;span style="color:#666;font-weight:bold;font-style:italic">port&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;%(port)s&amp;#34;&lt;/span>, &lt;span style="color:#666;font-weight:bold;font-style:italic">protocol&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;%(protocol)s&amp;#34;&lt;/span>, &lt;span style="color:#666;font-weight:bold;font-style:italic">logpath&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;%(logpath)s&amp;#34;&lt;/span>, &lt;span style="color:#666;font-weight:bold;font-style:italic">chain&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;%(chain)s&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">banaction&lt;/span> = iptables-multiport
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-weight:bold;font-style:italic">logpath&lt;/span> = /var/log/auth.log
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>设置fail2ban开机自动启动：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl &lt;span style="font-weight:bold;font-style:italic">enable&lt;/span> fail2ban
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="使用密钥登录">
+ 使用密钥登录
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%af%86%e9%92%a5%e7%99%bb%e5%bd%95">#&lt;/a>
+&lt;/h3>
+&lt;blockquote>
+&lt;p>如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p>&lt;/blockquote>
+&lt;p>在 powershell 中运行：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t ed25519
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ssh-keygen -t rsa -b 4096
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>二者加密算法不同:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>-b 4096&lt;/code> 指定生成的 RSA 密钥的长度为 4096 位&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Ed25519 的密钥长度固定，约为 256 位，无需指定密钥长度。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>直接使用默认的密钥路径即可。密码可以留空，也可以设置。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>Generating &lt;span style="font-weight:bold;text-decoration:underline">public&lt;/span>/&lt;span style="font-weight:bold;text-decoration:underline">private&lt;/span> ed25519 key pair.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Enter file in which to save the key (C:\Users\&amp;lt;user&amp;gt;/.ssh/id_ed25519): &lt;span style="color:#888;font-style:italic"># 直接回车
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>Enter passphrase (&lt;span style="font-weight:bold;text-decoration:underline">empty&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">for&lt;/span> no passphrase): &lt;span style="color:#888;font-style:italic"># 可以留空，也可以设置
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>Enter same passphrase again: &lt;span style="color:#888;font-style:italic"># 和上一个一样
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们在 VPS 上编辑 SSH 授权密钥文件，注意需要在root用户和非root用户下都需要添加：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vim ~/.ssh/authorized_keys
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>如果目标用户的家目录下还没有 &lt;code>.ssh&lt;/code> 目录， 确保目录的权限是 &lt;code>700&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir -p ~/.ssh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chmod 700 ~/.ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建&lt;code>authorized_keys&lt;/code>文件并赋予相应权限&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>touch ~/.ssh/authorized_keys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chmod 600 ~/.ssh/authorized_keys
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>之后打开 &lt;code>C:\\\Users&amp;lt;user\&amp;gt;/.ssh/id\_ed25519.pub&lt;/code>，复制其内容并粘贴过去。&lt;/p>
+&lt;p>执行以下命令编辑 SSH 配置文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /etc/ssh/sshd_config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进行如下设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>PubkeyAuthentication yes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>AuthorizedKeysFile .ssh/authorized_keys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PasswordAuthentication no
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果发现没有生效：
+检查 &lt;code>/etc/ssh/sshd_config.d&lt;/code>下的文件&lt;/p>
+&lt;p>之后重启 SSH 服务生效：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo systemctl restart ssh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="启用-ufw-防火墙">
+ 启用 UFW 防火墙
+ &lt;a class="anchor" href="#%e5%90%af%e7%94%a8-ufw-%e9%98%b2%e7%81%ab%e5%a2%99">#&lt;/a>
+&lt;/h3>
+&lt;blockquote>
+&lt;p>如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p>&lt;/blockquote>
+&lt;p>在正式启用 UFW 之前，我们需要先设置规则。我们首先来设置 UFW 的默认行为：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ufw default allow outgoing &lt;span style="color:#888;font-style:italic"># 默认允许所有数据出站&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw default deny incoming &lt;span style="color:#888;font-style:italic"># 默认禁止所有数据入站&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们可以通过以下命令查看 UFW 当前生效的规则：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ufw status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw status numbered &lt;span style="color:#888;font-style:italic"># 加上数字编号&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们可以通过以下命令允许或拒绝某端口的传入 / 传出流量（部分以 22、80、443 端口为例）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许22端口的proto协议的流量入站&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow in 22/proto
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">#允许22端口的proto协议的流量出站&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow out 22/proto
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 在未指定in/out的情况下，默认为in&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow 22/proto
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 在未指定proto的情况下，默认为tcp和udp&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow 22
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 拒绝的话就把allow改成deny&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw deny 22
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许从start_port到end_port的端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow start_port:end_port
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许复数个端口，以英文逗号分隔&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow port1,port2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许来自于特定ip或cidr段的流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow from ip/cidr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许来自于特定ip或cidr段端口22的流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow from ip/cidr to any port 22
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 允许来自于特定ip或cidr段端口22的tcp协议的流量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow from ip/cidr to any proto tcp port 22
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 如果指定复数个端口，则必须指定协议&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow from ip to any proto tcp port 80,443
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># comment用于注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw allow from ip to any proto tcp port 80,443 comment &lt;span style="color:#666;font-style:italic">&amp;#34;hello&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们可以通过以下命令删除生效的规则：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ufw delete allow 22 &lt;span style="color:#888;font-style:italic"># 在规则前面加个delete&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ufw delete 1 &lt;span style="color:#888;font-style:italic"># 按照numbered的编号删除也行&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在确定所有规则均成功设置后，通过以下命令启动 \ 关闭 \ 重启 UFW&lt;/p>
+&lt;blockquote>
+&lt;p>启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ufw enable|disable|reload
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果需要重置规则，请使用：&lt;/p>
+&lt;blockquote>
+&lt;p>重置规则前务必保证 UFW 处于关闭状态。&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ufw reset
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>本人建议仅放行正在使用的端口，比如 22、80、443。&lt;/p>
+&lt;p>默认情况下，UFW 仅记录不符合规则的被拒绝的数据包。如果需要记录与该服务相关的每个详细信息，可以在 allow 后加上 log 以进行记录。&lt;/p>
+&lt;pre tabindex="0">&lt;code># 成功连接 ssh 的也记一下日志备查比较好 ufw allow log 22/tcp
+&lt;/code>&lt;/pre>&lt;h2 class="heading" id="更改时区">
+ 更改时区
+ &lt;a class="anchor" href="#%e6%9b%b4%e6%94%b9%e6%97%b6%e5%8c%ba">#&lt;/a>
+&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo timedatectl set-timezone Asia/Shanghai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 class="heading" id="保证软件更新">
+ 保证软件更新
+ &lt;a class="anchor" href="#%e4%bf%9d%e8%af%81%e8%bd%af%e4%bb%b6%e6%9b%b4%e6%96%b0">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="日常更新系统">
+ 日常更新系统
+ &lt;a class="anchor" href="#%e6%97%a5%e5%b8%b8%e6%9b%b4%e6%96%b0%e7%b3%bb%e7%bb%9f">#&lt;/a>
+&lt;/h3>
+&lt;p>个人建议定期登录 VPS 运行 &lt;code>sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code> 来保证 VPS 内所有软件包均为最新。&lt;/p>
+&lt;p>不过 Ubuntu 默认会每天自动安装系统的安全更新，所以说这个频率没必要太勤。&lt;/p></description></item></channel></rss>

@@ -1,1 +1,647 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>域名 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E5%9F%9F%E5%90%8D/</link><description>Recent content in 域名 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 08 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E5%9F%9F%E5%90%8D/index.xml" rel="self" type="application/rss+xml"/><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>记录域名管理一些操作，涵盖了使用Cloudflare进行DNS解析与托管，对比并介绍了通过Cloudflare服务与acme.sh脚本两种方式申请和自动化管理SSL/TLS证书的完整步骤。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>域名 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E5%9F%9F%E5%90%8D/</link><description>Recent content in 域名 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 08 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E5%9F%9F%E5%90%8D/index.xml" rel="self" type="application/rss+xml"/><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+ 域名相关
+ &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
+&lt;/h1>
+&lt;p>本篇记录一下域名相关的操作吧，包括到cf托管，申请与安装SSL证书等。&lt;/p>
+&lt;h2 class="heading" id="dns解析和将域名托管到cloudflare">
+ DNS解析和将域名托管到cloudflare
+ &lt;a class="anchor" href="#dns%e8%a7%a3%e6%9e%90%e5%92%8c%e5%b0%86%e5%9f%9f%e5%90%8d%e6%89%98%e7%ae%a1%e5%88%b0cloudflare">#&lt;/a>
+&lt;/h2>
+&lt;p>感谢&lt;a href="https://sarakale.top/blog/posts/3a730d01/#%E5%9F%9F%E5%90%8D%E6%B3%A8%E5%86%8C">Namesilo/Cloudflare域名注册和解析设置教程 | SaraKale&amp;rsquo;s blog&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>到 &lt;a href="https://www.cloudflare.com/">Cloudflare&lt;/a> 添加你的站点，选择 Free 免费计划。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153620" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153620.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在下一页上，您需要选择首选的 CDN 计划。选择 Free 计划。单击其图标和&lt;strong>确认计划&lt;/strong>按钮继续：
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153644" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153644.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>如果之前已经做过解析就可以看到现有的DNS记录。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153828" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153828.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>这里先不用管，继续下一步。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153859" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153859.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>可以看到给了两个NS服务器，回到域名提供商后台更改NS服务器。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113153945" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113153945.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>NameCheap更改ns服务器参考官方教程&lt;a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9607/2210/how-to-set-up-dns-records-for-your-domain-in-a-cloudflare-account/">Title Unavailable | Site Unreachable&lt;/a>，其他域名服务商大同小异。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="申请tlsssl证书">
+ 申请TLS\SSL证书
+ &lt;a class="anchor" href="#%e7%94%b3%e8%af%b7tlsssl%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h2>
+&lt;p>有两种方式，目前选择cloudflare开启代理的模式&lt;/p>
+&lt;ul>
+&lt;li>自动续签：&lt;/li>
+&lt;li>使用cloudflare的服务，开启小黄云，就可以使用一种泛域名证书，只能当做源站和cloudflare握手的凭证，其他的不认。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="cloudflare的服务">
+ cloudflare的服务
+ &lt;a class="anchor" href="#cloudflare%e7%9a%84%e6%9c%8d%e5%8a%a1">#&lt;/a>
+&lt;/h3>
+&lt;p>下面采用cloudflare的服务，也是一份cloudflare的初步探索的记录&lt;/p>
+&lt;h4 class="heading" id="dns管理">
+ DNS管理
+ &lt;a class="anchor" href="#dns%e7%ae%a1%e7%90%86">#&lt;/a>
+&lt;/h4>
+&lt;p>可以在DNS界面管理DNS解析，以及管理是否开启小黄云代理
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="e%2020250113163808" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113163808.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="ssltls证书">
+ SSL\TLS证书
+ &lt;a class="anchor" href="#ssltls%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h4>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113164004" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113164004.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;ul>
+&lt;li>灵活：web浏览器和cloudflare之间采用443HTTPS，cloudflare和cloudflare之间采用80HTTP&lt;/li>
+&lt;li>完全：使用其他未公开认证的SSL证书时采用，源服务器必须配置 SSL 证书，但 Cloudflare &lt;strong>不验证证书的有效性&lt;/strong>（例如，可以是自签名证书或过期证书）。&lt;/li>
+&lt;li>完全（严格）：客户端到 Cloudflare：HTTPS（使用 Cloudflare Universal SSL 证书）。 Cloudflare 到源服务器：&lt;strong>HTTPS（加密）&lt;/strong>。源服务器必须配置有效的 SSL 证书，该证书必须由&lt;strong>受信任的 CA 机构签发&lt;/strong>或为 &lt;strong>Cloudflare Origin CA 证书&lt;/strong>，并且证书中的域名必须与请求的域名匹配。Cloudflare 会验证证书的有效性，包括有效期、颁发机构和域名。&lt;/li>
+&lt;/ul>
+&lt;p>可以在源服务器页面申请 &lt;strong>Cloudflare Origin CA 证书&lt;/strong>，并将该证书放到服务器上。源证书仅对Cloudflare与源服务器之间的加密有效。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113164800" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113164800.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="under-attack">
+ Under Attack
+ &lt;a class="anchor" href="#under-attack">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>可以在安全性-设置里打开Under Attack模式，强制开启验证。
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Pasted%20image%2020250113165205" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250113165205.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 class="heading" id="使用-acmesh-dns-验证的方式签发-letsencrypt-证书">
+ 使用 acme.sh DNS 验证的方式签发 Let&amp;rsquo;sEncrypt 证书
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-acmesh-dns-%e9%aa%8c%e8%af%81%e7%9a%84%e6%96%b9%e5%bc%8f%e7%ad%be%e5%8f%91-letsencrypt-%e8%af%81%e4%b9%a6">#&lt;/a>
+&lt;/h3>
+&lt;p>参考：&lt;a href="https://blog.uuphy.com/posts/%E9%85%8D%E7%BD%AE-acme.sh-%E5%85%8D%E8%B4%B9%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%8F%91%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/">使用 acme.sh DNS 验证的方式签发 Let&amp;rsquo;sEncrypt 证书&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://acme.sh/">acme.sh&lt;/a> 是一个用来自动获取和管理 SSL/TLS 证书的开源脚本，可以从 Let’s Encrypt 等多个 CA 获取免费的证书。结合使用 Cloudflare DNS 验证的模式申请泛域名证书，并自动续签。&lt;/p>
+&lt;h4 class="heading" id="cloudflare-api">
+ Cloudflare API
+ &lt;a class="anchor" href="#cloudflare-api">#&lt;/a>
+&lt;/h4>
+&lt;p>使用 Cloudflare DNS 模式需要准备:&lt;/p>
+&lt;ul>
+&lt;li>Zone ID&lt;/li>
+&lt;li>Account ID&lt;/li>
+&lt;li>API Token&lt;/li>
+&lt;/ul>
+&lt;h5 class="heading" id="获取-zone-id-account-id">
+ 获取 Zone ID, Account ID
+ &lt;a class="anchor" href="#%e8%8e%b7%e5%8f%96-zone-id-account-id">#&lt;/a>
+&lt;/h5>
+&lt;p>这两种 ID 直接在 Overview 页就能找到。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/2edb816d28456e59ad4da2b02c3ff69450847554_2_690x370.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h5 class="heading" id="获取-api-token">
+ 获取 API Token
+ &lt;a class="anchor" href="#%e8%8e%b7%e5%8f%96-api-token">#&lt;/a>
+&lt;/h5>
+&lt;p>Overview 页点击 &lt;code>获取您的 API 令牌&lt;/code> 进入 API Tokens 页。&lt;/p>
+&lt;p>点击 API Tokens 项旁边 &lt;code>创建令牌&lt;/code> 按钮，接着选择 &lt;code>编辑区域 DNS&lt;/code> 的模板，点击 &lt;code>使用模板&lt;/code>。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/e15d8a0a1de821faab5355e610b581016975b974_2_690x265.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/42f87595d27a6fb3ed1fe329934517f5416920c6_2_690x210.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>&lt;code>区域资源&lt;/code> 里选择需要签发的域名，&lt;/p>
+&lt;p>在 &lt;code>客户端 IP 地址筛选&lt;/code> 里建议写下 acme.sh 所在的主机做为白名单，需要注意，如果服务器有 ipv6 地址，则也需要添加，因为有可能会 ipv6 优先访问。&lt;/p>
+&lt;p>击 &lt;code>继续以显示摘要&lt;/code> , 确认没问题后最后点击 &lt;code>创建令牌&lt;/code>。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/e88966d6049c27c31c632f9471ec1b79be287b59_2_510x499.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>此时就会出现一个 Token,，即 CF_Token，拷贝备用。&lt;/p>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="image" src="https://webp.050612.xyz/2025/02/ca6093ea6bf83325809ea6179d4239ae2c9818cc_2_690x404.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h5 class="heading" id="注意">
+ 注意
+ &lt;a class="anchor" href="#%e6%b3%a8%e6%84%8f">#&lt;/a>
+&lt;/h5>
+&lt;ul>
+&lt;li>&lt;strong>注意新增域名时，需要更改API Token所包含的域名&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>注意有多台机器时，需要新增机器的IP到白名单&lt;/strong>。&lt;/li>
+&lt;/ul>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="update_cf_api_token" src="https://webp.050612.xyz/2025/02/update_cf_api_token.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="cf-api-token-ip" src="https://webp.050612.xyz/2025/02/cf-api-token-ip.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h4 class="heading" id="一个完整的演示">
+ 一个完整的演示
+ &lt;a class="anchor" href="#%e4%b8%80%e4%b8%aa%e5%ae%8c%e6%95%b4%e7%9a%84%e6%bc%94%e7%a4%ba">#&lt;/a>
+&lt;/h4>
+&lt;p>感谢：&lt;a href="https://atpx.com/blog/auto-update-ssl-with-acme/">使用 acme.sh 自动签发和更新证书 - atpX&lt;/a>&lt;/p>
+&lt;p>为了使整个流程更加清晰（&lt;del>方便自己操作&lt;/del>），这里贴一个自己平时使用 acme.sh 申请证书的完整流程。&lt;/p>
+&lt;ul>
+&lt;li>申请方式：DNS 认证（使用 Cloudflare API）&lt;/li>
+&lt;li>申请证书 CA：Let’s Encrypt&lt;/li>
+&lt;li>申请证书类型：RSA + ECC 两个通配符证书&lt;/li>
+&lt;li>**同一台主机多个域名的情况&lt;/li>
+&lt;/ul>
+&lt;p>后续申请证书的命令，都是在 root 用户下执行的，请先使用 &lt;code>su&lt;/code> 切换到 root 用户。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 进入root用户&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>su
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 acme.sh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>curl https://get.acme.sh | sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 刷新 shell 变量配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">source&lt;/span> ~/.bashrc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 导入 Cloudflare API Token&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Token&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Account_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Zone_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 设置默认 CA 为 Let&amp;#39;s Encrypt&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --set-default-ca --server letsencrypt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 RSA 证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 目前采用手动移动证书和密钥，或许可以采用以下自动安装的命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 RSA 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --install-cert -d domain.tld &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 ECC 证书，若不需要，跳过即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 ECC 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/ecc_domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">###############################第二个域名#####################################################################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 取消环境变量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Token
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Account_ID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">unset&lt;/span> CF_Zone_ID
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 至此证书安装完毕&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 下面是同一台主机申请第二个域名证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 导入另一个 Cloudflare API Token&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Token&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Account_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">export&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">CF_Zone_ID&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 新建一个文件夹作为 config home，默认会把所有文件存在这里&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir /root/.acme2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 设置默认 CA 为 Let&amp;#39;s Encrypt&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --set-default-ca --server letsencrypt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 RSA 证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength 2048
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 RSA 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--install-cert -d domain.tld &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 第一次尝试自动安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme_yzyy &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --install-cert -d yzyy.de &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --key-file /etc/ssl/private/yzyy.de.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --fullchain-file /etc/ssl/certs/yzyy.de.fullchain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --capath /etc/ssl/certs/yzyy.de.ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;nginx -s reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 ECC 证书，若不需要，跳过即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 ECC 证书到指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/ecc_domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 手动添加另一个 cron 任务&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># crontab -e&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>50 0 * * * &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme.sh&amp;#34;&lt;/span>/acme.sh --cron --home &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme.sh&amp;#34;&lt;/span> --config-home &lt;span style="color:#666;font-style:italic">&amp;#34;/root/.acme2&amp;#34;&lt;/span> &amp;gt; /dev/null
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="两个服务的比较">
+ 两个服务的比较
+ &lt;a class="anchor" href="#%e4%b8%a4%e4%b8%aa%e6%9c%8d%e5%8a%a1%e7%9a%84%e6%af%94%e8%be%83">#&lt;/a>
+&lt;/h3>
+&lt;h4 class="heading" id="优点">
+ 优点
+ &lt;a class="anchor" href="#%e4%bc%98%e7%82%b9">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>acme.sh` + Let&amp;rsquo;s Encrypt + Cloudflare DNS
+&lt;ol>
+&lt;li>&lt;strong>自动化&lt;/strong>：&lt;code>acme.sh&lt;/code> 脚本可以自动完成证书的申请、验证和续期过程。&lt;/li>
+&lt;li>&lt;strong>无需开放 80/443 端口&lt;/strong>：使用 DNS 验证方式，无需在服务器上开放 80 或 443 端口，提高了安全性。&lt;/li>
+&lt;li>&lt;strong>不依赖 Cloudflare 代理&lt;/strong>：这种方式只使用 Cloudflare 的 DNS 服务，不依赖 Cloudflare 的代理服务&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cloudflare
+&lt;ol>
+&lt;li>&lt;strong>Universal SSL&lt;/strong>：Cloudflare 免费提供 Universal SSL 证书，可以快速启用 HTTPS。&lt;/li>
+&lt;li>&lt;strong>Origin CA 证书&lt;/strong>：Cloudflare 提供 Origin CA 证书，可以实现 Cloudflare 到源服务器的加密连接（严格模式）。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="缺点">
+ 缺点
+ &lt;a class="anchor" href="#%e7%bc%ba%e7%82%b9">#&lt;/a>
+&lt;/h4>
+&lt;ul>
+&lt;li>acme.sh` + Let&amp;rsquo;s Encrypt + Cloudflare DNS
+&lt;ol>
+&lt;li>&lt;strong>配置相对复杂&lt;/strong>：相比于使用 Cloudflare 的一键 SSL 功能，这种方式需要手动配置 &lt;code>acme.sh&lt;/code> 脚本和服务器。&lt;/li>
+&lt;li>&lt;strong>不提供 DDoS 防护和其他 Cloudflare 功能&lt;/strong>：这种方式只使用了 Cloudflare 的 DNS 服务，不提供 DDoS 防护、CDN 加速、WAF 等其他 Cloudflare 功能。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cloudflare
+&lt;ol>
+&lt;li>&lt;strong>Origin CA 证书浏览器不信任&lt;/strong>：Cloudflare 的 Origin CA 证书不被浏览器信任，需要配合 Cloudflare 的代理服务使用。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="应用场景比较">
+ 应用场景比较
+ &lt;a class="anchor" href="#%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af%e6%af%94%e8%be%83">#&lt;/a>
+&lt;/h4>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>特性&lt;/th>
+ &lt;th>&lt;code>acme.sh&lt;/code> + Let&amp;rsquo;s Encrypt + Cloudflare DNS&lt;/th>
+ &lt;th>Cloudflare 服务&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>适用场景&lt;/strong>&lt;/td>
+ &lt;td>不需要 Cloudflare 代理 &lt;!-- raw HTML omitted -->需要在其他服务上使用证书 &lt;!-- raw HTML omitted -->希望完全控制证书&lt;/td>
+ &lt;td>需要 DDoS 防护&lt;!-- raw HTML omitted -->需要 CDN 加速&lt;!-- raw HTML omitted -->需要 WAF&lt;!-- raw HTML omitted -->希望隐藏服务器 IP &lt;!-- raw HTML omitted -->需要简单易用的 SSL 配置&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>SSL 证书&lt;/strong>&lt;/td>
+ &lt;td>Let&amp;rsquo;s Encrypt 免费证书&lt;/td>
+ &lt;td>Cloudflare Universal SSL 或 Origin CA 证书&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>泛域名证书&lt;/strong>&lt;/td>
+ &lt;td>支持&lt;/td>
+ &lt;td>支持（Origin CA 证书需配合代理使用）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>服务器 IP&lt;/strong>&lt;/td>
+ &lt;td>暴露&lt;/td>
+ &lt;td>隐藏&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>DDoS 防护&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>CDN 加速&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>WAF&lt;/strong>&lt;/td>
+ &lt;td>无&lt;/td>
+ &lt;td>有&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>配置难度&lt;/strong>&lt;/td>
+ &lt;td>相对复杂&lt;/td>
+ &lt;td>简单&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>控制权&lt;/strong>&lt;/td>
+ &lt;td>完全控制&lt;/td>
+ &lt;td>部分控制&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>依赖性&lt;/strong>&lt;/td>
+ &lt;td>仅依赖 Cloudflare DNS 和 Let&amp;rsquo;s Encrypt&lt;/td>
+ &lt;td>依赖 Cloudflare 的所有服务&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item></channel></rss>

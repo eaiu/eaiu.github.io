@@ -1,1 +1,847 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自建 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E8%87%AA%E5%BB%BA/</link><description>Recent content in 自建 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E8%87%AA%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>记录了如何使用Docker和Nginx自建Vaultwarden密码库，并涵盖了安全加固与多云端自动备份的完整流程。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>自建 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E8%87%AA%E5%BB%BA/</link><description>Recent content in 自建 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 12 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E8%87%AA%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>&lt;h1 class="heading" id="缘起">
+ 缘起
+ &lt;a class="anchor" href="#%e7%bc%98%e8%b5%b7">#&lt;/a>
+&lt;/h1>
+&lt;p>在安全意识没有升高的时候，甚至想过记住一个可以应付各种网站要求的密码，一个包括特殊符号(如!.*&amp;amp;)、大小写字母、数字等集于一身的密码。这样我就可以所有账号可以使用一个通用的密码了😁。&lt;/p>
+&lt;p>后来不止一次感受到危机，各种账号好多使用了同一个密码，密码如果泄露，直接一锅端了。并且遇到过登录账号需要打开ios的记事本和密码app手动搜索和查找的尴尬时刻&amp;hellip;&lt;/p>
+&lt;p>早已听过bitwarden的大名，这个软件可以满足我的所有需求：&lt;/p>
+&lt;ol>
+&lt;li>全平台：ios、web扩展、windows等等，可以在一端储存，多端访问。&lt;/li>
+&lt;li>数据安全：采用最先进的加密技术。确保密码和敏感信息在安全传输并存储在服务器上进行本地加密。&lt;/li>
+&lt;li>免费：最大的优点&lt;/li>
+&lt;li>生成强密码：集成生成强密码的工具&lt;/li>
+&lt;/ol>
+&lt;p>由于Bitwarden官方部署机器最小的要求是2g，故选择社区版VaultWarden，可以私有部署，但比官方更轻量，使用 Rust 编写，改用 SQLite 数据库（现在也支持 MySQL 和 PostgreSQL），运行时只需要 10M 内存，可以说对硬件基本没有要求。&lt;/p>
+&lt;p>等有一天有了高性能机器可以尝试使用官方实例，参考教程&lt;a href="https://linux.do/t/topic/261426">自建BitWarden&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 class="heading" id="搭建vaultwarden">
+ 搭建VaultWarden
+ &lt;a class="anchor" href="#%e6%90%ad%e5%bb%bavaultwarden">#&lt;/a>
+&lt;/h2>
+&lt;p>搭建部分参考&lt;a href="https://linux.do/t/topic/261426">自建BitWarden-强大的跨平台密码管理系统#方案二：社区自建&lt;/a>，感谢。&lt;/p>
+&lt;h3 class="heading" id="安装docker和docker-compose">
+ 安装docker和docker compose
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85docker%e5%92%8cdocker-compose">#&lt;/a>
+&lt;/h3>
+&lt;p>参考本篇博客&lt;a href="https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B%E8%AE%B0%E5%BD%95/#安装docker和dockercompose">服务器配置流程记录#安装 Docker&lt;/a>&lt;/p>
+&lt;h3 class="heading" id="部署vaultwarden">
+ 部署VaultWarden
+ &lt;a class="anchor" href="#%e9%83%a8%e7%bd%b2vaultwarden">#&lt;/a>
+&lt;/h3>
+&lt;p>Vaultwarden 官方仓库：&lt;a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden&lt;/a>。&lt;/p>
+&lt;ol>
+&lt;li>创建数据存储路径（包含数据库和配置文件）&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>mkdir -p /vaultwarden/data	&lt;span style="color:#888;font-style:italic"># 创建数据目录，这里可以自行设置，之后的配置文件和数据库都会在这里。&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>创建 docker-compose.yml
+使用 docker compose 方式安装 vaultwarden&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">cd&lt;/span> vaultwarden	&lt;span style="color:#888;font-style:italic"># 进入你准备安装vaultwarden的目录，可自行修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vim docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下是我经过调试的配置，开启了管理员页面和移动设备通知。修改下面的配置文件后粘贴到 docker-compose.yml 文件中。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> vaultwarden:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: vaultwarden/server:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: vaultwarden &lt;span style="color:#888;font-style:italic"># 容器名称&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#34;80:80&amp;#34;&lt;/span> &lt;span style="color:#888;font-style:italic">#修改想要映射的端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./data:/data &lt;span style="color:#888;font-style:italic"># 配置数据存储路径。将./data修改为在第一步设置的数据存储路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">ADMIN_TOKEN&lt;/span>=admin_tokens &lt;span style="color:#888;font-style:italic"># 管理员密钥，建议生成四十位以上&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic">#移动设备推送设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_ENABLED&lt;/span>=&lt;span style="font-weight:bold;font-style:italic">true&lt;/span> &lt;span style="color:#888;font-style:italic"># 这里的意思是打开推送功能（不开启的话移动设备无法接收通知）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_INSTALLATION_ID&lt;/span>=id &lt;span style="color:#888;font-style:italic"># 填入获取到的移动设备的推动通知的id&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_INSTALLATION_KEY&lt;/span>=key &lt;span style="color:#888;font-style:italic"># 填入key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SIGNUPS_ALLOWED&lt;/span>=&lt;span style="font-weight:bold;font-style:italic">false&lt;/span> &lt;span style="color:#888;font-style:italic"># 禁止新用户注册，可以在管理员页面邀请注册&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">DOMAIN&lt;/span>=https://域名/自定子路径/ &lt;span style="color:#888;font-style:italic"># 如果想要添加子路径，需要对应修改这里，一定要在nginx进行相应的分流&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># SMTP 设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_HOST&lt;/span>=smtp.qq.com &lt;span style="color:#888;font-style:italic"># SMTP 服务器地址，QQ 邮箱为 smtp.qq.com&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_FROM&lt;/span>=example@qq.com &lt;span style="color:#888;font-style:italic"># 发件人邮箱地址，替换为你自己的 QQ 邮箱&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_FROM_NAME&lt;/span>=VaultwardenAdmin &lt;span style="color:#888;font-style:italic"># 发件人名称，可以自定义&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_PORT&lt;/span>=465 &lt;span style="color:#888;font-style:italic"># SMTP 端口，QQ 邮箱使用 SSL 加密，端口为 465&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_SECURITY&lt;/span>=force_tls &lt;span style="color:#888;font-style:italic"># SMTP 加密方式，QQ 邮箱使用 SSL 加密，设置为 force_tls&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_USERNAME&lt;/span>=example@qq.com &lt;span style="color:#888;font-style:italic"># SMTP 用户名，通常为你的 QQ 邮箱地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_PASSWORD&lt;/span>=secret &lt;span style="color:#888;font-style:italic"># SMTP 密码，此处填写 QQ 邮箱的 SMTP 授权码，不是邮箱登录密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_TIMEOUT&lt;/span>=15 &lt;span style="color:#888;font-style:italic"># 设置 SMTP 超时时间为 15 秒&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">SMTP_EMBED_IMAGES&lt;/span>=&lt;span style="font-weight:bold;font-style:italic">true&lt;/span> &lt;span style="color:#888;font-style:italic"># 启用将图片嵌入邮件中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> watchtower:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: containrrr/watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /var/run/docker.sock:/var/run/docker.sock
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">TZ&lt;/span>=Asia/Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">WATCHTOWER_CLEANUP&lt;/span>=&lt;span style="font-weight:bold;font-style:italic">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-weight:bold;font-style:italic">WATCHTOWER_SCHEDULE&lt;/span>=0 0 4 * * * &lt;span style="color:#888;font-style:italic"># 每天凌晨4点检查并更新&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol>
+&lt;li>密码生成网站：&lt;a href="https://1password.com/zh-cn/password-generator">安全、强大的密码生成器 | 1Password&lt;/a>&lt;/li>
+&lt;li>推送通知网站：&lt;a href="https://bitwarden.com/host/">Requesting Hosting Installation ID &amp;amp; Key | Bitwarden&lt;/a>&lt;/li>
+&lt;li>STMP服务：&lt;a href="https://app.brevo.com/settings/keys/smtp">brevo&lt;/a>，最终没成功用上。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>踩的坑&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>开启移动设备通知:
+从Vaultwarden 1.29.0版本开始，可以启用移动客户端的推送通知，在移动应用程序、网页扩展程序和网页密码库之间自动同步您的个人密码库，而无需手动同步。&lt;/p>
+&lt;ul>
+&lt;li>访问 &lt;a href="https://bitwarden.com/host/" title="https://bitwarden.com/host/">https://bitwarden.com/host/&lt;/a>，输入您的电子邮件地址，数据地区选择美国，然后您将获得一个INSTALLATION ID和KEY。&lt;/li>
+&lt;li>在你的docker-compose.yaml中添加以下环境变量&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_ENABLED&lt;/span>=&lt;span style="font-weight:bold;font-style:italic">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_INSTALLATION_ID&lt;/span>=获得的id
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_INSTALLATION_KEY&lt;/span>=获得的key
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果在上一步中请求了 &lt;code>bitwarden.eu（欧盟）&lt;/code>，还必须设置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_RELAY_URI&lt;/span>=https://push.bitwarden.eu
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- &lt;span style="color:#666;font-weight:bold;font-style:italic">PUSH_IDENTITY_URI&lt;/span>=https://identity.bitwarden.eu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>自定子路径
+一定要在nginx进行相应的分流设置&lt;/li>
+&lt;/ol>
+&lt;p>第一次启动：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>docker compose logs -f&lt;/code> 是为了查看日志，如果报错的话可以查一查原因&lt;/p>
+&lt;p>如果更新 compose 文件之后的话用下面的命令启动：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker compose pull &amp;amp;&amp;amp; docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 class="heading" id="配置nginx">
+ 配置nginx
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx">#&lt;/a>
+&lt;/h2>
+&lt;p>经过调试过后的nginx的配置文件&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>server {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen 80;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_name example.com;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> return 301 https://$host$request_uri;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>server {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen 443 ssl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_name example.com;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_certificate /etc/ssl/certs/example.com.pem;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_certificate_key /etc/ssl/private/example.com.key;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_protocols TLSv1.2 TLSv1.3; # 根据需要调整
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ssl_ciphers HIGH:!aNULL:!MD5; # 根据需要调整
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client_max_body_size 525M;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> location /子路径/ {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_pass http://127.0.0.1:1256; # 注意修改端口
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header Host $host;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Real-IP $remote_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-Proto $scheme;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> location /子路径/notifications {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_pass http://127.0.0.1:1256; # 注意修改端口
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header Upgrade $http_upgrade;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header Connection &amp;#34;upgrade&amp;#34;;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_http_version 1.1;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header Host $host;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Real-IP $remote_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> proxy_set_header X-Forwarded-Proto $scheme;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> # 根路径返回 404 错误
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> location / {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> return 404;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>踩的坑&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>子路径相匹配：
+&lt;ul>
+&lt;li>一定要在docker-compose.yml加入相应的DOMAIN域的环境变量&lt;/li>
+&lt;li>admin管理页面可以不用配置&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>新版vaultWarden可以不用手动进行websocket端口映射，在1.29版本之后共用一个80端口&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>自 Vaultwarden v1.29.0 起，WebSocket 默认启用。以前的版本需要反向代理，因为 WebSocket 运行在与默认的 HTTPS 端口不同的端口上。
+自 Vaultwarden v1.29.0 版本起，旧的 &lt;code>WEBSOCKET_ENABLED&lt;/code> 和 &lt;code>WEBSOCKET_PORT&lt;/code> 已被弃用并将被忽略。在 v1.29.0 版本之后，您可以通过将 &lt;code>ENABLE_WEBSOCKET&lt;/code> 设置为 &lt;code>false&lt;/code> 值来禁用 Websocket 通知，这将减少 Vaultwarden 使用的资源（尽管不会太多）。&lt;/p>&lt;/blockquote>
+&lt;ol start="3">
+&lt;li>需要为&lt;code>/子路径/notifications&lt;/code>配置分流，不能仅为&lt;code>/子路径/notifications/hub&lt;/code>配置分流会导致，使用移动设备准许登录不能生效&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="测试-websocket-连接">
+ 测试 WebSocket 连接
+ &lt;a class="anchor" href="#%e6%b5%8b%e8%af%95-websocket-%e8%bf%9e%e6%8e%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>有两种方式可以测试连接是否正常工作：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>打开浏览器的开发人员工具，转到网络选项卡然后筛选 &lt;code>WS&lt;/code>/&lt;code>WebSockets&lt;/code>。注销或刷新页面并再次登录，您应该会看到升级后的 WebSocket 连接的 101 响应。如果您单击该行，您应该能够看到消息。如果您没有在 &lt;code>/notifications/hub&lt;/code> 上获得状态代码 101，则表示某些配置不正确。消息将显示在浏览器的控制台窗口中：&lt;code>[2023-12-01T00:00:00.000Z] Information: WebSocket connected to wss://HOST_NAME/notifications/hub?access_token=eyJ0eX......&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>打开两个不同的浏览器或隐身/隐私窗口。在两个浏览器上登录您的帐户。创建一个新的条目，或者重命名一个条目，在另一个浏览器中应该会立即收到更改。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>测试移动设备准许登录功能。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="安全设置">
+ 安全设置
+ &lt;a class="anchor" href="#%e5%ae%89%e5%85%a8%e8%ae%be%e7%bd%ae">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="cloudflare操作">
+ cloudflare操作
+ &lt;a class="anchor" href="#cloudflare%e6%93%8d%e4%bd%9c">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>SSL/TLS&lt;/code> &lt;code>概述&lt;/code> 加密模式：完全（严格）&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="vps操作">
+ VPS操作
+ &lt;a class="anchor" href="#vps%e6%93%8d%e4%bd%9c">#&lt;/a>
+&lt;/h3>
+&lt;h4 class="heading" id="设置随机子路径">
+ 设置随机子路径
+ &lt;a class="anchor" href="#%e8%ae%be%e7%bd%ae%e9%9a%8f%e6%9c%ba%e5%ad%90%e8%b7%af%e5%be%84">#&lt;/a>
+&lt;/h4>
+&lt;ol>
+&lt;li>修改docker-compose.yml文件，environment变量加入DOMAIN域&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- DOMAIN=https://域名/自定子路径/ &lt;span style="color:#888;font-style:italic"># 如果想要添加子路径，需要对应修改这里，一定要在nginx进行相应的分流&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>设置子路径分流&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-nginx" data-lang="nginx">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/子路径/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_pass&lt;/span> &lt;span style="color:#666;font-style:italic">http://127.0.0.1:1256&lt;/span>; &lt;span style="color:#888;font-style:italic"># 注意修改端口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Real-IP&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$remote_addr&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-For&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$proxy_add_x_forwarded_for&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-Proto&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$scheme&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/子路径/notifications&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_pass&lt;/span> &lt;span style="color:#666;font-style:italic">http://127.0.0.1:1256&lt;/span>; &lt;span style="color:#888;font-style:italic"># 注意修改端口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Upgrade&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_upgrade&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Connection&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;upgrade&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_http_version&lt;/span> 1&lt;span style="color:#666;font-style:italic">.1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Real-IP&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$remote_addr&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-For&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$proxy_add_x_forwarded_for&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-Proto&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$scheme&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 根路径返回 404 错误
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">return&lt;/span> 404;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="关闭页面并禁用注册">
+ 关闭页面并禁用注册
+ &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad%e9%a1%b5%e9%9d%a2%e5%b9%b6%e7%a6%81%e7%94%a8%e6%b3%a8%e5%86%8c">#&lt;/a>
+&lt;/h4>
+&lt;p>查看网页端的密码重复泄露报告，然后关闭网页端&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- SIGNUPS_ALLOWED=false &lt;span style="color:#888;font-style:italic">#关闭注册&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>- WEB_VAULT_ENABLED=false &lt;span style="color:#888;font-style:italic">#关闭网页端&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 class="heading" id="定时检查容器更新">
+ 定时检查容器更新
+ &lt;a class="anchor" href="#%e5%ae%9a%e6%97%b6%e6%a3%80%e6%9f%a5%e5%ae%b9%e5%99%a8%e6%9b%b4%e6%96%b0">#&lt;/a>
+&lt;/h4>
+&lt;blockquote>
+&lt;p>2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> watchtower:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: containrrr/watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /var/run/docker.sock:/var/run/docker.sock
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - TZ=Asia/Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - WATCHTOWER_CLEANUP=true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - WATCHTOWER_SCHEDULE=0 0 4 * * * &lt;span style="color:#888;font-style:italic"># 每天凌晨4点检查并更新&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="vaultwarden-自动备份配置">
+ vaultwarden 自动备份配置
+ &lt;a class="anchor" href="#vaultwarden-%e8%87%aa%e5%8a%a8%e5%a4%87%e4%bb%bd%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h3>
+&lt;p>2025年5月16日更新&lt;/p>
+&lt;p>以下的自动备份配置为了达到良好的备份效果导致配置起来十分复杂与繁琐，经过长时间来看，我觉得没有必要额外备份。&lt;/p>
+&lt;p>之所以这么说的原因时bitwarden客户端的导出功能：我们一般会在多台设备上同时使用，PC、IOS\Android、Web浏览器等，不同客户端都会在本地储存一份数据。这些客户端天生形成了多份备份。&lt;/p>
+&lt;p>即使服务器宕机或者数据清空，直接使用客户端的导出功能即可备份。不过可能由于不同服务器间的同步延迟，与服务器数据有些许差异。但是一般更新密码的频率不是很高，所以可以忽略。&lt;/p>
+&lt;hr>
+&lt;p>异地定时备份。&lt;/p>
+&lt;p>使用项目&lt;a href="https://github.com/ttionya/vaultwarden-backup?tab=readme-ov-file">GitHub - ttionya/vaultwarden-backup&lt;/a> 用于备份 &lt;a href="https://github.com/dani-garcia/vaultwarden">vaultwarden&lt;/a> 数据，并通过 &lt;a href="https://rclone.org/">Rclone&lt;/a> 同步到其他存储系统。&lt;/p>
+&lt;h4 class="heading" id="使用步骤">
+ 使用步骤
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%ad%a5%e9%aa%a4">#&lt;/a>
+&lt;/h4>
+&lt;h5 class="heading" id="配置-rclone">
+ 配置 Rclone
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%ae-rclone">#&lt;/a>
+&lt;/h5>
+&lt;p>&lt;strong>重要提示：&lt;/strong> 备份前必须配置 Rclone，否则备份工具无法工作。还原备份则非必须配置 Rclone。&lt;/p>
+&lt;p>&lt;strong>配置步骤：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>运行 Rclone 配置容器：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run --rm -it &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --mount &lt;span style="color:#666;font-weight:bold;font-style:italic">type&lt;/span>=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> rclone config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>docker run --rm -it&lt;/code>：运行一个临时的、交互式的 Docker 容器。&lt;/li>
+&lt;li>&lt;code>--mount type=volume,source=vaultwarden-rclone-data,target=/config/&lt;/code>：将名为 &lt;code>vaultwarden-rclone-data&lt;/code> 的 Docker 卷挂载到容器的 &lt;code>/config&lt;/code> 目录，用于存储 Rclone 的配置文件。如果这个卷不存在，Docker 会自动创建它。&lt;/li>
+&lt;li>&lt;code>rclone config&lt;/code>：在容器中执行的命令，启动 Rclone 的交互式配置向导。&lt;/li>
+&lt;/ul>
+&lt;p>此命令会启动 Rclone 的交互式配置向导，按照提示配置你的云存储服务。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>我准备同时备份到 Google Drive、Infini-cloud (WebDAV) 和 OneDrive 这三个网盘，并最终将它们合并到一个 &lt;code>union&lt;/code> 远程中&lt;/p>
+&lt;p>&lt;strong>步骤：&lt;/strong>
+这里十分复杂，但是跟着步骤一步步来不容易出错。&lt;/p>
+&lt;ol>
+&lt;li>配置 Google Drive 远程 （需要挂梯子才能收到回调）&lt;/li>
+&lt;/ol>
+&lt;p>运行 Rclone 配置容器：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run --rm -it &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --mount &lt;span style="color:#666;font-weight:bold;font-style:italic">type&lt;/span>=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> rclone config
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建新远程 (New remote)：输入 n 并回车；命名远程：name&amp;gt; 后面输入 BitwardenBackup-GoogleDrive 并回车；选择存储类型：找到 Google Drive 对应的编号，通常是 20，输入 20 并回车；client_id：直接回车；client_secret：直接回车；选择权限范围 (scope)：输入 1 (选择 Full access all files, excluding Application Data folder.) 并回车；root_folder_id：直接回车；service_account_file：直接回车；编辑高级配置 (Edit advanced config)：输入 n 并回车；自动配置 (Use auto config)：输入 y 并回车；浏览器验证，复制授权码；粘贴授权码到 Enter verification code&amp;gt; 提示符后回车；是否是团队盘 (team drive)：根据需要输入 y 或直接回车；确认配置：输入 y 并回车。&lt;/p>
+&lt;ol start="2">
+&lt;li>配置 Infini-cloud (WebDAV) 远程&lt;/li>
+&lt;/ol>
+&lt;p>运行 Rclone 配置容器；创建新远程 (New remote)：输入 n 并回车；命名远程：name&amp;gt; 后面输入 BitwardenBackup-InfiniCloud 并回车；选择存储类型：找到 WebDAV 对应的编号，通常是 56，输入 56 并回车；输入 url：url&amp;gt; 后面输入 Infini-cloud 提供的 WebDAV URL；输入 vendor：vendor&amp;gt; 后面输入 other 并回车；输入 user：user&amp;gt; 后面输入你的 Infini-cloud 用户名；输入 pass：pass&amp;gt; 后面输入 y 并回车，然后输入两次密码；输入 bearer_token：直接回车；编辑高级配置 (Edit advanced config)：输入 n 并回车；确认配置：输入 y 并回车。&lt;/p>
+&lt;ol start="3">
+&lt;li>配置 OneDrive 远程&lt;/li>
+&lt;/ol>
+&lt;p>运行 Rclone 配置容器；创建新远程 (New remote)：输入 n 并回车；命名远程：name&amp;gt; 后面输入 BitwardenBackup-OneDrive 并回车；选择存储类型：找到 Microsoft OneDrive 对应的编号，通常是 36，输入 36 并回车；client_id：直接回车；client_secret：直接回车；选择地区 (region)：选择 global 对应的编号并回车；编辑高级配置 (Edit advanced config)：输入 n 并回车；自动配置 (Use auto config)：输入 y 并回车；浏览器验证，复制授权码；粘贴授权码到 Enter verification code&amp;gt; 提示符后回车；选择驱动器类型 (drive type)：根据你的 OneDrive 类型选择 personal、business 或 document library，输入对应的编号并回车; 选择驱动器 (drive id)：输入 0 并回车; 确认配置：输入 y 并回车。&lt;/p>
+&lt;ol start="4">
+&lt;li>配置 Union 远程&lt;/li>
+&lt;/ol>
+&lt;p>运行 Rclone 配置容器；创建新远程 (New remote)：输入 n 并回车；命名远程：name&amp;gt; 后面输入 BitwardenBackup 并回车；选择存储类型：找到 Union 对应的编号，通常是 54，输入 54 并回车；输入 upstreams：upstreams&amp;gt; 后面输入你之前配置的三个远程的名称，用空格分隔：&lt;/p>
+&lt;p>BitwardenBackup-GoogleDrive: BitwardenBackup-InfiniCloud: BitwardenBackup-OneDrive:
+输入 action_policy：输入 all 并回车；输入 create_policy：输入 all 并回车；输入 search_policy：输入 all 并回车；确认配置：输入 y 并回车。&lt;/p>
+&lt;ol start="5">
+&lt;li>配置完成后，运行以下命令检查配置是否正确：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span> docker run --rm -it &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --mount &lt;span style="color:#666;font-weight:bold;font-style:italic">type&lt;/span>=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> rclone config show
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 class="heading" id="修改-docker-composeyml-文件">
+ 修改 &lt;code>docker-compose.yml&lt;/code> 文件
+ &lt;a class="anchor" href="#%e4%bf%ae%e6%94%b9-docker-composeyml-%e6%96%87%e4%bb%b6">#&lt;/a>
+&lt;/h5>
+&lt;p>本方案采用每日备份，保留三十天，每月备份一次，保留十二个月的备份方式：开启两个backup服务-daily_backup和monthly_backup&lt;/p>
+&lt;p>将 &lt;code>vaultwarden-backup&lt;/code> 服务的 &lt;code>RCLONE_REMOTE_NAME&lt;/code> 环境变量设置为 &lt;code>BitwardenBackup&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> vaultwarden:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: vaultwarden/server:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: vaultwarden 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#34;1256:80&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./data:/data 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ADMIN_TOKEN=gwQnrvr6sWcCiw6pYhUYFQVTTEPYWx4UR6uhTB73dsrPXDWEHhxC5Fs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic">#移动设备推送设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PUSH_ENABLED=true &lt;span style="color:#888;font-style:italic"># 这里的意思是打开推送功能（不开启的话移动设备无法接收通知）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PUSH_INSTALLATION_ID=eb1d824c-941d-4109-bb8d-b26a00cd0ba3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PUSH_INSTALLATION_KEY=u1r438BxudgiOaURxOss &lt;span style="color:#888;font-style:italic"># 填入key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SIGNUPS_ALLOWED=false &lt;span style="color:#888;font-style:italic"># 禁止新用户注册，可以在管理员页面邀请注 册&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - DOMAIN=https://vtolove.me/psJm18PFVg8EkBnTA5Fi/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># SMTP 设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_HOST=smtp.qq.com &lt;span style="color:#888;font-style:italic"># SMTP 服务器地址，QQ 邮箱为 smtp.qq.com&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_FROM=849815996@qq.com &lt;span style="color:#888;font-style:italic"># 发件人邮箱地址，替换为你自己的 QQ 邮箱&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_FROM_NAME=VaultwardenAdmin &lt;span style="color:#888;font-style:italic"># 发件人名称，可以自定义&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_PORT=465 &lt;span style="color:#888;font-style:italic"># SMTP 端口，QQ 邮箱使用 SSL 加密，端口为 465&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_SECURITY=force_tls &lt;span style="color:#888;font-style:italic"># SMTP 加密方式，QQ 邮箱使用 SSL 加密，设置为 force_tls&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_USERNAME=849815996@qq.com &lt;span style="color:#888;font-style:italic"># SMTP 用户名，通常为你的 QQ 邮箱地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_PASSWORD=lxpttclhjtcvbeja &lt;span style="color:#888;font-style:italic"># SMTP 密码，此处填写 QQ 邮箱的 SMTP 授权码，不是邮箱登录密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_TIMEOUT=15 &lt;span style="color:#888;font-style:italic"># 设置 SMTP 超时时间为 15 秒&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SMTP_EMBED_IMAGES=true &lt;span style="color:#888;font-style:italic"># 启用将图片嵌入邮件中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> daily_backup:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: ttionya/vaultwarden-backup:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: daily_vaultwarden_backup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: always
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - vaultwarden
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - RCLONE_REMOTE_NAME=BitwardenBackup &lt;span style="color:#888;font-style:italic"># Rclone 远程名称，必须与 rclone 配置中的名称一致&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - RCLONE_REMOTE_DIR=/BitwardenBackup/daily/ &lt;span style="color:#888;font-style:italic"># 远程存储系统中存放备份文件的目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - BACKUP_KEEP_DAYS=30
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - CRON= 3 4 * * * &lt;span style="color:#888;font-style:italic"># 每日备份的 cron 表达式，设置为每天 04:00 执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 通用备份设置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ZIP_PASSWORD=bDxhYG3ANhEqd1Ll0LCdUONmrs8hi4ERZfm &lt;span style="color:#888;font-style:italic">#备份文件的压缩密码，请替换为你自己的密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - BACKUP_FILE_SUFFIX=%Y%m%d &lt;span style="color:#888;font-style:italic"># 每日备份文件后缀，例如：20231027&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - TIMEZONE=Asia/Shanghai &lt;span style="color:#888;font-style:italic"># 设置时区为 Asia/Shanghai&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 其他可选环境变量：&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - DATA_DIR=/data &lt;span style="color:#888;font-style:italic"># 指定存放 vaultwarden 数据的目录，默认为 /bitwarden/data，如果 vaultwarden 服务中配置了 volumes，这里通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - BACKUP_FILE_DATE # 备份文件的时间前缀，默认为 %Y%m%d，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - BACKUP_FILE_DATE_SUFFIX # 备份文件的日期后缀，默认为 &amp;#39;&amp;#39;，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - DATA_DB # 指定 sqlite 数据库文件的路径，默认为 ${DATA_DIR}/db.sqlite3，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - DATA_RSAKEY # 指定 rsa_key 文件的路径，默认为 ${DATA_DIR}/rsa_key，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - DATA_ATTACHMENTS # 指定 attachments 文件夹路径，默认为 ${DATA_DIR}/attachments，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - DATA_SENDS # 指定 sends 文件夹路径，默认为 ${DATA_DIR}/sends，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 通知设置 (可选，根据需要配置)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - MAIL_SMTP_ENABLE=FALSE # 是否启用邮件通知，默认为 FALSE&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - MAIL_SMTP_VARIABLES= # 邮件发送参数，启用邮件通知时需要配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - MAIL_TO= # 接收邮件的地址，启用邮件通知时需要配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - MAIL_WHEN_SUCCESS=TRUE # 备份成功后发送邮件，默认为 TRUE&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - MAIL_WHEN_FAILURE=TRUE # 备份失败后发送邮件，默认为 TRUE&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL= # 备份完成后发送请求的地址 (无论成功或失败)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_CURL_OPTIONS= # 与 PING_URL 搭配使用的 curl 选项&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_START= # 备份开始时发送请求的地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_START_CURL_OPTIONS= # 与 PING_URL_WHEN_START 搭配使用的 curl 选项&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_SUCCESS= # 备份成功后发送请求的地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_SUCCESS_CURL_OPTIONS= # 与 PING_URL_WHEN_SUCCESS 搭配使用的 curl 选项&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_FAILURE= # 备份失败后发送请求的地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># - PING_URL_WHEN_FAILURE_CURL_OPTIONS= # 与 PING_URL_WHEN_FAILURE 搭配使用的 curl 选项&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># RCLONE_GLOBAL_FLAG: &amp;#39;&amp;#39; # Rclone 全局参数，详见 rclone 文档，通常不需要修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./data:/data &lt;span style="color:#888;font-style:italic"># 挂载 vaultwarden 的数据目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - vaultwarden-rclone-data:/config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> monthly_backup:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: ttionya/vaultwarden-backup:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: monthly_valutwarden_backup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: always
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - vaultwarden
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - RCLONE_REMOTE_NAME=BitwardenBackup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - RCLONE_REMOTE_DIR=/BitwardenBackup/monthly/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ZIP_PASSWORD=bDxhYG3ANhEqd1Ll0LCdUONmrs8hi4ERZfm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - BACKUP_KEEP_DAYS=365
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - CRON= 0 4 1 * * &lt;span style="color:#888;font-style:italic"># 每月备份的 cron 表达式，设置为每月 1 号 00:00 执行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - TIMEZONE=Asia/Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - DATA_DIR=/data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - BACKUP_FILE_SUFFIX=%Y%m &lt;span style="color:#888;font-style:italic"># 每月备份文件后缀，例如：202310&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./data:/data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - vaultwarden-rclone-data:/config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> watchtower:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: containrrr/watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: watchtower
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /var/run/docker.sock:/var/run/docker.sock
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - TZ=Asia/Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - WATCHTOWER_CLEANUP=true
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - WATCHTOWER_SCHEDULE=0 0 4 * * *
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - vaultwarden
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - daily_backup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - monthly_backup 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> vaultwarden-rclone-data:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> external: &lt;span style="font-weight:bold;text-decoration:underline">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: vaultwarden-rclone-data
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>&lt;code>RCLONE_REMOTE_NAME=BitwardenBackup&lt;/code>：&lt;/strong> 将备份目标设置为 &lt;code>union&lt;/code> 远程。&lt;/li>
+&lt;li>&lt;strong>&lt;code>RCLONE_REMOTE_DIR=/BitwardenBackup/daily&lt;/code>：&lt;/strong> 设置备份到 &lt;code>union&lt;/code> 远程的 &lt;code>/BitwardenBackup/daily/&lt;/code> 文件夹，每天4点左右进行备份&lt;/li>
+&lt;li>&lt;code>RCLONE_REMOTE_DIR=/BitwardenBackup/monthly:&lt;/code>设置备份到 &lt;code>union&lt;/code> 远程的 &lt;code>/BitwardenBackup/monthly/&lt;/code> 文件夹，每个月一号进行备份&lt;/li>
+&lt;/ul>
+&lt;p>重启服务&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>手动备份操作（可用来验证配置是否正确）&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker &lt;span style="font-weight:bold;font-style:italic">exec&lt;/span> daily_vaultwarden_backup bash /app/backup.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 class="heading" id="还原备份还未验证步骤正确性">
+ 还原备份（还未验证步骤正确性）
+ &lt;a class="anchor" href="#%e8%bf%98%e5%8e%9f%e5%a4%87%e4%bb%bd%e8%bf%98%e6%9c%aa%e9%aa%8c%e8%af%81%e6%ad%a5%e9%aa%a4%e6%ad%a3%e7%a1%ae%e6%80%a7">#&lt;/a>
+&lt;/h5>
+&lt;p>&lt;strong>重要提示：&lt;/strong> 还原备份会覆盖已存在的文件。操作前请务必停止 vaultwarden 容器。&lt;/p>
+&lt;p>&lt;strong>步骤：&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>下载备份文件到本地计算机。&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>进入备份文件所在目录。&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>根据你的部署方式选择以下命令之一运行还原容器：&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>a. 使用 &lt;code>docker-compose.yml&lt;/code> 部署的：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run --rm -it &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --mount &lt;span style="color:#666;font-weight:bold;font-style:italic">type&lt;/span>=volume,source=vaultwarden-data,target=/bitwarden/data/ &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --mount &lt;span style="color:#666;font-weight:bold;font-style:italic">type&lt;/span>=bind,source=&lt;span style="font-weight:bold;text-decoration:underline">$(&lt;/span>&lt;span style="font-weight:bold;font-style:italic">pwd&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">)&lt;/span>,target=/bitwarden/restore/ &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> ttionya/vaultwarden-backup:latest restore &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> [OPTIONS]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;code>docker run --rm -it&lt;/code>：运行一个临时的、交互式的 Docker 容器。&lt;/li>
+&lt;li>&lt;code>--mount type=volume,source=vaultwarden-data,target=/bitwarden/data/&lt;/code> 或 &lt;code>--mount type=bind,source=&amp;quot;本地目录的绝对路径&amp;quot;,target=/data/&lt;/code> 或 &lt;code>--mount type=volume,source=&amp;quot;Docker 卷名称&amp;quot;,target=/data/&lt;/code>：将 vaultwarden 的数据目录挂载到容器的 &lt;code>/bitwarden/data&lt;/code> 或 &lt;code>/data&lt;/code> 目录。&lt;/li>
+&lt;li>&lt;code>--mount type=bind,source=$(pwd),target=/bitwarden/restore/&lt;/code>：将当前目录（备份文件所在目录）挂载到容器的 &lt;code>/bitwarden/restore&lt;/code> 目录。&lt;/li>
+&lt;li>&lt;code>-e DATA_DIR=&amp;quot;/data&amp;quot;&lt;/code>：指定 vaultwarden 的数据目录（如果使用“自动备份”方式部署）。&lt;/li>
+&lt;li>&lt;code>ttionya/vaultwarden-backup:latest restore&lt;/code>：指定要运行的 Docker 镜像，并执行 &lt;code>restore&lt;/code> 命令。&lt;/li>
+&lt;li>&lt;code>[OPTIONS]&lt;/code>：可选参数，见下文“还原选项”。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h5 class="heading" id="可用的环境变量">
+ 可用的环境变量
+ &lt;a class="anchor" href="#%e5%8f%af%e7%94%a8%e7%9a%84%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f">#&lt;/a>
+&lt;/h5>
+&lt;p>所有环境变量都有默认值，可以在不设置任何环境变量的情况下使用 Docker 镜像。&lt;/p>
+&lt;h6 class="heading" id="核心配置">
+ 核心配置
+ &lt;a class="anchor" href="#%e6%a0%b8%e5%bf%83%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h6>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>RCLONE_REMOTE_NAME&lt;/code>&lt;/strong> (默认：&lt;code>BitwardenBackup&lt;/code>)：Rclone 远程名称，必须与 &lt;code>rclone config&lt;/code> 中设置的远程名称一致。&lt;/li>
+&lt;li>&lt;strong>&lt;code>RCLONE_REMOTE_DIR&lt;/code>&lt;/strong> (默认：&lt;code>/BitwardenBackup/&lt;/code>)：远程存储系统中存放备份文件的文件夹路径。&lt;/li>
+&lt;li>&lt;strong>&lt;code>RCLONE_GLOBAL_FLAG&lt;/code>&lt;/strong> (默认：&lt;code>''&lt;/code>)：Rclone 全局参数，详见 &lt;a href="https://rclone.org/flags/">Rclone 文档&lt;/a>。&lt;strong>不要添加会改变输出的全局参数，比如 &lt;code>-P&lt;/code>，它会影响删除过期备份文件的操作。&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>&lt;code>CRON&lt;/code>&lt;/strong> (默认：&lt;code>5 * * * *&lt;/code>)：&lt;code>crond&lt;/code> 的规则，基于 &lt;a href="https://github.com/aptible/supercronic">&lt;code>supercronic&lt;/code>&lt;/a>。可以在 &lt;a href="https://crontab.guru/#5_*_*_*_*">这里&lt;/a> 进行测试。解释：默认每小时的 05 分自动备份。&lt;/li>
+&lt;li>&lt;strong>&lt;code>ZIP_ENABLE&lt;/code>&lt;/strong> (默认：&lt;code>TRUE&lt;/code>)：是否将所有备份文件打包为压缩文件。设置为 &lt;code>'FALSE'&lt;/code> 时，会单独上传每个备份文件。&lt;/li>
+&lt;li>&lt;strong>&lt;code>ZIP_PASSWORD&lt;/code>&lt;/strong> (默认：&lt;code>WHEREISMYPASSWORD?&lt;/code>)：压缩文件的密码。&lt;/li>
+&lt;li>&lt;strong>&lt;code>ZIP_TYPE&lt;/code>&lt;/strong> (默认：&lt;code>zip&lt;/code>)：压缩文件格式，支持 &lt;code>zip&lt;/code> 和 &lt;code>7z&lt;/code>。&lt;/li>
+&lt;li>&lt;strong>&lt;code>BACKUP_KEEP_DAYS&lt;/code>&lt;/strong> (默认：&lt;code>0&lt;/code>)：在远程存储系统中保留最近 X 天的备份文件。设置为 &lt;code>0&lt;/code> 会保留所有备份文件。&lt;/li>
+&lt;li>&lt;strong>&lt;code>BACKUP_FILE_SUFFIX&lt;/code>&lt;/strong> (默认：&lt;code>%Y%m%d&lt;/code>)：备份文件后缀，控制备份文件的命名格式。可以在 &lt;a href="https://man7.org/linux/man-pages/man1/date.1.html">这里&lt;/a> 查看时间格式化说明。&lt;/li>
+&lt;li>&lt;strong>&lt;code>TIMEZONE&lt;/code>&lt;/strong> (默认：&lt;code>UTC&lt;/code>)：设置时区名称，例如北京时区设置为 &lt;code>Asia/Shanghai&lt;/code>。可以在 &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">维基百科&lt;/a> 查看所有时区名称。&lt;/li>
+&lt;li>&lt;strong>&lt;code>DATA_DIR&lt;/code>&lt;/strong> (默认：&lt;code>/bitwarden/data&lt;/code>)：指定存放 vaultwarden 数据的目录。使用 &lt;code>Docker Compose&lt;/code> 时通常不需要修改，使用自动备份时通常需要修改为 &lt;code>/data&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;h6 class="heading" id="通知">
+ 通知
+ &lt;a class="anchor" href="#%e9%80%9a%e7%9f%a5">#&lt;/a>
+&lt;/h6>
+&lt;ol>
+&lt;li>Mail&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>MAIL_SMTP_ENABLE&lt;/code>&lt;/strong> (默认：&lt;code>FALSE&lt;/code>)：启用邮件发送功能。&lt;/li>
+&lt;li>&lt;strong>&lt;code>MAIL_SMTP_VARIABLES&lt;/code>&lt;/strong> (默认：无)：邮件发送参数，需要自行配置，详见下方示例。&lt;/li>
+&lt;li>&lt;strong>&lt;code>MAIL_TO&lt;/code>&lt;/strong> (默认：无)：接收邮件的地址。&lt;/li>
+&lt;li>&lt;strong>&lt;code>MAIL_WHEN_SUCCESS&lt;/code>&lt;/strong> (默认：&lt;code>TRUE&lt;/code>)：备份成功后发送邮件。&lt;/li>
+&lt;li>&lt;strong>&lt;code>MAIL_WHEN_FAILURE&lt;/code>&lt;/strong> (默认：&lt;code>TRUE&lt;/code>)：备份失败后发送邮件。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;code>MAIL_SMTP_VARIABLES&lt;/code> 示例 (以 Zoho 为例)：&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>-S smtp-use-starttls \
+-S smtp=smtp://smtp.zoho.com:587 \
+-S smtp-auth=login \
+-S smtp-auth-user=&amp;lt;your-email-address&amp;gt; \
+-S smtp-auth-password=&amp;lt;your-email-password&amp;gt; \
+-S from=&amp;lt;your-email-address&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>&lt;strong>邮件发送测试：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic">MAIL_SMTP_VARIABLES&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span> ttionya/vaultwarden-backup:latest mail &amp;lt;mail send to&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 或&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic">MAIL_SMTP_VARIABLES&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">MAIL_TO&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;mail send to&amp;gt;&amp;#39;&lt;/span> ttionya/vaultwarden-backup:latest mail
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Ping&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>PING_URL&lt;/code>&lt;/strong>：备份完成后发送请求的地址 (无论成功或失败)。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_CURL_OPTIONS&lt;/code>&lt;/strong>：与 &lt;code>PING_URL&lt;/code> 搭配使用的 curl 选项。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_START&lt;/code>&lt;/strong>：备份开始时发送请求的地址。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_START_CURL_OPTIONS&lt;/code>&lt;/strong>：与 &lt;code>PING_URL_WHEN_START&lt;/code> 搭配使用的 curl 选项。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_SUCCESS&lt;/code>&lt;/strong>：备份成功后发送请求的地址。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_SUCCESS_CURL_OPTIONS&lt;/code>&lt;/strong>：与 &lt;code>PING_URL_WHEN_SUCCESS&lt;/code> 搭配使用的 curl 选项。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_FAILURE&lt;/code>&lt;/strong>：备份失败后发送请求的地址。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PING_URL_WHEN_FAILURE_CURL_OPTIONS&lt;/code>&lt;/strong>：与 &lt;code>PING_URL_WHEN_FAILURE&lt;/code> 搭配使用的 curl 选项。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>占位符：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>%{subject}&lt;/code>：替换为实际的标题。&lt;/li>
+&lt;li>&lt;code>%{content}&lt;/code>：替换为实际的内容。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Ping 发送测试：&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run --rm -it &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_CURL_OPTIONS&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your curl options for PING_URL&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_START&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_START_CURL_OPTIONS&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your curl options for PING_URL_WHEN_START&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_SUCCESS&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_SUCCESS_CURL_OPTIONS&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your curl options for PING_URL_WHEN_SUCCESS&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_FAILURE&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> -e &lt;span style="color:#666;font-weight:bold;font-style:italic">PING_URL_WHEN_FAILURE_CURL_OPTIONS&lt;/span>=&lt;span style="color:#666;font-style:italic">&amp;#39;&amp;lt;your curl options for PING_URL_WHEN_FAILURE&amp;gt;&amp;#39;&lt;/span> &lt;span style="color:#666;font-style:italic">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> ttionya/vaultwarden-backup:latest ping &amp;lt;&lt;span style="font-weight:bold;font-style:italic">test&lt;/span> identifier&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>解释：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>&amp;lt;test identifier&amp;gt;&lt;/code> 可以是 &lt;code>completion&lt;/code>、&lt;code>start&lt;/code>、&lt;code>success&lt;/code> 或 &lt;code>failure&lt;/code>，决定使用哪一组环境变量。&lt;/li>
+&lt;/ul>
+&lt;h6 class="heading" id="其他环境变量-通常无需修改">
+ 其他环境变量 (通常无需修改)
+ &lt;a class="anchor" href="#%e5%85%b6%e4%bb%96%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f-%e9%80%9a%e5%b8%b8%e6%97%a0%e9%9c%80%e4%bf%ae%e6%94%b9">#&lt;/a>
+&lt;/h6>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>BACKUP_FILE_DATE&lt;/code>&lt;/strong> (默认：&lt;code>%Y%m%d&lt;/code>)：备份文件的时间前缀，建议使用 &lt;code>BACKUP_FILE_SUFFIX&lt;/code> 替代。&lt;/li>
+&lt;li>&lt;strong>&lt;code>BACKUP_FILE_DATE_SUFFIX&lt;/code>&lt;/strong> (默认：&lt;code>''&lt;/code>)：备份文件的日期后缀，建议使用 &lt;code>BACKUP_FILE_SUFFIX&lt;/code> 替代。&lt;/li>
+&lt;li>&lt;strong>&lt;code>DATA_DB&lt;/code>&lt;/strong> (默认：&lt;code>${DATA_DIR}/db.sqlite3&lt;/code>)：指定 sqlite 数据库文件的路径。&lt;/li>
+&lt;li>&lt;strong>&lt;code>DATA_RSAKEY&lt;/code>&lt;/strong> (默认：&lt;code>${DATA_DIR}/rsa_key&lt;/code>)：指定 rsa_key 文件的路径。&lt;/li>
+&lt;li>&lt;strong>&lt;code>DATA_ATTACHMENTS&lt;/code>&lt;/strong> (默认：&lt;code>${DATA_DIR}/attachments&lt;/code>)：指定 attachments 文件夹路径。&lt;/li>
+&lt;li>&lt;strong>&lt;code>DATA_SENDS&lt;/code>&lt;/strong> (默认：&lt;code>${DATA_DIR}/sends&lt;/code>)：指定 sends 文件夹路径。&lt;/li>
+&lt;/ul>
+&lt;h2 class="heading" id="客户端">
+ 客户端
+ &lt;a class="anchor" href="#%e5%ae%a2%e6%88%b7%e7%ab%af">#&lt;/a>
+&lt;/h2>
+&lt;p>Bitwarden 提供了全平台的客户端软件，以下是常用的一些平台客户端，附上了链接，可以直接下载&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb" title="Chrome">Chrome&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://addons.mozilla.org/firefox/addon/bitwarden-password-manager/" title="FireFox">FireFox&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://itunes.apple.com/app/bitwarden/id1352778147" title="Safari">Safari&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://vault.bitwarden.com/download/?app=desktop&amp;amp;platform=windows" title="Windows">Windows&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://itunes.apple.com/app/bitwarden/id1352778147" title="MacOS">MacOS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://vault.bitwarden.com/download/?app=desktop&amp;amp;platform=linux" title="Linux">Linux&lt;/a>&lt;/li>
+&lt;li>iOS：App Store 搜索 BitWarden&lt;/li>
+&lt;li>Android： Google Play 搜索 BitWarden&lt;/li>
+&lt;/ul>
+&lt;p>未在此列的平台，可前往官网进行下载：&lt;a href="https://bitwarden.com/download">Download the Bitwarden Password Manager App for iPhone, Android, Chrome, Safari, and More | Bitwarden&lt;/a>&lt;/p>
+&lt;h2 class="heading" id="使用技巧">
+ 使用技巧
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%8a%80%e5%b7%a7">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="匹配模式">
+ 匹配模式
+ &lt;a class="anchor" href="#%e5%8c%b9%e9%85%8d%e6%a8%a1%e5%bc%8f">#&lt;/a>
+&lt;/h3>
+&lt;p>bitwarden匹配模式十分重要，它决定了你的账号密码&lt;strong>何时自动填充&lt;/strong>到网页中，默认是&lt;code>基础域&lt;/code>模式，可以根据自己需求适当调整。各个匹配模式&lt;a href="https://help.ppgg.in/auto-fill/using-uris#match-detection-options">摘录&lt;/a>如下：&lt;/p>
+&lt;h4 class="heading" id="基础域">
+ 基础域
+ &lt;a class="anchor" href="#%e5%9f%ba%e7%a1%80%e5%9f%9f">#&lt;/a>
+&lt;/h4>
+&lt;p>选择基础域，当登录项目的 URI 值的顶级域名和第二级名与检测到的资源相匹配时，Bitwarden 将弹出提示以提供自动填充。&lt;br>
+例如，URI 的值为&lt;code>https://google.com&lt;/code>，使用基础域匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="http://google.com/">http://google.com&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://accounts.google.com/">https://accounts.google.com&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://google.net/">https://google.net&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="http://yahoo.com/">http://yahoo.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 class="heading" id="主机">
+ 主机
+ &lt;a class="anchor" href="#%e4%b8%bb%e6%9c%ba">#&lt;/a>
+&lt;/h4>
+&lt;p>选择主机，当登录项目的 URI 值的主机名和端口（若指定了）与检测到的资源相匹配时，Bitwarden 将弹出提示以提供自动填充。&lt;br>
+例如，URI 的值为&lt;code>https://sub.domain.com:4000&lt;/code>，使用主机匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="http://sub.domain.com:4000/">http://sub.domain.com:4000&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com:4000/page.html">https://sub.domain.com:4000/page.html&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://domain.com/">https://domain.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com/">https://sub.domain.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub2.sub.domain.com:4000/">https://sub2.sub.domain.com:4000&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com:5000/">https://sub.domain.com:5000&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 class="heading" id="开始于">
+ 开始于
+ &lt;a class="anchor" href="#%e5%bc%80%e5%a7%8b%e4%ba%8e">#&lt;/a>
+&lt;/h4>
+&lt;p>选择开始于，当检测到的资源以登录项目的 URI 值开头（无论后面跟什么）时，Bitwarden 将弹出提示以提供自动填充。&lt;br>
+例如，URI 的值为&lt;code>https://sub.domain.com/path/&lt;/code>，使用开始于匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com/path/">https://sub.domain.com/path/&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com/path/page.html">https://sub.domain.com/path/page.html&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com/">https://sub.domain.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com:4000/path/page.html%EF%BC%88%E8%A2%AB%E7%AB%AF%E5%8F%A3%E9%98%BB%E6%96%AD%E4%BA%86%EF%BC%89">https://sub.domain.com:4000/path/page.html（被端口阻断了）&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.domain.com/path%EF%BC%88%E7%BC%BA%E5%B0%91%E6%96%9C%E6%9D%A0%EF%BC%89">https://sub.domain.com/path（缺少斜杠）&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 class="heading" id="正则表达式">
+ 正则表达式
+ &lt;a class="anchor" href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f">#&lt;/a>
+&lt;/h4>
+&lt;p>选择正则表达式，当检测到的资源与一个指定的正则表达式相匹配时，Bitwarden 将弹出提示以提供自动填充。正则表达式始终不区分大小写。&lt;/p>
+&lt;h5 class="heading" id="不安全示例">
+ 不安全示例
+ &lt;a class="anchor" href="#%e4%b8%8d%e5%ae%89%e5%85%a8%e7%a4%ba%e4%be%8b">#&lt;/a>
+&lt;/h5>
+&lt;p>URI 的值为&lt;code>^https://.*google\.com$&lt;/code>，使用正则表达式匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://google.com/">https://google.com&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://sub.google.com/">https://sub.google.com&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://malicious-site.com/?q=google.com">https://malicious-site.com?q=google.com&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="http://google.com/">http://google.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://yahoo.com/">https://yahoo.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>这可能比预期的要匹配得更多。&lt;/p>
+&lt;h5 class="heading" id="安全示例">
+ 安全示例
+ &lt;a class="anchor" href="#%e5%ae%89%e5%85%a8%e7%a4%ba%e4%be%8b">#&lt;/a>
+&lt;/h5>
+&lt;p>URI 的值为&lt;code>^https://[a-z]+\.wikipedia\.org/w/index\.php&lt;/code>，使用正则表达式匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;amp;returnto=Bitwarden">https://en.wikipedia.org/w/index.php?title=Special:UserLogin&amp;amp;returnto=Bitwarden&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://pl.wikipedia.org/w/index.php?title=Specjalna:Zaloguj&amp;amp;returnto=Bitwarden">https://pl.wikipedia.org/w/index.php?title=Specjalna:Zaloguj&amp;amp;returnto=Bitwarden&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/w/index.php">https://en.wikipedia.org/w/index.php&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://malicious-site.com/">https://malicious-site.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://en.wikipedia.org/wiki/Bitwarden">https://en.wikipedia.org/wiki/Bitwarden&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 class="heading" id="精确">
+ 精确
+ &lt;a class="anchor" href="#%e7%b2%be%e7%a1%ae">#&lt;/a>
+&lt;/h4>
+&lt;p>选择精确，当登录项目的 URI 值与检测到的资源精确匹配时，Bitwarden 将弹出提示以提供自动填充。&lt;br>
+例如，URI 的值为&lt;code>https://www.google.com/page.html&lt;/code>，使用精确匹配检测：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>URL&lt;/th>
+ &lt;th>自动填充？&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://www.google.com/page.html">https://www.google.com/page.html&lt;/a>&lt;/td>
+ &lt;td>✔︎&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="http://www.google.com/page.html">http://www.google.com/page.html&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://www.google.com/page.html?query=123">https://www.google.com/page.html?query=123&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://www.google.com/">https://www.google.com&lt;/a>&lt;/td>
+ &lt;td>✘&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 class="heading" id="从不">
+ 从不
+ &lt;a class="anchor" href="#%e4%bb%8e%e4%b8%8d">#&lt;/a>
+&lt;/h4>
+&lt;p>选择从不，Bitwarden 将&lt;strong>从不&lt;/strong>为登录项目弹出以提供自动填充。&lt;/p>
+&lt;hr>
+&lt;p>帮助文档:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://rs.ppgg.in/">关于 | Vaultwarden Wiki 中文版&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://help.ppgg.in/">关于 | Bitwarden 帮助中心中文版&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,1 +1,235 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Obsidian on G-Hung的博客</title><link>https://blog.yzyy.de/tags/obsidian/</link><description>Recent content in Obsidian on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/obsidian/index.xml" rel="self" type="application/rss+xml"/><item><title>Obsdian的一些使用技巧</title><link>https://blog.yzyy.de/explore/obsidian%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link><pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/obsidian%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid><description>个人的Obsidian高效使用技巧的记录，助力提升笔记管理与工作流效率。</description></item><item><title>Obsdian个人配置记录</title><link>https://blog.yzyy.de/explore/obsidian%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</link><pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/obsidian%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</guid><description>Obsidian配置与同步备份全流程实录，涵盖iCloud与Git自动化方案及多种同步备选。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Obsidian on G-Hung的博客</title><link>https://blog.yzyy.de/tags/obsidian/</link><description>Recent content in Obsidian on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 08 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/obsidian/index.xml" rel="self" type="application/rss+xml"/><item><title>Obsdian的一些使用技巧</title><link>https://blog.yzyy.de/explore/obsidian%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</link><pubDate>Sun, 08 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/obsidian%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</guid><description>&lt;h2 class="heading" id="快捷操作">
+ 快捷操作
+ &lt;a class="anchor" href="#%e5%bf%ab%e6%8d%b7%e6%93%8d%e4%bd%9c">#&lt;/a>
+&lt;/h2>
+&lt;ol>
+&lt;li>使用&lt;code>[[&lt;/code>键入两个中括号迅速添加外链&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="插件">
+ 插件
+ &lt;a class="anchor" href="#%e6%8f%92%e4%bb%b6">#&lt;/a>
+&lt;/h2>
+&lt;p>该部分记录一些优秀的插件的使用方式&lt;/p>
+&lt;h3 class="heading" id="templater高度自定义模板">
+ &lt;code>Templater&lt;/code>(高度自定义模板)
+ &lt;a class="anchor" href="#templater%e9%ab%98%e5%ba%a6%e8%87%aa%e5%ae%9a%e4%b9%89%e6%a8%a1%e6%9d%bf">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>ALT + E&lt;/code> 快速插入模板&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="auto-link-title自动获取url标题">
+ Auto-Link-Title(自动获取url标题)
+ &lt;a class="anchor" href="#auto-link-title%e8%87%aa%e5%8a%a8%e8%8e%b7%e5%8f%96url%e6%a0%87%e9%a2%98">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>设置：可以设置网页黑名单，让一些链接不触发。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Auto-Link-Title" src="https://webp.050612.xyz/2025/02/Pasted%20image%2020250111180404.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/li>
+&lt;li>&lt;code>ctrl+shift+e&lt;/code> 增强现有的链接&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="automatic-table-of-contents">
+ Automatic Table of contents
+ &lt;a class="anchor" href="#automatic-table-of-contents">#&lt;/a>
+&lt;/h3>
+&lt;p>生成目录，可供导出PDF时使用&lt;/p>
+&lt;ul>
+&lt;li>使用方式&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>```table-of-contents
+option1: value1
+option2: value2
+```
+&lt;/code>&lt;/pre>&lt;h3 class="heading" id="auto-card-link">
+ Auto Card Link
+ &lt;a class="anchor" href="#auto-card-link">#&lt;/a>
+&lt;/h3>
+&lt;p>Auto Card Link 插件主要提供以下几个功能：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>粘贴增强&lt;/strong>：直接粘贴复制的链接时，自动转换成卡片式链接。&lt;/li>
+&lt;li>&lt;strong>选中链接增强&lt;/strong>：对已选中的链接进行增强，转换成卡片式显示。&lt;/li>
+&lt;li>&lt;strong>默认粘贴设置&lt;/strong>：可以设置默认粘贴行为，以自动增强链接。&lt;/li>
+&lt;li>&lt;strong>本地图片支持&lt;/strong>：通过内部链接支持本地图片显示（例如：&lt;code>image: &amp;quot;[[image.png]]&amp;quot;&lt;/code>）。&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="cardlink语法">
+ &lt;code>cardlink&lt;/code> 语法
+ &lt;a class="anchor" href="#cardlink%e8%af%ad%e6%b3%95">#&lt;/a>
+&lt;/h4>
+&lt;p>插件使用 &lt;code>cardlink&lt;/code> 代码块来展示卡片式链接，内部采用 YAML 语法。下面是支持的属性列表：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>url&lt;/strong> (必需)：点击链接时打开的 URL 地址。&lt;/li>
+&lt;li>&lt;strong>title&lt;/strong> (必需)：链接的标题。&lt;/li>
+&lt;li>&lt;strong>description&lt;/strong> (可选)：链接的描述信息。&lt;/li>
+&lt;li>&lt;strong>host&lt;/strong> (可选)：链接的主机名。&lt;/li>
+&lt;li>&lt;strong>favicon&lt;/strong> (可选)：链接的网站图标。&lt;/li>
+&lt;li>&lt;strong>image&lt;/strong> (可选)：在卡片链接中显示的缩略图。&lt;/li>
+&lt;/ul>
+&lt;p>当然，在默认情况下这些信息全部都是自动抓取的，无需手动填充。&lt;/p></description></item><item><title>Obsdian个人配置记录</title><link>https://blog.yzyy.de/explore/obsidian%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</link><pubDate>Fri, 06 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/obsidian%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</guid><description>&lt;p>&lt;strong>Hello, Obsidian.&lt;/strong>&lt;/p>
+&lt;h2 class="heading" id="obsidian应用设置">
+ Obsidian应用设置
+ &lt;a class="anchor" href="#obsidian%e5%ba%94%e7%94%a8%e8%ae%be%e7%bd%ae">#&lt;/a>
+&lt;/h2>
+&lt;p>参考&lt;a href="https://blog.goalonez.site/blog/Obsidian%E6%8A%98%E8%85%BE%E4%B9%8B%E8%B7%AF.html">Obsidian折腾之路 | Goalonez Blog&lt;/a>中设置部分，并做出一些个性化设置：&lt;/p>
+&lt;ul>
+&lt;li>编辑器
+&lt;ul>
+&lt;li>新标签页默认视图-编辑模式&lt;/li>
+&lt;li>显示行号-打开&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>外观
+&lt;ul>
+&lt;li>主题-Border
+&lt;ul>
+&lt;li>Border是一款比较简洁的主题，看起来比较舒服。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>插件
+&lt;ul>
+&lt;li>Better Export PDF
+支持自定义页眉页脚，导出的目录带链接， PDF带目录。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 class="heading" id="备份与同步">
+ 备份与同步
+ &lt;a class="anchor" href="#%e5%a4%87%e4%bb%bd%e4%b8%8e%e5%90%8c%e6%ad%a5">#&lt;/a>
+&lt;/h2>
+&lt;p>我的设备是Windows + iPhone，最终选择了iCloud同步，Git备份。&lt;/p>
+&lt;h3 class="heading" id="同步">
+ 同步
+ &lt;a class="anchor" href="#%e5%90%8c%e6%ad%a5">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>推荐先完成ios设备上的操作&lt;/p>
+&lt;ul>
+&lt;li>下载Obsidian，点击「Create new vault」创建数据库，输入数据库名称&lt;/li>
+&lt;li>点击「Store in iCloud」，Obsidian将会在 iCloud 创建属于它的系统文件夹。&lt;strong>这一步很关键&lt;/strong>，因为在ios设备上，Obsidian无法自己手动选择文件夹。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Windows上的操作&lt;/p>
+&lt;ul>
+&lt;li>安装旧版本的icloud：
+我选择了7.x版本，但是官网上已经不提供了，现有官方渠道只有Microsoft Store上的最新版。
+最终，相对安全的火绒应用商店提供的iCloud就是7.x版本，可以自行下载。分享个115网盘的链接：&lt;a href="https://115.com/s/swhyhnn33z6?password=6969&amp;amp;#iCloud7x.exe">icloud.7x&lt;/a>&lt;/li>
+&lt;li>icloud勾选icloud云盘，在资源管理器就可以看到iCloud Drive目录。&lt;/li>
+&lt;li>打开Obsidian，使用本地目录，选择iCloudDrive目录中的 Obsidian目录就大功告成了&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>需要注意的是：旧版icloud不支持更换文件目录，默认文件目录在C:\Users\xx下。icloud云盘中文件较多的慎用。或许可以采用目录映射的方式将该文件夹映射到其他目录，我文件不多就不折腾了，在这只是提供一种解决思路。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>到目前为止：iPhone和Pc已经可以无感同步了，而且响应很快，不说做到毫秒级，5s以内可以做到。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="备份">
+ 备份
+ &lt;a class="anchor" href="#%e5%a4%87%e4%bb%bd">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>在obsidian仓库目录下初始化git仓库、初始提交、建立分支、推送到远程&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-git" data-lang="git">git init
+git add ./*
+git commit -m &amp;#34;initial&amp;#34;
+git branch -M main
+git remote add origin https://xxx
+git push -u origin mian
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>安装第三方插件Git，Obsidian Git已经改名为Git，以下是git插件相关设置以及机翻汉化。由于我只需要使用git进行备份，以下设置可以实现每30min自动commit并push到github。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="e87f9679dc6bfe6b20580b775baab0f3" src="https://webp.050612.xyz/2025/02/e87f9679dc6bfe6b20580b775baab0f3.jpg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="结束">
+ 结束
+ &lt;a class="anchor" href="#%e7%bb%93%e6%9d%9f">#&lt;/a>
+&lt;/h2>
+&lt;p>至此，已经完成了Obsidian的初始化配置，同时也完成我的第一篇在Obsidian上书写的文档。目前也就安装了git、RecentFiles两个插件，其他的等以后需要再去发掘吧。
+希望我的折腾不仅限于折腾，通过接触新工具养成记录的好习惯，而不是只想而不去做。&lt;/p>
+&lt;h2 class="heading" id="备用方案">
+ 备用方案
+ &lt;a class="anchor" href="#%e5%a4%87%e7%94%a8%e6%96%b9%e6%a1%88">#&lt;/a>
+&lt;/h2>
+&lt;p>目前使用旧版7.x版本icloud方式运行良好，但还是在折腾的过程中寻找了一些&lt;strong>备用方案&lt;/strong>：&lt;/p>
+&lt;h3 class="heading" id="使用新版icloudfreefilesync中转同步方案">
+ 使用新版icloud+FreeFileSync中转同步方案
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%96%b0%e7%89%88icloudfreefilesync%e4%b8%ad%e8%bd%ac%e5%90%8c%e6%ad%a5%e6%96%b9%e6%a1%88">#&lt;/a>
+&lt;/h3>
+&lt;p>原理是由于文件频繁的被修改，新版icloud判断有误会产生很多同名带括号的备份文件，为了解决频繁修改文件的问题，使用FreeFileSync软件在iCloud同步文件夹和其他位置的一个文件夹创建链接，并定时同步。pc的Obsidian使用其他位置的一个文件夹作为Obsidian仓库。&lt;/p>
+&lt;p>由于没有实践，不知道有没有解决pc和ios同步不及时的问题。
+参考教程：&lt;a href="https://zhuanlan.zhihu.com/p/459147364">obsidian好用的icloud同步方案 - 知乎&lt;/a>&lt;/p>
+&lt;h3 class="heading" id="使用新版icloud使用佬手搓程序中转同步">
+ 使用新版iCloud+使用佬手搓程序中转同步
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e6%96%b0%e7%89%88icloud%e4%bd%bf%e7%94%a8%e4%bd%ac%e6%89%8b%e6%90%93%e7%a8%8b%e5%ba%8f%e4%b8%ad%e8%bd%ac%e5%90%8c%e6%ad%a5">#&lt;/a>
+&lt;/h3>
+&lt;p>原理同上。&lt;/p>
+&lt;p>参考教程：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/447787943">obsidian笔记同步方案设计思路 - 知乎&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/447963514">obsidian笔记同步保姆级教程 - 知乎&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="使用-remotely-save插件--webdavonedrives3dropbox">
+ 使用 Remotely-Save插件 + WebDav/OneDrive/S3/DropBox
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8-remotely-save%e6%8f%92%e4%bb%b6--webdavonedrives3dropbox">#&lt;/a>
+&lt;/h3>
+&lt;p>原理是利用一些网盘服务商提供的WebDav协议接口或者是网盘官方提供的同步服务和Obsidian的第三方插件Remotely-Save联动进行同步。&lt;/p>
+&lt;p>参考教程：&lt;/p>
+&lt;ul>
+&lt;li>日本的一家支持webdav协议的网盘服务商&lt;a href="https://zhuanlan.zhihu.com/p/642725009">InfiniCLOUD（原TeraCLOUD）以及静读天下webdav同步 - 知乎&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://infini-cloud.net/en/clients.html">Apps|InfiniCLOUD&lt;/a>&lt;/li>
+&lt;li>国内有坚果云，付费服务的阿里云盘&lt;/li>
+&lt;li>使用alist自建webdav&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>参考教程：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://blog.goalonez.site/blog/Obsidian%E6%8A%98%E8%85%BE%E4%B9%8B%E8%B7%AF.html">Obsidian折腾之路 | Goalonez Blog&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/565999467">Obsidian同步！Windows与iOS双向同步解决方案（解决提示需要合并、根目录出现出现大量同名文件等） - 知乎&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://neevop.com/blog/obsidian_icloud_sync/">obsidian利用iCloud实现全平台同步&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.csdn.net/weixin_44370439/article/details/143572683">Obsidian的Git插件设置配置全流程 &amp;ndash; 简单的电脑端多平台同步方案及常见问题_obsidian git插件-CSDN博客&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.csdn.net/weixin_44370439/article/details/143489237?fromshare=blogdetail&amp;amp;sharetype=blogdetail&amp;amp;sharerId=143489237&amp;amp;sharerefer=PC&amp;amp;sharesource=weixin_44370439&amp;amp;sharefrom=from_link">Obsidian 插件安装教程_obsidian插件怎么安装-CSDN博客&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

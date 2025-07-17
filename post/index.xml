@@ -1,1 +1,468 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on G-Hung的博客</title><link>https://blog.yzyy.de/post/</link><description>Recent content in Posts on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/post/index.xml" rel="self" type="application/rss+xml"/><item><title>论在网吧登录 Steam 的正确姿势</title><link>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>记录一下关于steam的一些盗号心得。</description></item><item><title>Hello, Typo!</title><link>https://blog.yzyy.de/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>基于Hugo框架与Typo主题，从环境搭建、主题配置到自动化部署，记录个人博客的搭建流程</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on G-Hung的博客</title><link>https://blog.yzyy.de/post/</link><description>Recent content in Posts on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 06 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/post/index.xml" rel="self" type="application/rss+xml"/><item><title>论在网吧登录 Steam 的正确姿势</title><link>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>说到在网吧登录 Steam 的正确姿势，那就是不要在网吧尝试以任何方式登录 Steam。不是我杞人忧天，实在是血淋淋的教训太多了，请看：
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7817" src="https://webp.050612.xyz/2025/07/IMG_7817.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>这些案例中既有使用账号密码登录的，也有使用手机令牌扫码登录的。&lt;/p>
+&lt;p>是的🤗，只要你有库存，第二天 Steam 都可能会给你一个 &amp;ldquo;惊喜&amp;rdquo; 发钱！但这可不是 Steam 大发慈悲，而是在通知你：兄弟，你的号被盗了…😮
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7823" src="https://webp.050612.xyz/2025/07/IMG_7823.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7822" src="https://webp.050612.xyz/2025/07/IMG_7822.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>什么样的账号最容易被盗？&lt;/strong>&lt;/p>
+&lt;p>一般来说，盗号贼的目的是为了盗库存、网游开挂。&lt;br>
+如果号中有以下因素会增加被盗风险：&lt;/p>
+&lt;ul>
+&lt;li>CSGO、趴不寄、永劫等一些网游&lt;/li>
+&lt;li>高价值库存&lt;/li>
+&lt;li>集换式卡牌、闪卡等&lt;/li>
+&lt;/ul>
+&lt;p>俗话说，光脚的不怕穿鞋的，像我的 Steam 号库存一贫如洗🤦‍♂️，反而可以在网吧为所欲为…&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>“但我就是想在网吧玩啊，咋整？”&lt;/strong>&lt;/p>
+&lt;p>凡事没有绝对。&lt;/p>
+&lt;p>假如你也像上位佬友一样，家里电脑配置不够，不能爽完一些 3A，或者和以前的老同学临时起意相约网吧开黑，在这里分享一个相对来说保险的方法。&lt;/p>
+&lt;p>那就是 Steam 家庭共享大法。&lt;/p>
+&lt;ol>
+&lt;li>创建个空白小号（就当给自己养了个 Steam 二胎）&lt;/li>
+&lt;li>把小号以儿童身份加入大号的家庭组（认个干儿子）&lt;/li>
+&lt;li>平时把小号游玩权限全关（让熊孩子老实点）&lt;/li>
+&lt;li>网吧只登录小号，打完了及时锁定小号（让熊孩子去冒险）&lt;/li>
+&lt;/ol>
+&lt;p>这样有两个好处，一是大部分 3A 都支持家庭共享，二是小号拿来玩一些免费网游也可以。&lt;/p>
+&lt;p>唯一的风险就是，真有人不长眼地把你小号也给盗了，玩网游开挂会导致大号一起连坐封禁。🙄&lt;/p>
+&lt;hr>
+&lt;p>&lt;strong>“我就非要登录咋办？”&lt;/strong>&lt;/p>
+&lt;p>如果假设你选择了一家口碑良好、连锁品牌的高端网咖，并且坚定地选择相信他，那么也需要注意，做到这些会更加保险。&lt;/p>
+&lt;ol>
+&lt;li>如果你的电脑是开着的，那么一定要重启电脑，触发网吧的恢复程序，防止上一位 下毒；&lt;/li>
+&lt;li>重新官网下载 Steam 客户端，不要用网吧预装好的 Steam；&lt;/li>
+&lt;li>绑定手机令牌且通过手机令牌扫码登陆，不要手动输入帐号密码；&lt;/li>
+&lt;li>登陆后选择不把登陆凭证保存到本地计算机；&lt;/li>
+&lt;li>下机前主动登出 Steam，并确认不能免凭证登陆；&lt;/li>
+&lt;li>手机令牌在已授权凭证中清除在网吧的登陆凭证。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>&lt;strong>万一真被盗了你又不愿意咋办？&lt;/strong>&lt;/p>
+&lt;p>最后再说说在你及时发现了 steam 给你发钱的时候（被盗的时候），补救措施：&lt;/p>
+&lt;blockquote>
+&lt;p>转载小黑盒
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7824" src="https://webp.050612.xyz/2025/07/IMG_7824.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7825" src="https://webp.050612.xyz/2025/07/IMG_7825.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7826" src="https://webp.050612.xyz/2025/07/IMG_7826.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="IMG_7827" src="https://webp.050612.xyz/2025/07/IMG_7827.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>&lt;/blockquote></description></item><item><title>Hello, Typo!</title><link>https://blog.yzyy.de/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Wed, 04 Oct 2023 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;p>一切都源于在论坛上看到了一个简洁的博客主题，一个以内容为上的博客主题。看到的那一刻就默默在笔记上记下了一个TODO: 搭建一个博客。&lt;/p>
+&lt;p>在看到typo之前，没想过搭建一个个人博客，想着有一个本地化的笔记内容已经够了。加上在网上冲浪，看到的无数个已经被遗忘在互联网的角落里蒙灰的博客。我想，凭我的精力很难一直有内容产出。所以我的博客计划搁置了一段时间。&lt;/p>
+&lt;p>但我后来想了想，正是这些蒙灰的博客，才真的帮到过我。可能内容简单，甚至有些简陋，但偏偏就是他们记录下了某个冷门问题的解决过程，或者某一步的细节，让我得以顺利过关。&lt;/p>
+&lt;p>反过来看，这也是它们存在的意义吧。博客不一定要有多少更新、多少阅读量、有多么高大上，只要在某个时刻它帮到了某个人，那它就很有价值。所以，看似被遗忘的内容，其实都还藏着被再次发现和利用的可能——我自己就是这样真实受益的那个人。&lt;/p>
+&lt;p>下面记录我搭建这个博客的过程吧。&lt;/p>
+&lt;hr>
+&lt;h1 class="heading" id="工作主流程">
+ 工作主流程
+ &lt;a class="anchor" href="#%e5%b7%a5%e4%bd%9c%e4%b8%bb%e6%b5%81%e7%a8%8b">#&lt;/a>
+&lt;/h1>
+&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="|525" src="https://webp.050612.xyz/2025/07/20250715234651888.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;ol>
+&lt;li>笔记软件: &lt;a href="https://obsidian.md%22/">Obsidian&lt;/a>&lt;/li>
+&lt;li>框架: &lt;a href="https://gohugo.io/">Hugo&lt;/a>&lt;/li>
+&lt;li>主题: &lt;a href="https://github.com/tomfran/typo">typo:&lt;/a>&lt;/li>
+&lt;li>远程同步: &lt;a href="https://git-scm.com/">Git&lt;/a>&lt;/li>
+&lt;li>渲染 &amp;amp; 发布: Github Action &amp;amp; Github Page&lt;/li>
+&lt;li>Dns 托管: &lt;a href="https://cloudflare.com/">Cloudflare&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h1 class="heading" id="搭建步骤">
+ 搭建步骤
+ &lt;a class="anchor" href="#%e6%90%ad%e5%bb%ba%e6%ad%a5%e9%aa%a4">#&lt;/a>
+&lt;/h1>
+&lt;h2 class="heading" id="hugo">
+ Hugo
+ &lt;a class="anchor" href="#hugo">#&lt;/a>
+&lt;/h2>
+&lt;p>像我这样先选了主题，再了解博客框架的人应该不多吧。Hugo 是一个使用 Go 语言编写的&lt;strong>静态网站生成器&lt;/strong>，以其&lt;strong>高性能、易用性和灵活性&lt;/strong>而广受欢迎。可以把 Markdown 文件转化成 HTML 文件。但是静态博客也有缺点，维护难，可扩展性较弱，上手门槛高，希望我能坚持下去吧。&lt;/p>
+&lt;h3 class="heading" id="hugo下载安装">
+ Hugo下载安装
+ &lt;a class="anchor" href="#hugo%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>首先在 &lt;a href="https://github.com/gohugoio/hugo/releases">Release&lt;/a> 根据操作系统以及指令集下载最新版本的 Hugo 压缩包
+Windows 则选择例如: &lt;code>hugo_0.148.1_windows-amd64.zip&lt;/code>&lt;/li>
+&lt;li>选择合适的路径进行解压&lt;/li>
+&lt;li>添加环境变量，在搜索框搜索&lt;code>环境变量&lt;/code>，根据解压路径配置hugo.exe所在的路径到PATH&lt;/li>
+&lt;li>打开一个终端，输入&lt;code>hugo version&lt;/code>验证&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="初始化hugo结构">
+ 初始化Hugo结构
+ &lt;a class="anchor" href="#%e5%88%9d%e5%a7%8b%e5%8c%96hugo%e7%bb%93%e6%9e%84">#&lt;/a>
+&lt;/h3>
+&lt;p>使用 &lt;code>hugo new site xxxx&lt;/code>创建网站初始结构。
+初始结构如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>archetypes&lt;/strong>：存放用 hugo 命令新建的 Markdown 文件应用的 front matter 模版&lt;/li>
+&lt;li>&lt;strong>content&lt;/strong>：存放内容页面，比如「博客」、「读书笔记」等&lt;/li>
+&lt;li>&lt;strong>layouts&lt;/strong>：存放定义网站的样式，写在&lt;code>layouts&lt;/code>文件下的样式会覆盖安装的主题中的 &lt;code>layouts&lt;/code>文件同名的样式&lt;/li>
+&lt;li>&lt;strong>static&lt;/strong>：存放所有静态文件，如图片&lt;/li>
+&lt;li>&lt;strong>data&lt;/strong>：存放创建站点时 Hugo 使用的其他数据&lt;/li>
+&lt;li>&lt;strong>public&lt;/strong>：存放 Hugo 生成的静态网页&lt;/li>
+&lt;li>&lt;strong>themes&lt;/strong>：存放主题文件&lt;/li>
+&lt;li>&lt;strong>config.toml&lt;/strong>：网站配置文件&lt;/li>
+&lt;/ul>
+&lt;h2 class="heading" id="typo">
+ Typo
+ &lt;a class="anchor" href="#typo">#&lt;/a>
+&lt;/h2>
+&lt;p>正像github上介绍的，Typo 是一个以简洁为基础的主题。目标是创建一个以内容为中心，没有任何其他多余内容的网站。直观感受是具有纯粹的阅读体验。&lt;/p>
+&lt;h3 class="heading" id="typo主题配置">
+ Typo主题配置
+ &lt;a class="anchor" href="#typo%e4%b8%bb%e9%a2%98%e9%85%8d%e7%bd%ae">#&lt;/a>
+&lt;/h3>
+&lt;p>不同主题一般都在相应的wiki中给出了配置指南。按照流程配置即可。需要格外注意的是，建议直接使用主题给出的&lt;code>hugo.toml&lt;/code> 配置文件作为基础，在这个基础之上进行配置可以避免一些奇怪的问题。&lt;/p>
+&lt;h3 class="heading" id="本地测试">
+ 本地测试
+ &lt;a class="anchor" href="#%e6%9c%ac%e5%9c%b0%e6%b5%8b%e8%af%95">#&lt;/a>
+&lt;/h3>
+&lt;p>到这一步即可进行本地测试，在博客主文件夹下运行命令:&lt;/p>
+&lt;pre tabindex="0">&lt;code>hugo server -D
+&lt;/code>&lt;/pre>&lt;p>再打开输出的网址即可&lt;/p>
+&lt;h2 class="heading" id="工作流搭建">
+ 工作流搭建
+ &lt;a class="anchor" href="#%e5%b7%a5%e4%bd%9c%e6%b5%81%e6%90%ad%e5%bb%ba">#&lt;/a>
+&lt;/h2>
+&lt;ol>
+&lt;li>创建 2 个 GitHub 仓库
+&lt;ul>
+&lt;li>&lt;strong>博客源仓库&lt;/strong>：储存所有 Markdown 源文件（博客内容），和博客中用到的图片等。&lt;/li>
+&lt;li>&lt;strong>GitHub Pages 仓库&lt;/strong>：储存由 Hugo 从Markdown 文件生成的 HTML 文件。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>将在&lt;strong>博客源仓库&lt;/strong>中 Hugo 生成的静态 HTML 文件部署到 &lt;strong>GitHub Pages 仓库&lt;/strong>中。&lt;/li>
+&lt;/ol>
+&lt;p>我学习替他博主的思路。我将博客源码存放到一个private repo里。但也可以将源码直接放到github pages repo中（只需要单独一个远程仓库即可），但这样其他人能获取文章的源文件。&lt;/p>
+&lt;h3 class="heading" id="创建博客源仓库">
+ 创建博客源仓库
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e5%8d%9a%e5%ae%a2%e6%ba%90%e4%bb%93%e5%ba%93">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>命名&lt;strong>博客源仓库&lt;/strong>（whatever you want）&lt;/li>
+&lt;li>勾选 &lt;strong>Private&lt;/strong>，设置为私有仓库。&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="创建-github-page-仓库">
+ 创建 GitHub Page 仓库
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba-github-page-%e4%bb%93%e5%ba%93">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>命名 &lt;strong>GitHub Pages&lt;/strong> 仓库，这个仓库必须使用特殊的命名格式 &lt;code>&amp;lt;username.github.io&amp;gt;&lt;/code>， &lt;code>&amp;lt;username&amp;gt;&lt;/code> 是自己的 GitHub 的用户名。&lt;/li>
+&lt;li>勾选 &lt;strong>Public&lt;/strong>，设置为公开仓库。&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="添加cname文件到static文件夹使用自定义域名的额外步骤">
+ 添加CNAME文件到static/文件夹（使用自定义域名的额外步骤）
+ &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0cname%e6%96%87%e4%bb%b6%e5%88%b0static%e6%96%87%e4%bb%b6%e5%a4%b9%e4%bd%bf%e7%94%a8%e8%87%aa%e5%ae%9a%e4%b9%89%e5%9f%9f%e5%90%8d%e7%9a%84%e9%a2%9d%e5%a4%96%e6%ad%a5%e9%aa%a4">#&lt;/a>
+&lt;/h3>
+&lt;p>如果选择为Github Pages使用自定义域名，则这个步骤必须要做，否则自定义域名会隔三差五失效。&lt;/p>
+&lt;p>原因在于，当在&lt;code>YOUR_NAME.github.io&lt;/code>这个仓库的设置里手动添加自定义域名的时候，其实是在github仓库新增了一个CNAME文件，里面内容为自定义域名。&lt;/p>
+&lt;p>但是每次推送触发actions后，hugo命令都会生成一个全新的public文件夹并强制覆盖到page仓库。这个操作都会覆盖掉github上的CNAME，导致域名失效。&lt;/p>
+&lt;p>在 &lt;code>hugo&lt;/code> 构建网站时，它会把 &lt;code>static&lt;/code> 文件夹里的&lt;strong>所有内容&lt;/strong>，原封不动地、完整地复制到最终生成的 &lt;code>public&lt;/code> 文件夹的根目录下。所以在static文件夹下添加一个CNAME文件即可。&lt;/p>
+&lt;h3 class="heading" id="推送到博客源仓库">
+ 推送到博客源仓库
+ &lt;a class="anchor" href="#%e6%8e%a8%e9%80%81%e5%88%b0%e5%8d%9a%e5%ae%a2%e6%ba%90%e4%bb%93%e5%ba%93">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>创建gitignore文件&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code class="language-.gitignore" data-lang=".gitignore"># Hugo
+public/
+.hugo_build.lock
+&lt;/code>&lt;/pre>&lt;ol start="2">
+&lt;li>推送到远程仓库&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code># === 项目初始化与首次提交 ===
+echo &amp;#34;# my-blog-source&amp;#34; &amp;gt;&amp;gt; README.md
+git init
+git add .
+git commit -m &amp;#34;first commit&amp;#34;
+git branch -M main
+git remote add origin https://github.com/xxx/xxx.git
+git push -u origin main
+&lt;/code>&lt;/pre>&lt;h2 class="heading" id="自动发布内容">
+ 自动发布内容
+ &lt;a class="anchor" href="#%e8%87%aa%e5%8a%a8%e5%8f%91%e5%b8%83%e5%86%85%e5%ae%b9">#&lt;/a>
+&lt;/h2>
+&lt;p>使用Github Actions功能实现提交源码后自动发布。&lt;/p>
+&lt;h3 class="heading" id="生成actions-secrets">
+ 生成Actions secrets
+ &lt;a class="anchor" href="#%e7%94%9f%e6%88%90actions-secrets">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>生成Personal access tokens 首先点击github头像在下拉栏里进入Setting-&amp;gt;Developer Settings-&amp;gt;Personal access tokens -&amp;gt; tokens (classic)
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250716010922097.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+
+选择Generate new token，点击Generate token生成token，并先复制保存该token。(这个token只有显示一次，所以一定要复制保存)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>生成Actions secrets 接下来在源码repo中添加上面的personal access token：&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>进入repo的Settings-&amp;gt;Secrets and variable一栏，选择New repository secret
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250716011218953.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;p>名称自取，Secret复制上面生成的Personal access tokens
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250716011226467.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h3 class="heading" id="配置actions文件">
+ 配置actions文件
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aeactions%e6%96%87%e4%bb%b6">#&lt;/a>
+&lt;/h3>
+&lt;p>在repo根目录新建嵌套的两个文件夹.github/workflows&lt;/p>
+&lt;p>在workflows里新建一个后缀为.yml的配置文件，名字自取。&lt;/p>
+&lt;p>写进去以下配置（从hugo官方文档修改而来）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>name: github pages &lt;span style="color:#888;font-style:italic"># 名字自取&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> push:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> branches:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - main &lt;span style="color:#888;font-style:italic"># 这里的意思是当 main分支发生push的时候，运行下面的jobs，这里先改为github-actions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>jobs:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> deploy: &lt;span style="color:#888;font-style:italic"># 任务名自取&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> runs-on: ubuntu-latest	# 在什么环境运行任务
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> steps:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - uses: actions/checkout@v2	# 引用actions/checkout这个action，与所在的github仓库同名
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> submodules: &lt;span style="font-weight:bold;text-decoration:underline">true&lt;/span> &lt;span style="color:#888;font-style:italic"># Fetch Hugo themes (true OR recursive) 获取submodule主题&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetch-depth: 0 &lt;span style="color:#888;font-style:italic"># Fetch all history for .GitInfo and .Lastmod&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Setup Hugo	# 步骤名自取
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uses: peaceiris/actions-hugo@v2	# hugo官方提供的action，用于在任务环境中获取hugo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hugo-version: &lt;span style="color:#666;font-style:italic">&amp;#39;latest&amp;#39;&lt;/span>	&lt;span style="color:#888;font-style:italic"># 获取最新版本的hugo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># extended: true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> run: hugo --minify	# 使用hugo构建静态网页
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - name: Deploy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> uses: peaceiris/actions-gh-pages@v3	# 一个自动发布github pages的action
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># github_token: ${{ secrets.GITHUB_TOKEN }} 该项适用于发布到源码相同repo的情况，不能用于发布到其他repo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> external_repository: 用户名/page仓库名	# 发布到哪个repo
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> personal_token: ${{ secrets.token名 }}	# 发布到其他repo需要提供上面生成的personal access token
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publish_dir: ./public	# 注意这里指的是要发布哪个文件夹的内容，而不是指发布到目的仓库的什么位置，因为hugo默认生成静态网页到public文件夹，所以这里发布public文件夹里的内容
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publish_branch: main	# 发布到哪个branch
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>yml文件中只需要改&lt;code>external_repository&lt;/code>为自己的github page仓库，&lt;code>personal_token: ${{ secrets.XXX }}&lt;/code> 改成前面步骤生成Actions Secrets中取的名称。&lt;/p>
+&lt;hr>
+&lt;p>至此，折腾了半天的自动化流程，总算是搭建完成了。&lt;/p>
+&lt;p>现在，我终于可以再关心部署的流程细节，把精力放回到最初的目的上——去记录，去成为那些曾经帮助过我的、‘蒙灰的博客’中的一员。&lt;/p>
+&lt;p>也许我的文章也会很简单，甚至有些简陋，也可能会在未来的某个时刻被遗忘在角落里。但只要它能在某个时刻，帮到某个卡在同样问题上的人，让他得以顺利过关，那这一切的折腾就都值了。&lt;/p>
+&lt;p>&lt;strong>Hello, Typo！&lt;/strong>&lt;/p></description></item></channel></rss>
