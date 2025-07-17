@@ -310,7 +310,39 @@
  迁移服务
  &lt;a class="anchor" href="#%e8%bf%81%e7%a7%bb%e6%9c%8d%e5%8a%a1">#&lt;/a>
 &lt;/h2>
-&lt;p>到了最复杂的一个环节了，即使运行在docker的服务，每个也要迁移volumes、nginx配置，开干！💪正好凑这个机会统计一下我运行了哪些服务。&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+&lt;p>到了最复杂的一个环节了，即使运行在docker的服务，每个也要迁移volumes、nginx配置，开干！💪正好凑这个机会统计一下我运行了哪些服务。&lt;/p>
+&lt;h3 class="heading" id="openwebui--newapi">
+ OpenWebUI + NewAPI
+ &lt;a class="anchor" href="#openwebui--newapi">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>打包持久化数据，其中NewAPI的MySQL使用了Docker的命名卷&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">######## 打包OpenWebUI和NewAPI的持久化数据&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -czvf data.tar.gz ./openwebui ./newapi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">######## 打包newapi MySQL数据卷 ###########&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 查找卷的物理路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker volume inspect [项目名]_mysql_data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 在输出中找到 &amp;#34;Mountpoint&amp;#34;: &amp;#34;/var/lib/docker/volumes/[项目名]_mysql_data/_data&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo tar -czvf ~/mysql_volume.tar.gz /var/lib/docker/volumes/[项目名]_mysql_data/_data
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>使用SFTP功能传输到新机器&lt;/li>
+&lt;li>在新机器上解压&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-BASH" data-lang="BASH">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 手动创建目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mkdir -p /var/lib/docker/volumes/[项目名]_mysql_data/_data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 解压文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo tar -xzvf ~/mysql_volume.tar.gz -C /var/lib/docker/volumes/[项目名]_mysql_data/_data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 修复文件权限&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo chown -R 999:999 /var/lib/docker/volumes/[项目名]_mysql_data/_data
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
  域名相关
  &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
 &lt;/h1>
