@@ -12,7 +12,33 @@
  安装docker
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85docker">#&lt;/a>
 &lt;/h2>
-&lt;p>因为多数服务是运行在docker上的，安装docker &amp;amp; docker compose是必不可少的。&lt;/p></description></item><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>&lt;h1 class="heading" id="缘起">
+&lt;p>因为多数服务是运行在docker上的，安装docker &amp;amp; docker compose是必不可少的。&lt;/p>
+&lt;h2 class="heading" id="ssl证书迁移">
+ SSL证书迁移
+ &lt;a class="anchor" href="#ssl%e8%af%81%e4%b9%a6%e8%bf%81%e7%a7%bb">#&lt;/a>
+&lt;/h2>
+&lt;p>不是简单地迁移已有证书就行了，还要迁移配置好的自动续签服务，经过查看在一台机器上有四个域名的自动续签服务，但是我准备瘦身一下，有些域名快到期了。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/certificates.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p></description></item><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>&lt;h1 class="heading" id="缘起">
  缘起
  &lt;a class="anchor" href="#%e7%bc%98%e8%b5%b7">#&lt;/a>
 &lt;/h1>

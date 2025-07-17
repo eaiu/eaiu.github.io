@@ -12,7 +12,33 @@
  安装docker
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85docker">#&lt;/a>
 &lt;/h2>
-&lt;p>因为多数服务是运行在docker上的，安装docker &amp;amp; docker compose是必不可少的。&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+&lt;p>因为多数服务是运行在docker上的，安装docker &amp;amp; docker compose是必不可少的。&lt;/p>
+&lt;h2 class="heading" id="ssl证书迁移">
+ SSL证书迁移
+ &lt;a class="anchor" href="#ssl%e8%af%81%e4%b9%a6%e8%bf%81%e7%a7%bb">#&lt;/a>
+&lt;/h2>
+&lt;p>不是简单地迁移已有证书就行了，还要迁移配置好的自动续签服务，经过查看在一台机器上有四个域名的自动续签服务，但是我准备瘦身一下，有些域名快到期了。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/certificates.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
  域名相关
  &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
 &lt;/h1>
