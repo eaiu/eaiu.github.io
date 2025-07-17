@@ -1099,6 +1099,10 @@
 &lt;/h3>
 &lt;p>参考：&lt;a href="https://blog.uuphy.com/posts/%E9%85%8D%E7%BD%AE-acme.sh-%E5%85%8D%E8%B4%B9%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%8F%91%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%AF%81%E4%B9%A6/">使用 acme.sh DNS 验证的方式签发 Let&amp;rsquo;sEncrypt 证书&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://acme.sh/">acme.sh&lt;/a> 是一个用来自动获取和管理 SSL/TLS 证书的开源脚本，可以从 Let’s Encrypt 等多个 CA 获取免费的证书。结合使用 Cloudflare DNS 验证的模式申请泛域名证书，并自动续签。&lt;/p>
+&lt;hr>
+&lt;p>2025-07-17更新&lt;/p>
+&lt;p>方案有改进，请看&lt;a href="https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/#自动续签的方案改进">新购一台8GB的VDS&lt;/a>。
+主要优化了一台vps多个域名的配置方式，如果是单个域名，以下方案相同。&lt;/p>
 &lt;h4 class="heading" id="cloudflare-api">
  Cloudflare API
  &lt;a class="anchor" href="#cloudflare-api">#&lt;/a>
@@ -1361,14 +1365,6 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--capath /path/to/ssl/domain.tld_ca.pem &lt;span style="color:#666;font-style:italic">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;service nginx reload&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 第一次尝试自动安装&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme_yzyy &lt;span style="color:#666;font-style:italic">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --install-cert -d yzyy.de &lt;span style="color:#666;font-style:italic">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --key-file /etc/ssl/private/yzyy.de.key &lt;span style="color:#666;font-style:italic">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --fullchain-file /etc/ssl/certs/yzyy.de.fullchain.pem &lt;span style="color:#666;font-style:italic">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --capath /etc/ssl/certs/yzyy.de.ca.pem &lt;span style="color:#666;font-style:italic">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span> --reloadcmd &lt;span style="color:#666;font-style:italic">&amp;#34;nginx -s reload&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 ECC 证书，若不需要，跳过即可&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
