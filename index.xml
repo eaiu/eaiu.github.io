@@ -1352,8 +1352,6 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 签发 RSA 证书&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 目前采用手动移动证书和密钥，或许可以采用以下自动安装的命令&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 安装 RSA 证书到指定路径&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>acme.sh --install-cert -d domain.tld &lt;span style="color:#666;font-style:italic">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#666;font-style:italic">&lt;/span>--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic">\
@@ -1720,13 +1718,10 @@
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>
-&lt;p>移除默认的 Nginx 配置：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>移除默认的 Nginx 配置：&lt;/li>
 &lt;/ul>
-&lt;p>sudo rm /etc/nginx/sites-enabled/default
-```&lt;/p>
-&lt;ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo rm /etc/nginx/sites-enabled/default
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>测试 Nginx 配置：&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nginx -t
