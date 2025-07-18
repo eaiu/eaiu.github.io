@@ -384,9 +384,16 @@
  &lt;a class="anchor" href="#sub-store">#&lt;/a>
 &lt;/h3>
 &lt;p>很好用的代理配置管理软件&lt;/p>
+&lt;ol>
+&lt;li>nginx&lt;/li>
+&lt;/ol>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /etc/nginx/sites-available/substore /etc/nginx/sites-enabled/substore
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl restart nginx.service 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>&lt;h1 class="heading" id="缘起">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="pdfmathtranslate">
+ PDFMathTranslate
+ &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
+&lt;/h3>
+&lt;p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。&lt;/p></description></item><item><title>自建Vaultwarden密码库：从部署到安全备份</title><link>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</link><pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/vaultwarden%E8%87%AA%E5%BB%BA%E5%AF%86%E7%A0%81%E5%BA%93/</guid><description>&lt;h1 class="heading" id="缘起">
  缘起
  &lt;a class="anchor" href="#%e7%bc%98%e8%b5%b7">#&lt;/a>
 &lt;/h1>
