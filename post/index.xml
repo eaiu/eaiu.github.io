@@ -349,7 +349,34 @@
 &lt;p>直接把旧机器上的nginx打包上传到新机上，操作只需要建立site-available与site-enable的软连接&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
-&lt;p>绷不住了，第一次搬家十分乃至万分不顺利，从七点搬到十一点半还没搬完。搬家太累了😭&lt;/p>&lt;/blockquote></description></item><item><title>论在网吧登录 Steam 的正确姿势</title><link>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>说到在网吧登录 Steam 的正确姿势，那就是不要在网吧尝试以任何方式登录 Steam。不是我杞人忧天，实在是血淋淋的教训太多了，请看：
+&lt;p>绷不住了，第一次搬家十分乃至万分不顺利，从七点搬到十一点半还没搬完。搬家太累了😭&lt;/p>&lt;/blockquote>
+&lt;h2 class="heading" id="openlist">
+ OpenList
+ &lt;a class="anchor" href="#openlist">#&lt;/a>
+&lt;/h2>
+&lt;p>想到前段时间的alist的暴雷商业化，我还是把镜像换成OpenList吧。&lt;/p>
+&lt;ol>
+&lt;li>docker镜像变更&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>version: &lt;span style="color:#666;font-style:italic">&amp;#39;3.3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> alist:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: &lt;span style="color:#666;font-style:italic">&amp;#39;openlistteam/openlist:latest&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: alist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#39;./data:/opt/alist/data&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#39;127.0.0.1:1259:5244&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PUID=0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - PGID=0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - UMASK=022
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>配置nginx&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>论在网吧登录 Steam 的正确姿势</title><link>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 06 Mar 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%AE%BA%E5%9C%A8%E7%BD%91%E5%90%A7%E7%99%BB%E5%BD%95-steam-%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>说到在网吧登录 Steam 的正确姿势，那就是不要在网吧尝试以任何方式登录 Steam。不是我杞人忧天，实在是血淋淋的教训太多了，请看：
 
 
 
