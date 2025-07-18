@@ -393,7 +393,37 @@
  PDFMathTranslate
  &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
 &lt;/h3>
-&lt;p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+&lt;p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。&lt;/p>
+&lt;h2 class="heading" id="安装新服务">
+ 安装新服务
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e6%96%b0%e6%9c%8d%e5%8a%a1">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="1panel">
+ 1Panel
+ &lt;a class="anchor" href="#1panel">#&lt;/a>
+&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>bash -c &lt;span style="color:#666;font-style:italic">&amp;#34;&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">$(&lt;/span>curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh&lt;span style="font-weight:bold;text-decoration:underline">)&lt;/span>&lt;span style="color:#666;font-style:italic">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250718151202885.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
  域名相关
  &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
 &lt;/h1>
