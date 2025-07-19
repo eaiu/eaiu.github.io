@@ -604,7 +604,27 @@
 &lt;/li>
 &lt;/ul>
 &lt;p>其余的一些功能中，能吸引我的还有自动备份功能，未来可能会用到。&lt;/p>
-&lt;p>说实话，无法使用nginx反代实现https访问差点把我劝退，1panel的卸载命令都已经敲在了终端中。不过还是更新了一下nginx配置，找到了问题所在，留下来了这个看起来很舒服的面板。希望以后可以发挥更大的作用。&lt;/p></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
+&lt;p>说实话，无法使用nginx反代实现https访问差点把我劝退，1panel的卸载命令都已经敲在了终端中。不过还是更新了一下nginx配置，找到了问题所在，留下来了这个看起来很舒服的面板。希望以后可以发挥更大的作用。&lt;/p>
+&lt;h1 class="heading" id="关闭-ipv6--开启bbr">
+ 关闭 ipv6 &amp;amp; 开启bbr
+ &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad-ipv6--%e5%bc%80%e5%90%afbbr">#&lt;/a>
+&lt;/h1>
+&lt;p>我的网络环境为校园网，对ipv6的支持并不好；&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.core.default_qdisc=fq&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.ipv4.tcp_congestion_control=bbr&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sysctl -p
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>lsmod | grep bbr &lt;span style="color:#888;font-style:italic"># 查看是否成功开启BBR&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 1. 将配置添加到 /etc/sysctl.conf (使用 tee -a 确保安全追加)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.ipv6.conf.all.disable_ipv6 = 1&amp;#34;&lt;/span> | sudo tee -a /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.ipv6.conf.default.disable_ipv6 = 1&amp;#34;&lt;/span> | sudo tee -a /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.ipv6.conf.lo.disable_ipv6 = 1&amp;#34;&lt;/span> | sudo tee -a /etc/sysctl.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 2. 使配置立即生效 (并加载所有 /etc/sysctl.conf 中的配置)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo sysctl -p
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 3. (可选) 重启系统以确保所有服务都以新配置启动&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># sudo reboot&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>域名管理：Cloudflare DNS托管与SSL证书配置</title><link>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</link><pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/%E6%9C%8D%E5%8A%A1%E5%99%A8/%E5%9F%9F%E5%90%8D%E7%9B%B8%E5%85%B3/</guid><description>&lt;h1 class="heading" id="域名相关">
  域名相关
  &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d%e7%9b%b8%e5%85%b3">#&lt;/a>
 &lt;/h1>
