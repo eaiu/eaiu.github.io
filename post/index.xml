@@ -395,7 +395,30 @@
 &lt;/h3>
 &lt;p>一个很好用的gemini代理服务，支持多KEY，失败重试等。&lt;/p>
 &lt;p>由于之前服务器为香港，而AI服务一般都不支持中国大陆以及香港，所以之前gemini-balance服务部署在一个小机器上。正好趁着这次搬家搬到一起。&lt;/p>
-&lt;h3 class="heading" id="pdfmathtranslate">
+&lt;ul>
+&lt;li>docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个m&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># Gemini代理池&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gemini-balance:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: ghcr.io/snailyp/gemini-balance:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: gemini-balance
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#34;127.0.0.1:1260:8000&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> env_file:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - .env &lt;span style="color:#888;font-style:italic"># 同样使用 .env 文件管理配置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> networks:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - app_network &lt;span style="color:#888;font-style:italic"># 加入统一网络&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mysql:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> condition: service_healthy &lt;span style="color:#888;font-style:italic"># 依赖于我们统一的 mysql 服务&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> healthcheck:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test: [&lt;span style="color:#666;font-style:italic">&amp;#34;CMD-SHELL&amp;#34;&lt;/span>, &lt;span style="color:#666;font-style:italic">&amp;#34;python -c \&amp;#34;import requests; exit(0) if requests.get(&amp;#39;http://localhost:8000/health&amp;#39;).status_code == 200 else exit(1)\&amp;#34;&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> interval: 30s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> timeout: 5s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> retries: 3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> start_period: 10s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="pdfmathtranslate">
  PDFMathTranslate
  &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
 &lt;/h3>
