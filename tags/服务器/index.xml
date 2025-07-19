@@ -396,7 +396,7 @@
 &lt;p>一个很好用的gemini代理服务，支持多KEY，失败重试等。&lt;/p>
 &lt;p>由于之前服务器为香港，而AI服务一般都不支持中国大陆以及香港，所以之前gemini-balance服务部署在一个小机器上。正好趁着这次搬家搬到一起。&lt;/p>
 &lt;ul>
-&lt;li>docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个m&lt;/li>
+&lt;li>docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个MySQL服务，造成资源浪费。&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># Gemini代理池&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gemini-balance:
@@ -418,7 +418,8 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> timeout: 5s
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> retries: 3
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> start_period: 10s
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="pdfmathtranslate">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>nginx配置文件没有什么特殊的，反代一下即可。&lt;/p>
+&lt;h3 class="heading" id="pdfmathtranslate">
  PDFMathTranslate
  &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
 &lt;/h3>

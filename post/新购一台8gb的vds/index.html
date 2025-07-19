@@ -118,7 +118,7 @@
 <a class=anchor href=#sub-store>#</a></h3><p>很好用的代理配置管理软件</p><ol><li>nginx</li></ol><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo ln -s /etc/nginx/sites-available/substore /etc/nginx/sites-enabled/substore
 </span></span><span style=display:flex><span>sudo systemctl restart nginx.service 
 </span></span></code></pre></div><h3 class=heading id=gemini-balance>Gemini-balance
-<a class=anchor href=#gemini-balance>#</a></h3><p>一个很好用的gemini代理服务，支持多KEY，失败重试等。</p><p>由于之前服务器为香港，而AI服务一般都不支持中国大陆以及香港，所以之前gemini-balance服务部署在一个小机器上。正好趁着这次搬家搬到一起。</p><ul><li>docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个m</li></ul><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=display:flex><span>  <span style=color:#888;font-style:italic># Gemini代理池</span>
+<a class=anchor href=#gemini-balance>#</a></h3><p>一个很好用的gemini代理服务，支持多KEY，失败重试等。</p><p>由于之前服务器为香港，而AI服务一般都不支持中国大陆以及香港，所以之前gemini-balance服务部署在一个小机器上。正好趁着这次搬家搬到一起。</p><ul><li>docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个MySQL服务，造成资源浪费。</li></ul><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=display:flex><span>  <span style=color:#888;font-style:italic># Gemini代理池</span>
 </span></span><span style=display:flex><span>  gemini-balance:
 </span></span><span style=display:flex><span>    image: ghcr.io/snailyp/gemini-balance:latest
 </span></span><span style=display:flex><span>    container_name: gemini-balance
@@ -138,7 +138,7 @@
 </span></span><span style=display:flex><span>      timeout: 5s
 </span></span><span style=display:flex><span>      retries: 3
 </span></span><span style=display:flex><span>      start_period: 10s
-</span></span></code></pre></div><h3 class=heading id=pdfmathtranslate>PDFMathTranslate
+</span></span></code></pre></div><p>nginx配置文件没有什么特殊的，反代一下即可。</p><h3 class=heading id=pdfmathtranslate>PDFMathTranslate
 <a class=anchor href=#pdfmathtranslate>#</a></h3><p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。</p><h3 class=heading><a class=anchor href=#>#</a></h3><h2 class=heading id=安装新服务>安装新服务
 <a class=anchor href=#%e5%ae%89%e8%a3%85%e6%96%b0%e6%9c%8d%e5%8a%a1>#</a></h2><h3 class=heading id=1panel>1Panel
 <a class=anchor href=#1panel>#</a></h3><p>一键安装的命令：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>bash -c <span style=color:#666;font-style:italic>&#34;</span><span style=font-weight:700;text-decoration:underline>$(</span>curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh<span style=font-weight:700;text-decoration:underline>)</span><span style=color:#666;font-style:italic>&#34;</span>
