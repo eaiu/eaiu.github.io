@@ -394,6 +394,10 @@
  &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
 &lt;/h3>
 &lt;p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。&lt;/p>
+&lt;h3 class="heading" id="">
+ 
+ &lt;a class="anchor" href="#">#&lt;/a>
+&lt;/h3>
 &lt;h2 class="heading" id="安装新服务">
  安装新服务
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e6%96%b0%e6%9c%8d%e5%8a%a1">#&lt;/a>
