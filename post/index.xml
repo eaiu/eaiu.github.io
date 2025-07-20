@@ -424,10 +424,6 @@
  &lt;a class="anchor" href="#pdfmathtranslate">#&lt;/a>
 &lt;/h3>
 &lt;p>一个基于 AI 完整保留排版的 PDF 文档全文双语翻译，支持 Google/DeepL/Ollama/OpenAI 等服务。&lt;/p>
-&lt;h3 class="heading" id="">
- 
- &lt;a class="anchor" href="#">#&lt;/a>
-&lt;/h3>
 &lt;h2 class="heading" id="安装新服务">
  安装新服务
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e6%96%b0%e6%9c%8d%e5%8a%a1">#&lt;/a>
@@ -605,10 +601,282 @@
 &lt;/ul>
 &lt;p>其余的一些功能中，能吸引我的还有自动备份功能，未来可能会用到。&lt;/p>
 &lt;p>说实话，无法使用nginx反代实现https访问差点把我劝退，1panel的卸载命令都已经敲在了终端中。不过还是更新了一下nginx配置，找到了问题所在，留下来了这个看起来很舒服的面板。希望以后可以发挥更大的作用。&lt;/p>
-&lt;h1 class="heading" id="关闭-ipv6--开启bbr">
+&lt;h3 class="heading" id="哪吒监控v1">
+ 哪吒监控V1
+ &lt;a class="anchor" href="#%e5%93%aa%e5%90%92%e7%9b%91%e6%8e%a7v1">#&lt;/a>
+&lt;/h3>
+&lt;h4 class="heading" id="安装前准备">
+ 安装前准备
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e5%89%8d%e5%87%86%e5%a4%87">#&lt;/a>
+&lt;/h4>
+&lt;h5 class="heading" id="域名">
+ 域名
+ &lt;a class="anchor" href="#%e5%9f%9f%e5%90%8d">#&lt;/a>
+&lt;/h5>
+&lt;p>一个托管在「Cloudflare」的域名。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>解析到一个至少1c512MB的服务器上作为面板端（后端、监控端）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>开启「websocket」和「gRPC」
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250720201537824.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="安装哪吒面板端">
+ 安装哪吒面板端
+ &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e5%93%aa%e5%90%92%e9%9d%a2%e6%9d%bf%e7%ab%af">#&lt;/a>
+&lt;/h3>
+&lt;p>官方手册：&lt;a href="https://nezha.wiki/guide/dashboard.html">安装 Dashboard | 哪吒服务器监控&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo ./nezha.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装流程：仅需要特别注意nezha-agent地址填入&lt;code>解析域名:443&lt;/code>
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250720201932192.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h3 class="heading" id="配置nginx反向代理">
+ 配置nginx反向代理
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86">#&lt;/a>
+&lt;/h3>
+&lt;p>一个推荐的nginx配置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-nginx" data-lang="nginx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 哪吒监控 - 后端服务连接池配置
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 定义一个名为 &amp;#34;dashboard&amp;#34; 的后端服务池，用于连接复用，提高性能。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">upstream&lt;/span> &lt;span style="color:#666;font-style:italic">dashboard&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">server&lt;/span> 127.0.0.1:8008;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">keepalive&lt;/span> 512;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># HTTP (80) 到 HTTPS (443) 的永久重定向
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 这是最佳安全实践，确保所有用户都通过加密连接访问。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> 80;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> &lt;span style="color:#666;font-style:italic">[::]:80&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># &amp;lt;--- 修改这里: 将 dashboard.example.com 替换为你的真实域名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">server_name&lt;/span> &lt;span style="color:#666;font-style:italic">dashboard.example.com&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 将所有到来的 HTTP 请求通过 301 永久重定向到对应的 HTTPS 地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">return&lt;/span> 301 &lt;span style="color:#666;font-style:italic">https://&lt;/span>&lt;span style="color:#666;font-weight:bold;font-style:italic">$host$request_uri&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># HTTPS (443) 主服务配置
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 所有加密流量的入口，处理 Web、WebSocket 和 gRPC 请求。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># ===================================================================
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> 443 &lt;span style="color:#666;font-style:italic">ssl&lt;/span> &lt;span style="color:#666;font-style:italic">http2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> &lt;span style="color:#666;font-style:italic">[::]:443&lt;/span> &lt;span style="color:#666;font-style:italic">ssl&lt;/span> &lt;span style="color:#666;font-style:italic">http2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># &amp;lt;--- 修改这里: 将 dashboard.example.com 替换为你的真实域名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">server_name&lt;/span> &lt;span style="color:#666;font-style:italic">dashboard.example.com&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- SSL 证书配置 ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="color:#888;font-style:italic"># &amp;lt;--- 修改这里: 替换为你的 SSL 证书和私钥的实际路径
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_certificate&lt;/span> &lt;span style="color:#666;font-style:italic">/etc/letsencrypt/live/dashboard.example.com/fullchain.pem&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_certificate_key&lt;/span> &lt;span style="color:#666;font-style:italic">/etc/letsencrypt/live/dashboard.example.com/key.pem&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- SSL 性能与安全优化 (通常无需修改) ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_stapling&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_session_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">1d&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_session_cache&lt;/span> &lt;span style="color:#666;font-style:italic">shared:SSL:10m&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_protocols&lt;/span> &lt;span style="color:#666;font-style:italic">TLSv1.2&lt;/span> &lt;span style="color:#666;font-style:italic">TLSv1.3&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 允许 Header 中包含下划线，兼容某些特殊情况
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">underscores_in_headers&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- 获取真实访客 IP (Cloudflare CDN 专用配置) ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="color:#888;font-style:italic"># 因为你使用了 Cloudflare，所以保留这两行配置。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="color:#888;font-style:italic"># 它告诉 Nginx 要信任所有 IP 发来的请求头，并从 CF-Connecting-IP 头中获取真实 IP。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="color:#888;font-style:italic"># 更安全的做法是仅信任来自 Cloudflare 官方 IP 段的请求，但当前配置对于绝大多数场景是足够且方便的。
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">set_real_ip_from&lt;/span> 0.0.0.0&lt;span style="color:#666;font-style:italic">/0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">real_ip_header&lt;/span> &lt;span style="color:#666;font-style:italic">CF-Connecting-IP&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- gRPC 请求处理 (Agent 核心数据上报) ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">^~&lt;/span> &lt;span style="color:#666;font-style:italic">/proto.NezhaService/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_pass&lt;/span> &lt;span style="color:#666;font-style:italic">grpc://dashboard&lt;/span>; &lt;span style="color:#888;font-style:italic"># 将 gRPC 请求转发给后端服务池
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 将真实访客 IP 传递给后端 (使用 Cloudflare 提供的 Header)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">nz-realip&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_CF_Connecting_IP&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 其他 gRPC 相关优化 (通常无需修改)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_read_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_send_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_socket_keepalive&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">client_max_body_size&lt;/span> 10m;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">grpc_buffer_size&lt;/span> 4m;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- WebSocket 请求处理 (网页终端、文件管理等实时功能) ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> ~&lt;span style="color:#666;font-style:italic">*&lt;/span> &lt;span style="color:#666;font-style:italic">^/api/v1/ws/(server|terminal|file)(.*)&lt;/span>$ {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_pass&lt;/span> &lt;span style="color:#666;font-style:italic">http://127.0.0.1:8008&lt;/span>; &lt;span style="color:#888;font-style:italic"># 直接转发给后端的 8008 端口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- WebSocket 代理关键配置 ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_http_version&lt;/span> 1&lt;span style="color:#666;font-style:italic">.1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Upgrade&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_upgrade&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Connection&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;upgrade&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 将真实访客 IP 传递给后端 (使用 Cloudflare 提供的 Header)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">nz-realip&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_CF_Connecting_IP&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 其他 Header 和超时配置 (通常无需修改)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Origin&lt;/span> &lt;span style="color:#666;font-style:italic">https://&lt;/span>&lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_read_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">3600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_send_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">3600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- Web 页面请求处理 (兜底规则) ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_pass&lt;/span> &lt;span style="color:#666;font-style:italic">http://127.0.0.1:8008&lt;/span>; &lt;span style="color:#888;font-style:italic"># 转发给后端的 8008 端口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 将真实访客 IP 传递给后端 (使用 Cloudflare 提供的 Header)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">nz-realip&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_CF_Connecting_IP&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 其他 Header 和超时配置 (通常无需修改)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_read_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">3600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_send_timeout&lt;/span> &lt;span style="color:#666;font-style:italic">3600s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_buffer_size&lt;/span> 128k;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_buffers&lt;/span> 4 256k;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_busy_buffers_size&lt;/span> 256k;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_max_temp_file_size&lt;/span> 0;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="哪吒面板设置">
+ 哪吒面板设置
+ &lt;a class="anchor" href="#%e5%93%aa%e5%90%92%e9%9d%a2%e6%9d%bf%e8%ae%be%e7%bd%ae">#&lt;/a>
+&lt;/h3>
+&lt;p>到了这一步，此时就可以通过域名访问面板了，并且并没有暴露多余的端口。&lt;/p>
+&lt;ul>
+&lt;li>首次登录用户与密码均为&lt;code>admin&lt;/code>,第一步先改个默认密码再说。&lt;/li>
+&lt;li>因为面板和 agent 都开启了 CF CDN，我们需要在面板系统设置里面的真实 IP 请求头填写&lt;code>CF-Connecting-IP&lt;/code>，后台的登录 IP 以及其它地方才能正常显示真实 IP。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250720202751842.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/li>
+&lt;/ul>
+&lt;h4 class="heading" id="面板开启oauth2">
+ 面板开启OAuth2
+ &lt;a class="anchor" href="#%e9%9d%a2%e6%9d%bf%e5%bc%80%e5%90%afoauth2">#&lt;/a>
+&lt;/h4>
+&lt;p>官方说明：&lt;a href="https://nezha.wiki/guide/q14.html#%E8%AE%BE%E7%BD%AE-oauth-2-0-%E7%BB%91%E5%AE%9A">设置 OAuth 2.0 绑定 | 哪吒服务器监控&lt;/a>&lt;/p>
+&lt;p>我选择使用「github」&lt;/p>
+&lt;ol>
+&lt;li>打开 &lt;a href="https://github.com/settings/developers">https://github.com/settings/developers&lt;/a>，依次选择 “OAuth Apps” - “New OAuth App”。&lt;/li>
+&lt;li>填写以下需要的字段：&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;code>Application name&lt;/code>：应用名&lt;/li>
+&lt;li>&lt;code>Homepage URL&lt;/code>：面板访问地址，例如 &lt;code>https://nezha.example.com&lt;/code>&lt;/li>
+&lt;li>&lt;code>Authorization callback URL&lt;/code> 面板的 Callback 地址，这里只检测前缀，所以可以填写 &lt;code>https://nezha.example.com/api/v1/oauth2/callback&lt;/code>。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="" src="https://webp.050612.xyz/2025/07/20250720203459271.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>在新页面中记录 Client ID 和 Client secrets，完成面板 OAuth 2.0 配置：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>oauth2:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GitHub:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client_id: &lt;span style="color:#666;font-style:italic">&amp;#34;a-unique-id&amp;#34;&lt;/span> &lt;span style="color:#888;font-style:italic"># 替换你的 Client ID&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client_secret: &lt;span style="color:#666;font-style:italic">&amp;#34;a-unique-secret&amp;#34;&lt;/span> &lt;span style="color:#888;font-style:italic"># 替换你的 Client secrets&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> endpoint:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> auth_url: &lt;span style="color:#666;font-style:italic">&amp;#34;https://github.com/login/oauth/authorize&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> token_url: &lt;span style="color:#666;font-style:italic">&amp;#34;https://github.com/login/oauth/access_token&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user_info_url: &lt;span style="color:#666;font-style:italic">&amp;#34;https://api.github.com/user&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user_id_path: &lt;span style="color:#666;font-style:italic">&amp;#34;id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>将以上配置添加到&lt;code>/opt/nezha/dashboard/data/config.yaml&lt;/code>面板（Dashboard） 配置&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo vim /opt/nezha/dashboard/data/config.yaml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>重启面板使新配置生效&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>./nezha.sh 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="6">
+&lt;li>打开个人信息设置绑定github，并关闭密码登录&lt;/li>
+&lt;/ol>
+&lt;h2 class="heading" id="关闭-ipv6--开启bbr">
  关闭 ipv6 &amp;amp; 开启bbr
  &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad-ipv6--%e5%bc%80%e5%90%afbbr">#&lt;/a>
-&lt;/h1>
+&lt;/h2>
 &lt;p>我的网络环境为校园网，对ipv6的支持并不好；&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.core.default_qdisc=fq&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/sysctl.conf
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold;font-style:italic">echo&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;net.ipv4.tcp_congestion_control=bbr&amp;#34;&lt;/span> &amp;gt;&amp;gt; /etc/sysctl.conf
