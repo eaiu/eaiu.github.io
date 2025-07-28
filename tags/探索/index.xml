@@ -29,7 +29,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>networks:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> some-other-network:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># ...&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shared-service-net:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shared-net:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> external: &lt;span style="font-weight:bold;text-decoration:underline">true&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;p>之后，重启容器。&lt;/p>
