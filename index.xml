@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on G-Hung的博客</title><link>https://blog.yzyy.de/</link><description>Recent content in Home on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/index.xml" rel="self" type="application/rss+xml"/><item><title>新购一台8GB的VDS与搬家</title><link>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</guid><description>&lt;p>在7月8日，人称“小阿里”的云服务器提供商「ClawCloud」宣布下线支持中国优化线路的香港服务器。这个公告中还提到了三个赔偿方案，其中两个为不同的退款方案，这里重点关注方案二：可以免费迁移到新加坡或日本节点，并且**原本机器的内存容量还会直接翻倍。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on G-Hung的博客</title><link>https://blog.yzyy.de/</link><description>Recent content in Home on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/index.xml" rel="self" type="application/rss+xml"/><item><title>如何让两个 docker-compose 项目中的容器互相通信</title><link>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</link><pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</guid><description>&lt;p>由于部署了很多中转代理服务以及各种客户端，常常会遇到多个docker容器间通信的问题。例如，为了解决New-API以及OpenWebUI两个容器间的通信，减少API时延，之前都是采用放在同一个docker-compose中管理，在内部创建一个网络并接入。&lt;/p>
+&lt;p>这样也可以实现使用&lt;code>http://newapi:3000/v1&lt;/code>的优雅方式访问。&lt;/p>
+&lt;p>随着docker-compose文件的越来越长，维护难度越来越高，越来越像一个大杂烩。我又学习了另外一种创建外部网络的方式。&lt;/p>
+&lt;hr>
+&lt;p>思路是：我们创建一个独立于任何 docker-compose 文件的共享网络，然后让两个不同的 docker-compose 项目都连接到这个网络上。&lt;/p>
+&lt;h2 class="heading" id="创建共享网络">
+ 创建共享网络
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e5%85%b1%e4%ba%ab%e7%bd%91%e7%bb%9c">#&lt;/a>
+&lt;/h2>
+&lt;p>运行以下命令来创建一个新的桥接网络。我们就叫它 shared-net。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker network create shared-net
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个网络现在独立存在，不受任何 docker-compose 文件的 up 或 down 命令影响。&lt;/p>
+&lt;h2 class="heading" id="修改不同容器所在的-docker-composeyml">
+ 修改不同容器所在的 docker-compose.yml
+ &lt;a class="anchor" href="#%e4%bf%ae%e6%94%b9%e4%b8%8d%e5%90%8c%e5%ae%b9%e5%99%a8%e6%89%80%e5%9c%a8%e7%9a%84-docker-composeyml">#&lt;/a>
+&lt;/h2>
+&lt;p>编辑容器的 docker-compose.yml 文件，让它连接到我们刚刚创建的 shared-net。&lt;/p>
+&lt;p>只需要编辑两个地方：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 例如在 new-api 项目的 docker-compose.yml 文件中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> new-api:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># ... (它所有现有的配置都保持不变) ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> networks: &lt;span style="color:#888;font-style:italic"># 1.给 new-api 服务添加这个 networks 块&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - some-other-network &lt;span style="color:#888;font-style:italic"># 它可能已经连接了其他网络，保留它们&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - shared-net &lt;span style="color:#888;font-style:italic"># 额外连接到我们的共享网络&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># 2. 在文件末尾声明这个网络是外部的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>networks:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> some-other-network:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> shared-service-net:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> external: &lt;span style="font-weight:bold;text-decoration:underline">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>之后，重启容器。&lt;/p>
+&lt;p>现在，因为不同容器都在 shared-net 这个网络里，它们可以通过容器名直接通信。要访问 「new-api」 ，地址应该填写：&lt;code>http://new-api:3000&lt;/code>。&lt;/p></description></item><item><title>新购一台8GB的VDS与搬家</title><link>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</guid><description>&lt;p>在7月8日，人称“小阿里”的云服务器提供商「ClawCloud」宣布下线支持中国优化线路的香港服务器。这个公告中还提到了三个赔偿方案，其中两个为不同的退款方案，这里重点关注方案二：可以免费迁移到新加坡或日本节点，并且**原本机器的内存容量还会直接翻倍。&lt;/p>
 &lt;p>这就导致了市场上出现了2核8GB的线路良好的新加坡\日本机器，并且价格为4$/m，有没有很心动，我反正是心动了。&lt;/p>
 &lt;p>回想起那夜远程开发使用claude code内存爆炸，狼狈重启。那夜为了安装OpenWebUI，一口气开了2g的swap。畏畏缩缩不敢使用动态博客、不敢使用1panel等运维面板。怕了真怕了，😭狼狈的我含泪溢价一百块收下一台机器，只希望能用的长久吧。&lt;/p>
 &lt;p>以下记录一下我拿到一台新机器会做什么以及迁移过程。&lt;/p>
@@ -4344,4 +4379,4 @@ git push -u origin main
 &lt;p>至此，折腾了半天的自动化流程，总算是搭建完成了。&lt;/p>
 &lt;p>现在，我终于可以再关心部署的流程细节，把精力放回到最初的目的上——去记录，去成为那些曾经帮助过我的、‘蒙灰的博客’中的一员。&lt;/p>
 &lt;p>也许我的文章也会很简单，甚至有些简陋，也可能会在未来的某个时刻被遗忘在角落里。但只要它能在某个时刻，帮到某个卡在同样问题上的人，让他得以顺利过关，那这一切的折腾就都值了。&lt;/p>
-&lt;p>&lt;strong>Hello, Typo！&lt;/strong>&lt;/p></description></item><item><title>categories</title><link>https://blog.yzyy.de/categories/categories/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/categories/categories/</guid><description/></item><item><title>Search</title><link>https://blog.yzyy.de/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/search/</guid><description/></item></channel></rss>
+&lt;p>&lt;strong>Hello, Typo！&lt;/strong>&lt;/p></description></item><item><title>categories</title><link>https://blog.yzyy.de/categories/categories/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/categories/categories/</guid><description/></item></channel></rss>
