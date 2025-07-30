@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on G-Hung的博客</title><link>https://blog.yzyy.de/</link><description>Recent content in Home on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/index.xml" rel="self" type="application/rss+xml"/><item><title>如何让两个 docker-compose 项目中的容器互相通信</title><link>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</link><pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</guid><description>&lt;p>由于部署了很多中转代理服务以及各种客户端，常常会遇到多个docker容器间通信的问题。例如，为了解决New-API以及OpenWebUI两个容器间的通信，减少API时延，之前都是采用放在同一个docker-compose中管理，在内部创建一个网络并接入。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on G-Hung的博客</title><link>https://blog.yzyy.de/</link><description>Recent content in Home on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Wed, 30 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/index.xml" rel="self" type="application/rss+xml"/><item><title>SyncClipboard：替代微信输入法同步功能的最佳解决方案</title><link>https://blog.yzyy.de/explore/syncclipboard%E6%9B%BF%E4%BB%A3%E5%BE%AE%E4%BF%A1%E8%BE%93%E5%85%A5%E6%B3%95%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link><pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/explore/syncclipboard%E6%9B%BF%E4%BB%A3%E5%BE%AE%E4%BF%A1%E8%BE%93%E5%85%A5%E6%B3%95%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid><description>&lt;p>我一直向往那种在单一屏幕上无缝操控所有设备的终极体验。但由于iOS系统封闭的生态，无法在Windows实现。退而求其次，我将目光投向了解决日常最高频的痛点——跨设备剪贴板同步。&lt;/p>
+&lt;p>在国民级软件的微信的大力推广下，我不得不发现了「小而美」的微信输入法。而微信输入法的一大亮点功能就有剪切板同步。半年前，我兴冲冲在各个设备都安装了微信输入法，使用体验还真不错，十分便捷，简约而不简单。&lt;/p>
+&lt;p>但是，两个致命的缺陷逐渐让我浑身不自在，其一，作为一款输入法，它竟无法自定义用户词库，这对于追求效率的用户来说是个硬伤；其二，也是更让我警惕的——它建立在“用隐私换方便”的模式之上。每当我复制密码、API密钥或是个人敏感信息，并意识到这些数据正毫无保留地流向微信的服务器时，那种心头一紧的感觉便挥之不去。不是说自己的数据有多重要，但总有一股难受的感觉。&lt;/p>
+&lt;p>某天闲下来的时候想到：我之前的思路太局限了。我将希望完全寄托于各大厂商的第三方输入法来实现互联，却因此忽略了隐私的代价，也忘记了去拥抱开源。&lt;/p>
+&lt;hr>
+&lt;h2 class="heading" id="syncclipboard主要功能">
+ SyncClipboard主要功能
+ &lt;a class="anchor" href="#syncclipboard%e4%b8%bb%e8%a6%81%e5%8a%9f%e8%83%bd">#&lt;/a>
+&lt;/h2>
+&lt;p>来自GitHub官方&lt;a href="https://github.com/Jeric-X/SyncClipboard">SyncClipboard: 跨平台剪贴板同步方案&lt;/a>：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>剪贴板同步，支持「文字」、「图片」和「文件」。&lt;strong>服务器/客户端架构&lt;/strong>，可以使用客户端内置服务器、独立部署服务器，也可以使用支持WebDAV的网盘作为服务器&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>优化图片类型的剪贴板，功能有：&lt;/p>
+&lt;ul>
+&lt;li>从任意位置复制图片时，可以直接向文件系统粘贴图片文件，反之亦然&lt;/li>
+&lt;li>从浏览器复制图片后，后台下载原图到本地，解决无法从浏览器拷贝动态图的问题（大多网站有认证，适用范围有限，支持bilibili动态图片）&lt;/li>
+&lt;li>从文件系统复制较新格式类型的图片文件时（webp/heic等），在剪贴板内储存gif或jpg格式，用于直接向支持图片的文本框粘贴图片&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>补充：&lt;/p>
+&lt;ul>
+&lt;li>支持所有主流平台，包括 &lt;strong>Windows, macOS, Linux, Android, 和 iOS&lt;/strong>，真正实现了全平台覆盖。&lt;/li>
+&lt;li>使用「服务器/客户端」架构，不受局域网的限制，适合网络复杂的情形（如校园网）。&lt;/li>
+&lt;li>使用自部署的中转服务器，无隐私风险&lt;/li>
+&lt;/ul>
+&lt;h2 class="heading" id="服务端搭建">
+ 服务端搭建
+ &lt;a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%90%ad%e5%bb%ba">#&lt;/a>
+&lt;/h2>
+&lt;p>准备工作：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>服务器&lt;/strong>：由于需要服务器中转，延迟越低越好，但没有这么高的要求，我使用日本的服务器，无延迟体感。内存使用100MB左右。&lt;/li>
+&lt;li>&lt;strong>域名&lt;/strong>：用于开启 HTTPS，保障数据传输安全性。&lt;/li>
+&lt;li>安装&lt;strong>Nginx、Docker&lt;/strong>&lt;/li>
+&lt;/ol>
+&lt;p>话不多说，直接用最简单的 &lt;code>docker-compose&lt;/code> + Nginx 反代方案开干。&lt;/p>
+&lt;h3 class="heading" id="编辑docker-composeyml">
+ 编辑docker-compose.yml
+ &lt;a class="anchor" href="#%e7%bc%96%e8%be%91docker-composeyml">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>登录服务器，创建一个工作目录并进入，然后创建 &lt;code>docker-compose.yml&lt;/code> 文件：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>mkdir syncclipboard &amp;amp;&amp;amp; cd syncclipboard
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim docker-compose.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>将以下内容写入&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> syncclipboard-server:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: jericx/syncclipboard-server:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: syncclipboard-server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#666;font-style:italic">&amp;#34;127.0.0.1:5033:5033&amp;#34;&lt;/span> &lt;span style="color:#888;font-style:italic"># 左边的5133可以改成服务器上没有用过的其他端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SYNCCLIPBOARD_USERNAME=your_username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - SYNCCLIPBOARD_PASSWORD=your_pswd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 自动更新&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> watchtower:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: containrrr/watchtower:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> container_name: watchtower_sync
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - TZ=Asia/Shanghai 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - /var/run/docker.sock:/var/run/docker.sock
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> command: --cleanup --schedule &amp;#34;0 0 4 * * *&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Tips:
+这里踩了个坑，密码不建议包含特殊符号，例如 * $等，会导致验证失败。&lt;/p>&lt;/blockquote>
+&lt;ol start="3">
+&lt;li>运行&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yml" data-lang="yml">&lt;span style="display:flex;">&lt;span>docker compose up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 class="heading" id="配置nginx">
+ 配置Nginx
+ &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx">#&lt;/a>
+&lt;/h3>
+&lt;p>不要忘记将域名解析到服务器，因为有很多种配置Nginx的方式，这里只给出我写的Nginx配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-nginx" data-lang="nginx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># Server block for HTTP to HTTPS redirection
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> 80;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">server_name&lt;/span> &lt;span style="color:#666;font-style:italic">clip.yourdomain.com&lt;/span>; &lt;span style="color:#888;font-style:italic"># ⚠️ 替换成你的域名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># Redirect all other HTTP traffic to HTTPS
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">return&lt;/span> 301 &lt;span style="color:#666;font-style:italic">https://&lt;/span>&lt;span style="color:#666;font-weight:bold;font-style:italic">$host$request_uri&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic"># Server block for HTTPS
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>&lt;span style="font-weight:bold;text-decoration:underline">server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">listen&lt;/span> 443 &lt;span style="color:#666;font-style:italic">ssl&lt;/span> &lt;span style="color:#666;font-style:italic">http2&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">server_name&lt;/span> &lt;span style="color:#666;font-style:italic">clip.yourdomain.com&lt;/span>; &lt;span style="color:#888;font-style:italic"># ⚠️ 替换成你的域名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">client_max_body_size&lt;/span> &lt;span style="color:#666;font-style:italic">1024M&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- SSL Certificate Configuration ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_certificate&lt;/span> &lt;span style="color:#666;font-style:italic">/etc/ssl/certs/clip.yourdomain.com.pem&lt;/span>; &lt;span style="color:#888;font-style:italic"># ⚠️ 替换成你的证书路径
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_certificate_key&lt;/span> &lt;span style="color:#666;font-style:italic">/etc/ssl/private/clip.yourdomain.com.key&lt;/span>; &lt;span style="color:#888;font-style:italic"># ⚠️ 替换成你的私钥路径
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- SSL Security Enhancements ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_protocols&lt;/span> &lt;span style="color:#666;font-style:italic">TLSv1.2&lt;/span> &lt;span style="color:#666;font-style:italic">TLSv1.3&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_prefer_server_ciphers&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_ciphers&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_ecdh_curve&lt;/span> &lt;span style="color:#666;font-style:italic">secp384r1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_session_cache&lt;/span> &lt;span style="color:#666;font-style:italic">shared:SSL:10m&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_session_timeout&lt;/span> 10m;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_stapling&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">ssl_stapling_verify&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">on&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># Add HSTS header to force HTTPS on the client side
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">add_header&lt;/span> &lt;span style="color:#666;font-style:italic">Strict-Transport-Security&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;max-age=63072000&lt;/span>; &lt;span style="font-weight:bold;text-decoration:underline">includeSubDomains&lt;/span>; &lt;span style="font-weight:bold;text-decoration:underline">preload&amp;#34;&lt;/span> &lt;span style="color:#666;font-style:italic">always&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- Reverse Proxy Configuration ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">location&lt;/span> &lt;span style="color:#666;font-style:italic">/&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># 代理到 docker-compose 中映射的宿主机端口 1265
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_pass&lt;/span> &lt;span style="color:#666;font-style:italic">http://127.0.0.1:5033&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- WebSocket Support ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_http_version&lt;/span> 1&lt;span style="color:#666;font-style:italic">.1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Upgrade&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$http_upgrade&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Connection&lt;/span> &lt;span style="color:#666;font-style:italic">&amp;#34;upgrade&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#888;font-style:italic"># --- Standard Proxy Headers ---
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#888;font-style:italic">&lt;/span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">Host&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$host&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Real-IP&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$remote_addr&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-For&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$proxy_add_x_forwarded_for&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_set_header&lt;/span> &lt;span style="color:#666;font-style:italic">X-Forwarded-Proto&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">$scheme&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold;text-decoration:underline">proxy_redirect&lt;/span> &lt;span style="color:#666;font-weight:bold;font-style:italic">off&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>配置好后，检查 Nginx 语法并重载服务：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nginx -t
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl reload nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>至此可以使用域名访问，输入设置的username以及password，看到以下提示证明成功部署：
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="5e3qxdjl.jir.png" src="https://webp.050612.xyz/2025/07/5e3qxdjl.jir.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;h2 class="heading" id="客户端使用">
+ 客户端使用
+ &lt;a class="anchor" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e4%bd%bf%e7%94%a8">#&lt;/a>
+&lt;/h2>
+&lt;p>查看GitHub官方教程即可：&lt;a href="https://github.com/Jeric-X/SyncClipboard?tab=readme-ov-file#%E5%AE%A2%E6%88%B7%E7%AB%AF">SyncClipboard #客户端使用&lt;/a>&lt;/p>
+&lt;p>这里提到「Windows」以及「ios」：&lt;/p>
+&lt;h3 class="heading" id="windows">
+ Windows
+ &lt;a class="anchor" href="#windows">#&lt;/a>
+&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>在&lt;a href="https://github.com/Jeric-X/SyncClipboard/releases/latest">Release&lt;/a>页面下载名字以&lt;code>SyncClipboard_win_&lt;/code>开头的zip文件，解压后运行&lt;code>SyncClipboard.exe&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>服务器配置：
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="kh3lmwbs.ecs.png" src="https://webp.050612.xyz/2025/07/kh3lmwbs.ecs.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>图片粘贴配置：
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="mimpvon3.lyl.png" src="https://webp.050612.xyz/2025/07/mimpvon3.lyl.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>检查服务状态：
+应为 ✔ ❌ ✔ ✔
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="tetsv1qm.hun.png" src="https://webp.050612.xyz/2025/07/20250731010654657.png" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 class="heading" id="ios">
+ iOS
+ &lt;a class="anchor" href="#ios">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>手动同步，导入这个&lt;a href="https://www.icloud.com/shortcuts/ecd4200276ba4cc2b0839462215eb1d8">快捷指令&lt;/a>，手动触发上传或下载&lt;/li>
+&lt;li>自动同步，导入这个&lt;a href="https://www.icloud.com/shortcuts/542ad23b33314b36807c05a5d8aa5c22">快捷指令&lt;/a>，运行后设备会自动在后台同步剪贴板内容，此快捷指令将执行无限时长，需要手动关闭，你还可以手动修改同步后是否发送系统通知、查询的间隔秒数&lt;/li>
+&lt;li>自动上传短信验证码，参考这个discussion中的视频教程 &lt;a href="https://github.com/Jeric-X/SyncClipboard/discussions/60">#60&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>我选择使用手动触发，配合辅助触控中的「轻点背面」，很好用。
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class="">
+
+ &lt;div class="img-container" >
+ &lt;img loading="lazy" alt="Clipboard 2025年7月31日 01.13.jpeg" src="https://webp.050612.xyz/2025/07/20250731011607891.jpeg" >
+ &lt;/div>
+
+ 
+&lt;/figure>
+&lt;/p>
+&lt;hr>
+&lt;p>至此，试试吧，交互的过程是十分优雅的：拿起手机只需轻叩背面，即可同步文字到剪切板、下载图片甚至文件。&lt;/p>
+&lt;p>经过一番折腾，终于找回那份掌控自己数据的安心感。&lt;/p>
+&lt;p>也请相信，在看似被巨头垄断的数字世界里，总有另一条路可走。那是一条由开源精神铺就的、通往真正自由的道路。我们需要的，仅仅是多一点探索的勇气。&lt;/p></description></item><item><title>如何让两个 docker-compose 项目中的容器互相通信</title><link>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</link><pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%A4%E4%B8%AA-docker-compose-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E4%BA%92%E7%9B%B8%E9%80%9A%E4%BF%A1/</guid><description>&lt;p>由于部署了很多中转代理服务以及各种客户端，常常会遇到多个docker容器间通信的问题。例如，为了解决New-API以及OpenWebUI两个容器间的通信，减少API时延，之前都是采用放在同一个docker-compose中管理，在内部创建一个网络并接入。&lt;/p>
 &lt;p>这样也可以实现使用&lt;code>http://newapi:3000/v1&lt;/code>的优雅方式访问。&lt;/p>
 &lt;p>随着docker-compose文件的越来越长，维护难度越来越高，越来越像一个大杂烩。我又学习了另外一种创建外部网络的方式。&lt;/p>
 &lt;hr>
