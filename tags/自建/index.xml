@@ -258,28 +258,7 @@
 &lt;li>自动同步，导入这个&lt;a href="https://www.icloud.com/shortcuts/542ad23b33314b36807c05a5d8aa5c22">快捷指令&lt;/a>，运行后设备会自动在后台同步剪贴板内容，此快捷指令将执行无限时长，需要手动关闭，你还可以手动修改同步后是否发送系统通知、查询的间隔秒数&lt;/li>
 &lt;li>自动上传短信验证码，参考这个discussion中的视频教程 &lt;a href="https://github.com/Jeric-X/SyncClipboard/discussions/60">#60&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>我选择使用手动触发，配合辅助触控中的「轻点背面」，很好用。
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure class="">
-
- &lt;div class="img-container" >
- &lt;img loading="lazy" alt="Clipboard 2025年7月31日 01.13.jpeg" src="https://webp.050612.xyz/2025/07/20250731011607891.jpeg" >
- &lt;/div>
-
- 
-&lt;/figure>
-&lt;/p>
+&lt;p>我选择使用手动触发，配合辅助触控中的「轻点背面」，很好用。&lt;/p>
 &lt;hr>
 &lt;p>至此，试试吧，交互的过程是十分优雅的：拿起手机只需轻叩背面，即可同步文字到剪切板、下载图片甚至文件。&lt;/p>
 &lt;p>经过一番折腾，终于找回那份掌控自己数据的安心感。&lt;/p>
