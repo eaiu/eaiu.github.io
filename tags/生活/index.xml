@@ -1,4 +1,577 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>新购一台8GB的VDS与搬家</title><link>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</guid><description>&lt;p&gt;在7月8日，人称“小阿里”的云服务器提供商「ClawCloud」宣布下线支持中国优化线路的香港服务器。这个公告中还提到了三个赔偿方案，其中两个为不同的退款方案，这里重点关注方案二：可以免费迁移到新加坡或日本节点，并且**原本机器的内存容量还会直接翻倍。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 12 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>养鼠手册</title><link>https://blog.yzyy.de/post/%E5%85%BB%E9%BC%A0%E6%89%8B%E5%86%8C/</link><pubDate>Fri, 12 Sep 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E5%85%BB%E9%BC%A0%E6%89%8B%E5%86%8C/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;整理自仓鼠吧精华贴&lt;a href="https://tieba.baidu.com/p/7557391766?pn=1"&gt;仓鼠的饲养手册 第三版&lt;/a&gt;，仅供个人使用。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 class="heading" id="仓鼠的饲养手册"&gt;
+ 仓鼠的饲养手册
+ &lt;a class="anchor" href="#%e4%bb%93%e9%bc%a0%e7%9a%84%e9%a5%b2%e5%85%bb%e6%89%8b%e5%86%8c"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;观前提醒：饲养手册是一份综合性质的手册，内容庞大，几乎涵盖了所有日常饲养过程中能碰到的问题，所以更适合平时没事时候啃啃，而不是出现问题了，临时突击查阅，这样是很难快速找到想要的知识。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本帖是饲养手册第三版，相比上一版本的【饲养手册】进行修订。相比于前两代做了结构和顺序上调整、传送贴的更正。本帖内大部分为旧有知识的归纳、新内容的填充，并附上大部分知识的引用处。&lt;/p&gt;
+&lt;p&gt;本帖集合了吧务组的心血和前辈们的付出。
+致敬曾经仓鼠吧的开拓者和将国际仓鼠知识资料搬运回国的探索者；
+谨忆2019年百度删库事件。
+我们欢迎考古党，但是历史帖仅供查阅，不要挖坟，这些都是退圈大佬们留下的宝贵财富。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本帖建议：在PC端正序查看&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 class="heading" id="目录"&gt;
+ &lt;strong&gt;目录&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e7%9b%ae%e5%bd%95"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;前言＆广告（吧规、异宠医院地址、饲养速览图片）&lt;/li&gt;
+&lt;li&gt;为什么养宠物？&lt;/li&gt;
+&lt;li&gt;养仓鼠要不要担心得病、为什么吧里有这么多仓鼠出问题&lt;/li&gt;
+&lt;li&gt;资金不够但是想养仓鼠怎么办&lt;/li&gt;
+&lt;li&gt;什么是“动物保护”、什么是“科学饲养”？&lt;/li&gt;
+&lt;li&gt;这些科养标准从哪里来的（仓鼠笼尺寸的来历）&lt;/li&gt;
+&lt;li&gt;侏儒47基础笼、熊用60基、吃品牌粮，就是科养吗（你可以做的、你不该做的、不推荐自配粮的原因）&lt;/li&gt;
+&lt;li&gt;仓鼠该怎么喂（食谱的认识、喂食的建议、加餐的建议、挑食怎么办、自配粮的建议）&lt;/li&gt;
+&lt;li&gt;什么样的仓鼠算健康的（判断仓鼠健康、仓鼠的基础数据、仓鼠香腺、性成熟标志）&lt;/li&gt;
+&lt;li&gt;仓鼠笼的挑选（笼子种类的大致简介、大佬们的笼子心得、入门DIY仓鼠笼）&lt;/li&gt;
+&lt;li&gt;仓鼠笼子该怎么布置(笼子的布置、换垫料的建议)&lt;/li&gt;
+&lt;li&gt;仓鼠的垫料（垫料的选择、垫料铺多厚、换垫料的建议、大佬们的垫料选购经验、仓鼠打喷嚏）&lt;/li&gt;
+&lt;li&gt;仓鼠跑轮的选购（运动能力、跑轮尺寸的选择、选购跑轮的注意事项）&lt;/li&gt;
+&lt;li&gt;疾病和医疗导航楼（疾病认识、预防、应对措施）&lt;/li&gt;
+&lt;li&gt;杂项导航楼（仓鼠的冷门知识、科普知识、手工）&lt;/li&gt;
+&lt;li&gt;END正文完结&lt;/li&gt;
+&lt;li&gt;非正文1：转载本帖的前提要求&lt;/li&gt;
+&lt;li&gt;非正文2：仓鼠笼尺寸的计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="1-前言广告"&gt;
+ &lt;strong&gt;1. 前言＆广告&lt;/strong&gt;
+ &lt;a class="anchor" href="#1-%e5%89%8d%e8%a8%80%e5%b9%bf%e5%91%8a"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2020年仓鼠吧吧规总汇传送门
+【https://tieba.baidu.com/p/6656848511】&lt;/li&gt;
+&lt;li&gt;2021年小吧主及科普小组成员招募
+【https://tieba.baidu.com/p/7391570592】&lt;/li&gt;
+&lt;li&gt;【雪影】碎碎念
+【https://tieba.baidu.com/p/1992095029】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本帖不是求医帖！！！
+如果你的ss生病了，请尽快就医！！！&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关于仓鼠的一次成功救治案例
+【https://tieba.baidu.com/p/5986859353】&lt;/li&gt;
+&lt;li&gt;全国异宠医院名单总汇（本地没有医院的请优先查看疾病导航楼）
+【https://mp.weixin.qq.com/s/4EYBhZl4CKah_v3rKhLYqQ】
+【https://mp.weixin.qq.com/s/Ahheoq0kkQxMikpkny46WQ】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;新手饲养手册速览图片版（保存时请保存原图）&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;本图片为新手教程速览，图片内容精简，适用于入门级指导。&lt;/li&gt;
+&lt;li&gt;内容并不完整，如果对图片内容有疑问，或者想要了解更多仓鼠饲养知识，请看置顶贴的【仓鼠饲养手册】。&lt;/li&gt;
+&lt;li&gt;图片出处为仓鼠吧，作者为吧务组成员，禁止加私人水印。&lt;/li&gt;
+&lt;li&gt;饲养请三思，它的种族特性不一定适合所有人。&lt;/li&gt;
+&lt;li&gt;仓鼠饲养也是有资金要求的，仓鼠只是相对别的宠物不怎么花钱，但是不代表不用花钱。&lt;/li&gt;
+&lt;li&gt;本图片不能代替置顶帖【仓鼠饲养手册】，只是作为新手速览方便新手更容易入门。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;图片制作初衷，是因为官群和一些吧友向我吐槽：给新手科普太累了，打字内容多又繁杂，还总是会漏，还会有新手追问一些问题，搞得不胜其烦。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="2-为什么要花这么多钱养宠物我花钱养宠物能得到什么"&gt;
+ &lt;strong&gt;2. 为什么要花这么多钱养宠物、我花钱养宠物能得到什么？&lt;/strong&gt;
+ &lt;a class="anchor" href="#2-%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e8%8a%b1%e8%bf%99%e4%b9%88%e5%a4%9a%e9%92%b1%e5%85%bb%e5%ae%a0%e7%89%a9%e6%88%91%e8%8a%b1%e9%92%b1%e5%85%bb%e5%ae%a0%e7%89%a9%e8%83%bd%e5%be%97%e5%88%b0%e4%bb%80%e4%b9%88"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;“宠物”指人们为了精神目的，而不是为了经济目的而豢养的生物。传统的宠物是指哺乳纲或鸟纲的动物，养着用于玩赏和作伴。实际生活中的宠物包括鱼纲、爬行纲、两栖纲、昆虫，甚至植物，用于观赏、作伴、舒缓人们的精神压力。&lt;/p&gt;
+&lt;p&gt;请记住，养宠物是为了快乐、给你的身心带来正面意义，而不是让它成为你的生活负担和压力，又或者是产生家庭矛盾的因素。&lt;/p&gt;
+&lt;p&gt;养宠物是需要有责任心和金钱消耗，我们希望你养宠物是经过深思熟虑的，而不是心血来潮突然想养。宠物饲养，不管主动还是被动，当你买下这个生命，宠物都成为家庭的一份子。养之前最好与自己的家人沟通，如果家人不接受这个新成员，那么最好不要去养，以免增添家庭矛盾。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如果是资金紧迫或没时间照顾，最好也不要饲养，因为这个新成员只会给你的生活增添负担，而不是生活的调味剂。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="3-养仓鼠要不要担心得病为什么贴吧里有什么多有问题的仓鼠"&gt;
+ &lt;strong&gt;3. 养仓鼠要不要担心得病、为什么贴吧里有什么多有问题的仓鼠？&lt;/strong&gt;
+ &lt;a class="anchor" href="#3-%e5%85%bb%e4%bb%93%e9%bc%a0%e8%a6%81%e4%b8%8d%e8%a6%81%e6%8b%85%e5%bf%83%e5%be%97%e7%97%85%e4%b8%ba%e4%bb%80%e4%b9%88%e8%b4%b4%e5%90%a7%e9%87%8c%e6%9c%89%e4%bb%80%e4%b9%88%e5%a4%9a%e6%9c%89%e9%97%ae%e9%a2%98%e7%9a%84%e4%bb%93%e9%bc%a0"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;不否认有人畜共患疾病存在，但是这些疾病很少有跨物种传染。&lt;/li&gt;
+&lt;li&gt;养仓鼠前请确保身体有没有可能因饲养宠物而有危险，如鼻炎、过敏。&lt;/li&gt;
+&lt;li&gt;饲养仓鼠而导致人生病的几率与身体情况、饲主的饲养方法有关。&lt;/li&gt;
+&lt;li&gt;仓鼠除去快递导致的应激反应（星期鼠），大部分仓鼠的病亡与饲主的饲养方式有关。
+（http://tieba.baidu.com/p/5178609750）&lt;/li&gt;
+&lt;li&gt;目前还没有仓鼠能感染狂犬病病毒的案例。&lt;/li&gt;
+&lt;li&gt;仓鼠的健康程度，直接受到饲主饲养方式的影响。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;为什么吧里有这么多人仓鼠有问题的帖子？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;百度贴吧是一个公开平台，仓鼠吧吧内每日人流量大部分是新人，在老鼠友眼里是“常识”的问题或知识，在新人眼里可能就是不得了的知识，也有很多人进吧就是为了发帖提问，并不会查询精华帖，所以会有大量日经贴、月经贴。&lt;/p&gt;
+&lt;p&gt;并不是所有人都会科养，甚至在很多时候，一些人会给仓鼠投喂、使用一些奇奇怪怪的东西，甚至会有那种“我觉得这样对仓鼠好，所以我就要这么做”的人，实际上仓鼠根本不需要这些，过多的负荷与不必要的麻烦，小身板难免会出问题。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="4-资金不够但是想养仓鼠怎么办"&gt;
+ &lt;strong&gt;4. 资金不够但是想养仓鼠怎么办？&lt;/strong&gt;
+ &lt;a class="anchor" href="#4-%e8%b5%84%e9%87%91%e4%b8%8d%e5%a4%9f%e4%bd%86%e6%98%af%e6%83%b3%e5%85%bb%e4%bb%93%e9%bc%a0%e6%80%8e%e4%b9%88%e5%8a%9e"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;请记住，养宠物是为了快乐、给你的身心带来正面意义，而不是让它成为你的生活负担和压力，又或者是产生家庭矛盾的原因。&lt;/strong&gt;
+&lt;strong&gt;养宠物是需要有责任心和金钱消耗，我们希望你养宠物是经过深思熟虑的，而不是心血来潮突然想养。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;仓鼠在欧美地区的饲养人群主要是成年人，他们是有自己的经济基础，并且一般是不建议儿童饲养仓鼠的；国内因为仓鼠售价便宜、入门门槛低，所以饲养人群大部分是未经济独立的孩子，购买仓鼠时有一定冲动型消费的因素在内。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在很多父母的眼中：&amp;ldquo;养宠物，尤其是仓鼠，不需要吃什么正规饲料、有个纸盒子就够了&amp;rdquo;。&lt;/strong&gt;
+&lt;strong&gt;这就是矛盾所在：&lt;/strong&gt;
+&lt;strong&gt;仓鼠是一种比较占空间、不适合孩子饲养、需要花时间照看、没什么互动性、有一定资金需求的观赏型宠物。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你有能力说服父母支持你养宠物的话，那么再好不过了；
+如果父母不支持、你又没有时间去照顾宠物，我们不建议去养任何宠物；
+如果实在要养，你需要付出金钱、时间、精力，给予自己宠物最好的照顾，而不是空口白话。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;它们是一条鲜活的生命，而不是手中的玩具，请对生命负责。&lt;/strong&gt;
+&lt;strong&gt;条件不足的情况下克制冲动、选择放弃饲养，也是责任心的体现。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="5-什么是动物保护什么是科学饲养"&gt;
+ &lt;strong&gt;5. 什么是“动物保护”？什么是“科学饲养”？&lt;/strong&gt;
+ &lt;a class="anchor" href="#5-%e4%bb%80%e4%b9%88%e6%98%af%e5%8a%a8%e7%89%a9%e4%bf%9d%e6%8a%a4%e4%bb%80%e4%b9%88%e6%98%af%e7%a7%91%e5%ad%a6%e9%a5%b2%e5%85%bb"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;什么是“动物保护”？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;动物立法保护，本质上是对人的保护；宠物立法保护，本质上是对人私有财产的保护。
+人权高于任何其他动物享有的权利。建立动物保护法规、禁止虐待宠物、划定动物饲养标准，不是因为动物有这些权利，而是这些规定或法律可以帮助人类的身心健康朝向更好的方向去发展。
+环境保护与动物保护的目的一样，但高于动物保护，都为了维持现有的生态圈，因为人类不知道下一个生态圈是否对人类友善。
+在此基础上，宠物饲养是有标准，并不是简简单单能活就好。养不死并不是养宠物的标准，作为主人需要保证宠物的身心健康。
+仓鼠没有自我思考的能力，全凭本能，所以需要主人多思考、为鼠的身心健康做好把关。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;什么是“科学饲养”？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;给予宠物符合生理需求的健康饮食、给予它们足够大的生存空间，就是最好的科养。
+科学家们通过多年对仓鼠的考察和数据研究，家养个体的平均寿命是野生个体的2倍，这基于干净卫生的环境、充足健康的饮食，所以请饲主们把好关。
+仓鼠吧目前制定是【仓鼠饲养手册】，我们建议你可以这么养，并不是说只到这个标准就行了，你可以追求更好的饲养方式和条件，我们没有理由阻止你。比起“科养”，结合国情制作的这一份饲养手册，我们更愿意称之为“国标“，希望这份饲养手册能帮到你。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="6-这些科养标准从哪里来的"&gt;
+ &lt;strong&gt;6. 这些科养标准从哪里来的？&lt;/strong&gt;
+ &lt;a class="anchor" href="#6-%e8%bf%99%e4%ba%9b%e7%a7%91%e5%85%bb%e6%a0%87%e5%87%86%e4%bb%8e%e5%93%aa%e9%87%8c%e6%9d%a5%e7%9a%84"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;目前国际上的仓鼠饲养，是从实验室标准上向家庭宠物方向发展。做实验也不是虐鼠，如果鼠身心不健康，也不会拿来做实验。
+本吧的标准参考了实验室动物饲养标准、野生仓鼠的生活习性和活动能力，以及专业性论文。&lt;/p&gt;
+&lt;p&gt;关于笼子的尺寸，各国家和各公益组织都有不同的标准：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;美国爱护动物协会（ASPCA）：&lt;/strong&gt; 10加仑（约40升）【https://www.aspca.org/】&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;美国人道主义协会（HSUS）：&lt;/strong&gt; 288平方英寸（1858 cm²）【https://www.humanesociety.org/】&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;北美仓鼠论坛 （Hamster Hideout Forum）：&lt;/strong&gt; 360 平方英寸（约2323 cm²）【http://hamsterhideout.com/forum/】&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;英国防止虐待动物协会（RSPCA）：&lt;/strong&gt; 450平方英寸（2903 cm²）【https://www.rspca.org.uk/home】&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;德国：&lt;/strong&gt; 尺寸≥565平方英寸（4000 cm²），建议1㎡以上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading" id="动物百科httpsanimaldiversityorg"&gt;
+ 搬运＆翻译地址【https://tieba.baidu.com/p/3924153576?pid=72332754354&amp;amp;cid=#72332754354】
+原贴地址【http://hamsterhideout.com/forum/topic/96524-the-case-for-large-cages/】
+动物百科【https://animaldiversity.org/】
+ &lt;a class="anchor" href="#%e5%8a%a8%e7%89%a9%e7%99%be%e7%a7%91httpsanimaldiversityorg"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;论文：Behaviour of golden hamsters (Mesocricetus auratus) kept in four different cage sizes&lt;/strong&gt;
+（节选并展示其中统计图）&lt;/p&gt;
+&lt;p&gt;不同笼子尺寸的行为持续时间占总持续时间的百分比：
+A跑轮、b休息、c 养育、d梳洗、e啃铁丝，f喂食，g 跑步、h啃咬、i攀岩、j挖掘、k饮水&lt;/p&gt;
+&lt;p&gt;（统计图中和论文原文：四组对照实验表明笼子的大小会影响到仓鼠啃咬笼子的概率和食量，即使是10000cm²的笼子也阻止不了仓鼠咬笼子；其他试验数据与笼子尺寸没有规律性）
+论文下载（度盘）：/s/1alqyzZ6svDwdd_h149k24A
+提取码：e1qd&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;以上介绍中：
+ASPCA建议笼子的尺寸不低于10加仑（约37.85升）的容器；
+论文中的实验数据是不低于1800平方厘米的四组检测；
+一个47基础笼的体积近40升；60基础笼换算下来大约有65升或2100 cm²。
+减去笼子内家具的布置和仓鼠跑轮的体积（约有笼子的四分之一到五分之一），ASPCA给出的笼子尺寸，60基础笼是比较适合金丝熊的人道主义选择；三线一线仓鼠的用品更小，所以47基础笼也在侏儒鼠的最小人道主义使用范围内。
+（以上为“47/60基础笼入门”来历，47、60基础笼只是方便购买的笼子型号，并不是一种饲养标准）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="7-侏儒47基础笼熊用60基吃品牌粮就是科养吗"&gt;
+ &lt;strong&gt;7. 侏儒47基础笼、熊用60基、吃品牌粮，就是科养吗？&lt;/strong&gt;
+ &lt;a class="anchor" href="#7-%e4%be%8f%e5%84%9247%e5%9f%ba%e7%a1%80%e7%ac%bc%e7%86%8a%e7%94%a860%e5%9f%ba%e5%90%83%e5%93%81%e7%89%8c%e7%b2%ae%e5%b0%b1%e6%98%af%e7%a7%91%e5%85%bb%e5%90%97"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;首先要明白，饲养标准是人定的，根据物种特性制定，不是凭空捏造的。&lt;/strong&gt;
+&lt;strong&gt;科学饲养：提供舒适且符合习性的生活条件，让宠物的身心健康都得到满足，尽量避免造成疾病的因素。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;饲养容器的尺寸，请结合上一楼所提到的：47、60基础笼是人道主义饲养的底线而不是上限或目标。不是说只达到47、60笼这么大的笼子就可以了，要知道仓鼠的活动能力非常好。
+47、60基础笼主要是给那些“先上车再补票”的人，以及提供给部分新人一个相对容易购买的笼子型号，并不是一种饲养标准。对于还没有领养到仓鼠、正在采购饲养装备的吧友，我们更希望可以根据第7、8楼和饲养手册里的更多内容，买采购更好的饲养装备。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;作为宠物，应当享受主人的照顾，主人从中获得“接触性安慰”，我们没有理由也不会阻止你给予仓鼠更好的居住条件。
+我们偶尔会看到一些人，他们觉得较小的笼子还好、也没什么。这些人会说：“仓鼠是懒惰的家伙，每天大多数时间在睡觉，因此笼子更大是浪费。”问题在于没有考虑因果关系：仓鼠被关在一个较小的笼子除了呆坐着没有做其他事情干。小笼子里的仓鼠永远做不了什么，因为它无能为力，甚至会因为活动时间很少，产生肢体萎缩（笼瘫）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;考虑到国内并没有明文的仓鼠饲料制作标准规定，我们推荐品牌粮的原因是它有正规的生产渠道、通过国家相关机构的合格检验，因为是正规产品，及使出了事也可以很快找到责任方（国内的宠物食品维权几乎不可能，所以找到责任方是为了给自己、给别的鼠友一些警惕，而不是维权成功的办法）&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;如果你想做“富养”，那应该是提供给仓鼠符合仓鼠生理习惯、干净整洁的生活环境，而不是每日“加餐”、“下午茶”。笼子尺寸仅仅只是达到人道主义底线或入门、每日加餐喂食的营养超标，依然是渣养行为。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;吧里禁止推荐自配，因为往往推荐的同时会提到商家，涉嫌擦边球广告。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="8-仓鼠该怎么喂食"&gt;
+ &lt;strong&gt;8. 仓鼠该怎么喂食？&lt;/strong&gt;
+ &lt;a class="anchor" href="#8-%e4%bb%93%e9%bc%a0%e8%af%a5%e6%80%8e%e4%b9%88%e5%96%82%e9%a3%9f"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;h4 class="heading" id="一主粮投喂"&gt;
+ &lt;strong&gt;（一）主粮投喂&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%80%e4%b8%bb%e7%b2%ae%e6%8a%95%e5%96%82"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;仓鼠的每日摄入食物总质量约为体重的5~10%&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;仓鼠是杂食性偏植食动物，且原生地大部分在草原、半荒漠和农田生态圈内。仓鼠粮中应该是植物性饲料、动物性饲料兼有，及种子、谷物、草茎、草叶、草根、无毒花朵、浆果、昆虫等。
+仓鼠的主粮优先级【健康性＞适口性】，如果你发现你的仓鼠有挑食的行为，首先考虑的投喂的食物是否过量，过量食物即使是人，也会下意识挑食。我们更建议每日定量投喂食物，不吃完不添新粮。
+或者你可以直接看这个链接：
+【雪影】鼠粮集合（ &lt;a href="https://tieba.baidu.com/p/3174366300?pn=1"&gt;https://tieba.baidu.com/p/3174366300?pn=1&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;仓鼠原产于内陆地区，主要食物是能量密度较低的植物类食物，对于高淀粉、高热量、高糖分的食物代谢效率不高，所以对于这类食物的处理，身体应对能力较差，不建议投喂（如：奶粉、饼干、肉干、馒头、西式甜品、中式点心、海鲜、河鲜）。
+一只正常的仓鼠，是不需要加餐的，鼠粮里有它所需的营养物质，混合粮中有一小部分比例是作为零食存在的，即使浪费掉一点也没什么影响。
+我们不建议加餐，这样很容易会造成营养过剩，一只肥胖的仓鼠虽然捏起来手感好，但是它并不健康。
+* 营养不良的三种类型：营养过剩、营养失衡、营养不足。&lt;/p&gt;
+&lt;h4 class="heading" id="二零食投喂"&gt;
+ &lt;strong&gt;（二）零食投喂&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%ba%8c%e9%9b%b6%e9%a3%9f%e6%8a%95%e5%96%82"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;仓鼠零食的摄入量不宜超过主食的20%。当你要喂零食时，你投喂的主粮要做对应的较减少，而不是还是喂往日一样多的主粮。
+你投喂的零食可以是新鲜果蔬、保健品，而不是高淀粉、高热量、单纯为了提供蛋白质或脂肪。
+大多数人类的工业品食物对于仓鼠来说负荷太大，并不健康；一只一辈子生活在内陆地区的陆生动物，也需要担心水产品蛋白质过敏的问题。
+（例子：你的仓鼠每日吃10g鼠粮，你想投喂一朵2g重的新鲜西兰花，那么你一整天投喂的食物总量为【8g主粮+2g西兰花】，而不是【10g主粮+2g西兰花】）
+关于仓鼠的饮食建议（https://tieba.baidu.com/p/6645457733）&lt;/p&gt;
+&lt;h4 class="heading" id="三挑食屯粮的建议"&gt;
+ &lt;strong&gt;（三）挑食、屯粮的建议&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%89%e6%8c%91%e9%a3%9f%e5%b1%af%e7%b2%ae%e7%9a%84%e5%bb%ba%e8%ae%ae"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;仓鼠有囤积食物的习惯，即把食物存放进颊囊里，然后找安全的地方储藏起来。这份食物量往往是大于仓鼠自身的实际摄入的，这种食物被称为【储备粮】。假设你一次投喂20g粮食给仓鼠，它们也会搬走很大一部分食物藏起来，而不是直接吃掉，但是外在给你的表现就是“食盆空了，仓鼠竟然能吃这么多”。
+这时你继续投喂食物，旧粮未吃完，新粮继续添加，仓鼠会优先吃掉不好储存和它爱吃的食物，不好吃、耐储存的食物会放着，这样既造成了挑食，也浪费了食物。
+屯粮不仅会造成挑食，还可能因为仓鼠的屯粮习惯造成食物污染（把粪便和粮食放在一起），吃下后影响健康，仓鼠是不会分辨变质食物的。&lt;/p&gt;
+&lt;h4 class="heading" id="四关于自配粮"&gt;
+ &lt;strong&gt;（四）关于自配粮&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e5%9b%9b%e5%85%b3%e4%ba%8e%e8%87%aa%e9%85%8d%e7%b2%ae"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;【雪影】隐退前给自配党指条路 （https://tieba.baidu.com/p/3261915304?pn=1）&lt;/li&gt;
+&lt;li&gt;关于仓鼠粮的讨论贴（https://tieba.baidu.com/p/7336703932）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="9-什么样的仓鼠算健康的仓鼠"&gt;
+ &lt;strong&gt;9. 什么样的仓鼠算健康的仓鼠？&lt;/strong&gt;
+ &lt;a class="anchor" href="#9-%e4%bb%80%e4%b9%88%e6%a0%b7%e7%9a%84%e4%bb%93%e9%bc%a0%e7%ae%97%e5%81%a5%e5%ba%b7%e7%9a%84%e4%bb%93%e9%bc%a0"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;仓鼠的健康程度，直接受到饲主饲养方式的影响。干净的生活环境、健康充足的饮食，是家养个体的平均寿命两倍于野生个体的原因。&lt;/p&gt;
+&lt;h4 class="heading" id="一-健康仓鼠的判断方式"&gt;
+ &lt;strong&gt;（一） 健康仓鼠的判断方式&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%80-%e5%81%a5%e5%ba%b7%e4%bb%93%e9%bc%a0%e7%9a%84%e5%88%a4%e6%96%ad%e6%96%b9%e5%bc%8f"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;健康的仓鼠体态匀称、眼睛明亮、毛发光洁、行动敏捷、清醒时耳朵是张开的，同时仓鼠，尤其是金丝熊也是严格的独居动物。&lt;/li&gt;
+&lt;li&gt;仓鼠和兔子一样，会拉两种粪便，一种是初步消化可以二次吸收（吃掉）的粪便，一种是无法吸收的便便。&lt;/li&gt;
+&lt;li&gt;健康仓鼠的便便是深棕色或黑色并且干燥的，但是受到食物的影响可能会有其它颜色，或者无法立刻干燥，但半小时内干燥属于正常范围。&lt;/li&gt;
+&lt;li&gt;健康的侏儒仓鼠尿液是淡黄色半透明的；健康的熊类仓鼠尿液富含矿物质，是类似石灰水一样浑浊、带黄色，偶尔会因为氧化是铁锈色，可能会因为纸棉或木屑的背景色显得像血。&lt;/li&gt;
+&lt;li&gt;仓鼠是爱干净的小动物，它们在醒的时候会经常清理毛发，不理解的人可能会觉得仓鼠是在抓痒。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading" id="二-仓鼠基础数据"&gt;
+ &lt;strong&gt;（二） 仓鼠基础数据&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%ba%8c-%e4%bb%93%e9%bc%a0%e5%9f%ba%e7%a1%80%e6%95%b0%e6%8d%ae"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;成年坎贝尔仓鼠（一线）、加卡利亚仓鼠（三线）体长8～11 cm，体重在30到45g之间，一线因为体质原因会显得比三线更圆润。&lt;/li&gt;
+&lt;li&gt;成年叙利亚仓鼠（金丝熊）体长12.5～17.5 cm，体重在90到130g之间，母鼠会稍重于公鼠（约10g）。
+【科普】金丝熊的生长和发育 &lt;a href="https://tieba.baidu.com/p/7326410317"&gt;https://tieba.baidu.com/p/7326410317&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;成年罗伯罗夫斯基仓鼠（公婆鼠）体长6～9 cm体重在25到35g之间。&lt;/li&gt;
+&lt;li&gt;人工饲养情况下的仓鼠食物充足，但体重不可能超出太多，当仓鼠的体重超过上限的15%需要保持警惕，超过20%则是已经超重了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;补充1：仓鼠的发育&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;仓鼠平均妊娠期16天（公婆鼠20天）、幼鼠睁眼在15到17天、断奶期为19到21天、1到2个月龄性成熟，且拥有繁殖能力。&lt;/li&gt;
+&lt;li&gt;断奶期时母鼠会开始尝试驱逐幼鼠，幼鼠独立期（离巢期）为23到30天龄。&lt;/li&gt;
+&lt;li&gt;金丝熊：母熊平均性成熟年龄为48天龄（最早20天龄），第一次发情平均为48天龄；公熊平均性成熟年龄为42天龄，第一次发情平均为48天龄。&lt;/li&gt;
+&lt;li&gt;一三线：母鼠平均性成熟年龄为48天龄（25天龄拥有怀孕能力）；公鼠平均性成熟年龄为23天龄。&lt;/li&gt;
+&lt;li&gt;公婆鼠：母鼠平均性成熟年龄为60天龄；公鼠平均性成熟年龄为70天龄。&lt;/li&gt;
+&lt;li&gt;仓鼠性成熟意味着成年，但成年后依然可以继续发育，生长期大约到四个月龄结束。&lt;/li&gt;
+&lt;li&gt;仓鼠的最佳繁殖年龄在4到8个月龄（及生长期结束后），最大繁殖年龄为1岁。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;补充2：性成熟（主动发情）的标志&lt;/strong&gt;
+（动物成年应该是以性成熟、主动发情并拥有繁殖能力为划分）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;身体发育成熟后，公侏儒仓鼠的肚脐位置会发黄、有香腺分泌物，偶尔能发现交配栓。&lt;/li&gt;
+&lt;li&gt;熊类仓鼠发育成熟后，母熊的下体会有乳色分泌物，公熊蛋蛋会发红。&lt;/li&gt;
+&lt;li&gt;熊类仓鼠发育成熟后，都会在腰两侧位置有湿润的痕迹，这是熊的香腺（https://tieba.baidu.com/p/6875899983）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="10-市面上这么多仓鼠笼新手该怎么挑"&gt;
+ &lt;strong&gt;10. 市面上这么多仓鼠笼，新手该怎么挑？&lt;/strong&gt;
+ &lt;a class="anchor" href="#10-%e5%b8%82%e9%9d%a2%e4%b8%8a%e8%bf%99%e4%b9%88%e5%a4%9a%e4%bb%93%e9%bc%a0%e7%ac%bc%e6%96%b0%e6%89%8b%e8%af%a5%e6%80%8e%e4%b9%88%e6%8c%91"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;在市场上能买到的仓鼠笼，大致为铁丝笼、观景笼、亚克力笼、柜笼、整理箱改、分体笼和管道笼，各个笼种之间界线其实并不分明，有很多混合类型的笼子，在尺寸足够的情况下，可以根据自己的喜好灵活挑选。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;1. 铁丝笼&lt;/strong&gt;
+国内市场上最常见、最经典也是实用性最高的仓鼠笼类型（绝大多数配件优先适配铁丝笼）。市面上小到小田园，大到一米长的飞宝大灰底，都属于铁丝笼。它的优点是便于通风性好、便于观察、清洁方便、挪动便捷、放置用品方便，很多新手入门就是这类笼子，受广大鼠友喜爱，缺点是铁丝质量参差不齐。
+&lt;em&gt;(图片描述：经典基础系列铁丝笼)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 观景笼、爬缸&lt;/strong&gt;
+观景笼和爬缸的特点：美观、便于观察仓鼠动态，缺点是普遍较贵、玻璃材质的普遍不便挪动。
+①号类型的观景笼受到广大鼠友的诟病——闷。一部分鼠友想到了在笼子上加装抽风扇；一部分厂商转变思路，在笼子上方开辟铁丝网、在笼子中层加装铁丝网，于是出现了②号和③号类型的笼子。
+鱼缸是简化版的爬缸，如果追求透明度可以使用玻璃、亚克力板、PVC板，尺寸可以自行定制。如果使用玻璃，价格一般相比爬缸、观景笼可以说是非常划算的，优点是玻璃耐用，缺点是比较重。
+此贴为贴吧大佬【蝴蝶将死】关于爬缸的使用心得（https://tieba.baidu.com/p/5816123632）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. 分体笼（管道笼）&lt;/strong&gt;
+由一个主笼加若干个分笼共同组成，流行于上世纪90年代和本世纪初的欧美，理念是“营造仓鼠在地穴中的生存环境”，后来发现这种模拟并没有想象中的好用，比如清理难度、配件维护难度，还不如一个大笼子内部做功能划分，于是单体笼取代了分体笼的广大市场。
+此贴是贴吧大佬【灯光路影】关于仓鼠&amp;quot;管道&amp;quot;笼的使用心得及体会（https://tieba.baidu.com/p/5842547473）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. 整理箱和柜笼&lt;/strong&gt;
+未经改装的整理箱有着观景笼所拥有的缺点和不便于观察的特点，唯一算得上是优点的就是隐蔽性好，所以一般鼠友使用它不会盖盖子。
+考虑到tb卖的整理箱计算的是最大外径和尺寸，很大一部分是虚标，所以整理箱的鼠友建议买容量70L以上的。
+改装后的整理箱和柜笼大致一样便于观察，一般使用它的是花枝鼠、刺猬、龙猫的饲主。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;补充：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;仓鼠的笼子优先考虑底面积，高度只要可以容纳下足够的垫料、放下跑轮后不会跑出来就可以了。&lt;/li&gt;
+&lt;li&gt;如果你还是不懂怎么挑选笼子或者懒得自己改笼子，那么不管是侏儒鼠还是金丝熊，可以去当地的玻璃店找人加工，或者一步到位买个大型观景笼。&lt;/li&gt;
+&lt;li&gt;如果你想用玻璃、亚克力板或其他板材制作矩形仓鼠笼时，你所选用的立面板材厚度最好大于5mm、底面板大于8mm、立面高度大于45cm用于铺垫料和防止仓鼠“越狱”。&lt;/li&gt;
+&lt;li&gt;做笼子时你可能会用到的辅助材料：电镀铁丝网、镀锌铁丝网、H型铝合金条、活动扎带、手钻（手捻）。&lt;/li&gt;
+&lt;li&gt;不建议使用木头笼子，因为仓鼠有啃咬木头磨牙的习惯，同时木头自身有孔隙，尿液和污渍会渗透进去，难以清理，打蜡或上漆的话虽然能一定程度上阻止渗透，但是仓鼠的啃咬会破坏防护层，跟你说“垫料厚铺不会脏”的，一般是骗人、饲养时间不长、接触过的仓鼠太少，至少是其中一种情况。&lt;/li&gt;
+&lt;li&gt;如果你提供给仓鼠的笼子足够大，可以做适当的分区：地穴区、活动区、沙盆。&lt;/li&gt;
+&lt;li&gt;如果有喜欢考古的吧友，可以在精品区-用品展览，找到更多有用的东西。&lt;/li&gt;
+&lt;li&gt;仓鼠DIY魔片笼（https://tieba.baidu.com/p/5628229214）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="11-仓鼠的笼子布置应该什么样子"&gt;
+ &lt;strong&gt;11. 仓鼠的笼子布置应该什么样子？&lt;/strong&gt;
+ &lt;a class="anchor" href="#11-%e4%bb%93%e9%bc%a0%e7%9a%84%e7%ac%bc%e5%ad%90%e5%b8%83%e7%bd%ae%e5%ba%94%e8%af%a5%e4%bb%80%e4%b9%88%e6%a0%b7%e5%ad%90"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;h4 class="heading" id="一布置建议"&gt;
+ &lt;strong&gt;（一）布置建议&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%80%e5%b8%83%e7%bd%ae%e5%bb%ba%e8%ae%ae"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;如果你提供给仓鼠的笼子足够大，可以做适当的分区例如地穴区（挖掘区）、活动区、沙盆（清洁区）等。做分区既可以延长笼内干净时间，又可以节省垫料，还能让仓鼠的健康更有保障。&lt;/li&gt;
+&lt;li&gt;仓鼠喜欢待在阴暗、带遮挡的地方，这能给它带来安全感，这类空间统称为【躲避】。&lt;/li&gt;
+&lt;li&gt;仓鼠的视力很差、跳跃能力很差、攀爬能力不错，同时也是一种地穴动物——小家伙们天生爱打洞。&lt;/li&gt;
+&lt;li&gt;仓鼠的必备用品是跑轮、水壶、躲避，食盆由于盛放食物，浴室或厕所这类沙盆用于仓鼠清洁自身。&lt;/li&gt;
+&lt;li&gt;仓鼠的笼子里需要有满足仓鼠天性的物品和足够厚的垫料用于攀爬、打洞。&lt;/li&gt;
+&lt;li&gt;仓鼠是一种地穴生物，垫料是必备的，你的笼子中至少要有一片区域供它们挖掘使用。&lt;/li&gt;
+&lt;li&gt;仓鼠的四肢纤细，笼子里不应该存在可能卡到它四肢的东西。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 class="heading" id="二理想的仓鼠笼"&gt;
+ &lt;strong&gt;（二）理想的仓鼠笼&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%ba%8c%e7%90%86%e6%83%b3%e7%9a%84%e4%bb%93%e9%bc%a0%e7%ac%bc"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;一个理想状态的仓鼠笼，除了够大，应该配备：挖掘区、活动区、厕所、躲避、储藏区等。
+目前存在的两个普遍问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;很多仓鼠笼忽略了仓鼠挖掘的需求，或者饲主并不了解这种需求所以不提供。&lt;/li&gt;
+&lt;li&gt;非常多仓鼠饲主为了满足自己的窥私欲，大量选用透明笼或家具，又不给足够多的垫料，导致笼内毫无躲避空间和功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading" id="三仓鼠的垫料该怎么换"&gt;
+ &lt;strong&gt;（三）仓鼠的垫料该怎么换？&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%89%e4%bb%93%e9%bc%a0%e7%9a%84%e5%9e%ab%e6%96%99%e8%af%a5%e6%80%8e%e4%b9%88%e6%8d%a2"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;你可以根据你仓鼠的卫生情况，制定更换频率3天、一周、半月、一月不等，但花草类垫料最少要一周到十天全换，因为这类垫料是更容易受潮、腐败、变质。&lt;/li&gt;
+&lt;li&gt;仓鼠的垫料不管有多厚，都应该做到脏了就换，不一定要一次性全部都换，可以是只换掉脏的部分。&lt;/li&gt;
+&lt;li&gt;作为一名铲屎官，仓鼠的厕所也是应该脏了就换新沙。&lt;/li&gt;
+&lt;li&gt;仓鼠对气味很敏感，一口气全换干净垫料可能会让仓鼠有一种“到了新地方”的错觉，你可以留一部分干净的旧垫料混进新垫料里，减少它的紧张感（如果不会紧张可以不用这么做）。&lt;/li&gt;
+&lt;li&gt;“厚铺不用勤换”是扯淡，仓鼠是活的，会在笼子内吃喝拉撒，会不断产生&lt;strong&gt;垃圾&lt;/strong&gt;，完全不清理不可能。即使不需要大扫除，也得定期清理部分脏掉的垫料。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="12-仓鼠的垫料该怎么选"&gt;
+ &lt;strong&gt;12. 仓鼠的垫料该怎么选？&lt;/strong&gt;
+ &lt;a class="anchor" href="#12-%e4%bb%93%e9%bc%a0%e7%9a%84%e5%9e%ab%e6%96%99%e8%af%a5%e6%80%8e%e4%b9%88%e9%80%89"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;仓鼠的垫料应该选择粉尘少、无尖锐物、刺激性小、有一定吸水性、无人工添加香精的类型，尽量不要选购无牌、易腐败和松木杉木制品（很多鼠对松香这类树脂和粉尘过敏，表现为呼吸不畅）。&lt;/li&gt;
+&lt;li&gt;大部分金丝熊和少部分侏儒仓鼠会定点小便，仓鼠是不会区分厕所和浴室的，通常情况下二者是合一的（只是人为区分罢了），可以统一称为【清洁区】（或沙区、沙盆）。&lt;/li&gt;
+&lt;li&gt;浴沙和厕所沙的作用同理，但厕所沙的吸水性要求更高。&lt;/li&gt;
+&lt;li&gt;仓鼠会在沙盆中打滚，清洁区的目的是为了清理仓鼠身体的脏污和油渍以及接纳排泄物，同时也是为了让身体沾染上尿液，增强自己的味道（尿液中有浓厚的信息素）。&lt;/li&gt;
+&lt;li&gt;太细的浴沙或尿沙有可能残留在仓鼠的毛发之间（大多数时候仓鼠会自我清理掉残留物）。&lt;/li&gt;
+&lt;li&gt;仓鼠是爱干净的小生物，时刻保持着身体的干净，当它的毛发不健康、身上粘有污渍长时间没有清理时，这代表它的身体出问题了。&lt;/li&gt;
+&lt;li&gt;尽量不要购买天然河沙、硅质砂，带有棱角的二氧化硅石会对皮肤造成损伤，且硅砂的吸附能力不行，清洁效果不理想。&lt;/li&gt;
+&lt;li&gt;垫料的干净程度很大程度会影响仓鼠的健康，整洁的人工环境也是家养鼠平均寿命是野生个体的2倍的原因之一。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;选了以后该怎么铺？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前文提到仓鼠是一种地穴生物，打洞是它生命当中不可或缺的一部分，所以垫料的要求是越多越好。研究表明，当你的垫料厚度超过80 cm时，你不用担心仓鼠会咬笼子、甚至看不见仓鼠玩跑轮。&lt;/li&gt;
+&lt;li&gt;垫料厚度并没有强制要求，但是建议厚度（不分品种）分别为5/15/20/30/50 cm及以上，侏儒仓鼠会比金丝熊更爱打洞，需要更多垫料。&lt;/li&gt;
+&lt;li&gt;垫料根据经济条件、气候环境灵活调整，冬季采用保暖垫料、夏季采用散热垫料。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;补充：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;许多针叶树木内都富含树脂（自行百度：松木脱脂），这种脂质是树木用于驱虫，但可能会对哺乳动物造成过敏。如果你确定你买的松木、杉木制品是经过化学+物理脱脂的，那么它就是可以使用的。如果你不确定你买的松木、杉木制品是否经过两次脱脂处理，那么请选择其他材质的同类型产品代替（如：桦木、杨木）。&lt;/li&gt;
+&lt;li&gt;当仓鼠有过敏症状时去除过敏源，仓鼠可以很快好转，通常情况下不需要吃药。按照优先级来排查：垫料、纺织品、家具、食物和水源。设立时间界定，及你的仓鼠从何时出现症状，出现症状前后生活环境和饮食有什么变化，这样可以更快找到目标。&lt;/li&gt;
+&lt;li&gt;‘噗噗’声或打喷嚏常发生在金丝熊身上，熊的呼吸道敏感所以常用于呼吸道疾病和药物的实验。声音有时是梦中或睡醒时、有时是在垫料中行走，金丝熊和人类一样有季节性鼻炎的问题，没有根治的办法，一般不影响日常生活。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;垫料测评&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;【失眠的塔塔】（https://tieba.baidu.com/p/4615380396）&lt;/li&gt;
+&lt;li&gt;【小猫微凉】（https://tieba.baidu.com/p/3924153576）&lt;/li&gt;
+&lt;li&gt;【无聊的杂牌木屑测评】（https://tieba.baidu.com/p/5901555278）&lt;/li&gt;
+&lt;li&gt;【木屑的选购科普】（https://tieba.baidu.com/p/6910597806）&lt;/li&gt;
+&lt;li&gt;【漫谈关于仓鼠度夏你可以用到的东西】（https://tieba.baidu.com/p/6650319236）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="13-为什么笼子必备跑轮跑轮多大合适"&gt;
+ &lt;strong&gt;13. 为什么笼子必备跑轮、跑轮多大合适？&lt;/strong&gt;
+ &lt;a class="anchor" href="#13-%e4%b8%ba%e4%bb%80%e4%b9%88%e7%ac%bc%e5%ad%90%e5%bf%85%e5%a4%87%e8%b7%91%e8%bd%ae%e8%b7%91%e8%bd%ae%e5%a4%9a%e5%a4%a7%e5%90%88%e9%80%82"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;h4 class="heading" id="一仓鼠的生理需求"&gt;
+ &lt;strong&gt;（一）仓鼠的生理需求&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%b8%80%e4%bb%93%e9%bc%a0%e7%9a%84%e7%94%9f%e7%90%86%e9%9c%80%e6%b1%82"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;仓鼠不同于猫狗，它是一种并未完全驯化的生物，保留了野生状态下非常多的生活习性。
+仓鼠的活动量非常大，一只侏儒仓鼠一小时能跑6.5公里，它们会巡视自己的领地（约3.5平方公里），并搜寻食物和保卫领地。如此巨大的活动量，所以跑轮是必备的。
+（资料引用源http://animaldiversity.org/accounts/Phodopus_campbelli/）
+BBC的一部纪录片【仓鼠觅食记】，可以体现仓鼠的奔跑姿态，在各大视频网站可以找到。&lt;/p&gt;
+&lt;h4 class="heading" id="二合适跑轮的选购"&gt;
+ &lt;strong&gt;（二）合适跑轮的选购&lt;/strong&gt;
+ &lt;a class="anchor" href="#%e4%ba%8c%e5%90%88%e9%80%82%e8%b7%91%e8%bd%ae%e7%9a%84%e9%80%89%e8%b4%ad"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;一款合适的跑轮，是可以让你的鼠很顺畅自然的奔跑，身体（背部）是平直的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建议跑轮实际直径（内径）：公婆鼠13 cm以上，一三线15 cm以上，熊17 cm以上。&lt;/li&gt;
+&lt;li&gt;前文有提到仓鼠的体长，请根据仓鼠实际体长挑选合适的跑轮，跑轮过小，仓鼠的头会后仰，甚至身体向后弯曲，这对身体健康不利。
+（强调：你在tb上买的任何一款跑轮，它的尺寸标注都是虚标，标的是最大外径。而仓鼠实际使用的是内径，内外径差距根据跑轮所用材料不同和厂商标注方式不同，缩水尺寸不等。）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果资金足够，建议跑轮越大越好，无须担心仓鼠跑不动的问题。不过公婆鼠有因为跑得过快刹不住，而飞出去的情况，请挑选有边阻挡、跑轮跑道有足够摩擦力的跑轮，或加厚垫料、给轴承上浓度高的润滑脂降低惯性。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="14-仓鼠品种花色繁殖外表特征的相关知识"&gt;
+ &lt;strong&gt;14. 仓鼠品种、花色、繁殖、外表特征的相关知识&lt;/strong&gt;
+ &lt;a class="anchor" href="#14-%e4%bb%93%e9%bc%a0%e5%93%81%e7%a7%8d%e8%8a%b1%e8%89%b2%e7%b9%81%e6%ae%96%e5%a4%96%e8%a1%a8%e7%89%b9%e5%be%81%e7%9a%84%e7%9b%b8%e5%85%b3%e7%9f%a5%e8%af%86"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;仓鼠的繁殖是有很多禁忌和问题，我希望你在繁殖前做好充分认知，而不是“我想我家仓鼠生一窝”，但是什么准备都没做好，甚至触碰基因禁忌，这是极不负责的行为。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;【品种】&lt;/strong&gt;：指四大宠物仓鼠、生物意义上的品种，及：加卡利亚仓鼠（三线）、坎贝尔仓鼠（一线）、叙利亚仓鼠（金丝熊）、罗伯罗夫斯基仓鼠（公婆鼠）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【花色】&lt;/strong&gt;：指毛色，四大品种下辖的花色，仓鼠不会因为毛色不同而出现基因突变成为新品种。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【补充】&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;第五种宠物仓鼠【黑线仓鼠】，虽为中国本土仓鼠，但在国内没有作为宠物饲养，故此处作为补充条目。&lt;/li&gt;
+&lt;li&gt;不同品种之间的仓鼠存在生殖隔离，不能互配。&lt;/li&gt;
+&lt;li&gt;一三线仓鼠的由于物种分化时间相对较晚，所以交配可能产生后代，但会因为生殖隔离出现可怕后果。&lt;/li&gt;
+&lt;li&gt;以现在的仓鼠种群分化，同一品种内部还没到分化出不同亚种的地步，也没有什么血统纯度的说法。“毛色不同所以品种不同”、“XX血统好”这类宣传，仅仅是为了提升售价的说辞。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;【科普】仓鼠品种&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/5177885914%EF%BC%89"&gt;https://tieba.baidu.com/p/5177885914）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】仓鼠品种之侏儒仓鼠&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/5177764666%EF%BC%89"&gt;https://tieba.baidu.com/p/5177764666）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【N喵】图解从结构区分一三线 +818香港那些假一线&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/5293242228%EF%BC%89"&gt;https://tieba.baidu.com/p/5293242228）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】仓鼠品种之叙利亚仓鼠&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/5177820581%EF%BC%89"&gt;https://tieba.baidu.com/p/5177820581）&lt;/a&gt;&lt;br&gt;
+4-1. &lt;strong&gt;【科普】金丝熊的生长和发育&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/7267184691%EF%BC%89"&gt;https://tieba.baidu.com/p/7267184691）&lt;/a&gt;&lt;br&gt;
+4-2. &lt;strong&gt;【科普】熊的香腺&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/6875899983%EF%BC%89"&gt;https://tieba.baidu.com/p/6875899983）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【金丝熊吧务】金丝熊花色2019版&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/6144957664%EF%BC%89"&gt;https://tieba.baidu.com/p/6144957664）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【授权转载·科普贴】金丝熊灰色系分支及延伸花色&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/3592351083%EF%BC%89"&gt;https://tieba.baidu.com/p/3592351083）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】仓鼠品种之其他宠物仓鼠&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/5177837852%EF%BC%89"&gt;https://tieba.baidu.com/p/5177837852）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【基因控】为什么不能打破繁殖禁忌&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/3889775743%EF%BC%89"&gt;https://tieba.baidu.com/p/3889775743）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【N喵】【生物贴】戳进来绝对有新发现 细说4种仓鼠间的杂交&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/3986484163%EF%BC%89"&gt;https://tieba.baidu.com/p/3986484163）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仓鼠繁殖&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="http://tieba.baidu.com/p/5622030950"&gt;http://tieba.baidu.com/p/5622030950&lt;/a&gt; )&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;警告：繁殖前请注意繁殖禁忌、仓鼠年龄、身体状况，超重母鼠不建议繁殖。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="15-疾病和医疗导航楼"&gt;
+ &lt;strong&gt;15. 疾病和医疗导航楼&lt;/strong&gt;
+ &lt;a class="anchor" href="#15-%e7%96%be%e7%97%85%e5%92%8c%e5%8c%bb%e7%96%97%e5%af%bc%e8%88%aa%e6%a5%bc"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;本地可以医治异宠的兽医早早就要联系好，到时候才不会慌乱。&lt;/li&gt;
+&lt;li&gt;文章中可能会提到一些家庭处理的办法，很多小城市没有能看仓鼠的兽医，我希望每位鼠友都能多少学点医疗知识。&lt;/li&gt;
+&lt;li&gt;这些家庭处理方法建议平时没事时候看一看，不要临时抱佛脚，以免找帖子的时候找不到。&lt;/li&gt;
+&lt;li&gt;原帖链接可能失效，楼中楼后续会有补充链接，请勿在回复！！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】仓鼠湿尾的研究&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2151319431"&gt;https://tieba.baidu.com/p/2151319431&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】仓鼠眼睛被黏住了&amp;mdash;原因以及治疗&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2125865233"&gt;https://tieba.baidu.com/p/2125865233&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正确的仓鼠“上火”眼睛症状（发炎症状和治疗）&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6610074245"&gt;https://tieba.baidu.com/p/6610074245&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】中暑的症状、预防和治疗&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2293882206"&gt;https://tieba.baidu.com/p/2293882206&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病】仓鼠低体温症&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/1872578467"&gt;https://tieba.baidu.com/p/1872578467&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【救治帖】关于颊囊炎的详细处理&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/3637141723"&gt;https://tieba.baidu.com/p/3637141723&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】浅谈仓鼠糖尿病的检测和护理&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2072965576"&gt;https://tieba.baidu.com/p/2072965576&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【药物导向】可以用于仓鼠的一些抗生素及其用法用量&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/4529151090"&gt;https://tieba.baidu.com/p/4529151090&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】一些仓鼠能用的药物&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6220566342"&gt;https://tieba.baidu.com/p/6220566342&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【讨论】关于仓鼠体内寄生虫的驱虫药给药剂量及周期&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2459729526"&gt;https://tieba.baidu.com/p/2459729526&lt;/a&gt; )&lt;br&gt;
+&lt;strong&gt;注&lt;/strong&gt;：讨论帖不建议选择【只查看楼主】&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【黑爷】脓肿治疗后的康复贴&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/2519607530%EF%BC%89"&gt;https://tieba.baidu.com/p/2519607530）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病】仓鼠行为失序症&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4645426271%EF%BC%89"&gt;https://tieba.baidu.com/p/4645426271）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病】仓鼠疾病之尿钙&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4623426711%EF%BC%89"&gt;https://tieba.baidu.com/p/4623426711）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病】仓鼠疾病之耳部感染&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4623406312%EF%BC%89"&gt;https://tieba.baidu.com/p/4623406312）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病】仓鼠的尿灼烧&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4619520244%EF%BC%89"&gt;https://tieba.baidu.com/p/4619520244）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】关于益生菌在宠物体内的作用原理&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4071139311%EF%BC%89"&gt;https://tieba.baidu.com/p/4071139311）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】记录子宫蓄脓&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/6301446905%EF%BC%89"&gt;https://tieba.baidu.com/p/6301446905）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【花枝鼠吧】乳腺肿瘤&lt;/strong&gt;&lt;br&gt;
+（&lt;a href="https://tieba.baidu.com/p/4216107700%EF%BC%89"&gt;https://tieba.baidu.com/p/4216107700）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】仓鼠掉毛的现象&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2222795256"&gt;https://tieba.baidu.com/p/2222795256&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普翻译】仓鼠的白内障&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/1862978766"&gt;https://tieba.baidu.com/p/1862978766&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】仓鼠泌尿系统的问题&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2837700016"&gt;https://tieba.baidu.com/p/2837700016&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】仓鼠慢性肾炎的诊断和治疗&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2317378445"&gt;https://tieba.baidu.com/p/2317378445&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【疾病探讨】关于熊类仓鼠治不好的噗嗤声、打喷嚏、揉鼻子&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2069958285"&gt;https://tieba.baidu.com/p/2069958285&lt;/a&gt; )&lt;br&gt;
+&lt;strong&gt;注&lt;/strong&gt;：熊的呼吸道敏感所以常用于呼吸道相关疾病和药物的实验，同时仙台病毒是一项很少见的疾病，更常见的是垫料过敏和季节性鼻炎（ps：别喂板蓝根了，那玩意儿没啥用）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【少见的疾病】仓鼠眼底血管肿瘤&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2249396947"&gt;https://tieba.baidu.com/p/2249396947&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【实操】仓鼠骨折初期，家庭处理办法&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/391495073"&gt;https://tieba.baidu.com/p/391495073&lt;/a&gt; )&lt;br&gt;
+链接：&lt;a href="https://pan.baidu.com/s/1IoqdABWbwKmXGqA7SYfkjw"&gt;https://pan.baidu.com/s/1IoqdABWbwKmXGqA7SYfkjw&lt;/a&gt;&lt;br&gt;
+提取码：ssss&lt;br&gt;
+&lt;strong&gt;注&lt;/strong&gt;：仅限无法找到兽医而不得不自行处理的情况下使用。如果你无法做到帖子和视频中那么精细，请【静养处理】等待仓鼠自行恢复，错误的手法可能会加重病情。将笼内跑轮、和一些用于攀爬的物品移除，提供一些易于吸收的高蛋白食物有利于恢复，如鸡蛋白、白肉。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仓鼠口炎（下巴湿漉漉和中暑很像，但并不是中暑）【二狗】非科普，关于口炎&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;考古时坟帖请勿回复&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 class="heading" id="16-杂项导航楼"&gt;
+ &lt;strong&gt;16. 杂项导航楼&lt;/strong&gt;
+ &lt;a class="anchor" href="#16-%e6%9d%82%e9%a1%b9%e5%af%bc%e8%88%aa%e6%a5%bc"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;【科普】合笼还是分笼？&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/4657403088"&gt;https://tieba.baidu.com/p/4657403088&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】关于仓鼠的饮食建议&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6645457733"&gt;https://tieba.baidu.com/p/6645457733&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】鼠粮贴贴贴&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/3174366300"&gt;https://tieba.baidu.com/p/3174366300&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】老年仓鼠的照顾&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2205722419"&gt;https://tieba.baidu.com/p/2205722419&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】夏季的日常照顾小知识&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2329208635"&gt;https://tieba.baidu.com/p/2329208635&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【雪影】秋冬季仓鼠的照顾&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2637271117"&gt;https://tieba.baidu.com/p/2637271117&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【柚子】伪冬眠的先兆和处理&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2008858619"&gt;https://tieba.baidu.com/p/2008858619&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】被仓鼠咬了怎么办？&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/5178580686"&gt;https://tieba.baidu.com/p/5178580686&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】“狂犬病恐惧症“与疫苗滥用&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/1372828461"&gt;https://tieba.baidu.com/p/1372828461&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【辟谣】818知乎黑爱宝的邪教贴和一系列跟风黑&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6483892238"&gt;https://tieba.baidu.com/p/6483892238&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【星星】关于自配粮和品牌粮，你该知道的&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/3338157625"&gt;https://tieba.baidu.com/p/3338157625&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】来自读兽医专业人的建议&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2591843354"&gt;https://tieba.baidu.com/p/2591843354&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】熊的香腺&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6875899983"&gt;https://tieba.baidu.com/p/6875899983&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【小猫微凉】正确的换垫料姿势升级版~误区篇+海外篇&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/3924153576"&gt;https://tieba.baidu.com/p/3924153576&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】木屑的认识和选购&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6910597806"&gt;https://tieba.baidu.com/p/6910597806&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【正能量】从外国网站找来关于公婆群居的资料&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/2699091414?red_tag=0584354376"&gt;https://tieba.baidu.com/p/2699091414?red_tag=0584354376&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【阿星】错误饲养仓鼠导致的后果展示&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/597869010?red_tag=0671637610"&gt;https://tieba.baidu.com/p/597869010?red_tag=0671637610&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【科普】花鸟仓鼠合笼的下场 请做好心理准备&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/1380839185"&gt;https://tieba.baidu.com/p/1380839185&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【实操】仓鼠剪牙&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/4822512630"&gt;https://tieba.baidu.com/p/4822512630&lt;/a&gt; )&lt;br&gt;
+&lt;strong&gt;注&lt;/strong&gt;：仓鼠上下牙比例接近1:3到1:5，正常情况下不需要剪牙.视频原主剪牙动机不纯，但是手法是可以学习的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;【手工】仓鼠用伊丽莎白圈&lt;/strong&gt;&lt;br&gt;
+(&lt;a href="https://tieba.baidu.com/p/6575213695"&gt;https://tieba.baidu.com/p/6575213695&lt;/a&gt; )&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;END 正文完结&lt;/p&gt;&lt;/blockquote&gt;</description></item><item><title>新购一台8GB的VDS与搬家</title><link>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</link><pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E6%96%B0%E8%B4%AD%E4%B8%80%E5%8F%B08gb%E7%9A%84vds/</guid><description>&lt;p&gt;在7月8日，人称“小阿里”的云服务器提供商「ClawCloud」宣布下线支持中国优化线路的香港服务器。这个公告中还提到了三个赔偿方案，其中两个为不同的退款方案，这里重点关注方案二：可以免费迁移到新加坡或日本节点，并且**原本机器的内存容量还会直接翻倍。&lt;/p&gt;
 &lt;p&gt;这就导致了市场上出现了2核8GB的线路良好的新加坡\日本机器，并且价格为4$/m，有没有很心动，我反正是心动了。&lt;/p&gt;
 &lt;p&gt;回想起那夜远程开发使用claude code内存爆炸，狼狈重启。那夜为了安装OpenWebUI，一口气开了2g的swap。畏畏缩缩不敢使用动态博客、不敢使用1panel等运维面板。怕了真怕了，😭狼狈的我含泪溢价一百块收下一台机器，只希望能用的长久吧。&lt;/p&gt;
 &lt;p&gt;以下记录一下我拿到一台新机器会做什么以及迁移过程。&lt;/p&gt;
