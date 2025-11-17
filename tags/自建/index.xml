@@ -73,7 +73,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; command: --cleanup --schedule &amp;#34;0 0 4 * * *&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;Tips:
-这里踩了个坑，密码不建议包含特殊符号，例如 * $等，会导致验证失败。&lt;/p&gt;&lt;/blockquote&gt;
+这里踩了个坑，密码不建议包含特殊符号，例如 * $等，会导致验证失败。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol start="3"&gt;
 &lt;li&gt;运行&lt;/li&gt;
 &lt;/ol&gt;
@@ -435,7 +436,8 @@
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;自 Vaultwarden v1.29.0 起，WebSocket 默认启用。以前的版本需要反向代理，因为 WebSocket 运行在与默认的 HTTPS 端口不同的端口上。
-自 Vaultwarden v1.29.0 版本起，旧的 &lt;code&gt;WEBSOCKET_ENABLED&lt;/code&gt; 和 &lt;code&gt;WEBSOCKET_PORT&lt;/code&gt; 已被弃用并将被忽略。在 v1.29.0 版本之后，您可以通过将 &lt;code&gt;ENABLE_WEBSOCKET&lt;/code&gt; 设置为 &lt;code&gt;false&lt;/code&gt; 值来禁用 Websocket 通知，这将减少 Vaultwarden 使用的资源（尽管不会太多）。&lt;/p&gt;&lt;/blockquote&gt;
+自 Vaultwarden v1.29.0 版本起，旧的 &lt;code&gt;WEBSOCKET_ENABLED&lt;/code&gt; 和 &lt;code&gt;WEBSOCKET_PORT&lt;/code&gt; 已被弃用并将被忽略。在 v1.29.0 版本之后，您可以通过将 &lt;code&gt;ENABLE_WEBSOCKET&lt;/code&gt; 设置为 &lt;code&gt;false&lt;/code&gt; 值来禁用 Websocket 通知，这将减少 Vaultwarden 使用的资源（尽管不会太多）。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol start="3"&gt;
 &lt;li&gt;需要为&lt;code&gt;/子路径/notifications&lt;/code&gt;配置分流，不能仅为&lt;code&gt;/子路径/notifications/hub&lt;/code&gt;配置分流会导致，使用移动设备准许登录不能生效&lt;/li&gt;
 &lt;/ol&gt;
@@ -518,7 +520,8 @@
  &lt;a class="anchor" href="#%e5%ae%9a%e6%97%b6%e6%a3%80%e6%9f%a5%e5%ae%b9%e5%99%a8%e6%9b%b4%e6%96%b0"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;blockquote&gt;
-&lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; watchtower:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: containrrr/watchtower

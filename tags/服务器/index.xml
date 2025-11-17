@@ -384,7 +384,8 @@
 &lt;p&gt;直接把旧机器上的nginx打包上传到新机上，操作只需要建立site-available与site-enable的软连接&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;绷不住了，第一次搬家十分乃至万分不顺利，从七点搬到十一点半还没搬完。搬家太累了😭&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;绷不住了，第一次搬家十分乃至万分不顺利，从七点搬到十一点半还没搬完。搬家太累了😭&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 class="heading" id="openlist"&gt;
  OpenList
  &lt;a class="anchor" href="#openlist"&gt;#&lt;/a&gt;
@@ -492,7 +493,8 @@
 &lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;2025-07-18日更新
-1panel 面板bug好多，使用nginx反代面板本身实现https访问，一直卡在loading。不知是不是我操作有问题。&lt;/p&gt;&lt;/blockquote&gt;
+1panel 面板bug好多，使用nginx反代面板本身实现https访问，一直卡在loading。不知是不是我操作有问题。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;似乎遇见问题的情况有很多。
 
 
@@ -576,13 +578,15 @@
 &lt;p&gt;在安装1panel之前没有使用过其他运维面板，也不是专业的运维人员，不过有一个GUI总归是好事。可是装上了之后，发现能用上的功能寥寥无几。&lt;/p&gt;
 &lt;p&gt;来看看1panel官网介绍：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;1Panel 作为一款现代化、开源的 Linux 服务器运维管理面板，其功能涵盖了服务器管理的方方面面，并特别强调了易用性和对新技术的支持。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;1Panel 作为一款现代化、开源的 Linux 服务器运维管理面板，其功能涵盖了服务器管理的方方面面，并特别强调了易用性和对新技术的支持。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h5 class="heading" id="核心服务器管理-高效管理"&gt;
  核心服务器管理 (高效管理)
  &lt;a class="anchor" href="#%e6%a0%b8%e5%bf%83%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ae%a1%e7%90%86-%e9%ab%98%e6%95%88%e7%ae%a1%e7%90%86"&gt;#&lt;/a&gt;
 &lt;/h5&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这个还是很有用的，可以直观看到服务器的资源使用情况。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这个还是很有用的，可以直观看到服务器的资源使用情况。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;主机监控&lt;/strong&gt;: 实时监控服务器的 CPU、内存、磁盘 I/O、网络等各项性能指标。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;文件管理&lt;/strong&gt;: 提供在线文件管理器，方便用户上传、下载、编辑、删除服务器上的文件。&lt;/li&gt;
@@ -594,7 +598,8 @@
  &lt;a class="anchor" href="#%e7%bd%91%e7%ab%99%e4%b8%8e%e5%9f%9f%e5%90%8d%e7%ae%a1%e7%90%86-%e5%bf%ab%e9%80%9f%e5%bb%ba%e7%ab%99"&gt;#&lt;/a&gt;
 &lt;/h5&gt;
 &lt;blockquote&gt;
-&lt;p&gt;对我来说无用，目前docker的基本操作已经够简单了，Nginx配置写起来也不困难。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;对我来说无用，目前docker的基本操作已经够简单了，Nginx配置写起来也不困难。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;一键建站部署&lt;/strong&gt;: 深度集成 WordPress、Halo 等开源建站软件，支持一键快速部署。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;域名管理与配置&lt;/strong&gt;: 方便地进行域名绑定、解析设置。&lt;/li&gt;
@@ -606,7 +611,8 @@
  &lt;a class="anchor" href="#%e5%ba%94%e7%94%a8%e7%94%9f%e6%80%81%e4%b8%8e%e5%95%86%e5%ba%97"&gt;#&lt;/a&gt;
 &lt;/h5&gt;
 &lt;blockquote&gt;
-&lt;p&gt;同上，安装应用也不困难。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;同上，安装应用也不困难。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;精选开源应用&lt;/strong&gt;: 提供一个丰富的应用商店，涵盖各类高质量的开源工具和应用软件。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;一键安装部署&lt;/strong&gt;: 用户可以轻松通过点击安装和部署这些应用。&lt;/li&gt;
@@ -1995,7 +2001,8 @@
 &lt;p&gt;然后我们给这个用户设置一个至少为 16 位的随机大小写字母 + 数字的密码：&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code class="language-undefined" data-lang="undefined"&gt;passwd 用户名
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;建议把 root 用户的密码也改掉，云服务器的默认密码强度还是差点，而且有些服务商会通过邮件来发送默认密码，不太安全。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;建议把 root 用户的密码也改掉，云服务器的默认密码强度还是差点，而且有些服务商会通过邮件来发送默认密码，不太安全。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 class="heading" id="禁用-root-ssh-密码登陆"&gt;
  禁用 root SSH 密码登陆
  &lt;a class="anchor" href="#%e7%a6%81%e7%94%a8-root-ssh-%e5%af%86%e7%a0%81%e7%99%bb%e9%99%86"&gt;#&lt;/a&gt;
@@ -2013,17 +2020,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为什么不设置成 no：&lt;/p&gt;
 &lt;p&gt;庄 sir:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;另，直接禁掉 root 登录 &lt;code&gt;PermitRootLogin no&lt;/code&gt; 我也不常用，更习惯和其他 sudoer 一样配密钥然后禁止密码登录仅允许密钥登录。我是一般能操做线下集群的机子才会这么配，不然出个故障没 root 用不了了，比如存储满了远程 ssh session 都建立不了。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;另，直接禁掉 root 登录 &lt;code&gt;PermitRootLogin no&lt;/code&gt; 我也不常用，更习惯和其他 sudoer 一样配密钥然后禁止密码登录仅允许密钥登录。我是一般能操做线下集群的机子才会这么配，不然出个故障没 root 用不了了，比如存储满了远程 ssh session 都建立不了。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Oganneson:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;理论上 PermitRootLogin 是好的，但在服务器寄掉需要救援时就会变麻烦，我其实更推荐只关闭远程密码登录，保留本地密码登录，出问题时可以通过 vnc 或者 ipmi 本地登录 root 进行救援。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;理论上 PermitRootLogin 是好的，但在服务器寄掉需要救援时就会变麻烦，我其实更推荐只关闭远程密码登录，保留本地密码登录，出问题时可以通过 vnc 或者 ipmi 本地登录 root 进行救援。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 class="heading" id="修改-ssh-端口号"&gt;
  修改 SSH 端口号
  &lt;a class="anchor" href="#%e4%bf%ae%e6%94%b9-ssh-%e7%ab%af%e5%8f%a3%e5%8f%b7"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;登上去第一件事就是改 SSHD 的 端口并修改防火墙，22 全是猜密码的请求。&lt;br&gt;
-有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p&gt;&lt;/blockquote&gt;
+有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;正常情况下，直接通过 &lt;code&gt;sudo vim /etc/ssh/sshd_config&lt;/code&gt; 修改 SSH 端口，然后再使用 &lt;code&gt;sudo systemctl restart ssh.service&lt;/code&gt; 重启 SSH 服务应用更改是可行的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 设置 SSH端口 Port 自拟&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Port 20251
@@ -2097,7 +2107,8 @@
  &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%af%86%e9%92%a5%e7%99%bb%e5%bd%95"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在本地 powershell 中运行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t ed25519
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
@@ -2142,7 +2153,8 @@
  &lt;a class="anchor" href="#%e5%90%af%e7%94%a8-ufw-%e9%98%b2%e7%81%ab%e5%a2%99"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在正式启用 UFW 之前，我们需要先设置规则。我们首先来设置 UFW 的默认行为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default allow outgoing &lt;span style="color:#888;font-style:italic"&gt;# 默认允许所有数据出站&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default deny incoming &lt;span style="color:#888;font-style:italic"&gt;# 默认禁止所有数据入站&lt;/span&gt;
@@ -2190,11 +2202,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw delete 1 &lt;span style="color:#888;font-style:italic"&gt;# 按照numbered的编号删除也行&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在确定所有规则均成功设置后，通过以下命令启动 \ 关闭 \ 重启 UFW&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw enable|disable|reload
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果需要重置规则，请使用：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;重置规则前务必保证 UFW 处于关闭状态。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;重置规则前务必保证 UFW 处于关闭状态。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw reset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本人建议仅放行正在使用的端口，比如 22、80、443。&lt;/p&gt;
 &lt;p&gt;默认情况下，UFW 仅记录不符合规则的被拒绝的数据包。如果需要记录与该服务相关的每个详细信息，可以在 allow 后加上 log 以进行记录。&lt;/p&gt;

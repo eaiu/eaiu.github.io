@@ -73,7 +73,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; command: --cleanup --schedule &amp;#34;0 0 4 * * *&amp;#34;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;Tips:
-这里踩了个坑，密码不建议包含特殊符号，例如 * $等，会导致验证失败。&lt;/p&gt;&lt;/blockquote&gt;
+这里踩了个坑，密码不建议包含特殊符号，例如 * $等，会导致验证失败。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol start="3"&gt;
 &lt;li&gt;运行&lt;/li&gt;
 &lt;/ol&gt;
@@ -470,7 +471,8 @@
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;自 Vaultwarden v1.29.0 起，WebSocket 默认启用。以前的版本需要反向代理，因为 WebSocket 运行在与默认的 HTTPS 端口不同的端口上。
-自 Vaultwarden v1.29.0 版本起，旧的 &lt;code&gt;WEBSOCKET_ENABLED&lt;/code&gt; 和 &lt;code&gt;WEBSOCKET_PORT&lt;/code&gt; 已被弃用并将被忽略。在 v1.29.0 版本之后，您可以通过将 &lt;code&gt;ENABLE_WEBSOCKET&lt;/code&gt; 设置为 &lt;code&gt;false&lt;/code&gt; 值来禁用 Websocket 通知，这将减少 Vaultwarden 使用的资源（尽管不会太多）。&lt;/p&gt;&lt;/blockquote&gt;
+自 Vaultwarden v1.29.0 版本起，旧的 &lt;code&gt;WEBSOCKET_ENABLED&lt;/code&gt; 和 &lt;code&gt;WEBSOCKET_PORT&lt;/code&gt; 已被弃用并将被忽略。在 v1.29.0 版本之后，您可以通过将 &lt;code&gt;ENABLE_WEBSOCKET&lt;/code&gt; 设置为 &lt;code&gt;false&lt;/code&gt; 值来禁用 Websocket 通知，这将减少 Vaultwarden 使用的资源（尽管不会太多）。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol start="3"&gt;
 &lt;li&gt;需要为&lt;code&gt;/子路径/notifications&lt;/code&gt;配置分流，不能仅为&lt;code&gt;/子路径/notifications/hub&lt;/code&gt;配置分流会导致，使用移动设备准许登录不能生效&lt;/li&gt;
 &lt;/ol&gt;
@@ -553,7 +555,8 @@
  &lt;a class="anchor" href="#%e5%ae%9a%e6%97%b6%e6%a3%80%e6%9f%a5%e5%ae%b9%e5%99%a8%e6%9b%b4%e6%96%b0"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;blockquote&gt;
-&lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; watchtower:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: containrrr/watchtower
@@ -2102,7 +2105,8 @@
 &lt;p&gt;然后我们给这个用户设置一个至少为 16 位的随机大小写字母 + 数字的密码：&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code class="language-undefined" data-lang="undefined"&gt;passwd 用户名
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;建议把 root 用户的密码也改掉，云服务器的默认密码强度还是差点，而且有些服务商会通过邮件来发送默认密码，不太安全。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;建议把 root 用户的密码也改掉，云服务器的默认密码强度还是差点，而且有些服务商会通过邮件来发送默认密码，不太安全。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 class="heading" id="禁用-root-ssh-密码登陆"&gt;
  禁用 root SSH 密码登陆
  &lt;a class="anchor" href="#%e7%a6%81%e7%94%a8-root-ssh-%e5%af%86%e7%a0%81%e7%99%bb%e9%99%86"&gt;#&lt;/a&gt;
@@ -2120,17 +2124,20 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为什么不设置成 no：&lt;/p&gt;
 &lt;p&gt;庄 sir:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;另，直接禁掉 root 登录 &lt;code&gt;PermitRootLogin no&lt;/code&gt; 我也不常用，更习惯和其他 sudoer 一样配密钥然后禁止密码登录仅允许密钥登录。我是一般能操做线下集群的机子才会这么配，不然出个故障没 root 用不了了，比如存储满了远程 ssh session 都建立不了。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;另，直接禁掉 root 登录 &lt;code&gt;PermitRootLogin no&lt;/code&gt; 我也不常用，更习惯和其他 sudoer 一样配密钥然后禁止密码登录仅允许密钥登录。我是一般能操做线下集群的机子才会这么配，不然出个故障没 root 用不了了，比如存储满了远程 ssh session 都建立不了。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Oganneson:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;理论上 PermitRootLogin 是好的，但在服务器寄掉需要救援时就会变麻烦，我其实更推荐只关闭远程密码登录，保留本地密码登录，出问题时可以通过 vnc 或者 ipmi 本地登录 root 进行救援。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;理论上 PermitRootLogin 是好的，但在服务器寄掉需要救援时就会变麻烦，我其实更推荐只关闭远程密码登录，保留本地密码登录，出问题时可以通过 vnc 或者 ipmi 本地登录 root 进行救援。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 class="heading" id="修改-ssh-端口号"&gt;
  修改 SSH 端口号
  &lt;a class="anchor" href="#%e4%bf%ae%e6%94%b9-ssh-%e7%ab%af%e5%8f%a3%e5%8f%b7"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;登上去第一件事就是改 SSHD 的 端口并修改防火墙，22 全是猜密码的请求。&lt;br&gt;
-有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p&gt;&lt;/blockquote&gt;
+有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;正常情况下，直接通过 &lt;code&gt;sudo vim /etc/ssh/sshd_config&lt;/code&gt; 修改 SSH 端口，然后再使用 &lt;code&gt;sudo systemctl restart ssh.service&lt;/code&gt; 重启 SSH 服务应用更改是可行的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 设置 SSH端口 Port 自拟&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Port 20251
@@ -2204,7 +2211,8 @@
  &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%af%86%e9%92%a5%e7%99%bb%e5%bd%95"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在本地 powershell 中运行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t ed25519
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
@@ -2249,7 +2257,8 @@
  &lt;a class="anchor" href="#%e5%90%af%e7%94%a8-ufw-%e9%98%b2%e7%81%ab%e5%a2%99"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在正式启用 UFW 之前，我们需要先设置规则。我们首先来设置 UFW 的默认行为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default allow outgoing &lt;span style="color:#888;font-style:italic"&gt;# 默认允许所有数据出站&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default deny incoming &lt;span style="color:#888;font-style:italic"&gt;# 默认禁止所有数据入站&lt;/span&gt;
@@ -2297,11 +2306,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw delete 1 &lt;span style="color:#888;font-style:italic"&gt;# 按照numbered的编号删除也行&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在确定所有规则均成功设置后，通过以下命令启动 \ 关闭 \ 重启 UFW&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw enable|disable|reload
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果需要重置规则，请使用：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;重置规则前务必保证 UFW 处于关闭状态。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;重置规则前务必保证 UFW 处于关闭状态。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw reset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本人建议仅放行正在使用的端口，比如 22、80、443。&lt;/p&gt;
 &lt;p&gt;默认情况下，UFW 仅记录不符合规则的被拒绝的数据包。如果需要记录与该服务相关的每个详细信息，可以在 allow 后加上 log 以进行记录。&lt;/p&gt;
