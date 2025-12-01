@@ -1,4 +1,234 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Mon, 17 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>「蒸汽迷航」3D木制拼图体验</title><link>https://blog.yzyy.de/post/%E8%92%B8%E6%B1%BD%E8%BF%B7%E8%88%AA3d%E6%9C%A8%E5%88%B6%E6%8B%BC%E5%9B%BE%E4%BD%93%E9%AA%8C/</link><pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%92%B8%E6%B1%BD%E8%BF%B7%E8%88%AA3d%E6%9C%A8%E5%88%B6%E6%8B%BC%E5%9B%BE%E4%BD%93%E9%AA%8C/</guid><description>&lt;p&gt;事情源于小橙和她的朋友一起出门吃铁锅炖，可能是吃撑了去逛街消食，逛到了「同趣」这个店，刚开始只是随便逛逛和我分享这个模型，说很精致并且很大。我只当和平时一样简单分享一下，简单回应一下就去刷视频了。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生活 on G-Hung的博客</title><link>https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/</link><description>Recent content in 生活 on G-Hung的博客</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 30 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.yzyy.de/tags/%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>一步步搭建星露谷物语服务器，实现和远方朋友的流畅联机。</title><link>https://blog.yzyy.de/post/%E6%98%9F%E9%9C%B2%E8%B0%B7%E7%89%A9%E8%AF%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 30 Nov 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E6%98%9F%E9%9C%B2%E8%B0%B7%E7%89%A9%E8%AF%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid><description>&lt;p&gt;最近小橙的空闲时间比较多，而我也想多和她玩耍，前两天一直在看owcs的总决赛，导致小橙有些心生不满。思前想后，还是找个游戏来玩吧，早就知道星露谷的大名，种田经营的题材可能也会感兴趣，那就来玩星露谷吧。&lt;/p&gt;
+&lt;p&gt;说干就干，在ios上花了5$买了一个游戏本体，当我打开的那一刻，发现联机之路苦难重重。&lt;/p&gt;
+&lt;p&gt;虽然说pc和主机早早就已经支持了局域网联机，并且可以依赖steam网络进行互联，但是移动端刚在1.6版本引入了局域网联机功能。并且由于当前代码还不是很完善，作者还将联机界面隐藏，只能通过触发「彩蛋」来解锁。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解锁方式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在游戏主标题画面。
+看到“Stardew Valley”的Logo上有几片叶子。
+按以下顺序点击叶子（模拟手柄方向键）：
+&lt;strong&gt;上&lt;/strong&gt;（↑）：点击Logo右上角的叶子
+&lt;strong&gt;上&lt;/strong&gt;（↑）：再次点击右上角
+&lt;strong&gt;下&lt;/strong&gt;（↓）：点击左下角的叶子
+&lt;strong&gt;下&lt;/strong&gt;（↓）：再次点击左下角
+&lt;strong&gt;左&lt;/strong&gt;（←）：点击左上角的叶子
+&lt;strong&gt;右&lt;/strong&gt;（→）：点击右下角的叶子
+&lt;strong&gt;左&lt;/strong&gt;（←）：再次点击左上角
+&lt;strong&gt;右&lt;/strong&gt;（→）：再次点击右下角
+最后点击屏幕右下角的 &lt;strong&gt;“?”&lt;/strong&gt; 问号按钮。
+退出问号菜单后，主界面就会出现 &lt;strong&gt;“合作”（Co-op）&lt;/strong&gt; 按钮！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;解锁方式还是很有趣的，著名的「Konami Code」，记起了和我哥一起玩魂斗罗，通过这个菜单加了30条命但还是关卡没过去的故事。&lt;/p&gt;
+&lt;p&gt;到了联机的界面我又犯了愁：移动端只支持通过输入IP进行连接，也就是局域网联机，如何让远在五百公里外的小橙和我进行联机？&lt;/p&gt;
+&lt;p&gt;当然根据我的折腾史，不用想也可以通过打洞或者中转服务器建立一个虚拟局域网，但是这样做有一个弊端是&lt;strong&gt;很麻烦&lt;/strong&gt;，每次都需要打开游戏外的一个软件才可以运行，并且十分不稳定！&lt;/p&gt;
+&lt;p&gt;还有另外一个方案是frp，暴露我本地pc的一个端口到公网这样也可以，但只是方便了小橙，我额外还需要保持pc开启，这显然也麻烦。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 class="heading" id="搭建服务器端"&gt;
+ 搭建服务器端
+ &lt;a class="anchor" href="#%e6%90%ad%e5%bb%ba%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%ab%af"&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;想想MC玩家是怎么做的：建立一个服务器端不就好了。&lt;/p&gt;
+&lt;p&gt;经过我了解，星露谷并没有像MC的服务端程序，本质上还是一个P2P游戏，存档必须绑定在房主这个角色身上。&lt;/p&gt;
+&lt;p&gt;最终，发现了社区大佬们给出的解决方案：通过 &lt;strong&gt;Docker 容器&lt;/strong&gt; 来跑一个&lt;strong&gt;无头（Headless）客户端&lt;/strong&gt;，并配合&lt;strong&gt;模组（Mod）&lt;/strong&gt; 来接管逻辑。&lt;/p&gt;
+&lt;h2 class="heading" id="实现原理"&gt;
+ 实现原理
+ &lt;a class="anchor" href="#%e5%ae%9e%e7%8e%b0%e5%8e%9f%e7%90%86"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;容器化：&lt;/strong&gt; 使用 Docker 拉取一个集成了 Linux 版星露谷物语环境的镜像。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟显示：&lt;/strong&gt; 因为游戏必须要有图形输出才能运行，Docker 内部使用 &lt;code&gt;Xvfb&lt;/code&gt; 模拟一个虚拟显示器。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心Mod - &amp;ldquo;Always On Server&amp;rdquo;：&lt;/strong&gt; 这是一个至关重要的 Mod。
+&lt;ul&gt;
+&lt;li&gt;它让这个“机器人房主”自动接受连接。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最重要功能：&lt;/strong&gt; 当没有真实玩家在线时，&lt;strong&gt;它会自动暂停时间&lt;/strong&gt;。星露谷这个游戏的时间流逝很重要。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading" id="部署流程"&gt;
+ 部署流程
+ &lt;a class="anchor" href="#%e9%83%a8%e7%bd%b2%e6%b5%81%e7%a8%8b"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;项目地址：&lt;a href="https://github.com/truman-world/puppy-stardew-server"&gt;GitHub - truman-world/puppy-stardew-server: Stardew Server | 星露谷物语服务器一键搭建开服联机&lt;/a&gt;&lt;/p&gt;
+&lt;h3 class="heading" id="服务器准备"&gt;
+ 服务器准备
+ &lt;a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%87%86%e5%a4%87"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;这部分我不小心绕了一下圈子。&lt;/p&gt;
+&lt;p&gt;看到项目主页介绍需要一个2c2g的服务器，我心里暗喜：刚好我的2c8g的服务器可以用上了，当我根据部署流程部署完毕后，发现cpu一直是吃满（95%上下波动）的状态，因为这台vps上还有其他服务，担心有影响，故萌生萌生一台新vps的念头。&lt;/p&gt;
+&lt;p&gt;经过再三寻找，发现我的阿里云学生券刚好还没有使用，阿里云刚好有一个ECS配置是2c2g，网络刚好是在国内，延迟更低。&lt;/p&gt;
+&lt;p&gt;链接如下：&lt;a href="https://university.aliyun.com/buycenter/?spm=5176.28623341"&gt;学生用券中心-阿里云云工开物&lt;/a&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure class=""&gt;
+
+ &lt;div class="img-container" &gt;
+ &lt;img loading="lazy" alt="Image_2025-12-01_11-27-28_5bt3h2oo.rlo.png" src="https://webp.050612.xyz/2025/12/Image_2025-12-01_11-27-28_5bt3h2oo.rlo.png" &gt;
+ &lt;/div&gt;
+
+ 
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;经过开机，简单的安全配置之后，正式进入部署。&lt;/p&gt;
+&lt;h3 class="heading" id="docker部署"&gt;
+ docker部署
+ &lt;a class="anchor" href="#docker%e9%83%a8%e7%bd%b2"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;一个 Steam 账户，&lt;strong&gt;并且已购买星露谷物语&lt;/strong&gt;，steam账户的作用只是为了获取游戏本体文件，其实能搞到游戏本体文件也行。&lt;/li&gt;
+&lt;li&gt;最低 2GB 内存，推荐 4GB，内存要求不高。&lt;/li&gt;
+&lt;li&gt;2GB 可用磁盘空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading" id="步骤-1创建工作目录和配置文件"&gt;
+ 步骤 1：创建工作目录和配置文件
+ &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-1%e5%88%9b%e5%bb%ba%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95%e5%92%8c%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建工作目录&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p ~/puppy-stardew &amp;amp;&amp;amp; &lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; ~/puppy-stardew
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 直接创建 docker-compose.yml（使用 Docker Hub 镜像）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat &amp;gt; docker-compose.yml &lt;span style="color:#666;font-style:italic"&gt;&amp;lt;&amp;lt; &amp;#39;EOF&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;version: &amp;#39;3.8&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;services:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; stardew-server:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; image: truemanlive/puppy-stardew-server:latest
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; container_name: puppy-stardew
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; restart: unless-stopped
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; stdin_open: true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; tty: true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; environment:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - STEAM_USERNAME=${STEAM_USERNAME}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - STEAM_PASSWORD=${STEAM_PASSWORD}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - ENABLE_VNC=${ENABLE_VNC:-true}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - VNC_PASSWORD=${VNC_PASSWORD:-stardew123}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; ports:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - &amp;#34;24642:24642/udp&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - &amp;#34;5900:5900/tcp&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; volumes:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - ./data/saves:/home/steam/.config/StardewValley:rw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - ./data/game:/home/steam/stardewvalley:rw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; - ./data/steam:/home/steam/Steam:rw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; deploy:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; resources:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; limits:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; cpus: &amp;#39;2.0&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; memory: 2G
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; reservations:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt; memory: 1G
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建 .env 配置文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cat &amp;gt; .env &lt;span style="color:#666;font-style:italic"&gt;&amp;lt;&amp;lt; &amp;#39;EOF&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;# Steam 账户信息（必填 - 请修改为您的真实账号）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;STEAM_USERNAME=your_steam_username
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;STEAM_PASSWORD=your_steam_password
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;# VNC 配置（可选）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;ENABLE_VNC=true
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;VNC_PASSWORD=stardew123
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-style:italic"&gt;EOF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="步骤-2编辑配置文件填入您的-steam-凭证"&gt;
+ 步骤 2：编辑配置文件，填入您的 Steam 凭证
+ &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-2%e7%bc%96%e8%be%91%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%a1%ab%e5%85%a5%e6%82%a8%e7%9a%84-steam-%e5%87%ad%e8%af%81"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 使用文本编辑器修改 .env 文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim .env 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;重要&lt;/strong&gt;：您必须在 Steam 上拥有星露谷物语。游戏文件通过您的账户下载。&lt;/p&gt;
+&lt;h4 class="heading" id="步骤-3初始化数据目录"&gt;
+ 步骤 3：初始化数据目录
+ &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-3%e5%88%9d%e5%a7%8b%e5%8c%96%e6%95%b0%e6%8d%ae%e7%9b%ae%e5%bd%95"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录并设置正确权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p data/{saves,game,steam}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chown -R 1000:1000 data/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="步骤-4启动服务器"&gt;
+ 步骤 4：启动服务器
+ &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-4%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8"&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 启动服务器&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 查看日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker logs -f puppy-stardew
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;如果启用了 Steam 令牌&lt;/strong&gt;，您需要输入验证码，推荐临时关闭 Steam 令牌，使用Email验证码，因为是异地登录，可能会触发风控：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker attach puppy-stardew
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 粘贴您的 Steam 令牌代码并按回车&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 重要：不会显示任何内容 - 这是正常的！&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 等待几秒钟，游戏会自动开始下载&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 按 Ctrl+P Ctrl+Q 分离（不是 Ctrl+C！）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;以上是官方给出的手动部署的流程，亲测在海外vps可用，但是在国内环境下有些困难。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;docker 镜像：dockerhub已经被阻断，使用docker镜像源：毫秒镜像源，只需要简单增加前缀&lt;code&gt;docker.1ms.run/&lt;/code&gt;即可&lt;/li&gt;
+&lt;li&gt;通过&lt;code&gt;SteamCMD&lt;/code&gt;下载更新文件：发现网络连接不畅，下载速率感人，最终选择迁移我JP服务器上的文件到BJ服务器上。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;压缩文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# c: create an archive (创建)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# z: compress with gzip (压缩)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# v: verbosely list files processed (显示过程)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# f: use archive file (指定文件名)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tar -czvf stardew_data.tar.gz data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;传输文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;刚开始的思路是直接通过scp传输，因为为了安全已经更改了ssh端口以及无法通过passwd登录，通过创建密钥和指定端口解决。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp stardew_data.tar.gz user@beijing_server_ip:/home/user/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更改后的命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp -P 2025 -i ~/.ssh/id_rsa stardew_data.tar.gz user@beijing_server_ip:/home/user/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;发现速度有所提高，但还是很慢。最终采用的方法是人工介入，我和JP之间的传输速率很高，我和Beijing的传输速率也很高，所以我先下载再上传完成迁移。&lt;/p&gt;
+&lt;h2 class="heading" id="首次启动"&gt;
+ 首次启动
+ &lt;a class="anchor" href="#%e9%a6%96%e6%ac%a1%e5%90%af%e5%8a%a8"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;需要&lt;strong&gt;一次性&lt;/strong&gt;创建或加载存档：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;连接到 VNC：&lt;/strong&gt; 使用&lt;a href="https://www.realvnc.com/en/connect/download/viewer/"&gt;RealVNC®&lt;/a&gt;软件连接。
+&lt;ul&gt;
+&lt;li&gt;地址：&lt;code&gt;服务器IP:5900&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;密码：您在 &lt;code&gt;.env&lt;/code&gt; 文件中设置的 &lt;code&gt;VNC_PASSWORD&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;在 VNC 窗口中：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;创建新农场，记得新增联机小屋&lt;/li&gt;
+&lt;li&gt;或加载现有存档&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;加载完成后：&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;ServerAutoLoad 模组会记住您的存档&lt;/li&gt;
+&lt;li&gt;以后重启会自动加载此存档&lt;/li&gt;
+&lt;li&gt;Always On Server 会自动启用 Auto Mode&lt;/li&gt;
+&lt;li&gt;可以断开 VNC 连接了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;玩家现在可以连接了！&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;打开星露谷物语&lt;/li&gt;
+&lt;li&gt;点击&amp;quot;合作&amp;quot; → &amp;ldquo;加入局域网游戏&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;服务器会自动出现在列表中&lt;/li&gt;
+&lt;li&gt;或手动输入服务器IP：&lt;code&gt;192.168.1.100&lt;/code&gt;（示例）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重要说明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;只需输入IP地址，&lt;strong&gt;不需要加端口号&lt;/strong&gt;（不是&lt;code&gt;192.168.1.100:24642&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;自动使用24642/UDP端口&lt;/li&gt;
+&lt;li&gt;如需内网穿透或端口转发，必须转发&lt;strong&gt;UDP协议&lt;/strong&gt;（不是TCP）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>「蒸汽迷航」3D木制拼图体验</title><link>https://blog.yzyy.de/post/%E8%92%B8%E6%B1%BD%E8%BF%B7%E8%88%AA3d%E6%9C%A8%E5%88%B6%E6%8B%BC%E5%9B%BE%E4%BD%93%E9%AA%8C/</link><pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate><guid>https://blog.yzyy.de/post/%E8%92%B8%E6%B1%BD%E8%BF%B7%E8%88%AA3d%E6%9C%A8%E5%88%B6%E6%8B%BC%E5%9B%BE%E4%BD%93%E9%AA%8C/</guid><description>&lt;p&gt;事情源于小橙和她的朋友一起出门吃铁锅炖，可能是吃撑了去逛街消食，逛到了「同趣」这个店，刚开始只是随便逛逛和我分享这个模型，说很精致并且很大。我只当和平时一样简单分享一下，简单回应一下就去刷视频了。&lt;/p&gt;
 &lt;p&gt;没想到没有一会她就告诉我已经买下来了，并淡淡说一句：你拼去。拼就是了。只是好久没有拼过这种木制的了，在我记忆中只拼过一次在地摊上买的「发现号」航天飞机模型和高中时去科技馆春游拼的「长征五号」模型。所以没有十足的信心以及拼装的体验也是未知的。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;（我估计小橙想要买的原因是看到我最近的状态十分不对，一副无所事事的样子，想要给我找个事情做吧）&lt;/p&gt;
