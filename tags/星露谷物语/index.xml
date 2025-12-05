@@ -236,6 +236,7 @@
 &lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;季节活动：花瓣舞会，客机会卡在等待界面，主机反而会进入自由活动的情况。&lt;/li&gt;
-&lt;li&gt;地震后房主黑屏&lt;/li&gt;
+&lt;li&gt;地震后房主黑屏：临时跳过这一天的方法：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr&gt;</description></item></channel></rss>
+&lt;pre tabindex="0"&gt;&lt;code&gt;我今天试出来一个办法，把docker镜像内的/home/steam/preinstalled-mods和/home/steam/stardewvalley/Mods两个文件夹清空（可以重命名后新建一个同名文件夹，方便后续恢复），然后重启容器，这时候运行的就是没有mod的原版，vnc连接后就可以把这个剧情过了，保存退出，然后再把mod文件夹恢复回去，再重启容器就行了
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;</description></item></channel></rss>
