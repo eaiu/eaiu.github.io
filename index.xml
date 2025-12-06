@@ -249,7 +249,25 @@
  解决bug
  &lt;a class="anchor" href="#%e8%a7%a3%e5%86%b3bug"&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;经过检索，发现了另一个&lt;a href="https://github.com/Lixeer/ValleyServer"&gt;无头服务器解决方案&lt;/a&gt;，相对于puppy，这个项目没有支持容器化和VNC，只能通过终端进行运行。不过经过测试，发现夏日第三天的地震可以正常度过。我就觉得可以查看这个项目的逻辑，通过对比解决问题。&lt;/p&gt;
+&lt;p&gt;两者的关键自动化mod分别是：&lt;code&gt;AutoHideHost&lt;/code&gt;和&lt;code&gt;ALOS&lt;/code&gt;，经过对比初步查看，发现puppy中针对&lt;code&gt;DialogueBox&lt;/code&gt;也就是对话框的处理是点击ESC，也就是隐藏起来，而&lt;code&gt;ALOS&lt;/code&gt;则是使用左键模拟点击确认。根据最小破坏原则，通过更改对话框的兜底逻辑，更改为使用左键点击，最终解决了地震的问题。&lt;/p&gt;
+&lt;p&gt;后面惊喜的发现，节日活动也能正常离开了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-c#" data-lang="c#"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;//OnMenuChanged方法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// 兜底逻辑: 其他所有对话框使用左键点击确认&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// CRITICAL: 使用receiveLeftClick而不是receiveKeyPress(Escape)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// 原因: 地震等事件对话框的文本为空,无法通过关键词匹配&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// ESC只会隐藏对话框不会推进游戏状态,导致黑屏卡死&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// 左键点击会触发确认逻辑,正确推进游戏流程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;this&lt;/span&gt;.Monitor.Log(&lt;span style="color:#666;font-style:italic"&gt;&amp;#34;检测到非任务通知的DialogueBox,使用左键点击确认&amp;#34;&lt;/span&gt;, LogLevel.Info);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dialogueBox.receiveLeftClick(10, 10);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;this&lt;/span&gt;.Monitor.Log(&lt;span style="color:#666;font-style:italic"&gt;&amp;#34;✓ DialogueBox已自动确认&amp;#34;&lt;/span&gt;, LogLevel.Info);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;在已关闭的issue中已经看到了好几个关于地震等特殊时间的讨论，作者声称已经通过监听特殊对话框&lt;code&gt;ReadyCheckDialog&lt;/code&gt;修复了这个问题，可能后续有破坏吧。可以作为后面遇到问题的一个解决思路。&lt;/p&gt;
+&lt;p&gt;相关链接：&lt;a href="https://github.com/truman-world/puppy-stardew-server/issues/7#issuecomment-3508564644"&gt;夜间传来一声爆炸声……然后会一直卡住正在等待其他玩家 · Issue #7 · truman-world/puppy-stardew-server&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 编译命令&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dotnet build -c Release
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;如果游戏卡住，客户端可以在聊天中输入这些命令。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;!sleep - 如果超过配置的睡觉时间（默认晚上 10 点），尝试触发睡觉命令。&lt;/li&gt;
