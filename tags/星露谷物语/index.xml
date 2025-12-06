@@ -230,23 +230,27 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h1 class="heading" id="bug-发现"&gt;
- bug 发现
- &lt;a class="anchor" href="#bug-%e5%8f%91%e7%8e%b0"&gt;#&lt;/a&gt;
+&lt;h1 class="heading" id="发现bug"&gt;
+ 发现Bug
+ &lt;a class="anchor" href="#%e5%8f%91%e7%8e%b0bug"&gt;#&lt;/a&gt;
 &lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;季节活动：花瓣舞会，客机会卡在等待界面，主机反而会进入自由活动的情况。&lt;/li&gt;
-&lt;li&gt;地震后房主黑屏：临时跳过这一天的方法：&lt;/li&gt;
+&lt;li&gt;季节活动：花瓣舞会结束后，客机会卡在等待界面，主机反而会进入自由活动的情况。但可以让客机退出游戏，手动控制主机离开宴会，存档不会损坏。&lt;/li&gt;
+&lt;li&gt;地震后房主黑屏，恶性Bug,必定损失夏季第三天的存档，只能通过手动复制存档到本地，过完夏季第三天后再上传存档，极其麻烦且损失热情：
+在github上发现的更好的解决方法：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;我今天试出来一个办法，把docker镜像内的/home/steam/preinstalled-mods和/home/steam/stardewvalley/Mods两个文件夹清空（可以重命名后新建一个同名文件夹，方便后续恢复），然后重启容器，这时候运行的就是没有mod的原版，vnc连接后就可以把这个剧情过了，保存退出，然后再把mod文件夹恢复回去，再重启容器就行了
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;临时跳过这一天的方法：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我今天试出来一个办法，把docker镜像内的/home/steam/preinstalled-mods和/home/steam/stardewvalley/Mods两个文件夹清空（可以重命名后新建一个同名文件夹，方便后续恢复），然后重启容器，这时候运行的就是没有mod的原版，vnc连接后就可以把这个剧情过了，保存退出，然后再把mod文件夹恢复回去，再重启容器就行了&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;如果游戏卡住，客户端可以在聊天中输入这些命令。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;!sleep - 如果超过配置的睡觉时间（默认晚上 10 点），尝试触发睡觉命令。&lt;/li&gt;
 &lt;li&gt;!festival - 如果当天是节日，尝试触发前往节日的命令。&lt;/li&gt;
 &lt;li&gt;!event - 尝试触发节日主活动的开始命令。&lt;/li&gt;
 &lt;li&gt;!leave - 尝试离开节日。&lt;/li&gt;
-&lt;li&gt;!unstick - 会将主机传送到农舍内外（通常&lt;br&gt;
-能够解决任何错误。有时需要多次传送，&lt;br&gt;
-尤其是在节日期间。）&lt;/li&gt;
+&lt;li&gt;!unstick - 会将主机传送到农舍内外（通常能够解决任何错误。有时需要多次传送，尤其是在节日期间。）&lt;/li&gt;
 &lt;/ul&gt;</description></item></channel></rss>
