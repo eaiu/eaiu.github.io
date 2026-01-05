@@ -3121,6 +3121,14 @@ git push -u origin mian
 &lt;li&gt;国内有坚果云，付费服务的阿里云盘&lt;/li&gt;
 &lt;li&gt;使用alist自建webdav&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 class="heading" id="使用self-host-livesync服务"&gt;
+ 使用self-host LiveSync服务
+ &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8self-host-livesync%e6%9c%8d%e5%8a%a1"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;参考教程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.dejavu.moe/posts/selfhosting-obsidian-livesync-service-guide/"&gt;部署 Obsidian LiveSync 实时同步服务指南 | Dejavu&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;参考教程：&lt;/p&gt;
 &lt;ul&gt;
