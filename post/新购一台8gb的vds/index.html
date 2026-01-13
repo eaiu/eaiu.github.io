@@ -31,8 +31,8 @@
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 安装 RSA 证书到指定路径</span>
 </span></span><span style=display:flex><span>acme.sh --install-cert -d domain.tld <span style=color:#666;font-style:italic>\
-</span></span></span><span style=display:flex><span>--key-file       /path/to/ssl/domain.tld_private.key  <span style=color:#666;font-style:italic>\
-</span></span></span><span style=display:flex><span>--fullchain-file /path/to/ssl/domain.tld_chain.pem <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>--key-file       /etc/ssl/private/domain.tld_private.key  <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>--fullchain-file /etc/ssl/certs/domain.tld_chain.pem <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--reloadcmd      <span style=color:#666;font-style:italic>&#34;service nginx reload&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 签发 ECC 证书，若不需要，跳过即可</span>
@@ -52,22 +52,21 @@
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 签发 RSA 证书</span>
-</span></span><span style=display:flex><span>acme.sh --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
+</span></span><span style=display:flex><span>acme.sh  --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 安装 RSA 证书到指定路径</span>
-</span></span><span style=display:flex><span>acme.sh --config-home /root/.acme2 <span style=color:#666;font-style:italic>\
-</span></span></span><span style=display:flex><span>--install-cert -d domain.tld <span style=color:#666;font-style:italic>\
+</span></span><span style=display:flex><span>acme.sh --install-cert -d domain.tld <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--key-file       /path/to/ssl/domain.tld_private.key  <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--fullchain-file /path/to/ssl/domain.tld_chain.pem <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--reloadcmd      <span style=color:#666;font-style:italic>&#34;service nginx reload&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 签发 ECC 证书，若不需要，跳过即可</span>
-</span></span><span style=display:flex><span>acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+</span></span><span style=display:flex><span>acme.sh  --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#888;font-style:italic># 安装 ECC 证书到指定路径</span>
-</span></span><span style=display:flex><span>acme.sh --config-home /root/.acme2 <span style=color:#666;font-style:italic>\
-</span></span></span><span style=display:flex><span>--install-cert -d domain.tld --ecc <span style=color:#666;font-style:italic>\
+</span></span><span style=display:flex><span>acme.sh 
+</span></span><span style=display:flex><span>--install-cert -d domain.tld --ecc <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--key-file       /path/to/ssl/ecc_domain.tld_private.key  <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem <span style=color:#666;font-style:italic>\
 </span></span></span><span style=display:flex><span>--capath         /path/to/ssl/ecc_domain.tld_ca.pem  <span style=color:#666;font-style:italic>\

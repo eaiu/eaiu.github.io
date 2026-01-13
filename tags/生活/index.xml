@@ -1405,8 +1405,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 RSA 证书到指定路径&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --install-cert -d domain.tld &lt;span style="color:#666;font-style:italic"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--key-file /etc/ssl/private/domain.tld_private.key &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--fullchain-file /etc/ssl/certs/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--reloadcmd &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;service nginx reload&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 签发 ECC 证书，若不需要，跳过即可&lt;/span&gt;
@@ -1429,19 +1429,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --issue --dns dns_cf -d xxx.xyz -d *.xxx.xyz --keylength 2048
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 RSA 证书到指定路径&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--install-cert -d domain.tld &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --install-cert -d domain.tld &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--key-file /path/to/ssl/domain.tld_private.key &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--fullchain-file /path/to/ssl/domain.tld_chain.pem &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--reloadcmd &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;service nginx reload&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 签发 ECC 证书，若不需要，跳过即可&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --config-home /root/.acme2 --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --issue --dns dns_cf -d domain.tld -d *.domain.tld --keylength ec-256
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 ECC 证书到指定路径&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh --config-home /root/.acme2 &lt;span style="color:#666;font-style:italic"&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;acme.sh 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--install-cert -d domain.tld --ecc &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--key-file /path/to/ssl/ecc_domain.tld_private.key &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--fullchain-file /path/to/ssl/ecc_domain.tld_chain.pem &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic"&gt;\
