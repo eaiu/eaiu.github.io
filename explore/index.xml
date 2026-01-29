@@ -45,12 +45,12 @@
 &lt;ol&gt;
 &lt;li&gt;登录服务器，创建一个工作目录并进入，然后创建 &lt;code&gt;docker-compose.yml&lt;/code&gt; 文件：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir syncclipboard &amp;amp;&amp;amp; cd syncclipboard
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir syncclipboard &amp;amp;&amp;amp; cd syncclipboard
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim docker-compose.yml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;将以下内容写入&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; syncclipboard-server:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: jericx/syncclipboard-server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: syncclipboard-server
@@ -78,13 +78,13 @@
 &lt;ol start="3"&gt;
 &lt;li&gt;运行&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="配置nginx"&gt;
  配置Nginx
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;不要忘记将域名解析到服务器，因为有很多种配置Nginx的方式，这里只给出我写的Nginx配置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# Server block for HTTP to HTTPS redirection
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# Server block for HTTP to HTTPS redirection
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;server&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;listen&lt;/span&gt; 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;server_name&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;clip.yourdomain.com&lt;/span&gt;; &lt;span style="color:#888;font-style:italic"&gt;# ⚠️ 替换成你的域名
@@ -138,7 +138,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置好后，检查 Nginx 语法并重载服务：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl reload nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至此可以使用域名访问，输入设置的username以及password，看到以下提示证明成功部署：
 
@@ -297,15 +297,15 @@
 &lt;ol&gt;
 &lt;li&gt;创建数据存储路径（包含数据库和配置文件）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /vaultwarden/data	&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录，这里可以自行设置，之后的配置文件和数据库都会在这里。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /vaultwarden/data	&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录，这里可以自行设置，之后的配置文件和数据库都会在这里。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;创建 docker-compose.yml
 使用 docker compose 方式安装 vaultwarden&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; vaultwarden	&lt;span style="color:#888;font-style:italic"&gt;# 进入你准备安装vaultwarden的目录，可自行修改&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; vaultwarden	&lt;span style="color:#888;font-style:italic"&gt;# 进入你准备安装vaultwarden的目录，可自行修改&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim docker-compose.yml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下是我经过调试的配置，开启了管理员页面和移动设备通知。修改下面的配置文件后粘贴到 docker-compose.yml 文件中。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vaultwarden:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: vaultwarden/server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: vaultwarden &lt;span style="color:#888;font-style:italic"&gt;# 容器名称&lt;/span&gt;
@@ -362,28 +362,28 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_ENABLED&lt;/span&gt;=&lt;span style="font-weight:bold;font-style:italic"&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_INSTALLATION_ID&lt;/span&gt;=获得的id
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_INSTALLATION_KEY&lt;/span&gt;=获得的key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果在上一步中请求了 &lt;code&gt;bitwarden.eu（欧盟）&lt;/code&gt;，还必须设置&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_RELAY_URI&lt;/span&gt;=https://push.bitwarden.eu
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_RELAY_URI&lt;/span&gt;=https://push.bitwarden.eu
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_IDENTITY_URI&lt;/span&gt;=https://identity.bitwarden.eu
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;自定子路径
 一定要在nginx进行相应的分流设置&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;第一次启动：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;docker compose logs -f&lt;/code&gt; 是为了查看日志，如果报错的话可以查一查原因&lt;/p&gt;
 &lt;p&gt;如果更新 compose 文件之后的话用下面的命令启动：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose pull &amp;amp;&amp;amp; docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose pull &amp;amp;&amp;amp; docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 class="heading" id="配置nginx"&gt;
  配置nginx
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx"&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;经过调试过后的nginx的配置文件&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; listen 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_name example.com;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; return 301 https://$host$request_uri;
@@ -479,12 +479,12 @@
 &lt;ol&gt;
 &lt;li&gt;修改docker-compose.yml文件，environment变量加入DOMAIN域&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- DOMAIN=https://域名/自定子路径/ &lt;span style="color:#888;font-style:italic"&gt;# 如果想要添加子路径，需要对应修改这里，一定要在nginx进行相应的分流&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;设置子路径分流&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;location&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;/子路径/&lt;/span&gt; {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;location&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;/子路径/&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_pass&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;http://127.0.0.1:1256&lt;/span&gt;; &lt;span style="color:#888;font-style:italic"&gt;# 注意修改端口
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;Host&lt;/span&gt; &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$host&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;X-Real-IP&lt;/span&gt; &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$remote_addr&lt;/span&gt;;
@@ -512,7 +512,7 @@
  &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad%e9%a1%b5%e9%9d%a2%e5%b9%b6%e7%a6%81%e7%94%a8%e6%b3%a8%e5%86%8c"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;查看网页端的密码重复泄露报告，然后关闭网页端&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- SIGNUPS_ALLOWED=false &lt;span style="color:#888;font-style:italic"&gt;#关闭注册&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- WEB_VAULT_ENABLED=false &lt;span style="color:#888;font-style:italic"&gt;#关闭网页端&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="定时检查容器更新"&gt;
@@ -522,7 +522,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; watchtower:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: containrrr/watchtower
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: watchtower
@@ -557,7 +557,7 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;运行 Rclone 配置容器：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config
@@ -576,7 +576,7 @@
 &lt;li&gt;配置 Google Drive 远程 （需要挂梯子才能收到回调）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;运行 Rclone 配置容器：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config
@@ -598,7 +598,7 @@
 &lt;ol start="5"&gt;
 &lt;li&gt;配置完成后，运行以下命令检查配置是否正确：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config show
@@ -608,7 +608,7 @@
 &lt;/h5&gt;
 &lt;p&gt;本方案采用每日备份，保留三十天，每月备份一次，保留十二个月的备份方式：开启两个backup服务-daily_backup和monthly_backup&lt;/p&gt;
 &lt;p&gt;将 &lt;code&gt;vaultwarden-backup&lt;/code&gt; 服务的 &lt;code&gt;RCLONE_REMOTE_NAME&lt;/code&gt; 环境变量设置为 &lt;code&gt;BitwardenBackup&lt;/code&gt;。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vaultwarden:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: vaultwarden/server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: vaultwarden 
@@ -730,11 +730,11 @@
 &lt;li&gt;&lt;code&gt;RCLONE_REMOTE_DIR=/BitwardenBackup/monthly:&lt;/code&gt;设置备份到 &lt;code&gt;union&lt;/code&gt; 远程的 &lt;code&gt;/BitwardenBackup/monthly/&lt;/code&gt; 文件夹，每个月一号进行备份&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;重启服务&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;手动备份操作（可用来验证配置是否正确）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker &lt;span style="font-weight:bold;font-style:italic"&gt;exec&lt;/span&gt; daily_vaultwarden_backup bash /app/backup.sh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker &lt;span style="font-weight:bold;font-style:italic"&gt;exec&lt;/span&gt; daily_vaultwarden_backup bash /app/backup.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 class="heading" id="还原备份还未验证步骤正确性"&gt;
  还原备份（还未验证步骤正确性）
  &lt;a class="anchor" href="#%e8%bf%98%e5%8e%9f%e5%a4%87%e4%bb%bd%e8%bf%98%e6%9c%aa%e9%aa%8c%e8%af%81%e6%ad%a5%e9%aa%a4%e6%ad%a3%e7%a1%ae%e6%80%a7"&gt;#&lt;/a&gt;
@@ -751,7 +751,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;根据你的部署方式选择以下命令之一运行还原容器：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;a. 使用 &lt;code&gt;docker-compose.yml&lt;/code&gt; 部署的：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-data,target=/bitwarden/data/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=bind,source=&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;pwd&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;,target=/bitwarden/restore/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest restore &lt;span style="color:#666;font-style:italic"&gt;\
@@ -810,7 +810,7 @@
 -S smtp-auth-password=&amp;lt;your-email-password&amp;gt; \
 -S from=&amp;lt;your-email-address&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;邮件发送测试：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;MAIL_SMTP_VARIABLES&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span&gt; ttionya/vaultwarden-backup:latest mail &amp;lt;mail send to&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;MAIL_SMTP_VARIABLES&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span&gt; ttionya/vaultwarden-backup:latest mail &amp;lt;mail send to&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 或&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -834,7 +834,7 @@
 &lt;li&gt;&lt;code&gt;%{content}&lt;/code&gt;：替换为实际的内容。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Ping 发送测试：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL_CURL_OPTIONS&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your curl options for PING_URL&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL_WHEN_START&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\
@@ -1563,7 +1563,7 @@
 &lt;li&gt;**同一台主机多个域名的情况&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;后续申请证书的命令，都是在 root 用户下执行的，请先使用 &lt;code&gt;su&lt;/code&gt; 切换到 root 用户。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;su
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 acme.sh&lt;/span&gt;
@@ -1769,42 +1769,42 @@
  更新软件包列表
  &lt;a class="anchor" href="#%e6%9b%b4%e6%96%b0%e8%bd%af%e4%bb%b6%e5%8c%85%e5%88%97%e8%a1%a8"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="安装必要的软件包"&gt;
  安装必要的软件包
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e5%bf%85%e8%a6%81%e7%9a%84%e8%bd%af%e4%bb%b6%e5%8c%85"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;安装一些必要的软件包，这些软件包允许 &lt;code&gt;apt&lt;/code&gt; 通过 HTTPS 使用仓库。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install apt-transport-https ca-certificates curl software-properties-common
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install apt-transport-https ca-certificates curl software-properties-common
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="添加-docker-的官方-gpg-密钥"&gt;
  添加 Docker 的官方 GPG 密钥
  &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0-docker-%e7%9a%84%e5%ae%98%e6%96%b9-gpg-%e5%af%86%e9%92%a5"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;添加 Docker 的官方 GPG 密钥，以便验证下载的软件包。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="添加-docker-仓库"&gt;
  添加 Docker 仓库
  &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0-docker-%e4%bb%93%e5%ba%93"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;将 Docker 的官方仓库添加到你的 &lt;code&gt;apt&lt;/code&gt; 软件源列表中。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt; signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt; stable&amp;#34;&lt;/span&gt; | sudo tee /etc/apt/sources.list.d/docker.list &amp;gt; /dev/null
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;deb [arch=&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;dpkg --print-architecture&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt; signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;lsb_release -cs&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt; stable&amp;#34;&lt;/span&gt; | sudo tee /etc/apt/sources.list.d/docker.list &amp;gt; /dev/null
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再次更新软件包列表，以包含新添加的 Docker 仓库。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="安装-docker-engine"&gt;
  安装 Docker Engine
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-docker-engine"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;安装&lt;code&gt;Docker Engine、Docker CLI&lt;/code&gt;和&lt;code&gt; Containerd&lt;/code&gt;。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install docker-ce docker-ce-cli containerd.io
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install docker-ce docker-ce-cli containerd.io
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="验证-docker-安装"&gt;
  验证 Docker 安装
  &lt;a class="anchor" href="#%e9%aa%8c%e8%af%81-docker-%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;验证 Docker 是否成功安装，并检查 Docker 服务是否正在运行。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status docker
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果 Docker 服务正在运行，应该看到类似 &lt;code&gt;active (running)&lt;/code&gt; 的输出。&lt;/p&gt;
 &lt;p&gt;也可以运行一个简单的 Docker 镜像来验证 Docker 是否可以正常工作。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run hello-world
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo docker run hello-world
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;应该看到一条欢迎消息，表明 Docker 安装成功。&lt;/p&gt;
 &lt;h3 class="heading" id="安装-docker-composev2-可跳过"&gt;
  安装 Docker Compose&lt;strong&gt;V2&lt;/strong&gt; (可跳过)
@@ -1818,22 +1818,22 @@
  &lt;a class="anchor" href="#%e4%b8%8b%e8%bd%bd-docker-compose-%e6%8f%92%e4%bb%b6"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;从 GitHub Releases 下载 Docker Compose 插件。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install docker-compose-plugin
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install docker-compose-plugin
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="验证-docker-compose-安装"&gt;
  验证 Docker Compose 安装
  &lt;a class="anchor" href="#%e9%aa%8c%e8%af%81-docker-compose-%e5%ae%89%e8%a3%85"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;验证 Docker Compose 是否成功安装。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose version
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果 Docker Compose 成功安装，应该看到 Docker Compose 的版本信息。&lt;/p&gt;
 &lt;h3 class="heading" id="添加用户到-docker-用户组"&gt;
  添加用户到 Docker 用户组
  &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0%e7%94%a8%e6%88%b7%e5%88%b0-docker-%e7%94%a8%e6%88%b7%e7%bb%84"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;默认情况下，只有 &lt;code&gt;root&lt;/code&gt; 用户或具有 &lt;code&gt;sudo&lt;/code&gt; 权限的用户才能运行 Docker 命令。为了让普通用户也能运行 Docker 命令，你需要将用户添加到 &lt;code&gt;docker&lt;/code&gt; 用户组。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo usermod -aG docker &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$USER&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo usermod -aG docker &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$USER&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行以下命令来应用用户组更改。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;newgrp docker
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;newgrp docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样就可以在不使用 &lt;code&gt;sudo&lt;/code&gt; 的情况下运行 Docker 命令了。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 class="heading" id="配置证书和反代"&gt;
@@ -1870,7 +1870,7 @@
  安装 nginx
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85-nginx"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install nginx
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="上传证书和私钥到服务器"&gt;
  上传证书和私钥到服务器
  &lt;a class="anchor" href="#%e4%b8%8a%e4%bc%a0%e8%af%81%e4%b9%a6%e5%92%8c%e7%a7%81%e9%92%a5%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8"&gt;#&lt;/a&gt;
@@ -1879,16 +1879,16 @@
 &lt;ol&gt;
 &lt;li&gt;使用su，输入root密码提权&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;su
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;su
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;检查 &lt;code&gt;/etc/ssl/certs&lt;/code&gt;和&lt;code&gt;/etc/ssl/private&lt;/code&gt;目录是否存在，并将.pem和.key文件分别传到这两个目录里&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mv xxx.com.pem /etc/ssl/certs/
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mv xxx.com.pem /etc/ssl/certs/
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mv xxx.com.key /etc/ssl/private/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;设置权限&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sudo chmod 600 /etc/ssl/private/api.xxx.com.key
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sudo chmod 600 /etc/ssl/private/api.xxx.com.key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 class="heading" id="配置nginx"&gt;
  配置nginx
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx"&gt;#&lt;/a&gt;
@@ -1896,11 +1896,11 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;创建 Nginx 配置文件&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/nginx/sites-available/api.xxx.com
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/nginx/sites-available/api.xxx.com
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;&lt;strong&gt;添加以下配置&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; listen 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_name api.xxx.com;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; return 301 https://$host$request_uri;
@@ -1939,19 +1939,19 @@
 &lt;ul&gt;
 &lt;li&gt;创建软链接到 &lt;code&gt;sites-enabled&lt;/code&gt; 目录：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;移除默认的 Nginx 配置：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm /etc/nginx/sites-enabled/default
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo rm /etc/nginx/sites-enabled/default
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;测试 Nginx 配置：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;重启 Nginx 服务：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart nginx
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 class="heading" id="swap-空间配置"&gt;
  Swap 空间配置
@@ -1965,33 +1965,33 @@
 &lt;li&gt;检查 Swap 空间：
 首先，检查系统当前是否已经配置了 Swap 空间：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;free -h
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;free -h
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;创建 Swap 文件：
 使用 &lt;code&gt;fallocate&lt;/code&gt; 命令创建一个 Swap 文件。例如，创建一个 2GB 的 Swap 文件：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo fallocate -l 2G /swapfile
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo fallocate -l 2G /swapfile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者，你也可以使用 &lt;code&gt;dd&lt;/code&gt; 命令创建 Swap 文件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dd &lt;span style="font-weight:bold;text-decoration:underline"&gt;if&lt;/span&gt;=/dev/zero &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;of&lt;/span&gt;=/swapfile &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;bs&lt;/span&gt;=1M &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;count&lt;/span&gt;=2048
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dd &lt;span style="font-weight:bold;text-decoration:underline"&gt;if&lt;/span&gt;=/dev/zero &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;of&lt;/span&gt;=/swapfile &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;bs&lt;/span&gt;=1M &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;count&lt;/span&gt;=2048
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这将创建一个名为 &lt;code&gt;/swapfile&lt;/code&gt;，大小为 2GB 的文件。可以根据需要调整 &lt;code&gt;count&lt;/code&gt; 的值来改变 Swap 文件的大小。
 3. 设置 Swap 文件权限：&lt;/p&gt;
 &lt;p&gt;为了安全起见，设置 Swap 文件的权限，只允许 root 用户读写：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo chmod 600 /swapfile
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo chmod 600 /swapfile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
 &lt;li&gt;格式化为 Swap 空间：
 使用 &lt;code&gt;mkswap&lt;/code&gt; 命令将文件格式化为 Swap 空间：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkswap /swapfile
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkswap /swapfile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="5"&gt;
 &lt;li&gt;启用 Swap 空间：
 使用 &lt;code&gt;swapon&lt;/code&gt; 命令启用 Swap 空间：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo swapon /swapfile
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo swapon /swapfile
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="6"&gt;
 &lt;li&gt;验证 Swap 空间：
 再次使用 &lt;code&gt;free -h&lt;/code&gt; 命令验证 Swap 空间是否已启用：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;free -h
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;free -h
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;应该能看到 &lt;code&gt;Swap&lt;/code&gt; 那一行显示了你刚刚配置的 Swap 空间大小。&lt;/p&gt;
 &lt;ol start="7"&gt;
 &lt;li&gt;设置开机自动挂载 Swap 空间：&lt;/li&gt;
@@ -2059,7 +2059,7 @@
  &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e9%9d%9e-root-%e8%b4%a6%e6%88%b7"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;使用以下命令创建一个具有提权能力的账户：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;useradd -m -G sudo -s /bin/bash 用户名
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;useradd -m -G sudo -s /bin/bash 用户名
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;useradd&lt;/code&gt;:&lt;/strong&gt; 这是一个用于创建新用户的命令。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&lt;code&gt;-m&lt;/code&gt;:&lt;/strong&gt; 此选项会在 &lt;code&gt;/home&lt;/code&gt; 目录下为新用户创建主目录。&lt;/li&gt;
@@ -2078,14 +2078,14 @@
 &lt;/h3&gt;
 &lt;p&gt;先不提 root 登录本身就是危险的行为，root 账户的用户名固定为”root”，如果允许其通过密码登录，攻击者只需进行密码穷举即可尝试攻破系统。之前我们已经创建了非 root 账户，在这里我们只需要禁用非 root 账户的 SSH 登录即可。&lt;/p&gt;
 &lt;p&gt;执行以下命令编辑 SSH 配置文件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进行如下设置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 禁止 Root 用户通过密码远程登录 &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 禁止 Root 用户通过密码远程登录 &lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PermitRootLogin prohibit-password
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看&lt;code&gt;/etc/ssh/sshd_config.d/&lt;/code&gt;目录下有无其他配置文件，防止不生效。有些厂商的初始镜像内已经有了一些配置会覆盖掉我们编写的。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls /etc/ssh/sshd_config.d/
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls /etc/ssh/sshd_config.d/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;之后重启 SSH 服务生效：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为什么不设置成 no：&lt;/p&gt;
 &lt;p&gt;庄 sir:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2104,30 +2104,30 @@
 有个小技巧，就是改端口并重启 sshd 后当前的连接并没有断，新建一个终端使用新端口发请求，能连上就是修改正确，要是不能建立新连接，还可以改回来，或查下防火墙的配置。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;正常情况下，直接通过 &lt;code&gt;sudo vim /etc/ssh/sshd_config&lt;/code&gt; 修改 SSH 端口，然后再使用 &lt;code&gt;sudo systemctl restart ssh.service&lt;/code&gt; 重启 SSH 服务应用更改是可行的：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 设置 SSH端口 Port 自拟&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 设置 SSH端口 Port 自拟&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Port 20251
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是在 &lt;strong&gt;Ubuntu 22.10 或更高版本&lt;/strong&gt;中各位可能发现这是&lt;strong&gt;无效&lt;/strong&gt;的，各位会发现 SSH 服务在重启后依然监听原端口。&lt;/p&gt;
 &lt;p&gt;因为在 Ubuntu 22.10 或更高版本中，ssh 默认通过套接字激活。&lt;/p&gt;
 &lt;p&gt;在 Ubuntu 22.10、Ubuntu 23.04 和 Ubuntu 23.10 中进行修改的方法是：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkdir -p /etc/systemd/system/ssh.socket.d
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkdir -p /etc/systemd/system/ssh.socket.d
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/systemd/system/ssh.socket.d/listen.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon-reload
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh.socket
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh.service
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;listen.conf 的参考配置为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;[Socket]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;[Socket]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ListenStream=
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ListenStream=&lt;span style="color:#666;font-style:italic"&gt;2233&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 Ubuntu 24.04 中进行修改的方法是：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon-reload
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh.service
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果不在乎通过套接字激活节省的内存，可以通过以下命令恢复到非套接字激活：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;警告：&lt;/strong&gt; 务必确认配置文件正常。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl disable --now ssh.socket
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl disable --now ssh.socket
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl &lt;span style="font-weight:bold;font-style:italic"&gt;enable&lt;/span&gt; --now ssh.service
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如有配置迁移（Ubuntu 22.10 及以上，Ubuntu 24.04 以下）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl disable --now ssh.socket
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl disable --now ssh.socket
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -f /etc/systemd/system/ssh.service.d/00-socket.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -f /etc/systemd/system/ssh.socket.d/addresses.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon-reload
@@ -2137,16 +2137,16 @@
  &lt;a class="anchor" href="#fail2ban-%e9%98%b2%e6%9a%b4%e5%8a%9b%e7%a0%b4%e8%a7%a3-ssh-%e9%85%8d%e7%bd%aessh-ip%e7%99%bd%e5%90%8d%e5%8d%95"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;执行以下命令安装 Fail2ban：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install fail2ban
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install fail2ban
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完成后 Fail2ban会自动运行，可以检查一下服务状态&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status fail2ban
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl status fail2ban
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果为dead，注意开启fail2ban服务&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start fail2ban
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start fail2ban
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;官方推荐的做法是利用 jail.local 来进行自定义设置：
 这样做的好处是，在升级 Fail2ban 时，你的自定义配置不会丢失。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/fail2ban/jail.local
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/fail2ban/jail.local
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以参照以下配置文件来进行自己的配置（记得删注释）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;[sshd]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-ini" data-lang="ini"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;[sshd]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ignoreip = &lt;span style="color:#666;font-style:italic"&gt;127.0.0.1/8 # 白名单，知道自己的固定公网ip网段可以配置&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;enabled = &lt;span style="color:#666;font-style:italic"&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;filter = &lt;span style="color:#666;font-style:italic"&gt;sshd&lt;/span&gt;
@@ -2158,7 +2158,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;banaction = &lt;span style="color:#666;font-style:italic"&gt;iptables-multiport # 禁用方式&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;logpath = &lt;span style="color:#666;font-style:italic"&gt;/var/log/auth.log # SSH 登陆日志位置&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接复制版本：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[sshd]
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[sshd]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;ignoreip&lt;/span&gt; = 127.0.0.1/8
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;enabled&lt;/span&gt; = &lt;span style="font-weight:bold;font-style:italic"&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;filter&lt;/span&gt; = sshd
@@ -2170,7 +2170,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;banaction&lt;/span&gt; = iptables-multiport
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;logpath&lt;/span&gt; = /var/log/auth.log
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;设置fail2ban开机自动启动：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl &lt;span style="font-weight:bold;font-style:italic"&gt;enable&lt;/span&gt; fail2ban
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl &lt;span style="font-weight:bold;font-style:italic"&gt;enable&lt;/span&gt; fail2ban
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="使用密钥登录"&gt;
  使用密钥登录
  &lt;a class="anchor" href="#%e4%bd%bf%e7%94%a8%e5%af%86%e9%92%a5%e7%99%bb%e5%bd%95"&gt;#&lt;/a&gt;
@@ -2179,9 +2179,9 @@
 &lt;p&gt;如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在本地 powershell 中运行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t ed25519
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t ed25519
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t rsa -b 4096
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh-keygen -t rsa -b 4096
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;二者加密算法不同:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2192,14 +2192,14 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;直接使用默认的密钥路径即可。密码可以留空，也可以设置。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Generating &lt;span style="font-weight:bold;text-decoration:underline"&gt;public&lt;/span&gt;/&lt;span style="font-weight:bold;text-decoration:underline"&gt;private&lt;/span&gt; ed25519 key pair.
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-php" data-lang="php"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Generating &lt;span style="font-weight:bold;text-decoration:underline"&gt;public&lt;/span&gt;/&lt;span style="font-weight:bold;text-decoration:underline"&gt;private&lt;/span&gt; ed25519 key pair.
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Enter file in which to save the key (C:\Users\&amp;lt;user&amp;gt;/.ssh/id_ed25519): &lt;span style="color:#888;font-style:italic"&gt;# 直接回车
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Enter passphrase (&lt;span style="font-weight:bold;text-decoration:underline"&gt;empty&lt;/span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;for&lt;/span&gt; no passphrase): &lt;span style="color:#888;font-style:italic"&gt;# 可以留空，也可以设置
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Enter same passphrase again: &lt;span style="color:#888;font-style:italic"&gt;# 和上一个一样
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们在 VPS 上编辑 SSH 授权密钥文件，注意需要在root用户和非root用户下都需要添加：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim ~/.ssh/authorized_keys
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim ~/.ssh/authorized_keys
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在root下为其他用户创建密钥文件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 1. 确保目录和文件存在&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 1. 确保目录和文件存在&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir /home/ghung/.ssh
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp /root/.ssh/authorized_keys /home/ghung/.ssh/
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -2212,23 +2212,23 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 4. 【修正文件权限】&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo chmod 600 /home/ghung/.ssh/authorized_keys
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果目标用户的家目录下还没有 &lt;code&gt;.ssh&lt;/code&gt; 目录， 确保目录的权限是 &lt;code&gt;700&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p ~/.ssh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p ~/.ssh
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chmod 700 ~/.ssh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建&lt;code&gt;authorized_keys&lt;/code&gt;文件并赋予相应权限&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;touch ~/.ssh/authorized_keys
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;touch ~/.ssh/authorized_keys
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chmod 600 ~/.ssh/authorized_keys
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;之后打开 &lt;code&gt;C:\\\Users&amp;lt;user\&amp;gt;/.ssh/id\_ed25519.pub&lt;/code&gt;，复制其内容并粘贴过去。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;执行以下命令编辑 SSH 配置文件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/ssh/sshd_config
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;进行如下设置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PubkeyAuthentication yes
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PubkeyAuthentication yes
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;AuthorizedKeysFile .ssh/authorized_keys
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;PasswordAuthentication no
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果发现没有生效：
 检查 &lt;code&gt;/etc/ssh/sshd_config.d&lt;/code&gt;下的文件&lt;/p&gt;
 &lt;p&gt;之后重启 SSH 服务生效：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart ssh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="启用-ufw-防火墙"&gt;
  启用 UFW 防火墙
  &lt;a class="anchor" href="#%e5%90%af%e7%94%a8-ufw-%e9%98%b2%e7%81%ab%e5%a2%99"&gt;#&lt;/a&gt;
@@ -2237,13 +2237,13 @@
 &lt;p&gt;如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在正式启用 UFW 之前，我们需要先设置规则。我们首先来设置 UFW 的默认行为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default allow outgoing &lt;span style="color:#888;font-style:italic"&gt;# 默认允许所有数据出站&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default allow outgoing &lt;span style="color:#888;font-style:italic"&gt;# 默认允许所有数据出站&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw default deny incoming &lt;span style="color:#888;font-style:italic"&gt;# 默认禁止所有数据入站&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以通过以下命令查看 UFW 当前生效的规则：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw status
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw status
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw status numbered &lt;span style="color:#888;font-style:italic"&gt;# 加上数字编号&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以通过以下命令允许或拒绝某端口的传入 / 传出流量（部分以 22、80、443 端口为例）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 允许22端口的proto协议的流量入站&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 允许22端口的proto协议的流量入站&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw allow in 22/proto
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;#允许22端口的proto协议的流量出站&lt;/span&gt;
@@ -2279,18 +2279,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# comment用于注释&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw allow from ip to any proto tcp port 80,443 comment &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;hello&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以通过以下命令删除生效的规则：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw delete allow 22 &lt;span style="color:#888;font-style:italic"&gt;# 在规则前面加个delete&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw delete allow 22 &lt;span style="color:#888;font-style:italic"&gt;# 在规则前面加个delete&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw delete 1 &lt;span style="color:#888;font-style:italic"&gt;# 按照numbered的编号删除也行&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在确定所有规则均成功设置后，通过以下命令启动 \ 关闭 \ 重启 UFW&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw enable|disable|reload
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw enable|disable|reload
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果需要重置规则，请使用：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;重置规则前务必保证 UFW 处于关闭状态。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw reset
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ufw reset
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本人建议仅放行正在使用的端口，比如 22、80、443。&lt;/p&gt;
 &lt;p&gt;默认情况下，UFW 仅记录不符合规则的被拒绝的数据包。如果需要记录与该服务相关的每个详细信息，可以在 allow 后加上 log 以进行记录。&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;# 成功连接 ssh 的也记一下日志备查比较好 ufw allow log 22/tcp
@@ -2298,7 +2298,7 @@
  更改时区
  &lt;a class="anchor" href="#%e6%9b%b4%e6%94%b9%e6%97%b6%e5%8c%ba"&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo timedatectl set-timezone Asia/Shanghai
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo timedatectl set-timezone Asia/Shanghai
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 class="heading" id="保证软件更新"&gt;
  保证软件更新
  &lt;a class="anchor" href="#%e4%bf%9d%e8%af%81%e8%bd%af%e4%bb%b6%e6%9b%b4%e6%96%b0"&gt;#&lt;/a&gt;

@@ -239,7 +239,7 @@ git push -u origin main
 &lt;p&gt;在repo根目录新建嵌套的两个文件夹.github/workflows&lt;/p&gt;
 &lt;p&gt;在workflows里新建一个后缀为.yml的配置文件，名字自取。&lt;/p&gt;
 &lt;p&gt;写进去以下配置（从hugo官方文档修改而来）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;name: github pages &lt;span style="color:#888;font-style:italic"&gt;# 名字自取&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;name: github pages &lt;span style="color:#888;font-style:italic"&gt;# 名字自取&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;on:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; push:

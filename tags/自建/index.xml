@@ -45,12 +45,12 @@
 &lt;ol&gt;
 &lt;li&gt;登录服务器，创建一个工作目录并进入，然后创建 &lt;code&gt;docker-compose.yml&lt;/code&gt; 文件：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir syncclipboard &amp;amp;&amp;amp; cd syncclipboard
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir syncclipboard &amp;amp;&amp;amp; cd syncclipboard
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim docker-compose.yml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;将以下内容写入&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; syncclipboard-server:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: jericx/syncclipboard-server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: syncclipboard-server
@@ -78,13 +78,13 @@
 &lt;ol start="3"&gt;
 &lt;li&gt;运行&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="配置nginx"&gt;
  配置Nginx
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;不要忘记将域名解析到服务器，因为有很多种配置Nginx的方式，这里只给出我写的Nginx配置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# Server block for HTTP to HTTPS redirection
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# Server block for HTTP to HTTPS redirection
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;server&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;listen&lt;/span&gt; 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;server_name&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;clip.yourdomain.com&lt;/span&gt;; &lt;span style="color:#888;font-style:italic"&gt;# ⚠️ 替换成你的域名
@@ -138,7 +138,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;配置好后，检查 Nginx 语法并重载服务：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nginx -t
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl reload nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至此可以使用域名访问，输入设置的username以及password，看到以下提示证明成功部署：
 
@@ -297,15 +297,15 @@
 &lt;ol&gt;
 &lt;li&gt;创建数据存储路径（包含数据库和配置文件）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /vaultwarden/data	&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录，这里可以自行设置，之后的配置文件和数据库都会在这里。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p /vaultwarden/data	&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录，这里可以自行设置，之后的配置文件和数据库都会在这里。&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;创建 docker-compose.yml
 使用 docker compose 方式安装 vaultwarden&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; vaultwarden	&lt;span style="color:#888;font-style:italic"&gt;# 进入你准备安装vaultwarden的目录，可自行修改&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; vaultwarden	&lt;span style="color:#888;font-style:italic"&gt;# 进入你准备安装vaultwarden的目录，可自行修改&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim docker-compose.yml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下是我经过调试的配置，开启了管理员页面和移动设备通知。修改下面的配置文件后粘贴到 docker-compose.yml 文件中。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vaultwarden:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: vaultwarden/server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: vaultwarden &lt;span style="color:#888;font-style:italic"&gt;# 容器名称&lt;/span&gt;
@@ -362,28 +362,28 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_ENABLED&lt;/span&gt;=&lt;span style="font-weight:bold;font-style:italic"&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_INSTALLATION_ID&lt;/span&gt;=获得的id
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_INSTALLATION_KEY&lt;/span&gt;=获得的key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果在上一步中请求了 &lt;code&gt;bitwarden.eu（欧盟）&lt;/code&gt;，还必须设置&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_RELAY_URI&lt;/span&gt;=https://push.bitwarden.eu
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_RELAY_URI&lt;/span&gt;=https://push.bitwarden.eu
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PUSH_IDENTITY_URI&lt;/span&gt;=https://identity.bitwarden.eu
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;自定子路径
 一定要在nginx进行相应的分流设置&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;第一次启动：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;docker compose logs -f&lt;/code&gt; 是为了查看日志，如果报错的话可以查一查原因&lt;/p&gt;
 &lt;p&gt;如果更新 compose 文件之后的话用下面的命令启动：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose pull &amp;amp;&amp;amp; docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose pull &amp;amp;&amp;amp; docker compose up -d &amp;amp;&amp;amp; docker compose logs -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 class="heading" id="配置nginx"&gt;
  配置nginx
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx"&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;经过调试过后的nginx的配置文件&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;server {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; listen 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_name example.com;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; return 301 https://$host$request_uri;
@@ -479,12 +479,12 @@
 &lt;ol&gt;
 &lt;li&gt;修改docker-compose.yml文件，environment变量加入DOMAIN域&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- DOMAIN=https://域名/自定子路径/ &lt;span style="color:#888;font-style:italic"&gt;# 如果想要添加子路径，需要对应修改这里，一定要在nginx进行相应的分流&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;设置子路径分流&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;location&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;/子路径/&lt;/span&gt; {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;location&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;/子路径/&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_pass&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;http://127.0.0.1:1256&lt;/span&gt;; &lt;span style="color:#888;font-style:italic"&gt;# 注意修改端口
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;Host&lt;/span&gt; &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$host&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;X-Real-IP&lt;/span&gt; &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$remote_addr&lt;/span&gt;;
@@ -512,7 +512,7 @@
  &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad%e9%a1%b5%e9%9d%a2%e5%b9%b6%e7%a6%81%e7%94%a8%e6%b3%a8%e5%86%8c"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;查看网页端的密码重复泄露报告，然后关闭网页端&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;environment:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- SIGNUPS_ALLOWED=false &lt;span style="color:#888;font-style:italic"&gt;#关闭注册&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;- WEB_VAULT_ENABLED=false &lt;span style="color:#888;font-style:italic"&gt;#关闭网页端&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="定时检查容器更新"&gt;
@@ -522,7 +522,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;2025年2月7日更新：watchtower的cron使用了SPRING语法&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; watchtower:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: containrrr/watchtower
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: watchtower
@@ -557,7 +557,7 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;运行 Rclone 配置容器：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config
@@ -576,7 +576,7 @@
 &lt;li&gt;配置 Google Drive 远程 （需要挂梯子才能收到回调）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;运行 Rclone 配置容器：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config
@@ -598,7 +598,7 @@
 &lt;ol start="5"&gt;
 &lt;li&gt;配置完成后，运行以下命令检查配置是否正确：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-rclone-data,target=/config/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; rclone config show
@@ -608,7 +608,7 @@
 &lt;/h5&gt;
 &lt;p&gt;本方案采用每日备份，保留三十天，每月备份一次，保留十二个月的备份方式：开启两个backup服务-daily_backup和monthly_backup&lt;/p&gt;
 &lt;p&gt;将 &lt;code&gt;vaultwarden-backup&lt;/code&gt; 服务的 &lt;code&gt;RCLONE_REMOTE_NAME&lt;/code&gt; 环境变量设置为 &lt;code&gt;BitwardenBackup&lt;/code&gt;。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vaultwarden:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: vaultwarden/server:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: vaultwarden 
@@ -730,11 +730,11 @@
 &lt;li&gt;&lt;code&gt;RCLONE_REMOTE_DIR=/BitwardenBackup/monthly:&lt;/code&gt;设置备份到 &lt;code&gt;union&lt;/code&gt; 远程的 &lt;code&gt;/BitwardenBackup/monthly/&lt;/code&gt; 文件夹，每个月一号进行备份&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;重启服务&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;手动备份操作（可用来验证配置是否正确）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker &lt;span style="font-weight:bold;font-style:italic"&gt;exec&lt;/span&gt; daily_vaultwarden_backup bash /app/backup.sh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker &lt;span style="font-weight:bold;font-style:italic"&gt;exec&lt;/span&gt; daily_vaultwarden_backup bash /app/backup.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 class="heading" id="还原备份还未验证步骤正确性"&gt;
  还原备份（还未验证步骤正确性）
  &lt;a class="anchor" href="#%e8%bf%98%e5%8e%9f%e5%a4%87%e4%bb%bd%e8%bf%98%e6%9c%aa%e9%aa%8c%e8%af%81%e6%ad%a5%e9%aa%a4%e6%ad%a3%e7%a1%ae%e6%80%a7"&gt;#&lt;/a&gt;
@@ -751,7 +751,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;根据你的部署方式选择以下命令之一运行还原容器：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;a. 使用 &lt;code&gt;docker-compose.yml&lt;/code&gt; 部署的：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=volume,source=vaultwarden-data,target=/bitwarden/data/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; --mount &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;type&lt;/span&gt;=bind,source=&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;pwd&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;,target=/bitwarden/restore/ &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ttionya/vaultwarden-backup:latest restore &lt;span style="color:#666;font-style:italic"&gt;\
@@ -810,7 +810,7 @@
 -S smtp-auth-password=&amp;lt;your-email-password&amp;gt; \
 -S from=&amp;lt;your-email-address&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;邮件发送测试：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;MAIL_SMTP_VARIABLES&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span&gt; ttionya/vaultwarden-backup:latest mail &amp;lt;mail send to&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;MAIL_SMTP_VARIABLES&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your smtp variables&amp;gt;&amp;#39;&lt;/span&gt; ttionya/vaultwarden-backup:latest mail &amp;lt;mail send to&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 或&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -834,7 +834,7 @@
 &lt;li&gt;&lt;code&gt;%{content}&lt;/code&gt;：替换为实际的内容。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Ping 发送测试：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker run --rm -it &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL_CURL_OPTIONS&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your curl options for PING_URL&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -e &lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;PING_URL_WHEN_START&lt;/span&gt;=&lt;span style="color:#666;font-style:italic"&gt;&amp;#39;&amp;lt;your ping url&amp;gt;&amp;#39;&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;\

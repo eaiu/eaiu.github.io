@@ -450,7 +450,7 @@
 &lt;li&gt;**同一台主机多个域名的情况&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;后续申请证书的命令，都是在 root 用户下执行的，请先使用 &lt;code&gt;su&lt;/code&gt; 切换到 root 用户。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;su
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 acme.sh&lt;/span&gt;

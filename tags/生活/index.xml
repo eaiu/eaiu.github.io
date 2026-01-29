@@ -93,7 +93,7 @@
  步骤 1：创建工作目录和配置文件
  &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-1%e5%88%9b%e5%bb%ba%e5%b7%a5%e4%bd%9c%e7%9b%ae%e5%bd%95%e5%92%8c%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建工作目录&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建工作目录&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p ~/puppy-stardew &amp;amp;&amp;amp; &lt;span style="font-weight:bold;font-style:italic"&gt;cd&lt;/span&gt; ~/puppy-stardew
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 直接创建 docker-compose.yml（使用 Docker Hub 镜像）&lt;/span&gt;
@@ -141,26 +141,26 @@
  步骤 2：编辑配置文件，填入您的 Steam 凭证
  &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-2%e7%bc%96%e8%be%91%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%a1%ab%e5%85%a5%e6%82%a8%e7%9a%84-steam-%e5%87%ad%e8%af%81"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 使用文本编辑器修改 .env 文件&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 使用文本编辑器修改 .env 文件&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim .env 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;重要&lt;/strong&gt;：您必须在 Steam 上拥有星露谷物语。游戏文件通过您的账户下载。&lt;/p&gt;
 &lt;h4 class="heading" id="步骤-3初始化数据目录"&gt;
  步骤 3：初始化数据目录
  &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-3%e5%88%9d%e5%a7%8b%e5%8c%96%e6%95%b0%e6%8d%ae%e7%9b%ae%e5%bd%95"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录并设置正确权限&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 创建数据目录并设置正确权限&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir -p data/{saves,game,steam}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chown -R 1000:1000 data/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 class="heading" id="步骤-4启动服务器"&gt;
  步骤 4：启动服务器
  &lt;a class="anchor" href="#%e6%ad%a5%e9%aa%a4-4%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1%e5%99%a8"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 启动服务器&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 启动服务器&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker compose up -d
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 查看日志&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker logs -f puppy-stardew
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;如果启用了 Steam 令牌&lt;/strong&gt;，您需要输入验证码，推荐临时关闭 Steam 令牌，使用Email验证码，因为是异地登录，可能会触发风控：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker attach puppy-stardew
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker attach puppy-stardew
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 粘贴您的 Steam 令牌代码并按回车&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 重要：不会显示任何内容 - 这是正常的！&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 等待几秒钟，游戏会自动开始下载&lt;/span&gt;
@@ -174,7 +174,7 @@
 &lt;ul&gt;
 &lt;li&gt;压缩文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# c: create an archive (创建)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# c: create an archive (创建)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# z: compress with gzip (压缩)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# v: verbosely list files processed (显示过程)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# f: use archive file (指定文件名)&lt;/span&gt;
@@ -183,9 +183,9 @@
 &lt;li&gt;传输文件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;刚开始的思路是直接通过scp传输，因为为了安全已经更改了ssh端口以及无法通过passwd登录，通过创建密钥和指定端口解决。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp stardew_data.tar.gz user@beijing_server_ip:/home/user/
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp stardew_data.tar.gz user@beijing_server_ip:/home/user/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更改后的命令：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp -P 2025 -i ~/.ssh/id_rsa stardew_data.tar.gz user@beijing_server_ip:/home/user/
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp -P 2025 -i ~/.ssh/id_rsa stardew_data.tar.gz user@beijing_server_ip:/home/user/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;发现速度有所提高，但还是很慢。最终采用的方法是人工介入，我和JP之间的传输速率很高，我和Beijing的传输速率也很高，所以我先下载再上传完成迁移。&lt;/p&gt;
 &lt;h2 class="heading" id="首次启动"&gt;
  首次启动
@@ -252,7 +252,7 @@
 &lt;p&gt;经过检索，发现了另一个&lt;a href="https://github.com/Lixeer/ValleyServer"&gt;无头服务器解决方案&lt;/a&gt;，相对于puppy，这个项目没有支持容器化和VNC，只能通过终端进行运行。不过经过测试，发现夏日第三天的地震可以正常度过。我就觉得可以查看这个项目的逻辑，通过对比解决问题。&lt;/p&gt;
 &lt;p&gt;两者的关键自动化mod分别是：&lt;code&gt;AutoHideHost&lt;/code&gt;和&lt;code&gt;ALOS&lt;/code&gt;，经过对比初步查看，发现puppy中针对&lt;code&gt;DialogueBox&lt;/code&gt;也就是对话框的处理是点击ESC，也就是隐藏起来，而&lt;code&gt;ALOS&lt;/code&gt;则是使用左键模拟点击确认。根据最小破坏原则，通过更改对话框的兜底逻辑，更改为使用左键点击，最终解决了地震的问题。&lt;/p&gt;
 &lt;p&gt;后面惊喜的发现，节日活动也能正常离开了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-c#" data-lang="c#"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;//OnMenuChanged方法&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c#" data-lang="c#"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;//OnMenuChanged方法&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// 兜底逻辑: 其他所有对话框使用左键点击确认&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// CRITICAL: 使用receiveLeftClick而不是receiveKeyPress(Escape)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;// 原因: 地震等事件对话框的文本为空,无法通过关键词匹配&lt;/span&gt;
@@ -265,7 +265,7 @@
 &lt;p&gt;在已关闭的issue中已经看到了好几个关于地震等特殊时间的讨论，作者声称已经通过监听特殊对话框&lt;code&gt;ReadyCheckDialog&lt;/code&gt;修复了这个问题，可能后续有破坏吧。可以作为后面遇到问题的一个解决思路。&lt;/p&gt;
 &lt;p&gt;相关链接：&lt;a href="https://github.com/truman-world/puppy-stardew-server/issues/7#issuecomment-3508564644"&gt;夜间传来一声爆炸声……然后会一直卡住正在等待其他玩家 · Issue #7 · truman-world/puppy-stardew-server&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 编译命令&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 编译命令&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dotnet build -c Release
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;如果游戏卡住，客户端可以在聊天中输入这些命令。&lt;/p&gt;
@@ -1384,7 +1384,7 @@
 &lt;li&gt;申请证书类型：RSA + ECC 两个通配符证书&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;后续申请证书的命令，都是在 root 用户下执行的，请先使用 &lt;code&gt;su&lt;/code&gt; 切换到 root 用户。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 进入root用户&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;su
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 安装 acme.sh&lt;/span&gt;
@@ -1446,7 +1446,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--capath /path/to/ssl/ecc_domain.tld_ca.pem &lt;span style="color:#666;font-style:italic"&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;--reloadcmd &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;service nginx reload&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查cron定时任务是否已经成功创建&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;crontab -l
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;crontab -l
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果有两个以上的域名或者新增域名，
 只需要：&lt;/p&gt;
 &lt;ol&gt;
@@ -1466,7 +1466,7 @@
 &lt;ol&gt;
 &lt;li&gt;打包持久化数据，其中NewAPI的MySQL使用了Docker的命名卷&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 打包OpenWebUI和NewAPI的持久化数据&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 打包OpenWebUI和NewAPI的持久化数据&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tar -czvf data.tar.gz ./openwebui ./newapi
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 打包newapi MySQL数据卷 ###########&lt;/span&gt;
@@ -1479,7 +1479,7 @@
 &lt;li&gt;使用SFTP功能传输到新机器&lt;/li&gt;
 &lt;li&gt;在新机器上解压&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-BASH" data-lang="BASH"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 解压OpenWebUI和NewAPI的持久化数据&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-BASH" data-lang="BASH"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 解压OpenWebUI和NewAPI的持久化数据&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo tar -xzvf data.tar.gz -C ./
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;######## 解压newapi MySQL数据卷 ###########&lt;/span&gt;
@@ -1495,7 +1495,7 @@
 &lt;li&gt;配置nginx&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;直接把旧机器上的nginx打包上传到新机上，操作只需要建立site-available与site-enable的软连接&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;绷不住了，第一次搬家十分乃至万分不顺利，从七点搬到十一点半还没搬完。搬家太累了😭&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1507,7 +1507,7 @@
 &lt;ol&gt;
 &lt;li&gt;docker镜像变更&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;version: &lt;span style="color:#666;font-style:italic"&gt;&amp;#39;3.3&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;version: &lt;span style="color:#666;font-style:italic"&gt;&amp;#39;3.3&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; alist:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: &lt;span style="color:#666;font-style:italic"&gt;&amp;#39;openlistteam/openlist:latest&amp;#39;&lt;/span&gt;
@@ -1524,7 +1524,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;配置nginx&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/api.vtofun.me /etc/nginx/sites-enabled/api.vtofun.me
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;注意打开admin用户的webdav的读权限。&lt;/li&gt;
 &lt;/ol&gt;
@@ -1536,7 +1536,7 @@
 &lt;ol&gt;
 &lt;li&gt;nginx&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/substore /etc/nginx/sites-enabled/substore
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ln -s /etc/nginx/sites-available/substore /etc/nginx/sites-enabled/substore
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart nginx.service 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 class="heading" id="gemini-balance"&gt;
  Gemini-balance
@@ -1547,7 +1547,7 @@
 &lt;ul&gt;
 &lt;li&gt;docker-compose.yml文件，通过.env使用和New-API同一个MySQL，避免起两个MySQL服务，造成资源浪费。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;# Gemini代理池&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#888;font-style:italic"&gt;# Gemini代理池&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; gemini-balance:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: ghcr.io/snailyp/gemini-balance:latest
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; container_name: gemini-balance
@@ -1582,7 +1582,7 @@
  &lt;a class="anchor" href="#1panel"&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;一键安装的命令：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bash -c &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt;&amp;#34;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bash -c &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;&lt;/span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;$(&lt;/span&gt;curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh&lt;span style="font-weight:bold;text-decoration:underline"&gt;)&lt;/span&gt;&lt;span style="color:#666;font-style:italic"&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
 
 
@@ -1640,7 +1640,7 @@
  &lt;a class="anchor" href="#%e9%97%ae%e9%a2%98%e8%a7%a3%e5%86%b3"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;贴上一份可以正常工作的nginx配置：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;server&lt;/span&gt; {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;text-decoration:underline"&gt;server&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;listen&lt;/span&gt; 80;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;server_name&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;xxx&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="font-weight:bold;text-decoration:underline"&gt;return&lt;/span&gt; 301 &lt;span style="color:#666;font-style:italic"&gt;https://&lt;/span&gt;&lt;span style="color:#666;font-weight:bold;font-style:italic"&gt;$server_name$request_uri&lt;/span&gt;;
@@ -1802,7 +1802,7 @@
  &lt;a class="anchor" href="#%e5%ae%89%e8%a3%85%e5%93%aa%e5%90%92%e9%9d%a2%e6%9d%bf%e7%ab%af"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;官方手册：&lt;a href="https://nezha.wiki/guide/dashboard.html"&gt;安装 Dashboard | 哪吒服务器监控&lt;/a&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo ./nezha.sh
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh &amp;amp;&amp;amp; chmod +x nezha.sh &amp;amp;&amp;amp; sudo ./nezha.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装流程：仅需要特别注意nezha-agent地址填入&lt;code&gt;解析域名:443&lt;/code&gt;
 
 
@@ -1830,7 +1830,7 @@
  &lt;a class="anchor" href="#%e9%85%8d%e7%bd%aenginx%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86"&gt;#&lt;/a&gt;
 &lt;/h4&gt;
 &lt;p&gt;一个推荐的nginx配置&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# ===================================================================
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# ===================================================================
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 哪吒监控 - 后端服务连接池配置
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 定义一个名为 &amp;#34;dashboard&amp;#34; 的后端服务池，用于连接复用，提高性能。
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# ===================================================================
@@ -2007,7 +2007,7 @@
 &lt;ol start="3"&gt;
 &lt;li&gt;在新页面中记录 Client ID 和 Client secrets，完成面板 OAuth 2.0 配置：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;oauth2:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;oauth2:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; GitHub:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; client_id: &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;a-unique-id&amp;#34;&lt;/span&gt; &lt;span style="color:#888;font-style:italic"&gt;# 替换你的 Client ID&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; client_secret: &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;a-unique-secret&amp;#34;&lt;/span&gt; &lt;span style="color:#888;font-style:italic"&gt;# 替换你的 Client secrets&lt;/span&gt;
@@ -2019,11 +2019,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
 &lt;li&gt;将以上配置添加到&lt;code&gt;/opt/nezha/dashboard/data/config.yaml&lt;/code&gt;面板（Dashboard） 配置&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /opt/nezha/dashboard/data/config.yaml
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /opt/nezha/dashboard/data/config.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="5"&gt;
 &lt;li&gt;重启面板使新配置生效&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./nezha.sh 
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./nezha.sh 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="6"&gt;
 &lt;li&gt;打开个人信息设置绑定github，并关闭密码登录
 
@@ -2088,11 +2088,11 @@
 &lt;ul&gt;
 &lt;li&gt;打开&lt;code&gt;/opt/nezha/agent/config.yml&lt;/code&gt;，把 &lt;code&gt;disable_command_execute&lt;/code&gt;改成true&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /opt/nezha/agent/config.yml
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /opt/nezha/agent/config.yml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;重启agent服务&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart nezha-agent
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl restart nezha-agent
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 class="heading" id="添加备注"&gt;
  添加备注
  &lt;a class="anchor" href="#%e6%b7%bb%e5%8a%a0%e5%a4%87%e6%b3%a8"&gt;#&lt;/a&gt;
@@ -2141,11 +2141,11 @@
  &lt;a class="anchor" href="#%e5%85%b3%e9%97%ad-ipv6--%e5%bc%80%e5%90%afbbr"&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;我的网络环境为校园网，对ipv6的支持并不好；&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.core.default_qdisc=fq&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/sysctl.conf
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.core.default_qdisc=fq&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/sysctl.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.ipv4.tcp_congestion_control=bbr&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; /etc/sysctl.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sysctl -p
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lsmod | grep bbr &lt;span style="color:#888;font-style:italic"&gt;# 查看是否成功开启BBR&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 1. 将配置添加到 /etc/sysctl.conf (使用 tee -a 确保安全追加)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#888;font-style:italic"&gt;# 1. 将配置添加到 /etc/sysctl.conf (使用 tee -a 确保安全追加)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.ipv6.conf.all.disable_ipv6 = 1&amp;#34;&lt;/span&gt; | sudo tee -a /etc/sysctl.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.ipv6.conf.default.disable_ipv6 = 1&amp;#34;&lt;/span&gt; | sudo tee -a /etc/sysctl.conf
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="font-weight:bold;font-style:italic"&gt;echo&lt;/span&gt; &lt;span style="color:#666;font-style:italic"&gt;&amp;#34;net.ipv6.conf.lo.disable_ipv6 = 1&amp;#34;&lt;/span&gt; | sudo tee -a /etc/sysctl.conf
