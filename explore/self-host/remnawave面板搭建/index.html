@@ -1,0 +1,269 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><link rel=icon type=image/ico href=https://blog.yzyy.de/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://blog.yzyy.de/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://blog.yzyy.de/favicon-32x32.png><link rel=icon type=image/png sizes=192x192 href=https://blog.yzyy.de/android-chrome-192x192.png><link rel=apple-touch-icon sizes=180x180 href=https://blog.yzyy.de/apple-touch-icon.png><meta name=description content="Remnawave面板搭建全流程教程，详细介绍如何使用Remnawave实现流量拼车、用户管理、节点配置、订阅转换等功能。涵盖面板端与节点端的Docker部署、Nginx反向代理、主从架构设计、流量统计、用户分组与订阅模板设置，适合自用或拼车场景，助力高效管理多用户代理节点。"><title>Remnawave面板搭建全流程 | G-Hung的博客</title><link rel=canonical href=https://blog.yzyy.de/explore/self-host/remnawave%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA/><meta property="og:url" content="https://blog.yzyy.de/explore/self-host/remnawave%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA/"><meta property="og:site_name" content="G-Hung的博客"><meta property="og:title" content="Remnawave面板搭建全流程"><meta property="og:description" content="Remnawave面板搭建全流程教程，详细介绍如何使用Remnawave实现流量拼车、用户管理、节点配置、订阅转换等功能。涵盖面板端与节点端的Docker部署、Nginx反向代理、主从架构设计、流量统计、用户分组与订阅模板设置，适合自用或拼车场景，助力高效管理多用户代理节点。"><meta property="og:locale" content="zh_cn"><meta property="og:type" content="article"><meta property="article:section" content="explore"><meta property="article:published_time" content="2026-01-29T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-29T00:00:00+00:00"><meta property="article:tag" content="Database"><meta property="article:tag" content="Java"><link rel=stylesheet href=/assets/combined.min.737dab787e0dfa3088180adf040304574c336cd3805516c938598d23fd96b675.css media=all><script async src="https://www.googletagmanager.com/gtag/js?id=G-88BLW4V0HZ"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-88BLW4V0HZ")}</script></head><body class=auto><div class=content><header><div class=header><h1 class=header-title><a href=https://blog.yzyy.de/>G-Hung的博客</a></h1><div class=header-menu><p class=small><a href=/>/home</a></p><p class=small><a href=/post>/日常</a></p><p class=small><a href=/explore>/探索记录</a></p><p class=small><a href=/tags>/tags</a></p><a href=/index.xml target=_blank title=RSS class=rss-icon><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div></div></header><main class=main><div class=breadcrumbs><a href=/>Home</a><span class=breadcrumbs-separator>/</span><a href=/explore/>Explores</a><span class=breadcrumbs-separator>/</span>
+<a href=/explore/self-host/remnawave%E9%9D%A2%E6%9D%BF%E6%90%AD%E5%BB%BA/>Remnawave面板搭建全流程</a></div><div class=autonumber><article><header class=single-intro-container><h1 class=single-title>Remnawave面板搭建全流程</h1><p class=single-summary>流量拼车的好搭档</p><div class=single-subsummary><img src=/avatar.jpg alt="Author Avatar"><div><p class=author>ghung</p><p class=single-date><time datetime=2026-01-29T00:00:00+00:00>2026 Jan 29</time>
+&nbsp; · &nbsp;4 min read</p></div></div></header><div class=single-tags><span><a href=https://blog.yzyy.de/tags/database/>#Database</a>
+</span><span><a href=https://blog.yzyy.de/tags/java/>#Java</a></span></div><aside class=toc><p><strong>Table of contents</strong></p><nav id=TableOfContents><ul><li><a href=#remnawave-面板端>Remnawave 面板端</a></li></ul></nav></aside><div class=single-content><p>由于最近新买了一个DMIT，流量有些多所以有了拼车的需求。我之前使用的搭建节点的方式是「233boy」一键脚本或者「3-XUI」等一些面板。这些方式适合自用，对于拼车来说用户管理不方便，而且也看不到流量具体的使用情况，或者订阅到期的情况。如果使用「 Xboard 」的这些机场面板的话，又显得太重了。</p><p>在网上冲浪的时候刷到了 Remnawave。只看了一眼这个面板的外观，便被它吸引了。经过搭建使用后，发现它不仅外表美丽，并且功能也十分强大，属于是中看又中用。</p><p>它的使用场景仅限于自用或者拼车，更推荐拼车使用。</p><p><figure><div class=img-container><img loading=lazy alt=20260130000026685.png src=https://webp.050612.xyz/2026/01/20260130000026685.png></div></figure></p><h1 class=heading id=缺点>缺点
+<a class=anchor href=#%e7%bc%ba%e7%82%b9>#</a></h1><ol><li>协议支持不全，这个面板是基于 「Xray」的，所以有些协议是无法支持的，例如 hy2。并且有些协议（例如 Shadowsocks-2022 ），它也暂时没有支持。</li><li>占用资源比较多，因为这个系统无论是面板端还是节点端，都是使用Docker部署的。节点端（也就是搭建节点的小机）需要 5GB 左右的储存空间。内存无所谓，只要能跑起来 Docker 就行。面板端需要10GB左右的储存空间。</li><li>上手难度比较高，不仅指的是部署难度，也指它的节点配置是需要手搓配置文件的。</li></ol><h1 class=heading id=优点>优点
+<a class=anchor href=#%e4%bc%98%e7%82%b9>#</a></h1><ol><li>对于多用户支持比较好。可以针对每个用户设置以下内容：流量充值时间、流量限额、流量到期时间等，也就是说比较适合拼车</li><li>主从架构设计。具有一个面板端和多个节点端，可以通过面板端下发配置文件，统一修改。节点端不需要做过多操作，用来控制多台小鸡的体验十分爽。</li><li>手写配置更加灵活可控。</li><li>内置订阅转换功能。对于多个客户端，可以下发不同的订阅模板，也就是说内置了订阅转换的功能。</li><li>具有非常直观的统计页面，可以看到具体的统计数据。</li></ol><p>总体来说，这个面板非常适合喜欢折腾的用户使用。最终的效果和功能还是十分令人满意的，用了之后觉得回不去之前用的 X-UI 等面板了。</p><hr><p>到了部署的部分，其实官方的部署文档是我自部署这么多服务以来遇到的最详细的。它里面包含了非常详细的步骤，并给出了非常详细的配置模板。跟着官方文档来，基本上没有遇到什么问题，也没有踩到什么坑。</p><p>官方链接：<a href=https://docs.rw/docs/overview/quick-start>Remnawave Documentation | quick-start</a></p><h1 class=heading id=部署记录>部署记录
+<a class=anchor href=#%e9%83%a8%e7%bd%b2%e8%ae%b0%e5%bd%95>#</a></h1><p>首先是面板端：</p><ol><li>这个面板端不是必须要搭建在节点的机器上，可以在任何机器上。</li><li>面板端最好是有公网 IP。如果没有公网 IP 的话，也可以尝试用其他方法，但还是建议优先使用公网 IP。</li><li>该面板必须通过 SSL 进行访问。</li></ol><h2 class=heading id=remnawave-面板端>Remnawave 面板端
+<a class=anchor href=#remnawave-%e9%9d%a2%e6%9d%bf%e7%ab%af>#</a></h2><p>Remnawave Panel 是 Remnawave 的核心组件，用于管理用户、节点、订阅等。</p><p>安装 Docker：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo curl -fsSL https://get.docker.com | sh
+</span></span></code></pre></div><p>创建项目目录并进入：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>  mkdir /opt/remnawave &amp;&amp; <span style=font-weight:700;font-style:italic>cd</span> /opt/remnawave
+</span></span></code></pre></div><p>下载 docker-compose.yml 和 .env.sample：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>  curl -o docker-compose.yml https://raw.githubusercontent.com/remnawave/backend/refs/heads/main/docker-compose-prod.yml
+</span></span><span style=display:flex><span>  curl -o .env https://raw.githubusercontent.com/remnawave/backend/refs/heads/main/.env.sample
+</span></span></code></pre></div><p>配置 .env 文件</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>  <span style=color:#888;font-style:italic># 以下生成的密码都是为了程序内部使用，一般是不需要记录下来的</span>
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>#JWT_AUTH_SECRET 与 JWT_API_TOKENS_SECRET 用于认证与安全相关功能。建议生成安全密钥：</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s/^JWT_AUTH_SECRET=.*/JWT_AUTH_SECRET=</span><span style=font-weight:700;text-decoration:underline>$(</span>openssl rand -hex 64<span style=font-weight:700;text-decoration:underline>)</span><span style=color:#666;font-style:italic>/&#34;</span> .env &amp;&amp; <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s/^JWT_API_TOKENS_SECRET=.*/JWT_API_TOKENS_SECRET=</span><span style=font-weight:700;text-decoration:underline>$(</span>openssl rand -hex 64<span style=font-weight:700;text-decoration:underline>)</span><span style=color:#666;font-style:italic>/&#34;</span> .env
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>#生成 Metrics 与 Webhook 密钥：</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s/^METRICS_PASS=.*/METRICS_PASS=</span><span style=font-weight:700;text-decoration:underline>$(</span>openssl rand -hex 64<span style=font-weight:700;text-decoration:underline>)</span><span style=color:#666;font-style:italic>/&#34;</span> .env &amp;&amp; <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s/^WEBHOOK_SECRET_HEADER=.*/WEBHOOK_SECRET_HEADER=</span><span style=font-weight:700;text-decoration:underline>$(</span>openssl rand -hex 64<span style=font-weight:700;text-decoration:underline>)</span><span style=color:#666;font-style:italic>/&#34;</span> .env
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#888;font-style:italic>#强烈建议修改默认 Postgres 密码（并同步更新 DATABASE_URL）：</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#666;font-weight:700;font-style:italic>pw</span>=<span style=font-weight:700;text-decoration:underline>$(</span>openssl rand -hex 24<span style=font-weight:700;text-decoration:underline>)</span> &amp;&amp; <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=</span><span style=color:#666;font-weight:700;font-style:italic>$pw</span><span style=color:#666;font-style:italic>/&#34;</span> .env &amp;&amp; <span style=color:#666;font-style:italic>\
+</span></span></span><span style=display:flex><span>  sed -i <span style=color:#666;font-style:italic>&#34;s|^\(DATABASE_URL=\&#34;postgresql://postgres:\)[^\@]*\(@.*\)|\1</span><span style=color:#666;font-weight:700;font-style:italic>$pw</span><span style=color:#666;font-style:italic>\2|&#34;</span> .env
+</span></span></code></pre></div><p>然后手动打开 .env，修改以下变量：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>vim .env
+</span></span></code></pre></div><ul><li>FRONT_END_DOMAIN：面板访问域名（例如<code> panel.example.com</code>）</li><li>SUB_PUBLIC_DOMAIN：目前填写面板域名并追加 /api/sub（例如<code> panel.example.com/api/sub</code>）</li></ul><p>启动容器:</p><pre tabindex=0><code>docker compose up -d &amp;&amp; docker compose logs -f -t
+</code></pre><p>启动后稍等片刻，应看到面板相关输出。<figure><div class=img-container><img loading=lazy alt=panel_up-577201a05d97a2b7fec5a582f6631689.jpg src=https://webp.050612.xyz/2026/01/20260130003437902.jpg></div></figure></p><p>下一步是反向代理相关的配置。</p><p>关于这一部分，官方给出的实例配置文件非常详细，涵盖了各种常用的服务（例如 Nginx 和 Caddy），可以直接参考并照抄官方的配置文件。
+<a href=https://docs.rw/docs/install/reverse-proxies/>Remnawave Documentation | reverse-proxie</a></p><p>针对 Nginx ，官方给出的是 Docker 运行的 Nginx 服务配置文件，我这里给出独立运行的 Nginx 配置文件供参考：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-nginx data-lang=nginx><span style=display:flex><span><span style=font-weight:700;text-decoration:underline>upstream</span> <span style=color:#666;font-style:italic>remnawave</span> {
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic>#Change this part
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>server</span> 127.0.0.1:<span style=color:#666;font-style:italic>port</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700;text-decoration:underline>server</span> {
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>listen</span> 80;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>listen</span> <span style=color:#666;font-style:italic>[::]:80</span>;
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic>#Change this part
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>server_name</span> <span style=color:#666;font-style:italic>panel.example.com</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>location</span> <span style=color:#666;font-style:italic>/</span> {
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>return</span> 301 <span style=color:#666;font-style:italic>https://</span><span style=color:#666;font-weight:700;font-style:italic>$host$request_uri</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700;text-decoration:underline>server</span> {
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>server_name</span> <span style=color:#666;font-style:italic>panel.example.com</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>listen</span> 443 <span style=color:#666;font-style:italic>ssl</span> <span style=color:#666;font-style:italic>http2</span> <span style=color:#666;font-style:italic>reuseport</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>listen</span> <span style=color:#666;font-style:italic>[::]:443</span> <span style=color:#666;font-style:italic>ssl</span> <span style=color:#666;font-style:italic>http2</span> <span style=color:#666;font-style:italic>reuseport</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>location</span> <span style=color:#666;font-style:italic>/</span> {
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_http_version</span> 1<span style=color:#666;font-style:italic>.1</span>;
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_pass</span> <span style=color:#666;font-style:italic>http://remnawave</span>;
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_set_header</span> <span style=color:#666;font-style:italic>Host</span> <span style=color:#666;font-weight:700;font-style:italic>$host</span>;
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_set_header</span> <span style=color:#666;font-style:italic>X-Real-IP</span> <span style=color:#666;font-weight:700;font-style:italic>$remote_addr</span>;
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_set_header</span> <span style=color:#666;font-style:italic>X-Forwarded-For</span> <span style=color:#666;font-weight:700;font-style:italic>$proxy_add_x_forwarded_for</span>;
+</span></span><span style=display:flex><span>        <span style=font-weight:700;text-decoration:underline>proxy_set_header</span> <span style=color:#666;font-style:italic>X-Forwarded-Proto</span> <span style=color:#666;font-weight:700;font-style:italic>$scheme</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic># SSL Configuration (Mozilla Intermediate Guidelines)
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_protocols</span>          <span style=color:#666;font-style:italic>TLSv1.2</span> <span style=color:#666;font-style:italic>TLSv1.3</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_ciphers</span> <span style=color:#666;font-style:italic>ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_session_timeout</span> <span style=color:#666;font-style:italic>1d</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_session_cache</span> <span style=color:#666;font-style:italic>shared:MozSSL:10m</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_session_tickets</span>    <span style=color:#666;font-weight:700;font-style:italic>off</span>;
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic>#Change this part
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_certificate</span> <span style=color:#666;font-style:italic>&#34;/etc/ssl/certs/panel.example.com.pem&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>ssl_certificate_key</span> <span style=color:#666;font-style:italic>&#34;/etc/ssl/private/panel.example.com.key&#34;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic>#ssl_trusted_certificate &#34;/etc/ssl/certs/yzyy.de.pem&#34;;
+</span></span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#888;font-style:italic># ssl_stapling           on;
+</span></span></span><span style=display:flex><span>   <span style=color:#888;font-style:italic># ssl_stapling_verify    on;
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>resolver</span>               1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 <span style=color:#666;font-style:italic>valid=60s</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>resolver_timeout</span>       <span style=color:#666;font-style:italic>2s</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#888;font-style:italic># Gzip Compression
+</span></span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip</span> <span style=color:#666;font-weight:700;font-style:italic>on</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_vary</span> <span style=color:#666;font-weight:700;font-style:italic>on</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_proxied</span> <span style=color:#666;font-style:italic>any</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_comp_level</span> 6;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_buffers</span> 16 8k;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_http_version</span> 1<span style=color:#666;font-style:italic>.1</span>;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_min_length</span> 256;
+</span></span><span style=display:flex><span>    <span style=font-weight:700;text-decoration:underline>gzip_types</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/atom+xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/geo+json</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/javascript</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/x-javascript</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/json</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/ld+json</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/manifest+json</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/rdf+xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/rss+xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/xhtml+xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>application/xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>font/eot</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>font/otf</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>font/ttf</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>image/svg+xml</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>text/css</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>text/javascript</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>text/plain</span>
+</span></span><span style=display:flex><span>        <span style=color:#666;font-style:italic>text/xml</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><hr><p>到这一步，访问 panel.example.com 并设置管理员账户应该就可以看到面板主页了。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-30_01-20-18_ikdlhpmi.rzp.png src=https://webp.050612.xyz/2026/01/20260130012026547.png></div></figure></p><h1 class=heading id=remnawave-节点安装与配置>Remnawave 节点安装与配置
+<a class=anchor href=#remnawave-%e8%8a%82%e7%82%b9%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%ae>#</a></h1><p>Remnawave 节点的建立方式，是通过面板端下发配置文件到节点端运行的，所以我们需要在面板端设置好节点搭建所需要的配置文件。</p><p>Xray-core本身支持非常多的协议，具体需要看 Xray 的官方文档。我对这方面了解较浅，所以以下的教程就以我们最常用的的 VLESS-TCP-Reality 节点作为例子。</p><p>创建配置文件：
+在 配置文件菜单项 里新建一个配置文件，配置文件的名称可以用英文随意命名，我们就以 VLESS-TCP-Reality 作为名称。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-30_01-32-05_hivtzu1y.zko.png src=https://webp.050612.xyz/2026/01/20260130013208636.png></div></figure></p><p>Vless-tcp-reality配置示例：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  &#34;log&#34;: {
+</span></span><span style=display:flex><span>    &#34;loglevel&#34;: <span style=color:#666;font-style:italic>&#34;info&#34;</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  &#34;inbounds&#34;: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      &#34;tag&#34;: <span style=color:#666;font-style:italic>&#34;VLESS_TCP_REALITY&#34;</span>,
+</span></span><span style=display:flex><span>      &#34;port&#34;: 443,
+</span></span><span style=display:flex><span>      &#34;protocol&#34;: <span style=color:#666;font-style:italic>&#34;vless&#34;</span>,
+</span></span><span style=display:flex><span>      &#34;settings&#34;: {
+</span></span><span style=display:flex><span>        &#34;clients&#34;: [],
+</span></span><span style=display:flex><span>        &#34;decryption&#34;: <span style=color:#666;font-style:italic>&#34;none&#34;</span>
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      &#34;sniffing&#34;: {
+</span></span><span style=display:flex><span>        &#34;enabled&#34;: <span style=font-weight:700;text-decoration:underline>true</span>,
+</span></span><span style=display:flex><span>        &#34;destOverride&#34;: [
+</span></span><span style=display:flex><span>          <span style=color:#666;font-style:italic>&#34;http&#34;</span>,
+</span></span><span style=display:flex><span>          <span style=color:#666;font-style:italic>&#34;tls&#34;</span>,
+</span></span><span style=display:flex><span>          <span style=color:#666;font-style:italic>&#34;quic&#34;</span>
+</span></span><span style=display:flex><span>        ]
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      &#34;streamSettings&#34;: {
+</span></span><span style=display:flex><span>        &#34;network&#34;: <span style=color:#666;font-style:italic>&#34;raw&#34;</span>,
+</span></span><span style=display:flex><span>        &#34;security&#34;: <span style=color:#666;font-style:italic>&#34;reality&#34;</span>,
+</span></span><span style=display:flex><span>        &#34;realitySettings&#34;: {
+</span></span><span style=display:flex><span>          &#34;show&#34;: <span style=font-weight:700;text-decoration:underline>false</span>,
+</span></span><span style=display:flex><span>          &#34;xver&#34;: 0,
+</span></span><span style=display:flex><span>          &#34;target&#34;: <span style=color:#666;font-style:italic>&#34;www.cloudflare.com:443&#34;</span>,
+</span></span><span style=display:flex><span>          &#34;shortIds&#34;: [
+</span></span><span style=display:flex><span>            <span style=color:#666;font-style:italic>&#34;&#34;</span>
+</span></span><span style=display:flex><span>          ],
+</span></span><span style=display:flex><span>          &#34;privateKey&#34;: <span style=color:#666;font-style:italic>&#34;填写生成的私钥&#34;</span>,
+</span></span><span style=display:flex><span>          &#34;fingerprint&#34;: <span style=color:#666;font-style:italic>&#34;chrome&#34;</span>,
+</span></span><span style=display:flex><span>          &#34;serverNames&#34;: [
+</span></span><span style=display:flex><span>            <span style=color:#666;font-style:italic>&#34;www.cloudflare.com&#34;</span>
+</span></span><span style=display:flex><span>          ]
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  &#34;outbounds&#34;: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      &#34;tag&#34;: <span style=color:#666;font-style:italic>&#34;DIRECT&#34;</span>,
+</span></span><span style=display:flex><span>      &#34;protocol&#34;: <span style=color:#666;font-style:italic>&#34;freedom&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      &#34;tag&#34;: <span style=color:#666;font-style:italic>&#34;BLOCK&#34;</span>,
+</span></span><span style=display:flex><span>      &#34;protocol&#34;: <span style=color:#666;font-style:italic>&#34;blackhole&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  &#34;routing&#34;: {
+</span></span><span style=display:flex><span>    &#34;rules&#34;: []
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>填入节点配置参数：</p><p>其中节点的公钥和私钥的生成，可以利用面板中提供的生成工具。在配置文件中，只需要把生成的私钥填上去，至于公钥会自动计算并配置给节点端。</p><p>因为本教程只涉及后端的搭建，关于SNI的寻找，可以查找相关教程。<figure><div class=img-container><img loading=lazy alt=20260130220526111 src=https://webp.050612.xyz/2026/01/20260130220526111.png></div></figure></p><p>另外，一份配置文件里可以设置多个入站。也就是说，可以在一份配置文件里同时在节点机器上搭建多个不同类型的节点，让一个节点同时支持多种协议和传输方式。</p><p>例如可以将 VLESS-XHTTP-Reality、VLESS-TCP-Reality 或者 Shadowsocks 这几种协议都配置在同一个文件里。</p><hr><p>创建节点：
+找到节点菜单下，现在创建一个节点。</p><p>在这可以首先说一下 Remnawave 面板中“节点”的概念到底是什么。其实是给系统内部看的，和我们在代理客户端中看到的Vless节点不一样，它存在的意义就是为了在面板中显示。也就是这个主从架构中的"从"。</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_00-50-31_qli1qvb0.b5e.png src=https://webp.050612.xyz/2026/01/20260131005033598.png></div></figure></p><p>这里要注意 Node Port 这个参数。这个参数只是为了给面板端和节点端通信使用，并不是 Vless节点 的端口，而Vless节点的端口已经是在配置文件中指明的，可以随便给。</p><p>填写相关信息后点击下一步:</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_00-53-27_g1zc3cxs.442.png src=https://webp.050612.xyz/2026/01/20260131005352146.png></div></figure></p><p>选择我们刚刚创建的配置文件，并点击复制 docker-compose.yml 文件。</p><p>这是为了给我们在节点端机器上使用。</p><p>现在我们要在节点VPS上进行操作，首先，节点 VPS也需要安装 Docker。</p><p>创建目录：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir /opt/remnanode &amp;&amp; <span style=font-weight:700;font-style:italic>cd</span> /opt/remnanode
+</span></span></code></pre></div><p>创建 compose 文件，并将我们刚刚复制的 docker-compose.yml 的内容粘贴到这里。</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>vim docker-compose.yml
+</span></span></code></pre></div><p>如果有使用 UFW 防火墙或者有服务器外部防火墙的话，需要注意放行两个端口：</p><ol><li>节点端口</li><li>面板端与节点端的通信端口 Node Port，因为面板端 VPS 一般都有固定 IP ，可以只开放这个端口给固定的 IP，这样会更加安全一些。</li></ol><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>sudo ufw allow from 1.2.3.4 to any port 2222
+</span></span></code></pre></div><p>启动服务:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker compose up -d
+</span></span></code></pre></div><p>一会儿便可以看到节点列表中，该节点颜色变绿，说明已经连接成功。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-06-08_glen4mdw.azn.png src=https://webp.050612.xyz/2026/01/20260131010627520.png></div></figure></p><p>现在点击这个节点可以进行管理：</p><p>可以设置该节点的流量消耗倍率，默认是一倍。值得注意的是，RW面板的流量只记录单向流量消耗。如果你的节点 VPS 是双向计费的话，可以在此把流量消耗的流量倍率设置为 2.0。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-36-03_zvo3cd0y.byf.png src=https://webp.050612.xyz/2026/01/20260131013608206.png></div></figure></p><p>如果节点连接不上，除了网络问题外，一般是Xray-core配置有误，可以通过下面的命令来检查remnanode容器的日志：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker compose logs -f
+</span></span></code></pre></div><p>如果看到有类似这样的错误提示，则可以确定是Xray-core配置有误：</p><pre tabindex=0><code>XML-RPC fault: SPAWN_ERROR: xray
+</code></pre><p>然后使用下面的命令来查看Xray-core的日志，根据Xray-core的日志信息来解决相应的问题：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker <span style=font-weight:700;font-style:italic>exec</span> -it remnanode tail -n +1 -f /var/log/supervisor/xray.out.log
+</span></span></code></pre></div><hr><p>创建主机：</p><p>关于 Remnawave 面板中主机的概念，官方是这样介绍的：<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-09-20_k3jt34nb.1d3.png src=https://webp.050612.xyz/2026/01/20260131010936201.png></div></figure></p><p>根据我的理解，主机的概念与 Remnawave 面板中节点的概念是一组对应。</p><ol><li>节点（Node）：是为了在面板中进行内部管理。</li><li>主机（Host）：是为了对外进行展示。</li></ol><p>简单来说，配置的一个“主机”就是用户未来在代理客户端(如clash party)中看到的一个具体的节点.</p><p>现在我们创建一个 VLESS TCP Reality 节点给用户使用。</p><p>进行添加一个主机：</p><ol><li>备注：这就是用户在代理客户端中看到的节点名字，可以按照习惯进行填写，例如🇺🇸US01。</li><li>配置文件：每个主机都要选择一个配置文件，选择刚刚写的配置文件即可</li><li>地址：如果你在协议中带了 TLS，可以填写相应的域名；如果没有过 CDN，就填写主机的 IP 地址（节点端VPS的 IP 地址）</li><li>端口：一般可以通过配置文件自动填入。</li><li>节点：选择我们刚刚添加的节点，</li><li>最后点击上面的“主机可见性”，点击保存即可</li></ol><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-13-31_lsjdzs30.fzr.png src=https://webp.050612.xyz/2026/01/20260131011336464.png></div></figure></p><hr><p>关于订阅设置：</p><p>这就是Remnawave 面板自带的节点转换功能，可以根据用户使用的不同客户端，下放不同的配置模板。</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-30-12_4zu0c25f.0hc.png src=https://webp.050612.xyz/2026/01/20260131013014779.png></div></figure></p><p>订阅信息这一项，每一个可配置的参数都给出了详细的解释，可以自行设置。例如“配置标题”这一个参数，就可以在 clash内核 的一些 GUI 中显示配置名称。</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-34-19_iew210ok.ucc.png src=https://webp.050612.xyz/2026/01/20260131013421882.png></div></figure></p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-33-37_ucbvkcjc.tfr.png src=https://webp.050612.xyz/2026/01/20260131013343080.png></div></figure></p><p>自定义备注这一项，可以设置在订阅过期、流量用尽或用户被禁用时，在用户代理客户端中添加一些名称为这些备注的节点。这些信息主要用来提醒客户，防止用户失联。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-37-52_5nqsdmyi.s1e.png src=https://webp.050612.xyz/2026/01/20260131013756358.png></div></figure></p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-39-57_oobm2w1r.wif.png src=https://webp.050612.xyz/2026/01/20260131014015502.png></div></figure></p><p>模板设置：
+根据用户使用的不同客户端，发放的一些模板配置。我目前只说一下关于 Clash 或者 Clash Meta（Mihomo）的配置文件：</p><p>proxies 段必须存在且为空，并且保留注入点:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yml data-lang=yml><span style=display:flex><span>proxies: <span style=color:#888;font-style:italic># LEAVE THIS LINE!</span>
+</span></span></code></pre></div><p>后续 proxy-group 中的每一个组都会自动注入在 Remnawave 面板中设置的节点。</p><p>如果有分组不想注入这些节点，必须显式地写：
+<code>remnawave: include-proxies: false</code></p><p>其实这部分还挺复杂的，因为不同代理客户端所支持的配置文件类型或者格式也不尽相同，需要查阅不同客户端、不同内核对于配置文件格式的支持情况。</p><hr><p>创建用户分组：</p><p>Remnawave 面板支持两种用户分组，都是为了访问控制：</p><ol><li>内部分组：为了控制用户能看到哪些节点</li><li>外部分组：为了控制用户能获得哪种订阅模板，例如，带精细分流和没有精细分流的</li></ol><p>点击“内部分组”菜单项，可以在系统自带的默认分组上进行修改，也可以新建一个：</p><ol><li>选择你想包含的配置文件，这样使用该配置文件创建的节点都会包含进来</li><li>点击保存即可<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-25-54_sj3a4tls.eqo.png src=https://webp.050612.xyz/2026/01/20260131012556583.png></div></figure></li></ol><p>点击“外部分组”菜单项，同样的，可以使用系统自带的默认分组，也可以新建一个：</p><ol><li>选择你想给这个分组使用的订阅模板</li><li>点击保存即可<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-50-39_jzdxkvzs.ii0.png src=https://webp.050612.xyz/2026/01/20260131015042960.png></div></figure></li></ol><p>创建用户：</p><p>可以在此设置该用户的流量限制和重置时间。</p><p>重置时间一般是以自然月循环（例如每月重置一次）。此外，还可以设置订阅到期时间。</p><p>关于访问控制：通过刚刚设置的内部分组和外部分组，来控制该用户可以获取到的节点和订阅模板</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-54-04_xvyh5c5w.td0.png src=https://webp.050612.xyz/2026/01/20260131015406172.png></div></figure></p><p>我们再次点击该用户，就可以看到专属于这个用户的订阅URL。<figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_01-57-00_y45zrbsa.mhy.png src=https://webp.050612.xyz/2026/01/20260131015711050.png></div></figure></p><hr><p>至此，我们就可以获得一个非常完美的订阅链接，包含订阅转换、流量控制、到期时间等。</p><p>（可选）搭建一个Remnawave Subscription Page（独立的订阅页面程序）。</p><p>当我们通过浏览器打开获取到的订阅链接时，可以看到一个算得上精美的、独立的订阅页面。</p><p>并且还有一个额外的好处是隐藏我们的面板域名。</p><p>当设置这个订阅页面程序时，需要额外为此绑定一个不同于订阅面板的域名，之后获取到的订阅链接就都是这个域名了。</p><p><figure><div class=img-container><img loading=lazy alt=Image_2026-01-31_02-02-55_jkiyqnvs.yzc.png src=https://webp.050612.xyz/2026/01/20260131020258723.png></div></figure></p><p>部署流程：</p><p>编辑Remnawave面板的.env配置文件：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=font-weight:700;font-style:italic>cd</span> /opt/remnawave &amp;&amp; vim .env
+</span></span></code></pre></div><p>把之前的这个配置：</p><pre tabindex=0><code>SUB_PUBLIC_DOMAIN=remnawave.example.com/api/sub
+</code></pre><p>修改为你的订阅页面域名：</p><pre tabindex=0><code>SUB_PUBLIC_DOMAIN=subscription.example.com
+</code></pre><p>创建compose文件：</p><pre tabindex=0><code>mkdir -p /opt/remnawave/subscription &amp;&amp; cd /opt/remnawave/subscription &amp;&amp; nano docker-compose.yml
+</code></pre><p>写入如下配置：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yml data-lang=yml><span style=display:flex><span>services:
+</span></span><span style=display:flex><span>    remnawave-subscription-page:
+</span></span><span style=display:flex><span>        image: remnawave/subscription-page:latest
+</span></span><span style=display:flex><span>        container_name: remnawave-subscription-page
+</span></span><span style=display:flex><span>        hostname: remnawave-subscription-page
+</span></span><span style=display:flex><span>        restart: always
+</span></span><span style=display:flex><span>        environment:
+</span></span><span style=display:flex><span>            - REMNAWAVE_PANEL_URL=https://remnawave.example.com
+</span></span><span style=display:flex><span>            - APP_PORT=3010
+</span></span><span style=display:flex><span>            - META_TITLE=&#34;Subscription Page Title&#34;
+</span></span><span style=display:flex><span>            - META_DESCRIPTION=&#34;Subscription Page Description&#34;
+</span></span><span style=display:flex><span>        ports:
+</span></span><span style=display:flex><span>            - <span style=color:#666;font-style:italic>&#39;127.0.0.1:3010:3010&#39;</span>
+</span></span><span style=display:flex><span>        networks:
+</span></span><span style=display:flex><span>            - remnawave-network
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>networks:
+</span></span><span style=display:flex><span>    remnawave-network:
+</span></span><span style=display:flex><span>        driver: bridge
+</span></span><span style=display:flex><span>        external: <span style=font-weight:700;text-decoration:underline>true</span>
+</span></span></code></pre></div><p>注意：REMNAWAVE_PANEL_URL这里要指向你的面板URL，但是有多种配置方法。</p><p>1、此订阅页面程序与面板不在同一台服务器部署，那么这里就填写面板的域名，并且去掉compose内的external: true配置。</p><p>2、在同一服务器部署，可以直接填面板服务的主机名:3000，例如：http://remnawave:3000，也可以直接填写域名。</p><p>启动：</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>docker compose up -d
+</span></span></code></pre></div><p>配置反向代理:</p><p>我这里使用的是 Nginx。在刚刚为面板配置的 Nginx 配置文件中，添加以下 server块 即可。</p><pre tabindex=0><code>upstream remnawave-subscription-page {
+	#Change this part
+    server 127.0.0.1:port;
+}
+
+server {
+    server_name subscription.example.com;
+
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    location / {
+        proxy_http_version 1.1;
+        proxy_pass http://remnawave-subscription-page;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # SSL Configuration (Mozilla Intermediate Guidelines)
+    ssl_protocols          TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
+
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:MozSSL:10m;
+    ssl_session_tickets    off;
+    ssl_certificate &#34;/etc/ssl/certs/050612.xyz.pem&#34;;
+    ssl_certificate_key &#34;/etc/ssl/private/050612.xyz.key&#34;;
+    ssl_trusted_certificate &#34;/etc/ssl/certs/050612.xyz.pem&#34;;
+
+    ssl_stapling           on;
+    ssl_stapling_verify    on;
+    resolver               1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 valid=60s;
+    resolver_timeout       2s;
+
+    # Gzip Compression
+    gzip on;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_min_length 256;
+    gzip_types
+        application/atom+xml
+        application/geo+json
+        application/javascript
+        application/x-javascript
+        application/json
+        application/ld+json
+        application/manifest+json
+        application/rdf+xml
+        application/rss+xml
+        application/xhtml+xml
+        application/xml
+        font/eot
+        font/otf
+        font/ttf
+        image/svg+xml
+        text/css
+        text/javascript
+        text/plain
+        text/xml;
+}
+</code></pre><hr><p>此外，Remnawave 具有丰富的社区生态。比如说，面板本身没有对接支付系统，但在以下链接中，有一个项目可以在 Telegram 中配置 Bot 并对接一些支付系统，只是没有中国大陆经常使用的支付方式罢了。</p><p><a href=https://docs.rw/docs/awesome-remnawave/>awesome-remnawave</a></p><p>由于我没有用到，便在此不做过多介绍，请大家自行探索吧。</p><p>备用链接：<a href=https://jk.sb/posts/remna-install-3/>在 Remnawave 中配置中转或者落地</a></p></div></article><div class=single-comments><script src=https://giscus.app/client.js data-repo=eaiu/eaiu.github.io data-repo-id=R_kgDOPMv-Yw data-category data-category-id=DIC_kwDOPMv-Y84CtAeO data-mapping=pathname data-strict=0 data-reactions-enabled=1 data-emit-metadata=0 data-input-position=top data-theme=preferred_color_scheme data-lang=en data-loading=lazy crossorigin=anonymous async></script></div><div class=single-pagination><hr><div class=flexnowrap><div class=single-pagination-prev><div class=single-pagination-container-prev><div class=single-pagination-text>←</div><div class=single-pagination-text><a href=/explore/self-host/syncclipboard%E6%9B%BF%E4%BB%A3%E5%BE%AE%E4%BF%A1%E8%BE%93%E5%85%A5%E6%B3%95%E5%90%8C%E6%AD%A5%E5%8A%9F%E8%83%BD%E7%9A%84%E6%9C%80%E4%BD%B3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/>SyncClipboard：替代微信输入法同步功能的最佳解决方案</a></div></div></div><div class=single-pagination-next></div></div><hr></div><div class=back-to-top><a href=#top>back to top</a></div></div></main></div><footer><p>All content licensed under <a href=https://creativecommons.org/licenses/by-sa/4.0/>CC BY-SA 4.0</a> unless otherwise stated. Copyright © 2025 ghung<br>Powered by <a href=https://gohugo.io/>Hugo</a> and <a href=https://github.com/tomfran/typo>tomfran/typo</a></p></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></body><script src=/js/theme-switch.js></script><script defer src=/js/copy-code.js></script></html>
