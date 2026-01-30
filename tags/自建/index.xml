@@ -56,6 +56,10 @@
 &lt;li&gt;面板端最好是有公网 IP。如果没有公网 IP 的话，也可以尝试用其他方法，但还是建议优先使用公网 IP。&lt;/li&gt;
 &lt;li&gt;该面板必须通过 SSL 进行访问。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 class="heading" id="面板端搭建"&gt;
+ 面板端搭建
+ &lt;a class="anchor" href="#%e9%9d%a2%e6%9d%bf%e7%ab%af%e6%90%ad%e5%bb%ba"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
 &lt;p&gt;Remnawave Panel 是 Remnawave 的核心组件，用于管理用户、节点、订阅等。&lt;/p&gt;
 &lt;p&gt;安装 Docker：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo curl -fsSL https://get.docker.com | sh
