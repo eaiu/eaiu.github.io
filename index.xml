@@ -56,10 +56,6 @@
 &lt;li&gt;面板端最好是有公网 IP。如果没有公网 IP 的话，也可以尝试用其他方法，但还是建议优先使用公网 IP。&lt;/li&gt;
 &lt;li&gt;该面板必须通过 SSL 进行访问。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 class="heading" id="remnawave-面板端"&gt;
- Remnawave 面板端
- &lt;a class="anchor" href="#remnawave-%e9%9d%a2%e6%9d%bf%e7%ab%af"&gt;#&lt;/a&gt;
-&lt;/h2&gt;
 &lt;p&gt;Remnawave Panel 是 Remnawave 的核心组件，用于管理用户、节点、订阅等。&lt;/p&gt;
 &lt;p&gt;安装 Docker：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo curl -fsSL https://get.docker.com | sh
@@ -115,7 +111,10 @@
  
 &lt;/figure&gt;
 &lt;/p&gt;
-&lt;p&gt;下一步是反向代理相关的配置。&lt;/p&gt;
+&lt;h3 class="heading" id="nginx-反向代理配置"&gt;
+ Nginx 反向代理配置
+ &lt;a class="anchor" href="#nginx-%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
 &lt;p&gt;关于这一部分，官方给出的实例配置文件非常详细，涵盖了各种常用的服务（例如 Nginx 和 Caddy），可以直接参考并照抄官方的配置文件。
 &lt;a href="https://docs.rw/docs/install/reverse-proxies/"&gt;Remnawave Documentation | reverse-proxie&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;针对 Nginx ，官方给出的是 Docker 运行的 Nginx 服务配置文件，我这里给出独立运行的 Nginx 配置文件供参考：&lt;/p&gt;
@@ -218,35 +217,19 @@
  
 &lt;/figure&gt;
 &lt;/p&gt;
-&lt;h1 class="heading" id="remnawave-节点安装与配置"&gt;
+&lt;h3 class="heading" id="remnawave-节点安装与配置"&gt;
  Remnawave 节点安装与配置
  &lt;a class="anchor" href="#remnawave-%e8%8a%82%e7%82%b9%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%ae"&gt;#&lt;/a&gt;
-&lt;/h1&gt;
+&lt;/h3&gt;
 &lt;p&gt;Remnawave 节点的建立方式，是通过面板端下发配置文件到节点端运行的，所以我们需要在面板端设置好节点搭建所需要的配置文件。&lt;/p&gt;
 &lt;p&gt;Xray-core本身支持非常多的协议，具体需要看 Xray 的官方文档。我对这方面了解较浅，所以以下的教程就以我们最常用的的 VLESS-TCP-Reality 节点作为例子。&lt;/p&gt;
-&lt;p&gt;创建配置文件：
-在 配置文件菜单项 里新建一个配置文件，配置文件的名称可以用英文随意命名，我们就以 VLESS-TCP-Reality 作为名称。
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure class=""&gt;
-
- &lt;div class="img-container" &gt;
- &lt;img loading="lazy" alt="Image_2026-01-30_01-32-05_hivtzu1y.zko.png" src="https://webp.050612.xyz/2026/01/20260130013208636.png" &gt;
- &lt;/div&gt;
-
- 
-&lt;/figure&gt;
-&lt;/p&gt;
+&lt;h3 class="heading" id="创建配置文件"&gt;
+ 创建配置文件
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt; 在 配置文件菜单项 里新建一个配置文件，配置文件的名称可以用英文随意命名，我们就以 VLESS-TCP-Reality 作为名称。
+![Image_2026-01-30_01-32-05_hivtzu1y.zko.png](https://webp.050612.xyz/2026/01/20260130013208636.png)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Vless-tcp-reality配置示例：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;#34;log&amp;#34;: {
@@ -329,8 +312,11 @@
 &lt;p&gt;另外，一份配置文件里可以设置多个入站。也就是说，可以在一份配置文件里同时在节点机器上搭建多个不同类型的节点，让一个节点同时支持多种协议和传输方式。&lt;/p&gt;
 &lt;p&gt;例如可以将 VLESS-XHTTP-Reality、VLESS-TCP-Reality 或者 Shadowsocks 这几种协议都配置在同一个文件里。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;创建节点：
-找到节点菜单下，现在创建一个节点。&lt;/p&gt;
+&lt;h3 class="heading" id="创建节点"&gt;
+ 创建节点
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e8%8a%82%e7%82%b9"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;找到节点菜单下，现在创建一个节点。&lt;/p&gt;
 &lt;p&gt;在这可以首先说一下 Remnawave 面板中“节点”的概念到底是什么。其实是给系统内部看的，和我们在代理客户端中看到的Vless节点不一样，它存在的意义就是为了在面板中显示。也就是这个主从架构中的&amp;quot;从&amp;quot;。&lt;/p&gt;
 &lt;p&gt;
 
@@ -443,7 +429,10 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后使用下面的命令来查看Xray-core的日志，根据Xray-core的日志信息来解决相应的问题：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker &lt;span style="font-weight:bold;font-style:italic"&gt;exec&lt;/span&gt; -it remnanode tail -n +1 -f /var/log/supervisor/xray.out.log
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;创建主机：&lt;/p&gt;
+&lt;h3 class="heading" id="创建主机"&gt;
+ 创建主机
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e4%b8%bb%e6%9c%ba"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
 &lt;p&gt;关于 Remnawave 面板中主机的概念，官方是这样介绍的：
 
 
@@ -504,7 +493,10 @@
 &lt;/figure&gt;
 &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;关于订阅设置：&lt;/p&gt;
+&lt;h3 class="heading" id="订阅设置"&gt;
+ 订阅设置
+ &lt;a class="anchor" href="#%e8%ae%a2%e9%98%85%e8%ae%be%e7%bd%ae"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
 &lt;p&gt;这就是Remnawave 面板自带的节点转换功能，可以根据用户使用的不同客户端，下放不同的配置模板。&lt;/p&gt;
 &lt;p&gt;
 
@@ -613,8 +605,11 @@
  
 &lt;/figure&gt;
 &lt;/p&gt;
-&lt;p&gt;模板设置：
-根据用户使用的不同客户端，发放的一些模板配置。我目前只说一下关于 Clash 或者 Clash Meta（Mihomo）的配置文件：&lt;/p&gt;
+&lt;h3 class="heading" id="模板设置"&gt;
+ 模板设置
+ &lt;a class="anchor" href="#%e6%a8%a1%e6%9d%bf%e8%ae%be%e7%bd%ae"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;根据用户使用的不同客户端，发放的一些模板配置。我目前只说一下关于 Clash 或者 Clash Meta（Mihomo）的配置文件：&lt;/p&gt;
 &lt;p&gt;proxies 段必须存在且为空，并且保留注入点:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-yml" data-lang="yml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;proxies: &lt;span style="color:#888;font-style:italic"&gt;# LEAVE THIS LINE!&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续 proxy-group 中的每一个组都会自动注入在 Remnawave 面板中设置的节点。&lt;/p&gt;
@@ -622,7 +617,10 @@
 &lt;code&gt;remnawave: include-proxies: false&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;其实这部分还挺复杂的，因为不同代理客户端所支持的配置文件类型或者格式也不尽相同，需要查阅不同客户端、不同内核对于配置文件格式的支持情况。&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;创建用户分组：&lt;/p&gt;
+&lt;h3 class="heading" id="创建用户分组"&gt;
+ 创建用户分组
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e7%94%a8%e6%88%b7%e5%88%86%e7%bb%84"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
 &lt;p&gt;Remnawave 面板支持两种用户分组，都是为了访问控制：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;内部分组：为了控制用户能看到哪些节点&lt;/li&gt;
@@ -680,7 +678,10 @@
 &lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;创建用户：&lt;/p&gt;
+&lt;h3 class="heading" id="创建用户"&gt;
+ 创建用户
+ &lt;a class="anchor" href="#%e5%88%9b%e5%bb%ba%e7%94%a8%e6%88%b7"&gt;#&lt;/a&gt;
+&lt;/h3&gt;
 &lt;p&gt;可以在此设置该用户的流量限制和重置时间。&lt;/p&gt;
 &lt;p&gt;重置时间一般是以自然月循环（例如每月重置一次）。此外，还可以设置订阅到期时间。&lt;/p&gt;
 &lt;p&gt;关于访问控制：通过刚刚设置的内部分组和外部分组，来控制该用户可以获取到的节点和订阅模板&lt;/p&gt;
@@ -729,7 +730,10 @@
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;至此，我们就可以获得一个非常完美的订阅链接，包含订阅转换、流量控制、到期时间等。&lt;/p&gt;
-&lt;p&gt;（可选）搭建一个Remnawave Subscription Page（独立的订阅页面程序）。&lt;/p&gt;
+&lt;h2 class="heading" id="搭建-subscription-page可选"&gt;
+ 搭建 Subscription Page（可选）
+ &lt;a class="anchor" href="#%e6%90%ad%e5%bb%ba-subscription-page%e5%8f%af%e9%80%89"&gt;#&lt;/a&gt;
+&lt;/h2&gt;
 &lt;p&gt;当我们通过浏览器打开获取到的订阅链接时，可以看到一个算得上精美的、独立的订阅页面。&lt;/p&gt;
 &lt;p&gt;并且还有一个额外的好处是隐藏我们的面板域名。&lt;/p&gt;
 &lt;p&gt;当设置这个订阅页面程序时，需要额外为此绑定一个不同于订阅面板的域名，之后获取到的订阅链接就都是这个域名了。&lt;/p&gt;
